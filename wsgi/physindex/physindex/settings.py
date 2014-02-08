@@ -2,6 +2,7 @@ import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 from unipath import FSPath as Path
 import urlparse
+import imp
 
 BASE = Path(__file__).absolute().ancestor(2)
 
@@ -92,8 +93,18 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+# Make a dictionary of default keys
+default_keys = { 'SECRET_KEY': 'vm4rl5*ymb@2&d_(gc$gb-^twq9w(u69hi--%$5xrh!xk(t%hw' }
+
+# Replace default keys with dynamic values if we are in OpenShift
+use_keys = default_keys
+if ON_OPENSHIFT:
+    imp.find_module('openshiftlibs')
+    import openshiftlibs
+    use_keys = openshiftlibs.openshift_secure(default_keys)
+
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = use_keys['SECRET_KEY']
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
