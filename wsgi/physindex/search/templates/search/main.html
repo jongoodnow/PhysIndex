@@ -1,0 +1,38 @@
+{% extends "search/base.html" %}
+
+{% block extrahead %}
+<script>
+function titleUp(){
+	var s = document.getElementById("search_form");
+	if(s.query.value != ""){
+		var top_pad = document.getElementById("frontpageTitle");
+		var text_obj = document.getElementById("message");
+		top_pad.style.padding = "0px";
+		text_obj.style.opacity = "0";
+		s.submit();
+	}}
+</script>
+{% endblock %}
+
+{% load staticfiles %}
+<script type="text/javascript" src="{% static 'search/scripts.js' %}"></script>
+{% block specialheaderbegin %}
+<div id="frontpageTitle"></div>
+{% endblock %}
+
+{% block form %}
+<form id="search_form" method="get" action="{% url 'search' %}" onSubmit="javascript:titleUp(); return false;">
+	<div id="searchbox">
+		{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off"/></span>{% endblock %}<span id="searchglass"><button type="submit"><image src="{% static 'search/glass.png' %}" /></button></span>
+	</div>
+</form>
+{% endblock %}
+
+{% block content %}
+<div class="infoblock" style="opacity: 1;">
+	<div id="message">
+		Enter the name of a physics variable, equation, or unit, and we'll tell you everything we know about it.
+	</div>
+</div>
+<div class="infoseparate"></div>
+{% endblock %}

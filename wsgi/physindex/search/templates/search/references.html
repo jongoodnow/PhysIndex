@@ -1,0 +1,24 @@
+{% extends "search/base.html" %}
+
+{% block title %}PhysIndex | References{% endblock %}
+
+{% block content %}
+<div class="infoblock">
+    <div class="full_name"><a href="{% url 'references' %}">References</a></div>
+    <div class="normal">The following materials were cited in the creation of the PhysIndex database.
+        The number in brackets at the beginning of the citation is the number used to identify that
+        in the articles available here. You can over your cursor over these in-text citations to see if
+        there are specific page numbers references for that article.
+    </div>
+    {% for s in sources %}
+        <div class="normal">
+            <sup style="font-size: 7pt;">[{{ s.identifier }}]</sup> {{ s.authors }},
+            <i>{{ s.title }}</i>{% if s.edition %}, {{ s.edition_string }} Ed{% endif %}. ({{ s.publisher }}, {{ s.pub_city }}, {{ s.year }}).
+        </div>
+    {% endfor %}
+</div>
+
+<div class="infoseparate"></div>
+
+<script>infoblockIn();</script>
+{% endblock %}

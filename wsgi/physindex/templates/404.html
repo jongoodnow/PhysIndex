@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>PhysIndex | Page does not exist!</title>
+	</head>
+	<body>
+		{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'search/style.css' %}" />
+		<link href='http://fonts.googleapis.com/css?family=Numans' rel='stylesheet' type='text/css'>
+
+		<div id="title">PhysIndex</div>
+		<br>
+
+		<form method="get">
+			<div id="subtitle">
+				<input id="query" type="text" name="query" maxlength="500" />
+			</div>
+		</form>
+		
+		<div id="infoblock">
+			<div id="normal" style="text-align: center;">
+				Uh-oh. You tried to go somewhere that doesn't exist. Try typing something into the search box above and pressing "enter" or "return" instead.
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends "search/base.html" %}
+
+{% block title %}PhysIndex | About{% endblock %}
+
+{% block content %}
+<div class="infoblock">
+    <div class="full_name"><a href="{% url 'about' %}">About PhysIndex</a></div>
+    <div class="normal">
+        We are a young team of physics majors ourselves in college and we have spent hours upon hours studying and doing homework out of our textbook. We understand the difficulty students face whether it be at the high school or college level. PhysIndex was created with the intent to make life easier for you. Our name was inspired by our constant use of the index of our physics textbook. Between us we have years of experience in this field of study. Our goal is to provide quick and simple information about equations and variables so that you can get back to solving problems. Physindex is currently in a beta phase so the content currently present will be limited. We will be constantly be adding more useful knowledge to the site. You can check the <a href="{% url 'beta' %}">beta page</a> for updates on the current scope of the project. Also, check out the <a href="{% url 'help' %}">features</a> of PhysIndex to see how it can help you, or <a href="{% url 'contact' %}">contact us</a> with any feedback you have.
+    </div>
+    <div class="usage" style="padding-top: 5px;">
+        <span class="usagebars"></span><span class="usagetext">Legal</span><span class="usagebars"></span>
+    </div>
+    <div class="normal" style="padding-top: 0px;">
+        <div style="padding-bottom: 5px;">The following web resources are used on this web site:</div>
+        <div><a href="http://www.entypo.com">Entypo</a> pictograms by Daniel Bruce used under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license.</div>
+        <div>"White Brushed" pattern by <a href="http://uniqappz.com/">Andre Schouten</a> (modified) used under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license.</div>
+        <div><a href="http://www.mathjax.org">MathJax</a> used for in-browser LaTeX rendering under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</div>
+    </div>
+    <div class="normal">
+        &copy;2014 Jonathan Goodnow, Charles Khachian, Nicholas Boni
+    </div>
+</div>
+
+<div class="infoseparate"></div>
+
+<script>infoblockIn();</script>
+{% endblock %}

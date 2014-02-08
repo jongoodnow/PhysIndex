@@ -1,0 +1,169 @@
+{% extends "search/base.html" %}
+
+{% load safecycle %}
+
+{% block title %}PhysIndex | Results for {{ query_string }}{% endblock %}
+
+{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" value="{{ query_string }}" autocomplete="off"/></span>{% endblock %}
+
+{% block content %}
+	{% if results %}
+		{% for obj in results|slice:":10" %}
+			{% if obj.is_var %}
+				<div class="infoblock">
+					<div class="full_name"><a href="{% url 'variable' name=obj.full_name %}">{{ obj.full_name }}</a> $({{ obj.rep_without_dollars }})$</div>
+					<div class="normal">
+						{{ obj.description }}
+						{% with sources=obj.cited.all %}
+							{% if sources %}
+								{% for s in sources %}
+								<a href="{% url 'references' %}">
+								<span class="source">
+									<sup style="font-size: 7pt;">[{{ s.identifier }}]</sup><span class="sourceInfo">{{ s.first_author }}{% ifnotequal obj.cited_pages '0' %}, pp. {{ obj.cited_pages }} {% endifnotequal %}</span>
+								</span></a>
+								{% endfor %}
+							{% endif %}
+						{% endwith %}
+					</div>
+					<div class="normal">
+						<strong>Units: </strong>
+						{% with units=obj.units_links.all %}
+							{% if units %}
+								{{ obj.units }}, where 
+								{% for u in units %}
+									{% if forloop.last and not forloop.first %}
+										and {{ u.representation }} is <a href="{% url 'unit' name=u.full_name %}">{{ u.full_name }}</a>.
+									{% elif forloop.first and forloop.last %}
+										{{ u.representation }} is <a href="{% url 'unit' name=u.full_name %}">{{ u.full_name }}</a>.
+									{% else %}
+										{{ u.representation }} is <a href="{% url 'unit' name=u.full_name %}">{{ u.full_name }}</a>,
+									{% endif %}
+								{% endfor %}
+							{% else %}
+								dimensionless
+							{% endif %}
+						{% endwith %}
+					</div>
+					{% with eqns=obj.equation_set.all %}
+						{% with def=obj.definition %}
+						{% if eqns or def %}
+							<div class="usage">
+								<span class="usagebars"></span><span class="usagetext">Usage</span><span class="usagebars"></span>
+							</div>
+								{% if def %}
+									<div class="odddisplay">
+										<span class="eqmath">{{ def.representation }}</span><span class="eqname"><a href="{% url 'equation' name=def %}">{{ def.full_name }}</a></span>
+									</div>
+									{% for eq in eqns %}
+									<div class="{% safe_cycle 'normalrow' 'odddisplay' %}">
+										<span class="{% safe_cycle '' 'eqmath' %}">{{ eq.representation }}</span><span class="eqname"><a href="{% url 'equation' name=eq.full_name %}">{{ eq.full_name }}</a></span>
+									</div>
+									{% endfor %}
+								{% else %}
+									{% for eq in eqns %}
+										<div class="{% safe_cycle 'odddisplay' 'normalrow' %}">
+											<span class="{% safe_cycle 'eqmath' '' %}">{{ eq.representation }}</span><span class="eqname"><a href="{% url 'equation' name=eq.full_name %}">{{ eq.full_name }}</a></span>
+										</div>
+									{% endfor %}
+								{% endif %}
+						{% endif %}
+						{% endwith %}
+					{% endwith %}
+				</div>
+				<div class="infoseparate"></div>
+			{% elif obj.is_unit %}
+				<div class="infoblock">
+					<div class="full_name"><a href="{% url 'unit' name=obj.full_name %}">{{ obj.full_name }}</a> $({{ obj.rep_without_dollars }})$</div>
+					<div class="normal">
+						{{ obj.description }}
+						{% with sources=obj.cited.all %}
+							{% if sources %}
+								{% for s in sources %}
+								<a href="{% url 'references' %}">
+								<span class="source">
+									<sup style="font-size: 7pt;">[{{ s.identifier }}]</sup><span class="sourceInfo">{{ s.first_author }}{% ifnotequal obj.cited_pages '0' %}{% ifnotequal obj.cited_pages '' %}, pp. {{ obj.cited_pages }} {% endifnotequal %}{% endifnotequal %}</span>
+								</span></a>
+								{% endfor %}
+							{% endif %}
+						{% endwith %}
+					</div>
+					<div class="normal">
+						<strong>Composition: </strong>
+						{% ifnotequal obj.composition 'base' %}
+							{% with units=obj.composition_links.all %}
+								{% if units %}
+									{{ obj.composition }}, where 
+									{% for u in units %}
+										{% if forloop.last and not forloop.first %}
+											and {{ u.representation }} is <a href="{% url 'unit' name=u.full_name %}">{{ u.full_name }}</a>.
+										{% elif forloop.first and forloop.last %}
+											{{ u.representation }} is <a href="{% url 'unit' name=u.full_name %}">{{ u.full_name }}</a>.
+										{% else %}
+											{{ u.representation }} is <a href="{% url 'unit' name=u.full_name %}">{{ u.full_name }}</a>,
+										{% endif %}
+									{% endfor %}
+								{% else %}
+									{{ obj.representation }} is a base unit.
+								{% endif %}
+							{% endwith %}
+						{% else %}
+						{{ obj.representation }} is a base unit.
+						{% endifnotequal %}
+					</div>
+				</div>
+				<div class="infoseparate"></div>
+			{% elif obj.is_eq %}
+				<div class="infoblock">
+					<div class="full_name"><a href="{% url 'equation' name=obj.full_name %}">{{ obj.full_name }}</a></div></td>
+					<div class="full_name" style="padding-top: 10px;">{{ obj.representation }}</div>
+					<div class="normal">
+						{{ obj.description }}
+						{% with sources=obj.cited.all %}
+							{% if sources %}
+								{% for s in sources %}
+								<a href="{% url 'references' %}">
+								<span class="source">
+									<sup style="font-size: 7pt;">[{{ s.identifier }}]</sup><span class="sourceInfo">{{ s.first_author }}{% ifnotequal obj.cited_pages '0' %}, pp. {{ obj.cited_pages }} {% endifnotequal %}</span>
+								</span></a>
+								{% endfor %}
+							{% endif %}
+						{% endwith %}
+					</div>
+					{% with vars=obj.variables.all %}
+						{% with defvar=obj.defined_var %}
+						{% if vars or defvar %}
+							<div class="usage">
+								<span class="usagebars"></span><span class="usagetext">Composition</span><span class="usagebars"></span>
+							</div>
+							{% if defvar %}
+								<div class="odddisplay">
+									<span class="eqmath">{{ defvar.representation }}</span><span class="eqname"><a href="{% url 'variable' name=defvar %}">{{ defvar.full_name }}</a></span>
+								</div>
+								{% for var in vars %}
+								<div class="{% safe_cycle 'normalrow' 'odddisplay' %}">
+									<span class="{% safe_cycle '' 'eqmath' %}">{{ var.representation }}</span><span class="eqname"><a href="{% url 'variable' name=var.full_name %}">{{ var.full_name }}</a></span>
+								</div>
+								{% endfor %}
+							{% else %}
+								{% for var in vars %}
+									<div class="{% safe_cycle 'odddisplay' 'normalrow' %}">
+										<span class="{% safe_cycle 'eqmath' '' %}">{{ var.representation }}</span><span class="eqname"><a href="{% url 'variable' name=var.full_name %}">{{ var.full_name }}</a></span>
+									</div>
+								{% endfor %}
+							{% endif %}
+						{% endif %}
+						{% endwith %}
+					{% endwith %}
+				</div>
+				{% if not forloop.last %}
+					<div class="infoseparate"></div>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	{% else %}
+		<div class="infoblock">
+			<div id="message">Sorry, we can't find any results for that.</div>
+		</div>
+	{% endif %}
+	<script> infoblockIn(); </script>
+{% endblock %}

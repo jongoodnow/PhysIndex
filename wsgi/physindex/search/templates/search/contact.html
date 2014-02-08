@@ -1,0 +1,30 @@
+{% extends "search/base.html" %}
+
+{% block title %}PhysIndex | Contact{% endblock %}
+
+{% block content %}
+<div class="infoblock">
+    <div class="full_name"><a href="{% url 'contact' %}">Contact</a></div>
+    <div class="normal">
+        You are welcome to <a href="mailto:physindex@gmail.com">email us</a> at any time with any comments, questions,
+        or concerns that you have about PhysIndex. Feedback from our users helps us grow and we really appreciate it.
+    </div>
+    <div class="usage">
+        <span class="usagebars"></span><span class="usagetext">Bug Reporting</span><span class="usagebars"></span>
+    </div>
+    <div class="normal" style="padding-top: 0px;">
+        PhysIndex is currently released as a <a href="{% url 'beta' %}">public beta</a>. This means that feedback about
+        issues with the web site is extremely helpful in making this a finished project. Please be descriptive when reporting
+        a bug, and include information such as the page you were on, what you were trying to do when the issue occured, when
+        it happened, your browser, and your operating system.<br><br>
+        Please note that PhysIndex currently only contains information that would be present in an introductory mechanics
+        course. You are welcome to report a specific variable or equation from this topic as missing, but please do not report
+        missing information from more advanced topics like electricity and magnetism, quantum, thermodynamics, et cetera, as we
+        hope to add these later.
+    </div>
+</div>
+
+<div class="infoseparate"></div>
+
+<script>infoblockIn();</script>
+{% endblock %}
