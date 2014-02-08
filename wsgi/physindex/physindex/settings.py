@@ -100,7 +100,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make a dictionary of default keys
-default_keys = { 'SECRET_KEY': 'vm4rl5*ymb@2&d_(gc$gb-^twq9w(u69hi--%$5xrh!xk(t%hw' }
+default_keys = { 'SECRET_KEY': 'vm4rl5*ymb@2&d_(gc$gb-^twq9w(idasofjiopewq39$43' }
 
 # Replace default keys with dynamic values if we are in OpenShift
 use_keys = default_keys
@@ -206,3 +206,7 @@ LOGGING = {
         },
     }
 }
+
+EMAIL_HOST = 'gmail.com'
+EMAIL_HOST_PASSWORD = 'becausewefeltlikeit3'
+EMAIL_HOST_USER = 'physindex'
