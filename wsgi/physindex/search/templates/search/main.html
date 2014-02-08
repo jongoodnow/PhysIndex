@@ -1,19 +1,5 @@
 {% extends "search/base.html" %}
 
-{% block extrahead %}
-<script>
-function titleUp(){
-	var s = document.getElementById("search_form");
-	if(s.query.value != ""){
-		var top_pad = document.getElementById("frontpageTitle");
-		var text_obj = document.getElementById("message");
-		top_pad.style.padding = "0px";
-		text_obj.style.opacity = "0";
-		s.submit();
-	}}
-</script>
-{% endblock %}
-
 {% load staticfiles %}
 <script type="text/javascript" src="{% static 'search/scripts.js' %}"></script>
 {% block specialheaderbegin %}
