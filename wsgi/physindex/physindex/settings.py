@@ -77,7 +77,7 @@ SOUTH_TESTS_MIGRATE = False
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = BASE.child('static_root')
+STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -144,6 +144,23 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
 )
 
+SUIT_CONFIG = {
+    # header
+    'ADMIN_NAME': 'Physindex Admin',
+    'HEADER_DATE_FORMAT': 'l, F j, Y',
+    'HEADER_TIME_FORMAT': 'H:i',
+
+    # menu
+    'SEARCH_URL': '/admin/auth/user/',
+    'MENU_ICONS': {
+       'sites': 'icon-leaf',
+       'auth': 'icon-lock',
+    },
+
+    # misc
+    # 'LIST_PER_PAGE': 15
+}
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -151,6 +168,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'suit',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'search',
