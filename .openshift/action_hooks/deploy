@@ -7,3 +7,9 @@ python "$OPENSHIFT_REPO_DIR"physindex/manage.py syncdb --noinput
  
 echo "Executing 'python ${OPENSHIFT_REPO_DIR}physindex/manage.py collectstatic --noinput -v0'"
 python "$OPENSHIFT_REPO_DIR"physindex/manage.py collectstatic --noinput -v0
+
+if [ ! -d $OPENSHIFT_REPO_DIR/wsgi/static/admin ]; then
+mkdir $OPENSHIFT_REPO_DIR/wsgi/static/admin
+fi
+
+cp $OPENSHIFT_GEAR_DIR/virtenv/lib/python2.6/site-packages/Django-1.4.1-py2.6.egg/django/contrib/admin/static/admin $OPENSHIFT_REPO_DIR/wsgi/static/
