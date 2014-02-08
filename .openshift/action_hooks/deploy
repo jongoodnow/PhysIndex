@@ -12,4 +12,4 @@ if [ ! -d $OPENSHIFT_REPO_DIR/wsgi/static/admin ]; then
 mkdir $OPENSHIFT_REPO_DIR/wsgi/static/admin
 fi
 
-cp $OPENSHIFT_GEAR_DIR/virtenv/lib/python2.6/site-packages/Django-1.4.1-py2.6.egg/django/contrib/admin/static/admin $OPENSHIFT_REPO_DIR/wsgi/static/
+cp $OPENSHIFT_GEAR_DIR/virtenv/lib/python2.7/site-packages/Django-1.5-py2.7.egg/django/contrib/admin/static/admin $OPENSHIFT_REPO_DIR/wsgi/static/
