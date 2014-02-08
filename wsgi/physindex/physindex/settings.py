@@ -6,11 +6,17 @@ import imp
 
 BASE = Path(__file__).absolute().ancestor(2)
 
+
+# a setting to determine whether we are running on OpenShift
+ON_OPENSHIFT = False
+if os.environ.has_key('OPENSHIFT_REPO_DIR'):
+    ON_OPENSHIFT = True
+
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Team', 'physindex@gmail.com'),
 )
 
 MANAGERS = ADMINS
