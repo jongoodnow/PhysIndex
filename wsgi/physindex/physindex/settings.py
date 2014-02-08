@@ -144,23 +144,6 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
 )
 
-SUIT_CONFIG = {
-    # header
-    'ADMIN_NAME': 'Physindex Admin',
-    'HEADER_DATE_FORMAT': 'l, F j, Y',
-    'HEADER_TIME_FORMAT': 'H:i',
-
-    # menu
-    'SEARCH_URL': '/admin/auth/user/',
-    'MENU_ICONS': {
-       'sites': 'icon-leaf',
-       'auth': 'icon-lock',
-    },
-
-    # misc
-    # 'LIST_PER_PAGE': 15
-}
-
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -168,7 +151,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'suit',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'search',
