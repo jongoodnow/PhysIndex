@@ -101,6 +101,11 @@ button{
 	top: 0px;
 	vertical-align: middle;
 }
+#searchbutton{
+	vertical-align: middle;
+	padding-bottom: 1px;
+	top: 0px;
+}
 #glass{
 
 }

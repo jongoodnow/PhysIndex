@@ -50,7 +50,7 @@
 		{% block form %}
 		<form method="get" action="{% url 'search' %}">
 			<div id="searchbox">
-				{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off" /></span>{% endblock %}<span id="searchglass"><button type="submit"><div id="glass"><image src="{% static 'search/glass.png' %}" /></div></button></span>
+				{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off" /></span>{% endblock %}<span id="searchglass"><input type="image" id="searchbutton" src="{% static 'search/searchbutton.png' %}"></span>
 			</div>
 		</form>
 		{% endblock %}

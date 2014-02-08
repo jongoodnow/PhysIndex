@@ -23,7 +23,7 @@ function titleUp(){
 {% block form %}
 <form id="search_form" method="get" action="{% url 'search' %}" onSubmit="javascript:titleUp(); return false;">
 	<div id="searchbox">
-		{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off"/></span>{% endblock %}<span id="searchglass"><button type="submit"><image src="{% static 'search/glass.png' %}" /></button></span>
+		{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off"/></span>{% endblock %}<span id="searchglass"><input type="image" id="searchbutton" src="{% static 'search/searchbutton.png' %}"></span>
 	</div>
 </form>
 {% endblock %}
