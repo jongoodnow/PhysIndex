@@ -14,7 +14,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-db_url = os.environ.get('OPENSHIFT_MYSQL_DB_URL')
+db_url = urlparse.urlparse(os.environ.get('OPENSHIFT_POSTGRESQL_DB_URL'))
 
 DATABASES = {
     'default': {
