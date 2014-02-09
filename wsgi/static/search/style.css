@@ -92,7 +92,9 @@ a:hover{
 	height: 10px;
 }
 #query{
-	width: 450px;
+	width: 500px;
+	height: 19px;
+	font-size: 12pt;
 }
 button{
 	height: 21px;
