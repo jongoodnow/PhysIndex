@@ -9,7 +9,7 @@
 {% block form %}
 <form id="search_form" method="get" action="{% url 'search' %}" onSubmit="javascript:titleUp(); return false;">
 	<div id="searchbox">
-		{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off"/></span>{% endblock %}<span id="searchglass"><input type="image" id="searchbutton" src="{% static 'search/searchbutton.png' %}"></span>
+		{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off"/></span>{% endblock %}<span id="searchglass"><img src="{% static 'search/glass.png' %}"></span>
 	</div>
 </form>
 {% endblock %}
