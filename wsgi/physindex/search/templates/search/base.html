@@ -26,7 +26,8 @@
 		{% load staticfiles %}
 		<script type="text/javascript" src="{% static 'search/scripts.js' %}"></script>
 		<link rel="icon" type="img/ico" href="{% static 'search/favicon.ico' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'search/style.css' %}" />
+		<link rel="stylesheet" type="text/css" media="screen and (min-width:501px)" href="{% static 'search/style.css' %}" />
+		<link rel="stylesheet" type="text/css" media="screen and (max-width:500px)" href="{% static 'search/mobile.css' %}" />
 		<link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
 		
@@ -45,19 +46,19 @@
 	<body>
 		{% block specialheaderbegin %}{% endblock %}
 		<div id="title">
-			<a href="{% url 'search' %}"><span id="titlelogo"><img src="{% static 'search/logo.png' %}" height="54px"/></span><span id="titlephys">Phys</span><span id="titlei">I</span><span id="titlendex">ndex</span></a>
+			<a href="{% url 'search' %}"><img src="{% static 'search/title.svg' %}"></a>
 		</div>
 		{% block form %}
 		<form method="get" action="{% url 'search' %}">
 			<div id="searchbox">
-				{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off" /></span>{% endblock %}<span id="searchglass"><img src="{% static 'search/glass.png' %}"></span>
+				{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off" autofocus /></span>{% endblock %}<span id="searchglass"><img src="{% static 'search/glass.png' %}"></span>
 			</div>
 		</form>
 		{% endblock %}
 		{% block content %}{% endblock %}
 		{% block navbarbottom %}
 		<div id="betawarning">
-			PhysIndex is currently in a public beta phase. <a href="{% url 'beta' %}">Find out more.</a>
+			PhysIndex is currently in a <a href="{% url 'beta' %}">public beta phase.</a>
 		</div>
 		<div id="navbar">
 			<span id="navtext"><a href="{% url 'about' %}">About</a></span><span id="navtext"><a href="{% url 'help' %}">Features</a></span><span id="navtext"><a href="{% url 'contact' %}">Contact</a></span><span id="navtext"><a href="{% url 'references' %}">References</a></span>

@@ -9,7 +9,7 @@
 {% block form %}
 <form id="search_form" method="get" action="{% url 'search' %}" onSubmit="javascript:titleUp(); return false;">
 	<div id="searchbox">
-		{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off"/></span>{% endblock %}<span id="searchglass"><img src="{% static 'search/glass.png' %}"></span>
+		{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off" autofocus/></span>{% endblock %}<span id="searchglass"><img src="{% static 'search/glass.png' %}"></span>
 	</div>
 </form>
 {% endblock %}
@@ -17,7 +17,7 @@
 {% block content %}
 <div class="infoblock" style="opacity: 1;">
 	<div id="message">
-		Enter the name of a physics variable, equation, or unit, and we'll tell you everything we know about it.
+		Type in a physics variable, equation, or unit.
 	</div>
 </div>
 <div class="infoseparate"></div>
