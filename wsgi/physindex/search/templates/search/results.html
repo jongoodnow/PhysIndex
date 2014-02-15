@@ -4,7 +4,7 @@
 
 {% block title %}PhysIndex | Results for {{ query_string }}{% endblock %}
 
-{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" value="{{ query_string }}" autocomplete="off"/></span>{% endblock %}
+{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" value="{{ query_string }}" autocomplete="off" autofocus/></span>{% endblock %}
 
 {% block content %}
 	{% if results %}
@@ -155,9 +155,7 @@
 						{% endwith %}
 					{% endwith %}
 				</div>
-				{% if not forloop.last %}
-					<div class="infoseparate"></div>
-				{% endif %}
+				<div class="infoseparate"></div>
 			{% endif %}
 		{% endfor %}
 	{% else %}

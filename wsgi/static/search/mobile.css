@@ -78,6 +78,7 @@ a:hover{
     padding-bottom: 20px;
     position: relative;
     right: -9px;
+    margin-right: 9px;
 }
 #searchtext{
     vertical-align: middle;
@@ -95,6 +96,9 @@ a:hover{
     width: 90%;
     height: 19px;
     font-size: 12pt;
+    border-radius: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 button{
     height: 21px;
@@ -130,7 +134,6 @@ input{
     margin: 0px auto;
     text-align: center;
     position: relative;
-    pointer-events: none;
 }
 
 #navbar a{
@@ -139,7 +142,7 @@ input{
 
 #navtext{
     text-align: center;
-    padding: 10px;
+    padding: 0 10px;
     font-size: 10px;
 }
 
@@ -152,11 +155,13 @@ input{
     background: #E3E3E3;
     padding-top: 10px;
     opacity: 0;
-    transition: opacity 300ms ease;
-    -webkit-transition: opacity 300ms ease;
-    -moz-transition: opacity 300ms ease;
-    -ms-transition: opacity 300ms ease;
-    -o-transition: opacity 300ms ease;
+    border-radius: 5px;
+    box-shadow: 0px 3px 4px 0px rgba(50,50,50,0.2);
+    transition: opacity 0.3s ease;
+    -webkit-transition: opacity 0.3s ease;
+    -moz-transition: opacity 0.3s ease;
+    -ms-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
 }
 .infoseparate{
     padding-bottom: 20px;
@@ -246,11 +251,11 @@ input{
     color: #ffffff;
     background: #000000;
     text-decoration: none;
-    -webkit-transition: opacity 500ms;
-    -moz-transition: opacity 500ms;
-    -o-transition: opacity 500ms;
-    -ms-transition: opacity 500ms;
-    transition: opacity 500ms;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    -ms-transition: opacity 0.5s;
+    transition: opacity 0.5s;
 
 }
 .source:hover .sourceInfo {
@@ -261,11 +266,12 @@ input{
     text-align: center;
     opacity: 1;
     padding-bottom: 10px;
-    transition: opacity 300ms ease-in-out;
-    -webkit-transition: opacity 300ms ease-in-out;
-    -moz-transition: opacity 300ms ease-in-out;
-    -ms-transition: opacity 300ms ease-in-out;
-    -o-transition: opacity 300ms ease-in-out;
+    box-shadow: 0px 3px 4px 0px rgba(50,50,50,0.2);
+    transition: opacity 0.3s ease-in-out;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
 }
 
 /* BETA */

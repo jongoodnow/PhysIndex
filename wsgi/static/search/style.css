@@ -44,8 +44,8 @@ a:hover{
 
 #title{
 	text-align: center;
-	font-size: 56pt;
 	padding-bottom: 10px;
+	padding-top: 30px;
 }
 #titlelogo{
 	position: relative;
@@ -64,11 +64,11 @@ a:hover{
 }
 #frontpageTitle{
 	padding-top: 200px;
-	transition: padding 300ms ease-in-out;
-	-webkit-transition: padding 300ms ease-in-out;
-	-moz-transition: padding 300ms ease-in-out;
-	-ms-transition: padding 300ms ease-in-out;
-	-o-transition: padding 300ms ease-in-out;
+	transition: padding 0.3s ease-in-out;
+	-webkit-transition: padding 0.3s ease-in-out;
+	-moz-transition: padding 0.3s ease-in-out;
+	-ms-transition: padding 0.3s ease-in-out;
+	-o-transition: padding 0.3s ease-in-out;
 }
 
 /* SEARCH FORM */
@@ -93,8 +93,11 @@ a:hover{
 }
 #query{
 	width: 500px;
-	height: 19px;
+	height: 21px;
+	padding-left: 2px;
+	padding-right: 2px;
 	font-size: 12pt;
+	border-radius: 5px;
 }
 button{
 	height: 21px;
@@ -151,11 +154,13 @@ input{
 	background: #E3E3E3;
 	padding-top: 10px;
 	opacity: 0;
-    -webkit-transition: opacity 500ms;
-    -moz-transition: opacity 500ms;
-    -o-transition: opacity 500ms;
-    -ms-transition: opacity 500ms;
-    transition: opacity 500ms;
+	border-radius: 5px;
+	box-shadow: 0px 3px 4px 0px rgba(50,50,50,0.2);
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    -ms-transition: opacity 0.5s;
+    transition: opacity 0.5s;
 }
 .infoseparate{
 	padding-bottom: 20px;
@@ -244,11 +249,11 @@ input{
     color: #ffffff;
     background: #000000;
     text-decoration: none;
-    -webkit-transition: opacity 500ms;
-    -moz-transition: opacity 500ms;
-    -o-transition: opacity 500ms;
-    -ms-transition: opacity 500ms;
-    transition: opacity 500ms;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    -ms-transition: opacity 0.5s;
+    transition: opacity 0.5s;
 
 }
 .source:hover .sourceInfo {
@@ -260,11 +265,11 @@ input{
 	text-align: center;
 	opacity: 1;
 	padding-bottom: 10px;
-	transition: opacity 300ms ease-in-out;
-	-webkit-transition: opacity 300ms ease-in-out;
-	-moz-transition: opacity 300ms ease-in-out;
-	-ms-transition: opacity 300ms ease-in-out;
-	-o-transition: opacity 300ms ease-in-out;
+	transition: opacity 0.3s ease-in-out;
+	-webkit-transition: opacity 0.3s ease-in-out;
+	-moz-transition: opacity 0.3s ease-in-out;
+	-ms-transition: opacity 0.3s ease-in-out;
+	-o-transition: opacity 0.3s ease-in-out;
 }
 
 /* BETA */
