@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.db.models import Q
 from search.models import Subject, Unit, Variable, Equation, SearchTerm, Source, QueryLog
+from forms import DescriptionForm
 
 # Variable Display
 
@@ -14,6 +15,7 @@ class VariableAdmin(admin.ModelAdmin):
 	search_fields = ['quick_name', 'full_name']
 	date_hierarchy = 'pub_date'
 	filter_horizontal = ('subjects', 'cited', 'units_links', 'search_terms')
+	form = DescriptionForm
 	
 	def related_equations(self,obj):
 		return ', '.join([obj.quick_name for obj in obj.equation_set.all()])
@@ -37,6 +39,7 @@ class UnitAdmin(admin.ModelAdmin):
 	search_fields = ['quick_name', 'full_name']
 	date_hierarchy = 'pub_date'
 	filter_horizontal = ('subjects', 'cited', 'composition_links', 'search_terms',)
+	form = DescriptionForm
 	
 	def related_variables(self,obj):
 		return ', '.join([obj.quick_name for obj in obj.variable_set.all()])
@@ -68,6 +71,7 @@ class EquationAdmin(admin.ModelAdmin):
 	search_fields = ['quick_name', 'full_name']
 	date_hierarchy = 'pub_date'
 	filter_horizontal = ('variables', 'subjects', 'cited', 'search_terms',)
+	form = DescriptionForm
 	
 	def related_variables(self,obj):
 		return ', '.join([obj.quick_name for obj in obj.variables.all()])
