@@ -8,7 +8,7 @@ from django.utils import timezone
 class Subject(models.Model):
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
-    author = models.CharField(max_length=100,default="anon")
+    author = models.CharField(max_length=100,default="anon",blank=True)
     
     def __unicode__(self):
         return self.title
@@ -53,16 +53,16 @@ class Source(models.Model):
 # class from which Unit, Variable, and Equation will be derived
 class InfoBase(models.Model):
     quick_name = models.CharField(max_length=200)               # quick reference name, e.g. N
-    representation = models.CharField(max_length=1000)          # LaTeX representation
+    representation = models.CharField(max_length=1000,blank=True)          # LaTeX representation
     full_name = models.CharField(max_length=200, unique=True)   # full name, e.g. Newton
-    description = models.CharField(max_length=1000)             # what it means
-    cited = models.ManyToManyField(Source)
-    cited_pages = models.CharField(max_length=50,default='0')   # 0 if not applicable
+    description = models.CharField(max_length=1000, blank=True)             # what it means
+    cited = models.ManyToManyField(Source, blank=True)
+    cited_pages = models.CharField(max_length=50,default='0',blank=True)   # 0 if not applicable
     pub_date = models.DateTimeField('date added')
     was_revised = models.BooleanField(default=False)
-    author = models.CharField(max_length=100,default="anon")
-    subjects = models.ManyToManyField(Subject)                  # all the subjects that this variable belongs to. There can be more than one!
-    search_terms = models.ManyToManyField(SearchTerm)           # things that users might call this
+    author = models.CharField(max_length=100,default="anon",blank=True)
+    subjects = models.ManyToManyField(Subject,blank=True)                  # all the subjects that this variable belongs to. There can be more than one!
+    search_terms = models.ManyToManyField(SearchTerm,blank=True)           # things that users might call this
 
     class Meta:
         abstract = True
@@ -75,8 +75,8 @@ class InfoBase(models.Model):
 
 # units that variables use
 class Unit(InfoBase):
-    composition = models.CharField(max_length=1000)				# LaTeX representation of composition, e.g. kg*m/s^2
-    composition_links = models.ManyToManyField('self')			# links to composition units.
+    composition = models.CharField(max_length=1000,blank=True)				# LaTeX representation of composition, e.g. kg*m/s^2
+    composition_links = models.ManyToManyField('self',blank=True)			# links to composition units.
 
     def is_unit(self):
         return True
@@ -89,8 +89,8 @@ class Unit(InfoBase):
 
 # variables that appear in equations. Constants (c, mu_0, etc.) go here too.
 class Variable(InfoBase):
-    units = models.CharField(max_length=1000,default="none")	# LaTeX representation of units
-    units_links = models.ManyToManyField(Unit)					# links to units
+    units = models.CharField(max_length=1000,default="none",blank=True)	# LaTeX representation of units
+    units_links = models.ManyToManyField(Unit,blank=True)					# links to units
 
     def is_unit(self):
         return False
