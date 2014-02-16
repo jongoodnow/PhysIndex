@@ -14,7 +14,7 @@ class VariableAdmin(admin.ModelAdmin):
 	list_filter = ['author', 'was_revised', 'pub_date']
 	search_fields = ['quick_name', 'full_name']
 	date_hierarchy = 'pub_date'
-	filter_horizontal = ('subjects', 'cited', 'units_links', 'search_terms')
+	filter_horizontal = ('subjects', 'cited', 'units_links', 'search_terms',)
 	form = DescriptionForm
 	
 	def related_equations(self,obj):

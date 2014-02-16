@@ -4,6 +4,12 @@ export PYTHON_EGG_CACHE=${OPENSHIFT_HOME_DIR}python-2.7/virtenv/lib/python-2.7/s
  
 echo "Executing 'python ${OPENSHIFT_REPO_DIR}physindex/manage.py syncdb --noinput'"
 python "$OPENSHIFT_REPO_DIR"physindex/manage.py syncdb --noinput
- 
+
 echo "Executing 'python ${OPENSHIFT_REPO_DIR}physindex/manage.py collectstatic --noinput -v0'"
 python "$OPENSHIFT_REPO_DIR"physindex/manage.py collectstatic --noinput -v0
+
+if [ ! -d $OPENSHIFT_DATA_DIR/media ]; then
+mkdir $OPENSHIFT_DATA_DIR/media
+fi
+ 
+ln -sf $OPENSHIFT_DATA_DIR/media $OPENSHIFT_REPO_DIR/wsgi/static/media
