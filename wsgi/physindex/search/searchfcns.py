@@ -97,7 +97,7 @@ def investigate_vars(t, query, data_bins, collection):
             collection.add(v)
 
 # for equations, we only need to check against quick_name, full_name, and search_terms.
-def investigate_eqs(t, query, data_bins, collection, exclusive):
+def investigate_eqs(t, query, data_bins, collection):
     if "=" in query:
         sides = query.strip().split("=")
     else:
