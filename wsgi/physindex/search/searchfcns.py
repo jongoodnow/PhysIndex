@@ -32,12 +32,20 @@ For Units:
 """
 
 def find_results(query):
-    # log the search first
+    query = query.strip()
     log_search(query)
-    # gather relevant SearchTerm objects
+    """
+    if pseudo_equation(query):
+        return equation_exclusive_search(query)
+    else:
+        return general_search(query)
+    """
+    return general_search(query)
+
+def general_search(query):
     query_less_punct = query.encode('utf8').translate(string.maketrans("",""), string.punctuation)
-    query_words = query.split()
-    term_results = SearchTerm.objects.filter(Q(term__icontains=query) | Q(term__icontains=query_less_punct))
+    query_no_spaces = query.replace(" ","")
+    term_results = SearchTerm.objects.filter(Q(term__icontains=query) | Q(term__icontains=query_less_punct) | Q(term__icontains=query_no_spaces))
     if not term_results:
         return []
     # initialize data structure that splits results by priority
@@ -89,16 +97,18 @@ def investigate_vars(t, query, data_bins, collection):
             collection.add(v)
 
 # for equations, we only need to check against quick_name, full_name, and search_terms.
-def investigate_eqs(t, query, data_bins, collection):
+def investigate_eqs(t, query, data_bins, collection, exclusive):
     if "=" in query:
-        sides = query.strip(" ").split("=")
+        sides = query.strip().split("=")
     else:
         sides = [query]
     eqs_for_term = t.equation_set.all()
     for e in eqs_for_term:
         if not e.is_definition() and e not in collection:
             # case 1
-            if query.lower() == e.full_name.lower() or query.strip(" ") == e.quick_name:
+            print query
+            print e.quick_name
+            if query.lower() == e.full_name.lower() or query == e.quick_name:
                 data_bins[1].add(e)
                 collection.add(e)
             # case 2
@@ -159,6 +169,20 @@ def check_sides(term_sides, equation_sides):
             if eq_side.lower() == term_side.lower():
                 return True
     return False
+
+# if it looks like an equation, we don't need to check vars and units
+def pseudo_equation(query):
+    for mark in ['=','+','>','<']:
+        if mark in query:
+            return True
+    return False
+
+def equation_exclusive_search(query):
+    query_no_spaces = query.replace(" ","")
+    query_no_stars = query.replace("*","")
+    query_no_paren = query.replace("(","").replace(")","")
+    term_results = SearchTerm.objects.filter(Q(term__icontains=query) | Q(term__icontains=query_no_stars) | Q(term__icontains=query_no_spaces) | Q(term__icontains=query_no_paren))
+    
 
 # logs the search as a QueryLog object
 def log_search(query_string):
