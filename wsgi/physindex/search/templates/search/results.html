@@ -160,7 +160,29 @@
 		{% endfor %}
 	{% else %}
 		<div class="infoblock">
-			<div id="message">Sorry, we can't find any results for that.</div>
+			<div class="full_name">Sorry, we can't find any results for that.</div>
+			<div class="normal">These are the kind of things you should try searching for:</div>
+			<table class="fixed">
+				<tr>
+					<td><strong>1.</strong></td>
+					<td>The symbol used to represent a physics variable<br />
+						<i>Examples: <a href="http://www.physindex.com/?query=m">m</a>, <a href="http://www.physindex.com/?query=F">F</a>, <a href="http://www.physindex.com/?query=theta">theta</a></i></td>
+				</tr>
+				<tr>
+					<td><strong>2.</strong></td>
+					<td>The name of a variable, constant, unit, or equation<br />
+						<i>Examples: <a href="http://www.physindex.com/?query=mass">mass</a>, <a href="http://www.physindex.com/?query=Newton's+Second+Law">Newton's Second Law</a>, <a href="http://www.physindex.com/?query=angle">angle</a></i></td>
+				</tr>
+				<tr>
+					<td><strong>3.</strong></td>
+					<td>A full equation or a piece of it<br />
+						<i>Examples: <a href="http://www.physindex.com/?query=F+%3D+ma">F = ma</a>, <a href="http://www.physindex.com/?query=rxf">rxf</a>, <a href="http://www.physindex.com/?query=T+%3D+1%2F(freq)">T = 1/(freq)</a></i></td>
+				</tr>
+			</table>
+			<div class="normal"><strong>Still can't find what you need?</strong></div>
+			<div class="normal">
+				Please keep in mind that PhysIndex is currently released as a <a href="{% url 'beta' %}">public beta</a> and the dataset is by no means complete. However, you can still <a href="{% url 'contact' %}">let us know</a> about any problems you have.
+			</div>
 		</div>
 		<div class="infoseparate"></div>
 	{% endif %}

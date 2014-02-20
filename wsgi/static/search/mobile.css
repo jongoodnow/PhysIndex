@@ -25,12 +25,13 @@ img{
 
 table.fixed { 
     table-layout:fixed;
-    padding-left: 8px; 
+    padding-left: 12px; 
 }
 table.fixed td { 
     overflow: hidden;
     padding-bottom: 10px;
-    padding-left: 0px; 
+    padding-left: 0px;
+    vertical-align: top;
 }
 
 /* HYPERLINKS */
