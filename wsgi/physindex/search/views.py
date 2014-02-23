@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+from django.db import DatabaseError
+from django.core.mail import mail_admins
 from forms import SearchForm
 from models import Variable, Equation, Unit, Source
 from searchfcns import find_results
@@ -10,20 +12,21 @@ def search(request):
         if form.is_valid():
             query_string = form.cleaned_data['query']
             if query_string:
-                # find and render the results
-                results = find_results(query_string)
-                info_to_push = {'results': results, 'query_string': query_string}
-                return render(request, 'search/results.html', info_to_push)
-            else:
-                form = SearchForm()
-        else:
-            form = SearchForm()
-    else:
-        form = SearchForm()
+                try:
+                    results = find_results(query_string)
+                except DatabaseError:
+                    mail_admins("PHYSINDEX DATABASE ERROR", 
+                                "Database raised an exception on query \"%s\"" %query_string,
+                                fail_silently=True)
+                    return render(request, 'search/dbfailure.html', {})
+                else:
+                    info_to_push = {'results': results, 
+                                    'query_string': query_string,}
+                    return render(request, 'search/results.html', info_to_push)
+
+    form = SearchForm()
     
-    return render(request, 'search/main.html', {
-        'form': form,
-    })
+    return render(request, 'search/main.html', {'form': form,})
 
 # shows the details about a specific variable
 def variable(request, name):
@@ -54,7 +57,14 @@ def contact(request):
 
 # show the credits page
 def references(request):
-    return render(request, 'search/references.html', {'sources': Source.objects.all()})
+    try:
+        sources = Source.objects.all()
+    except DatabaseError:
+        mail_admins("PHYSINDEX DATABASE ERROR", 
+                    "Database raised an exception on the REFERENCES page.",
+                    fail_silently=True)
+        return render(request, 'search/dbfailure.html', {})
+    return render(request, 'search/references.html', {'sources': sources})
 
 # show the beta page
 def beta(request):

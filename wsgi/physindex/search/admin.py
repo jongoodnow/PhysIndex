@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.contrib.sites.models import Site
+from django.contrib.auth.models import Group
 from django.db.models import Q
 from search.models import Subject, Unit, Variable, Equation, SearchTerm, Source, QueryLog
 from forms import DescriptionForm
@@ -94,3 +96,6 @@ admin.site.register(SearchTerm, SearchTermAdmin)
 admin.site.register(Unit, UnitAdmin)
 admin.site.register(Source)
 admin.site.register(QueryLog, QueryLogAdmin)
+
+admin.site.unregister(Group)
+admin.site.unregister(Site)

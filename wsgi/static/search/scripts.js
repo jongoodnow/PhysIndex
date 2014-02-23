@@ -2,10 +2,11 @@ function infoblockIn()
 {
     setTimeout(function(){
         var list = document.getElementsByClassName("infoblock");
-        for(var i = 0; i < list.length; i++)
-        {
-            list[i].style.opacity = 1;
-        }},
+            for(var i = 0; i < list.length; i++)
+            {
+                list[i].style.opacity = 1;
+            }
+        },
         1);
 }
 
