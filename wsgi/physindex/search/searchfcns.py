@@ -131,7 +131,7 @@ def investigate_eqs(t, query, data_bins):
         sides = [query]
     eqs_for_term = t.equation_set.all()
     for e in eqs_for_term:
-        if not e.is_definition() and data_bins.in_a_bin(e):
+        if not e.is_definition() and not data_bins.in_a_bin(e):
             # case 1
             if query.lower() == e.full_name.lower() or query == e.quick_name:
                 data_bins.put_in_bin(e, 1)
