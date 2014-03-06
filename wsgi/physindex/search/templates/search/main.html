@@ -3,7 +3,7 @@
 {% load staticfiles %}
 <script type="text/javascript" src="{% static 'search/scripts.js' %}"></script>
 {% block specialheaderbegin %}
-<div id="frontpageTitle"></div>
+<div id="frontpageTitle" style="padding-top: 200px;"></div>
 {% endblock %}
 
 {% block form %}
@@ -16,9 +16,16 @@
 
 {% block content %}
 <div class="infoblock" style="opacity: 1;">
-	<div id="message">
+	<div id="message" style="opacity: 1;">
 		Type in a physics variable, equation, or unit.
 	</div>
+    <div id="load" style="opacity: 0;">
+        <img src="{% static 'search/ajax-loader.gif' %}">
+    </div>
 </div>
 <div class="infoseparate"></div>
+
+<script type="text/javascript">
+    window.onunload = function(){};
+</script>
 {% endblock %}
