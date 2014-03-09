@@ -141,7 +141,7 @@ input{
     pointer-events: auto;
 }
 
-#navtext{
+.navtext{
     text-align: center;
     padding: 0 10px;
     font-size: 10px;

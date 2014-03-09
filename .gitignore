@@ -5,6 +5,7 @@
 *.pot
 *.pyc
 local_settings.py
+experimental.py
 
 ### Windows ###
 # Windows image file caches
