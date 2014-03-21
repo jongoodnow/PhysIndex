@@ -290,3 +290,10 @@ input{
 #betawarning{
 	text-align: center;
 }
+
+/* 404 */
+
+#feynman{
+    text-align: center;
+    padding-bottom: 10px;
+}

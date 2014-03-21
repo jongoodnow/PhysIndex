@@ -3,10 +3,14 @@
 {% block title %}Non-Real Answer{% endblock %}
 
 {% block content %}
-<div class="infoblock" style="opacity: 1;">
-	<div id="message">
-		Uh-oh. You tried to go somewhere that doesn't exist. Try typing something into the search box above and pressing "enter" or "return" instead.
-	</div>
+{% load staticfiles %}
+<div id="feynman">
+    <img src="{% static 'search/404.svg' %}">
+</div>
+<div class="infoblock">
+    <div class="full_name">You have entered the forbidden region.</div>
+    <div id="message">Type something into the box above, or click on one of the buttons below to tunnel back.</div>
 </div>
 <div class="infoseparate"></div>
+<script>infoblockIn();</script>
 {% endblock %}
