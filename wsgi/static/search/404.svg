@@ -22,9 +22,9 @@
      borderopacity="0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.86831672"
-     inkscape:cx="509.49084"
-     inkscape:cy="260.40865"
+     inkscape:zoom="3.4732669"
+     inkscape:cx="273.34404"
+     inkscape:cy="138.77309"
      inkscape:current-layer="layer1"
      id="namedview2989"
      showgrid="false"
@@ -57,7 +57,7 @@
        effect="skeletal"
        id="path-effect4197"
        is_visible="true"
-       pattern="m 202.82713,-92.428927 0,10 9.99999,-5 z"
+       pattern="m 200.81174,-92.71684 0,10 9.99999,-5 z"
        copytype="single_stretched"
        prop_scale="1"
        scale_y_rel="false"
@@ -91,7 +91,7 @@
        scale_y_rel="false"
        prop_scale="1"
        copytype="single_stretched"
-       pattern="m -2.997505,-91.412498 0,10 9.999999,-5 z"
+       pattern="m -1.2700247,-92.564152 0,10 9.999999,-5 z"
        is_visible="true"
        id="path-effect4189"
        effect="skeletal" />
@@ -178,10 +178,10 @@
        inkscape:connector-curvature="0" />
     <path
        inkscape:connector-curvature="0"
-       inkscape:original-d="m 335.8018,290.68566 3.43139,6.38173"
+       inkscape:original-d="m 337.52928,293.54788 -3.43139,-6.38173"
        inkscape:path-effect="#path-effect4189"
        id="path4187"
-       d="m 340.20557,288.3178 -8.80754,4.73572 7.83516,4.01387 z"
+       d="m 333.12551,295.91574 8.80754,-4.73572 -7.83516,-4.01387 z"
        style="fill:#000000;fill-rule:evenodd;stroke:none" />
     <path
        inkscape:connector-curvature="0"
@@ -192,10 +192,10 @@
        style="fill:#000000;fill-rule:evenodd;stroke:none" />
     <path
        style="fill:#000000;fill-rule:evenodd;stroke:none"
-       d="m 501.49032,292.25732 -8.80754,-4.73572 0.97238,8.74959 z"
+       d="m 490.66739,291.24756 8.80754,4.73572 -0.97238,-8.74959 z"
        id="path4193"
        inkscape:path-effect="#path-effect4197"
-       inkscape:original-d="m 497.08655,289.88946 -3.43139,6.38173"
+       inkscape:original-d="m 495.07116,293.61542 3.43139,-6.38173"
        inkscape:connector-curvature="0" />
     <path
        sodipodi:type="arc"
@@ -234,5 +234,5 @@
            x="85.505913"
            y="148.54311"
            style="font-size:36px" /></flowRegion><flowPara
-         id="flowPara4217"></flowPara></flowRoot>  </g>
+         id="flowPara4217" /></flowRoot>  </g>
 </svg>
