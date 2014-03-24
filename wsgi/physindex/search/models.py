@@ -2,7 +2,6 @@ from django.db import models
 from django import forms
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
-from simple_history.models import HistoricalRecords
 
     
 # the field of study that something appears in (physics 1, physics 2, etc)
