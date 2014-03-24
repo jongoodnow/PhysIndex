@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import Group
 from django.db.models import Q
+from simple_history.admin import SimpleHistoryAdmin
 from search.models import Subject, Unit, Variable, Equation, SearchTerm, Source, QueryLog
 from forms import DescriptionForm
 

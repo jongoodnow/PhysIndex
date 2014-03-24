@@ -2,6 +2,7 @@ from django.db import models
 from django import forms
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
+from simple_history.models import HistoricalRecords
 
     
 # the field of study that something appears in (physics 1, physics 2, etc)
@@ -61,7 +62,7 @@ class InfoBase(models.Model):
     description = models.CharField(max_length=1000, blank=True)            # what it means
     cited = models.ManyToManyField(Source, blank=True)
     cited_pages = models.CharField(max_length=50,default='0',blank=True)   # 0 if not applicable
-    pub_date = models.DateTimeField('date added')
+    pub_date = models.DateTimeField('date updated')
     was_revised = models.BooleanField(default=False)
     author = models.CharField(max_length=100,default="anon",blank=True)    # person to blame if the entry is bad
     subjects = models.ManyToManyField(Subject,blank=True)                  # all the subjects that this variable belongs to. There can be more than one!

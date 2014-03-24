@@ -14,7 +14,7 @@
         <span class="usagebars"></span><span class="usagetext">Current Status</span><span class="usagebars"></span>
     </div>
     <div class="normal" style="padding-top: 0px;">
-        As of <strong>February 8, 2014</strong> the variables, constants, equations, and units available in the PhysIndex database
+        As of <strong>March 24, 2014</strong> the variables, constants, equations, and units available in the PhysIndex database
         are consistent with most of the material covered in an introductory physics class. This material is primarily classical
         mechanics. For the most part, the descriptions of the variables and equations have not been rigorously fact-checked.
     </div>
@@ -23,10 +23,13 @@
 <div class="infoseparate"></div>
 
 <script>infoblockIn();</script>
+
 {% endblock %}
 
 {% block navbarbottom %}
+
 <div id="navbar">
-    <span id="navtext"><a href="{% url 'about' %}">About</a></span><span id="navtext"><a href="{% url 'help' %}">Features</a></span><span id="navtext"><a href="{% url 'contact' %}">Contact</a></span><span id="navtext"><a href="{% url 'references' %}">References</a></span>
+    <span class="navtext"><a href="{% url 'about' %}">About</a></span><span class="navtext"><a href="{% url 'help' %}">Features</a></span><span class="navtext"><a href="{% url 'contact' %}">Contact</a></span><span class="navtext"><a href="{% url 'references' %}">References</a></span>
 </div>
+
 {% endblock %}

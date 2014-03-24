@@ -17,7 +17,7 @@ you | e | quick_name | representation | full_name | description | subject     | 
 """
 
 import csv
-from search.models import Subject, SearchTerm, Unit, Variable, Equation, Source, QueryLog
+from search.models import Subject, SearchTerm, Unit, Variable, Equation, Source
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
