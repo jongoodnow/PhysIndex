@@ -12,5 +12,5 @@ urlpatterns = patterns('',
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^references/$', views.references, name='references'),
     url(r'^beta/$', views.beta, name='beta'),
-    url(r"^spreadsheets/(?P<model_name>\w+)/$", views.spreadsheet, name="spreadsheet"),
+    url(r'^spreadsheets/(?P<model_name>\w+)/$', views.spreadsheet, name="spreadsheet"),
 )

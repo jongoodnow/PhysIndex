@@ -118,7 +118,7 @@ class Unit(InfoBase):
 # variables that appear in equations. Constants (c, mu_0, etc.) go here too.
 class Variable(InfoBase):
     units = models.CharField(max_length=1000,default="none",blank=True)	# LaTeX representation of units
-    units_links = models.ManyToManyField(Unit,blank=True)					# links to units
+    units_links = models.ManyToManyField(Unit,blank=True)
 
     def is_unit(self):
         return False
@@ -173,9 +173,9 @@ class Equation(InfoBase):
 
 # logs data about what people are searching
 class QueryLog(models.Model):
-    query = models.CharField(max_length=200)                            # the string searched for
-    count = models.IntegerField(default=1)                              # number of times searched for
-    most_recent_lookup = models.DateTimeField('most recent lookup')     # time of most recent lookup
+    query = models.CharField(max_length=200)
+    count = models.IntegerField(default=1)
+    most_recent_lookup = models.DateTimeField('most recent lookup')
 
     def __unicode__(self):
         return self.query

@@ -7,3 +7,4 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         clear_data()
+        sys.stdout.write("Removed all equations, variables, units, subjects, sources, and search terms. Query logs and users remain.")

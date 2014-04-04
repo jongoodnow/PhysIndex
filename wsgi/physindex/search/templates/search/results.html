@@ -11,7 +11,7 @@
 		{% for obj in results|slice:":10" %}
 			{% if obj.is_var %}
 				<div class="infoblock">
-					<div class="full_name"><a href="{% url 'variable' name=obj.full_name %}">{{ obj.full_name }}</a> $({{ obj.rep_without_dollars }})$</div>
+					<div class="full_name"><a href="{% url 'variable' name=obj.full_name %}">{{ obj.full_name }}</a> $\displaystyle{\left({{ obj.rep_without_dollars }}\right)}$</div>
 					<div class="normal">
 						{{ obj.description }}
 						{% with sources=obj.cited.all %}

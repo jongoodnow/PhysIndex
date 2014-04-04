@@ -16,7 +16,6 @@ EQ_PREFETCH = ['equation_set', 'equation_set__variables', 'equation_set__defined
 UNIT_PREFETCH = ['unit_set', 'unit_set__variable_set', 'unit_set__composition_links',
     'unit_set__cited', 'unit_set__search_terms']
 
-
 class SmartPQ(Queue.PriorityQueue):
     """ So we can check if an element is in the priority queue in 
         constant time! """
@@ -34,8 +33,8 @@ class SmartPQ(Queue.PriorityQueue):
         if element in self.all_elements: return True
         return False
 
-# to get the elements in a priority queue in order
-pq_ordered = lambda pq: [pq.get()[1] for _ in range(pq.qsize())]
+    def ordered_list(self):
+        return [self.get()[1] for _ in range(self.qsize())]
 
 
 def find_results(query):
@@ -105,7 +104,7 @@ def equation_exclusive_search(query):
             # PRIORITY 5: anything else caught in our database query
             else:
                 dataQ.put((5, to_add)) 
-    return pq_ordered(dataQ)
+    return dataQ.ordered_list()
 
 
 def predicate_string_set(query):
@@ -136,7 +135,7 @@ def general_search(query):
                               t.equation_set.all(), 
                               t.unit_set.all())):
             investigate_object(obj, query, dataQ)
-    return pq_ordered(dataQ)
+    return dataQ.ordered_list()
 
 
 def investigate_object(obj, query, dataQ):

@@ -23,6 +23,9 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
 # Takes a CSV and adds the data to the database
 def add_to_db(datafile):
+
+    display_rep = lambda latex: "$\\displaystyle{" + latex.strip('$') + "}$"
+
     with open(datafile, 'rb') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
@@ -57,14 +60,14 @@ def add_to_db(datafile):
                 # let's get the lingo down...
                 author_ = row[0]
                 quick_name_ = row[2]
-                representation_ = row[3]
+                representation_ = display_rep(row[3])
                 full_name_ = row[4]
                 description_ = row[5]
 
                 ######## UNITS ########
 
                 if model_id == "u":
-                    composition_ = row[6]
+                    composition_ = display_rep(row[6])
                     composition_links_ = row[7]
                     alt_names_ = row[8]
                     cited_ = row[9]
@@ -86,7 +89,7 @@ def add_to_db(datafile):
                 elif model_id == "v":
                     subject_ = row[6]
                     alt_names_ = row[7]
-                    units_ = row[9]
+                    units_ = display_rep(row[9])
                     units_links_ = row[8]
                     cited_ = row[10]
                     cited_pages_ = row[11]
