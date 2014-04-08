@@ -1,21 +1,78 @@
 from django.test import TestCase
+from django.utils import timezone
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from models import Subject, SearchTerm, Source, Unit, Variable, Equation
 from management.commands._dbmanip2 import add_to_db, clear_data
-
-create_test_database = lambda: add_to_db('csv\\feb2data.csv')
 
 class SearchModelsTest(TestCase):
 
     def test_source_strings(self):
         """ check the string producing functions for templates """
-        pass
+        s1 = Source.objects.create(title="The Old Man and the Sea")
+        s1.save()
+
+        # check edition strings
+        def edstr_check(source, value, expected):
+            source.edition = value
+            source.save()
+            return source.edition_string() == expected
+
+        self.assertTrue(edstr_check(s1, 1, "1st"))
+        self.assertTrue(edstr_check(s1, 2, "2nd"))
+        self.assertTrue(edstr_check(s1, 3, "3rd"))
+        self.assertTrue(edstr_check(s1, 6, "6th"))
+        self.assertTrue(edstr_check(s1, 23, "23rd"))
+        self.assertTrue(edstr_check(s1, 100, "100th"))
+
+        def firstauth_check(source, value, expected):
+            source.authors = value
+            source.save()
+            return source.first_author() == expected
+            
+        self.assertTrue(firstauth_check(s1, "Nick Boni", "Nick Boni"))
+        self.assertTrue(firstauth_check(s1, "Nick Boni, Ernest Hemingway", 
+                                            "Nick Boni"))
+        self.assertTrue(firstauth_check(s1, "Nick 'The Boss' Boni, E Hemingway",
+                                            "Nick 'The Boss' Boni"))
+        self.assertTrue(firstauth_check(s1, "", ""))
 
     def test_infobase_strings(self):
         """ check representation with $ removed and confirm latex is valid """
-        pass
+        v1 = Variable.objects.create(representation=r'$\displaystyle{a}$')
+        self.assertEqual(v1.rep_without_dollars(), r'\displaystyle{a}')
 
     def test_infobase_add_SearchTerm(self):
-        pass
+        """ test linking a search term to an infobase or creating it if it 
+            doesn't exist. """
+        v1 = Variable.objects.create(full_name="acceleration")
+        # creating a search term for the first time
+        v1.add_SearchTerm("acc")
+        try:
+            s1 = SearchTerm.objects.get(term="acc")
+        except ObjectDoesNotExist, MultipleObjectsReturned:
+            raise AssertionError
+        else:
+            self.assertTrue(v1 in s1.variable_set.all())
+            self.assertTrue(s1 in v1.search_terms.all())
+        # now try adding a search term that it already has
+        v1.add_SearchTerm("acc")
+        try:
+            s2 = SearchTerm.objects.get(term="acc")
+        except ObjectDoesNotExist, MultipleObjectsReturned:
+            raise AssertionError
+        else:
+            self.assertEqual([x for x in s2.variable_set.all()], [v1])
+            self.assertEqual([x for x in v1.search_terms.all()], [s2])
+        # now try adding the same search term to a different object
+        e1 = Equation.objects.create(full_name="Jon's Law")
+        e1.add_SearchTerm("acc")
+        try:
+            s3 = SearchTerm.objects.get(term="acc")
+        except ObjectDoesNotExist, MultipleObjectsReturned:
+            raise AssertionError
+        else:
+            self.assertTrue(e1 in s3.equation_set.all())
+            self.assertTrue(s3 in e1.search_terms.all())
 
     def test_infobase_add_Sources(self):
         pass
@@ -43,7 +100,7 @@ class SearchModelsTest(TestCase):
 
 class SearchViewsTest(TestCase):
 
-    create_test_database()
+    fixtures = ['linux_testdata.json']
 
     def test_page_loads(self):
         """ Test the user-accessible pages to make sure they exist """
@@ -65,7 +122,7 @@ class SearchFunctionsTest(TestCase):
     """ tests for the actual functions used for the search, located in
         searchfcns.py """
 
-    create_test_database()
+    fixtures = ['linux_testdata.json']
 
     def test_SmartPQ(self):
         """ modified priority queue to check for exists in O(1) time """

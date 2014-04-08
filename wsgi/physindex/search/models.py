@@ -2,12 +2,13 @@ from django.db import models
 from django import forms
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
+import re
 
     
 # the field of study that something appears in (physics 1, physics 2, etc)
 class Subject(models.Model):
     title = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+    pub_date = models.DateTimeField('date published',default=timezone.now())
     author = models.CharField(max_length=100,default="anon",blank=True)
     
     def __unicode__(self):
@@ -30,8 +31,8 @@ class Source(models.Model):
     publisher = models.CharField(max_length=200)
     pub_city = models.CharField(max_length=200)
     year = models.CharField(max_length=10)
-    identifier = models.CharField(max_length=20,default='-3')   # way to identify the source in the spreadsheets
-    add_date = models.DateTimeField('date added')
+    identifier = models.CharField(max_length=20,default='-3', unique=True)   # way to identify the source in the spreadsheets
+    add_date = models.DateTimeField('date added',default=timezone.now())
     entered_by = models.CharField(max_length=100)               # your name
 
     def __unicode__(self):
@@ -50,7 +51,12 @@ class Source(models.Model):
             return str(self.edition) + "th"
 
     def first_author(self):
-        return " ".join(self.authors.split(" ")[:2]).replace(",","")
+        x = re.match(r'^[^,]+,', self.authors)
+        if x is not None:
+            return x.group().strip(',')
+        else:
+            # we have one or no authors
+            return self.authors
 
 
 # class from which Unit, Variable, and Equation will be derived
@@ -61,7 +67,7 @@ class InfoBase(models.Model):
     description = models.CharField(max_length=1000, blank=True)            # what it means
     cited = models.ManyToManyField(Source, blank=True)
     cited_pages = models.CharField(max_length=50,default='0',blank=True)   # 0 if not applicable
-    pub_date = models.DateTimeField('date updated')
+    pub_date = models.DateTimeField('date updated',default=timezone.now())
     was_revised = models.BooleanField(default=False)
     author = models.CharField(max_length=100,default="anon",blank=True)    # person to blame if the entry is bad
     subjects = models.ManyToManyField(Subject,blank=True)                  # all the subjects that this variable belongs to. There can be more than one!

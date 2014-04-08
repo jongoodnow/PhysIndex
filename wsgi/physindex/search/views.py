@@ -7,8 +7,8 @@ from django.core.mail import mail_admins
 import csv
 from forms import SearchForm
 from models import Variable, Equation, Unit, Source
-from searchfcns import find_results
-from spreadsheets import UnicodeWriter, _field_extractor_function
+from utilities.searching import find_results
+from utilities.spreadsheets import UnicodeWriter, _field_extractor_function
     
 
 # executes the search using the HTML form

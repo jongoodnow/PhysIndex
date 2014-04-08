@@ -36,7 +36,10 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['.physindex.com','.physindex.com.','production-physindex.rhcloud.com','production-physindex.rhcloud.com.']
+ALLOWED_HOSTS = ['.physindex.com',
+                 '.physindex.com.',
+                 'production-physindex.rhcloud.com',
+                 'production-physindex.rhcloud.com.']
 
 TIME_ZONE = 'America/New_York'
 
@@ -111,7 +114,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 

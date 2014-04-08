@@ -1,40 +1,20 @@
-from models import SearchTerm, Variable, Equation, Unit, QueryLog
+from ..models import SearchTerm, Variable, Equation, Unit, QueryLog
 from django.utils import timezone
 from django.db.models import Q
 from itertools import chain
 from copy import copy
+from smartpq import SmartPQ
 import string
 import operator
 import re
-import Queue
 
 # prefetch lists
-VAR_PREFETCH = ['variable_set__equation_set', 'variable_set__units_links', 
+__VAR_PREFETCH = ['variable_set__equation_set', 'variable_set__units_links', 
     'variable_set__cited', 'variable_set__definition', 'variable_set__search_terms']
-EQ_PREFETCH = ['equation_set', 'equation_set__variables', 'equation_set__defined_var', 
+__EQ_PREFETCH = ['equation_set', 'equation_set__variables', 'equation_set__defined_var', 
     'equation_set__cited', 'equation_set__search_terms']
-UNIT_PREFETCH = ['unit_set', 'unit_set__variable_set', 'unit_set__composition_links',
+__UNIT_PREFETCH = ['unit_set', 'unit_set__variable_set', 'unit_set__composition_links',
     'unit_set__cited', 'unit_set__search_terms']
-
-class SmartPQ(Queue.PriorityQueue):
-    """ So we can check if an element is in the priority queue in 
-        constant time! """
-
-    def __init__(self):
-        Queue.PriorityQueue.__init__(self)
-        self.all_elements = set()
-
-    def put(self, item, block=True, timeout=None):
-        self.all_elements.add(item[1])
-        Queue.PriorityQueue.put(self, item, block, timeout)
-
-    def has_value(self, element):
-        """ only pass me the value, not the priority! """
-        if element in self.all_elements: return True
-        return False
-
-    def ordered_list(self):
-        return [self.get()[1] for _ in range(self.qsize())]
 
 
 def find_results(query):
@@ -65,7 +45,7 @@ def equation_exclusive_search(query):
             predicate_strings.add(component)
     predicates = [Q(term__icontains=s) for s in predicate_strings]
     term_results = SearchTerm.objects.filter(reduce(operator.or_, predicates))\
-                                             .prefetch_related(*EQ_PREFETCH)
+                                             .prefetch_related(*__EQ_PREFETCH)
     if not term_results.count():
         return None
     dataQ = SmartPQ()
@@ -126,7 +106,7 @@ def general_search(query):
         account for those. An icontains filter ought to cover it. """
     predicates = [Q(term__icontains=s) for s in predicate_string_set(query)]
     term_results = SearchTerm.objects.filter(reduce(operator.or_, predicates))\
-            .prefetch_related(*chain(VAR_PREFETCH, EQ_PREFETCH, UNIT_PREFETCH))
+       .prefetch_related(*chain(__VAR_PREFETCH, __EQ_PREFETCH, __UNIT_PREFETCH))
     if not term_results.count():
         return None
     dataQ = SmartPQ()
