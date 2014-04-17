@@ -2,7 +2,6 @@ from ..models import SearchTerm, Variable, Equation, Unit, QueryLog
 from django.utils import timezone
 from django.db.models import Q
 from itertools import chain
-from copy import copy
 from smartpq import SmartPQ
 import string
 import operator
@@ -39,14 +38,14 @@ def equation_exclusive_search(query):
     init_predicate_strings = predicate_string_set(query)
     eq_operator_split = lambda q: re.split(r'[=+\-*/^<>]+', q)
     predicate_strings = init_predicate_strings
-    ps_copy = copy(predicate_strings) # so we can iterate through and add
-    for q_string in ps_copy:
+    for q_string in init_predicate_strings:
         for component in eq_operator_split(q_string):
             predicate_strings.add(component)
     predicates = [Q(term__icontains=s) for s in predicate_strings]
     term_results = SearchTerm.objects.filter(reduce(operator.or_, predicates))\
                                              .prefetch_related(*__EQ_PREFETCH)
     if not term_results.count():
+        # using .count() so that we don't evaluate the queryset if not needed
         return None
     dataQ = SmartPQ()
     any_in_set = lambda fcn, set_: any(fcn(q) for q in set_)

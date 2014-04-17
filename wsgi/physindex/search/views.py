@@ -4,11 +4,12 @@ from django.db.models.loading import get_model, get_apps, get_models
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404, HttpResponse
 from django.core.mail import mail_admins
-import csv
 from forms import SearchForm
 from models import Variable, Equation, Unit, Source
 from utilities.searching import find_results
 from utilities.spreadsheets import UnicodeWriter, _field_extractor_function
+from itertools import chain
+import csv
     
 
 # executes the search using the HTML form
@@ -28,7 +29,8 @@ def search(request):
                     return render(request, 'search/dbfailure.html', {})
                 else:
                     info_to_push = {'results': results, 
-                                    'query_string': query_string,}
+                                    'query_string': query_string,
+                                    'slice_size': ':10'}
                     return render(request, 'search/results.html', info_to_push)
     form = SearchForm()
     return render(request, 'search/main.html', {'form': form,})
@@ -101,3 +103,29 @@ def spreadsheet(request, model_name):
     for o in model.objects.all():
         writer.writerow([ func(o) for func in field_funcs ])
     return response
+
+@staff_member_required
+def adminqueue(request):
+    inqueue = list(chain(Unit.objects.filter(was_revised=False)\
+        .prefetch_related('variable_set', 'composition_links', 'cited'),
+                         Variable.objects.filter(was_revised=False)\
+        .prefetch_related('equation_set', 'units_links', 'cited', 'definition'),
+                         Equation.objects.filter(was_revised=False)\
+        .prefetch_related('variables', 'defined_var', 'cited')))
+    return render(request, 'search/adminqueue.html', {'results': inqueue, 'slice_size': ':'})
+
+@staff_member_required
+def set_revised(request, cls, name):
+    if cls == "v":
+        c = Variable
+    elif cls == "e":
+        c = Equation
+    elif cls == "u":
+        c = Unit
+    else:
+        raise Http404
+        return None
+    obj = get_object_or_404(c, full_name=name)
+    obj.was_revised = True
+    obj.save()
+    return adminqueue(request)

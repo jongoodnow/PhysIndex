@@ -91,15 +91,18 @@ class InfoBase(models.Model):
             a.save()
             self.search_terms.add(a)
 
+    def _add_from_sequence(self, cls, sequence, field_id, field_to_add):
+        li = sequence.split(",")
+        for s in li:
+            to_link = cls.objects.get(**{field_id + "__iexact": s})
+            field = getattr(self, field_to_add)
+            field.add(to_link)
+
     def add_Sources(self, sources):
         if sources != '':
-            sources = sources.split(",")
-            for s in sources:
-                to_link = Source.objects.get(identifier=s)
-                self.cited.add(to_link)
+            self._add_from_sequence(Source, sources, "identifier", "cited")
 
 
-# units that variables use
 class Unit(InfoBase):
     composition = models.CharField(max_length=1000,blank=True)				# LaTeX representation of composition, e.g. kg*m/s^2
     composition_links = models.ManyToManyField('self',blank=True)			# links to composition units.
@@ -114,11 +117,9 @@ class Unit(InfoBase):
         return False
 
     def make_composition_links(self, composite_string):
-        if composite_string != "base":
-            pieces = composite_string.split(",")
-            for part in pieces:
-                to_link = Unit.objects.get(full_name__iexact=part)
-                self.composition_links.add(to_link)
+        if composite_string != "base" and composite_string != "":
+            self._add_from_sequence(Unit, composite_string, 
+                "full_name", "composition_links")
 
 
 # variables that appear in equations. Constants (c, mu_0, etc.) go here too.
@@ -135,15 +136,11 @@ class Variable(InfoBase):
     def is_eq(self):
         return False
 
-    def add_unit_links(self, links):
+    def add_units_links(self, links):
         if links != "none" and links != "":
-            unit_list = links.split(",")
-            for u in unit_list:
-                to_link = Unit.objects.get(full_name__iexact=u)
-                self.units_links.add(to_link)
+            self._add_from_sequence(Unit, links, "full_name", "units_links")
 
 
-# physics equations
 class Equation(InfoBase):
     variables = models.ManyToManyField(Variable, related_name="equation_set")
     defined_var = models.OneToOneField(Variable, null=True, blank=True, related_name="definition")
@@ -165,15 +162,14 @@ class Equation(InfoBase):
     def add_variables(self, vars_):
         varlist = vars_.split(',')
         for var in varlist:
-            print var
             to_link = Variable.objects.get(full_name__iexact=var)
             if not self.defined_var:
                 self.variables.add(to_link)
             elif to_link.full_name != self.defined_var.full_name:
                 self.variables.add(to_link)
 
-    def add_defined_var(self, defined):
-        to_link = Variable.objects.get(full_name__iexact=defined)
+    def add_defined_var(self, name):
+        to_link = Variable.objects.get(full_name__iexact=name)
         self.defined_var = to_link
         self.save()
 

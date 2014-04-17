@@ -24,7 +24,10 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 # Takes a CSV and adds the data to the database
 def add_to_db(datafile):
 
-    display_rep = lambda latex: "$\\displaystyle{" + latex.strip('$') + "}$"
+    def display_rep(latex):
+        if not latex == "base" and not latex == "":
+            return "$\\displaystyle{" + latex.strip('$') + "}$"
+        return ""
 
     with open(datafile, 'rb') as csvfile:
         reader = csv.reader(csvfile)
@@ -102,7 +105,7 @@ def add_to_db(datafile):
                                  author=author_,
                                  cited_pages=cited_pages_)
                     x.save()
-                    x.add_unit_links(units_links_)
+                    x.add_units_links(units_links_)
                     defined_var_ = None
 
                 ######## EQUATIONS ########
@@ -122,8 +125,8 @@ def add_to_db(datafile):
                                  author=author_,
                                  cited_pages=cited_pages_)
                     x.save()
-                    x.add_variables(variables_)
                     if defined_var_: x.add_defined_var(defined_var_)
+                    x.add_variables(variables_)
 
                 ######## GENERAL ########
                 

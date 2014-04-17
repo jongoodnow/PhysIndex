@@ -7,8 +7,9 @@
 {% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" value="{{ query_string }}" autocomplete="off" autofocus/></span>{% endblock %}
 
 {% block content %}
+	{% block admingreet %}{% endblock %}
 	{% if results %}
-		{% for obj in results|slice:":10" %}
+		{% for obj in results|slice:slice_size %}
 			{% if obj.is_var %}
 				<div class="infoblock">
 					<div class="full_name"><a href="{% url 'variable' name=obj.full_name %}">{{ obj.full_name }}</a> $\displaystyle{\left({{ obj.rep_without_dollars }}\right)}$</div>
@@ -70,6 +71,7 @@
 						{% endwith %}
 					{% endwith %}
 				</div>
+				{% block varadmintools %}{% endblock %}
 				<div class="infoseparate"></div>
 			{% elif obj.is_unit %}
 				<div class="infoblock">
@@ -111,6 +113,7 @@
 						{% endifnotequal %}
 					</div>
 				</div>
+				{% block unitadmintools %}{% endblock %}
 				<div class="infoseparate"></div>
 			{% elif obj.is_eq %}
 				<div class="infoblock">
@@ -155,6 +158,7 @@
 						{% endwith %}
 					{% endwith %}
 				</div>
+				{% block eqadmintools %}{% endblock %}
 				<div class="infoseparate"></div>
 			{% endif %}
 		{% endfor %}
