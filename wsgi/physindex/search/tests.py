@@ -4,7 +4,6 @@ from unipath import FSPath as Path
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from models import Subject, SearchTerm, Source, Unit, Variable, Equation
 from management.commands._dbmanip2 import add_to_db, clear_data
-import subprocess
 
 class SearchModelsTest(TestCase):
 
@@ -119,7 +118,6 @@ class SearchModelsTest(TestCase):
     
     def test_addcsv_command(self):
         """ test add_to_db function with small dataset """
-        return None
         add_to_db(Path(__file__).absolute().ancestor(2)\
                   .child("csv").child("feb2data.csv"))
         try:
@@ -131,11 +129,24 @@ class SearchModelsTest(TestCase):
         except ObjectDoesNotExist, MultipleObjectsReturned:
             raise AssertionError
         else:
-            pass
+            self.assertEqual(c1.edition, 5)
+            self.assertEqual(c1.authors, "R. Resnick, D. Halliday, K. Krane")
+            self.assertEqual(c1.publisher, "John Wiley & Sons, Inc.")
+            self.assertEqual(c1.pub_city, "New York")
+            self.assertEqual(c1.year, "2002")
+            self.assertEqual(c1.identifier, "1")
+            self.assertEqual(u1.quick_name, "s")
 
     def test_wipedata_command(self):
         """ test clear_data function """
-        pass
+        add_to_db(Path(__file__).absolute().ancestor(2)\
+                  .child("csv").child("feb2data.csv"))
+        clear_data()
+        self.assertEqual(Source.objects.all().count(), 0)
+        self.assertEqual(Subject.objects.all().count(), 0)
+        self.assertEqual(Unit.objects.all().count(), 0)
+        self.assertEqual(Variable.objects.all().count(), 0)
+        self.assertEqual(Equation.objects.all().count(), 0)
 
 
 class SearchViewsTest(TestCase):
@@ -150,14 +161,18 @@ class SearchViewsTest(TestCase):
             resp = self.client.get(page)
             self.assertEqual(resp.status_code, 200)
 
+    def test_search(self):
+        """ for the search view, not individual functions """
+        pass
+
     def test_spreadsheets(self):
         """ at this time, spreadsheets are staff only """
         # They are also not tested, and not useful
         pass
 
-    def test_search(self):
-        """ for the search view, not individual functions """
+    def test_adminqueue(self):
         pass
+
 
 class SearchFunctionsTest(TestCase):
     """ tests for the actual functions used for the search, located in
@@ -169,7 +184,7 @@ class SearchFunctionsTest(TestCase):
         """ modified priority queue to check for existence in O(1) time """
         pass
 
-    def test_query_strpping(self):
+    def test_query_stripping(self):
         """ check regex for trailing/leading punctuation """
         pass
 

@@ -4,9 +4,10 @@ from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 import re
 
-    
-# the field of study that something appears in (physics 1, physics 2, etc)
+
 class Subject(models.Model):
+    """ the field of study that an object appears in (physics 1, physics 2, etc)
+    """
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published',default=timezone.now())
     author = models.CharField(max_length=100,default="anon",blank=True)
@@ -15,30 +16,32 @@ class Subject(models.Model):
         return self.title
 
 
-# search terms that will be scanned when the search app is called
 class SearchTerm(models.Model):
+    """ strings that will be matched when the query is run """
     term = models.CharField(max_length=400)
 
     def __unicode__(self):
         return self.term
 
-
-# consulted literature		
+	
 class Source(models.Model):
+    """ Literature referenced for accuracy """
     title = models.CharField(max_length=200)
-    edition = models.IntegerField(default=0)                    # 0 if there is no edition
+    edition = models.IntegerField(default=0)    # 0 if there is no edition
     authors = models.CharField(max_length=200)
     publisher = models.CharField(max_length=200)
     pub_city = models.CharField(max_length=200)
     year = models.CharField(max_length=10)
-    identifier = models.CharField(max_length=20,default='-3', unique=True)   # way to identify the source in the spreadsheets
+    # identifiers are used to easily signal what source is being used in the csv
+    identifier = models.CharField(max_length=20,default='-3', unique=True)
     add_date = models.DateTimeField('date added',default=timezone.now())
-    entered_by = models.CharField(max_length=100)               # your name
+    entered_by = models.CharField(max_length=100) # person who typed this in
 
     def __unicode__(self):
         return self.title
 
     def edition_string(self):
+        """ edition number as a string """
         if self.edition % 10 == 1:
             return str(self.edition) + "st"
         elif self.edition % 10 == 2:
@@ -51,6 +54,8 @@ class Source(models.Model):
             return str(self.edition) + "th"
 
     def first_author(self):
+        """ Source.authors is a string where names are separated by commas. 
+            We just need the first one here. """
         x = re.match(r'^[^,]+,', self.authors)
         if x is not None:
             return x.group().strip(',')
@@ -59,19 +64,28 @@ class Source(models.Model):
             return self.authors
 
 
-# class from which Unit, Variable, and Equation will be derived
 class InfoBase(models.Model):
-    quick_name = models.CharField(max_length=200)                          # quick reference name, e.g. N
-    representation = models.CharField(max_length=1000,blank=True)          # LaTeX representation
-    full_name = models.CharField(max_length=200, unique=True)              # full name, e.g. Newton
-    description = models.CharField(max_length=1000, blank=True)            # what it means
+    """ abstract base class from which Variable, Equation, and Unit come """
+    # quick reference name, e.g. N:
+    quick_name = models.CharField(max_length=200)
+    # LaTeX string of the item:
+    representation = models.CharField(max_length=1000,blank=True)
+    # full, properly written-out name:
+    full_name = models.CharField(max_length=200, unique=True)
+    # paragraph explaining what it is:
+    description = models.CharField(max_length=1000, blank=True)
     cited = models.ManyToManyField(Source, blank=True)
-    cited_pages = models.CharField(max_length=50,default='0',blank=True)   # 0 if not applicable
+    # if the cited_pages is set to 0, page numbers will be ignored:
+    cited_pages = models.CharField(max_length=50,default='0',blank=True)
     pub_date = models.DateTimeField('date updated',default=timezone.now())
     was_revised = models.BooleanField(default=False)
-    author = models.CharField(max_length=100,default="anon",blank=True)    # person to blame if the entry is bad
-    subjects = models.ManyToManyField(Subject,blank=True)                  # all the subjects that this variable belongs to. There can be more than one!
-    search_terms = models.ManyToManyField(SearchTerm,blank=True)           # things that users might call this. Includes quick and full names, but also others
+    # person to blame if the entry is bad:
+    author = models.CharField(max_length=100,default="anon",blank=True)
+    # relevant areas of study:
+    subjects = models.ManyToManyField(Subject,blank=True)
+    # keywords that will be scanned on a search. Includes quick_name and
+    # full_name.
+    search_terms = models.ManyToManyField(SearchTerm,blank=True)
 
     class Meta:
         abstract = True
@@ -80,9 +94,12 @@ class InfoBase(models.Model):
         return self.full_name
 
     def rep_without_dollars(self):
+        """ so we can add characters to the LaTeX string """
         return self.representation.strip("$")
 
     def add_SearchTerm(self, word):
+        """ create a link between a keyword and the object. If the keyword is
+            not known, instantiate a SearchTerm object for it. """
         try:
             to_link = SearchTerm.objects.get(term__iexact=word)
             self.search_terms.add(to_link)
@@ -92,6 +109,8 @@ class InfoBase(models.Model):
             self.search_terms.add(a)
 
     def _add_from_sequence(self, cls, sequence, field_id, field_to_add):
+        """ versatile function for adding links given a string of data
+            separated by commas """
         li = sequence.split(",")
         for s in li:
             to_link = cls.objects.get(**{field_id + "__iexact": s})
@@ -104,8 +123,12 @@ class InfoBase(models.Model):
 
 
 class Unit(InfoBase):
-    composition = models.CharField(max_length=1000,blank=True)				# LaTeX representation of composition, e.g. kg*m/s^2
-    composition_links = models.ManyToManyField('self',blank=True)			# links to composition units.
+    """ units of measurement """
+    # LaTeX representation of composition, e.g. kg*m/s^2
+    composition = models.CharField(max_length=1000,blank=True)	
+    # Links to composition units. For example, Newton is composed of kilograms,
+    # meters, and seconds.			
+    composition_links = models.ManyToManyField('self',blank=True)
 
     def is_unit(self):
         return True
@@ -122,9 +145,12 @@ class Unit(InfoBase):
                 "full_name", "composition_links")
 
 
-# variables that appear in equations. Constants (c, mu_0, etc.) go here too.
 class Variable(InfoBase):
-    units = models.CharField(max_length=1000,default="none",blank=True)	# LaTeX representation of units
+    """ variables that appear in equations. Constants (c, mu_0, etc.) go here 
+        too. """
+    # LaTeX representation of units
+    units = models.CharField(max_length=1000,default="none",blank=True)
+    # Links to the units of the variable
     units_links = models.ManyToManyField(Unit,blank=True)
 
     def is_unit(self):
@@ -142,8 +168,14 @@ class Variable(InfoBase):
 
 
 class Equation(InfoBase):
+    """ Physics equations. Inequalities are cool too. """
     variables = models.ManyToManyField(Variable, related_name="equation_set")
-    defined_var = models.OneToOneField(Variable, null=True, blank=True, related_name="definition")
+    # a variable may define an equation. In this case, it is unnecessary to
+    # display data for both the equation and the variable. When this field is
+    # defined, the variable will be shown instead of the equation. For example,
+    # p = mv is the definition of p.
+    defined_var = models.OneToOneField(Variable, null=True, blank=True, 
+                                       related_name="definition")
 
     def is_unit(self):
         return False
@@ -160,6 +192,9 @@ class Equation(InfoBase):
         return False
 
     def add_variables(self, vars_):
+        """ like _add_from_sequence, but we have to make sure the variable isn't
+            the definition, in case someone put it in both columns of the 
+            spreadsheet. """
         varlist = vars_.split(',')
         for var in varlist:
             to_link = Variable.objects.get(full_name__iexact=var)
@@ -173,8 +208,9 @@ class Equation(InfoBase):
         self.defined_var = to_link
         self.save()
 
-# logs data about what people are searching
+
 class QueryLog(models.Model):
+    """ log of data about what people are searching """
     query = models.CharField(max_length=200)
     count = models.IntegerField(default=1)
     most_recent_lookup = models.DateTimeField('most recent lookup')

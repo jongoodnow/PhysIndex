@@ -12,7 +12,6 @@ from itertools import chain
 import csv
     
 
-# executes the search using the HTML form
 def search(request):
     if request.method == 'GET':
         form = SearchForm(request.GET)
@@ -36,40 +35,42 @@ def search(request):
     return render(request, 'search/main.html', {'form': form,})
 
 
-# shows the details about a specific variable
-def variable(request, name):
-    var = get_object_or_404(Variable, full_name=name)
-    return render(request, 'search/indiv.html', {'obj': var})
+def indiv(request, cls, name):
+    if cls == "v":
+        c = Variable
+    elif cls == "e":
+        c = Equation
+    elif cls == "u":
+        c = Unit
+    else:
+        raise Http404
+        return None
+    obj = get_object_or_404(c, full_name=name)
+    return render(request, 'search/indiv.html', {'results': [obj], 'slice_size': ':'})
 
 
-# shows the details about a specific equation
 def equation(request, name):
     eq = get_object_or_404(Equation, full_name=name)
     return render(request, 'search/indiv.html', {'obj': eq})
 
 
-# shows the details about a specific variable
 def unit(request, name):
     u = get_object_or_404(Unit, full_name=name)
     return render(request, 'search/indiv.html', {'obj': u})
 
 
-# show the help page
 def help(request):
     return render(request, 'search/help.html', {})
 
 
-# show the about page
 def about(request):
     return render(request, 'search/about.html', {})
 
 
-# show the contact page
 def contact(request):
     return render(request, 'search/contact.html', {})
 
 
-# show the credits page
 def references(request):
     try:
         sources = Source.objects.all()
@@ -85,6 +86,7 @@ def references(request):
 def beta(request):
     return render(request, 'search/beta.html', {})
 
+### SUPER SECRET PAGES ###
 
 @staff_member_required
 def spreadsheet(request, model_name):
@@ -104,6 +106,7 @@ def spreadsheet(request, model_name):
         writer.writerow([ func(o) for func in field_funcs ])
     return response
 
+
 @staff_member_required
 def adminqueue(request):
     inqueue = list(chain(Unit.objects.filter(was_revised=False)\
@@ -112,7 +115,9 @@ def adminqueue(request):
         .prefetch_related('equation_set', 'units_links', 'cited', 'definition'),
                          Equation.objects.filter(was_revised=False)\
         .prefetch_related('variables', 'defined_var', 'cited')))
-    return render(request, 'search/adminqueue.html', {'results': inqueue, 'slice_size': ':'})
+    return render(request, 'search/adminqueue.html', {'results': inqueue, 
+                                                      'slice_size': ':'})
+
 
 @staff_member_required
 def set_revised(request, cls, name):

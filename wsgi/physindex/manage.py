@@ -11,6 +11,6 @@ if __name__ == "__main__":
         # we're on the server. use server settings
         execute_from_command_line(sys.argv)
     else:
-        # means we're running locally. use local_settings instead
+        # we're running locally. use local_settings instead
         os.environ["DJANGO_SETTINGS_MODULE"] = "physindex.local_settings"
         execute_from_command_line(sys.argv)
