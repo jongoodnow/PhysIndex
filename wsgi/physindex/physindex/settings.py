@@ -77,7 +77,7 @@ else:
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    BASE.child('static'),
+    BASE.ancestor(1).child('static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -85,7 +85,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make a dictionary of default keys
