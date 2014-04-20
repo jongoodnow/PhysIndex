@@ -1,9 +1,6 @@
 source ${OPENSHIFT_HOMEDIR}python/virtenv/bin/activate
  
 export PYTHON_EGG_CACHE=${OPENSHIFT_HOME_DIR}python/virtenv/lib/python-2.7/site-packages
- 
-echo "Executing 'python ${OPENSHIFT_REPO_DIR}physindex/manage.py syncdb --noinput'"
-python "$OPENSHIFT_REPO_DIR"physindex/manage.py syncdb --noinput
 
 echo "Executing 'python ${OPENSHIFT_REPO_DIR}physindex/manage.py collectstatic --noinput -v0'"
 python "$OPENSHIFT_REPO_DIR"physindex/manage.py collectstatic --noinput -v0
