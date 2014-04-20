@@ -36,6 +36,7 @@ def search(request):
 
 
 def indiv(request, cls, name):
+    """ show just one article for a specific unit, variable, or equation """
     if cls == "v":
         c = Variable
     elif cls == "e":
@@ -49,18 +50,8 @@ def indiv(request, cls, name):
     return render(request, 'search/indiv.html', {'results': [obj], 'slice_size': ':'})
 
 
-def equation(request, name):
-    eq = get_object_or_404(Equation, full_name=name)
-    return render(request, 'search/indiv.html', {'obj': eq})
-
-
-def unit(request, name):
-    u = get_object_or_404(Unit, full_name=name)
-    return render(request, 'search/indiv.html', {'obj': u})
-
-
-def help(request):
-    return render(request, 'search/help.html', {})
+def features(request):
+    return render(request, 'search/features.html', {})
 
 
 def about(request):

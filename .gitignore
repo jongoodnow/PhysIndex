@@ -1,13 +1,9 @@
-# Created by http://www.gitignore.io
-
-### Django ###
 *.log
 *.pot
 *.pyc
 local_settings.py
 experimental.py
 
-### Windows ###
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -24,6 +20,4 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
-
-### Linux ###
 *~

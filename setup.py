@@ -4,7 +4,7 @@ setup(name='physindex',
       version='1.0',
       description='a web database of physics variables, equations, and their associations',
       author='Jonathan Goodnow',
-      author_email='physindex.gmail.com',
+      author_email='physindex@gmail.com',
       url='www.physindex.com',
       install_requires=['Django==1.5','unipath','south','django-suit','django-extensions'],
      )

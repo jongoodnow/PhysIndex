@@ -21,12 +21,17 @@ def find_results(query):
     # remove all trailing punctuation EXCEPT right paren/bracket/brace
     # factorials shouldn't be a problem at this time. If they become one, we can
     # modify this.
-    query = re.sub(r'^[^\w&^(&^\[&^\{]+|[^\w&^)&^\]&^\}]+$', '', query)
+    query = rm_external_punct(query)
     log_search(query)
     if any(sym in query for sym in ['=','+','<','>']):
         return equation_exclusive_search(query)
     else:
         return general_search(query)
+
+
+def rm_external_punct(sequence):
+    """ remove all leading or trailing punctuation except appropriate parens """
+    return re.sub(r'^[^\w&^(&^\[&^\{]+|[^\w&^)&^\]&^\}]+$', '', sequence)
 
 
 def equation_exclusive_search(query):
@@ -91,12 +96,14 @@ def predicate_string_set(query):
         not be enough, but they are necessary. """
     query_no_punct = query.encode('utf8')\
         .translate(string.maketrans("",""), string.punctuation)
+    query_no_punct_spaces = query_no_punct.replace(" ","")
     query_no_spaces_stars = query.replace(" ","").replace("*","")
     query_no_paren = query_no_spaces_stars.replace("(","").replace(")","")
     query_no_underscore = query_no_spaces_stars.replace("_","")
     query_no_paren_underscore = query_no_paren.replace("_","")
-    return set([query, query_no_punct, query_no_spaces_stars,
-        query_no_paren, query_no_underscore, query_no_paren_underscore])
+    return set([query, query_no_punct, query_no_punct_spaces, 
+        query_no_spaces_stars, query_no_paren, query_no_underscore, 
+        query_no_paren_underscore])
 
 
 def general_search(query):

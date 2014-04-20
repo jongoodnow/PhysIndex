@@ -4,6 +4,8 @@ from unipath import FSPath as Path
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from models import Subject, SearchTerm, Source, Unit, Variable, Equation
 from management.commands._dbmanip2 import add_to_db, clear_data
+from utilities.smartpq import SmartPQ
+import utilities.searching as searching
 
 class SearchModelsTest(TestCase):
 
@@ -176,25 +178,33 @@ class SearchViewsTest(TestCase):
 
 class SearchFunctionsTest(TestCase):
     """ tests for the actual functions used for the search, located in
-        searchfcns.py """
-
-    fixtures = ['linux_testdata.json']
+        the utilities directory """
 
     def test_SmartPQ(self):
         """ modified priority queue to check for existence in O(1) time """
-        pass
+        q = SmartPQ()
+        q.put((1,"foo"))
+        q.put((2,"bar"))
+        q.put((4,"baz"))
+        q.put((3,"qux"))
+        self.assertTrue(q.has_value("foo"))
+        self.assertTrue(q.has_value("baz"))
+        self.assertFalse(q.has_value(2))
+        self.assertEqual(q.ordered_list(), ["foo", "bar", "qux", "baz"])
 
     def test_query_stripping(self):
-        """ check regex for trailing/leading punctuation """
-        pass
-
-    def test_equation_vs_general_handling(self):
-        """ test if find_results can tell if you searched an equation or 
-            something else """
-        pass
+        """ check regex for removing trailing/leading punctuation. Leave
+            appropriate parens and brackets. """
+        rmep = lambda s: searching.rm_external_punct(s)
+        self.assertEqual(rmep("foo"), "foo")
+        self.assertEqual(rmep("$$foo$$"), "foo")
+        self.assertEqual(rmep("$$(foo$$)$$"), "(foo$$)")
+        self.assertEqual(rmep("))[({foo{}{{["), "[({foo{}")
 
     def test_predicate_string_set(self):
-        pass
-
-    def test_equation_predicates(self):
-        pass
+        pss = lambda s: searching.predicate_string_set(s)
+        self.assertEqual(pss("foo"), {"foo",})
+        self.assertEqual(pss("f = ma"), {"fma","f=ma","f = ma", "f  ma"})
+        self.assertEqual(pss("f = k*q_1*q_2/(r^2)"), {"f = k*q_1*q_2/(r^2)",
+            "fkq1q2r2", "f=kq_1q_2/(r^2)", "f=kq1q2/r^2", "f=kq1q2/(r^2)",
+            "f  kq1q2r2", "f=kq_1q_2/r^2"})

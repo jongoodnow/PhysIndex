@@ -11,6 +11,7 @@ class SmartPQ(Queue.PriorityQueue):
     def put(self, item, block=True, timeout=None):
         self.all_elements.add(item[1])
         Queue.PriorityQueue.put(self, item, block, timeout)
+        return self
 
     def has_value(self, element):
         """ only pass me the value, not the priority! """
@@ -18,5 +19,6 @@ class SmartPQ(Queue.PriorityQueue):
         return False
 
     def ordered_list(self):
+        """ This will empty the queue. """
         isize = self.qsize()
-        return [self.get()[1] for _ in range(isize)]
+        return [self.get()[1] for _ in xrange(isize)]

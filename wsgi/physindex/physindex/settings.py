@@ -64,7 +64,7 @@ if 'OPENSHIFT_DATA_DIR' in os.environ:
 else:
     MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
 
-MEDIA_URL = 'http://www.physindex.com/m/'
+MEDIA_URL = '/m/'
 
 # South Settings
 SOUTH_TESTS_MIGRATE = False
@@ -74,7 +74,7 @@ if 'OPENSHIFT_REPO_DIR' in os.environ:
 else:
     STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
 
-STATIC_URL = 'http://www.physindex.com/static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     BASE.child('static'),
