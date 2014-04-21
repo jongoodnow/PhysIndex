@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.db.models import Q
 from itertools import chain
 from smartpq import SmartPQ
+from copy import copy
 import string
 import operator
 import re
@@ -42,7 +43,7 @@ def equation_exclusive_search(query):
     # underscores stripped. For edge cases, we include those queries anyway
     init_predicate_strings = predicate_string_set(query)
     eq_operator_split = lambda q: re.split(r'[=+\-*/^<>]+', q)
-    predicate_strings = init_predicate_strings
+    predicate_strings = copy(init_predicate_strings)
     for q_string in init_predicate_strings:
         for component in eq_operator_split(q_string):
             predicate_strings.add(component)

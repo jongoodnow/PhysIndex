@@ -1,3 +1,9 @@
+"""
+PHYSINDEX SERVER Settings
+-------
+Not for local use. http://openshift.com for more info.
+"""
+
 import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 from unipath import FSPath as Path

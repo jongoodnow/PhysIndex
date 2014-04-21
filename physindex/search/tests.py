@@ -4,8 +4,8 @@ from unipath import FSPath as Path
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from models import Subject, SearchTerm, Source, Unit, Variable, Equation
 from management.commands._dbmanip2 import add_to_db, clear_data
-from utilities.smartpq import SmartPQ
-import utilities.searching as searching
+from utils.smartpq import SmartPQ
+import utils.searching as searching
 
 class SearchModelsTest(TestCase):
 

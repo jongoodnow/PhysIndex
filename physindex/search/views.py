@@ -6,8 +6,8 @@ from django.http import Http404, HttpResponse
 from django.core.mail import mail_admins
 from forms import SearchForm
 from models import Variable, Equation, Unit, Source
-from utilities.searching import find_results
-from utilities.spreadsheets import UnicodeWriter, _field_extractor_function
+from utils.searching import find_results
+from utils.spreadsheets import UnicodeWriter, _field_extractor_function
 from itertools import chain
 import csv
     

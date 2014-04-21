@@ -1,0 +1,5 @@
+Django==1.5
+unipath
+south
+django-suit
+django-extensions

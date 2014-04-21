@@ -1,7 +1,9 @@
 PhysIndex
 ====
 
-PhysIndex is a web database of physics variables, equations, and their relationships. It is live at [physindex.com].
+PhysIndex is a web database of physics variables, equations, and their relationships. It is live (in beta) at [physindex.com].
+
+[physindex.com]:http://www.physindex.com
 
 Get Started
 ----
@@ -10,23 +12,25 @@ After you clone the repository, get the dependencies installed:
 
 ```sh
 pip install -r requirements.txt
-# and if you want optional dependencies like debug-toolbar and suit:
-pip install -r optional.txt
 ```
 
 You will need a `local_settings.py` for development. Copy the provided template:
 
 ```sh
-cd physindex
 cp physindex/_local_settings.py physindex/local_settings.py
 ```
 
-In this file, configure your database and set your `SECRET_KEY`. If you installed the optional dependencies, uncomment them from `INSTALLED_APPS`.
+In this file, configure your database and set your `SECRET_KEY`.
+
+Now initialize your database:
 
 ```sh
 python manage.py syncdb
 python manage.py migrate
 ```
+
+Working with Data
+----
 
 If you would like to populate the database with some initial data, do this:
 
@@ -42,4 +46,4 @@ python manage.py wipedata --settings=physindex.local_settings
 
 This will remove all Subject, Source, SearchTerm, Variable, Unit, and Equation objects, leaving behind QueryLog and User objects.
 
-[physindex.com]:http://www.physindex.com
+If you would like to add your own data, please read the README file located in `physindex/csv`.
