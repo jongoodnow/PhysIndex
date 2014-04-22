@@ -53,7 +53,7 @@ def equation_exclusive_search(query):
     if not term_results.count():
         # using .count() so that we don't evaluate the queryset if not needed
         return None
-    dataQ = SmartPQ()
+    dataQ = SmartPQ() # custom priority queue for O(1) lookup!
     any_in_set = lambda fcn, set_: any(fcn(q) for q in set_)
     for t in term_results:
         for eq in t.equation_set.all():

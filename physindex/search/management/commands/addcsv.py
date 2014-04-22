@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from _dbmanip2 import add_to_db
+from _dbmanip import add_to_db
 
 class Command(BaseCommand):
     args = '<csv_name>'

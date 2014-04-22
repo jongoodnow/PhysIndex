@@ -2,10 +2,8 @@ from django.test import TestCase
 from django.utils import timezone
 from unipath import FSPath as Path
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
-from models import Subject, SearchTerm, Source, Unit, Variable, Equation
-from management.commands._dbmanip2 import add_to_db, clear_data
-from utils.smartpq import SmartPQ
-import utils.searching as searching
+from ..models import Subject, SearchTerm, Source, Unit, Variable, Equation
+from ..management.commands._dbmanip import add_to_db, clear_data
 
 class SearchModelsTest(TestCase):
 
@@ -120,7 +118,7 @@ class SearchModelsTest(TestCase):
     
     def test_addcsv_command(self):
         """ test add_to_db function with small dataset """
-        add_to_db(Path(__file__).absolute().ancestor(2)\
+        add_to_db(Path(__file__).absolute().ancestor(3)\
                   .child("csv").child("feb2data.csv"))
         try:
             s1 = Subject.objects.get(title="Mechanics (Physics 1)")
@@ -141,7 +139,7 @@ class SearchModelsTest(TestCase):
 
     def test_wipedata_command(self):
         """ test clear_data function """
-        add_to_db(Path(__file__).absolute().ancestor(2)\
+        add_to_db(Path(__file__).absolute().ancestor(3)\
                   .child("csv").child("feb2data.csv"))
         clear_data()
         self.assertEqual(Source.objects.all().count(), 0)
@@ -149,62 +147,3 @@ class SearchModelsTest(TestCase):
         self.assertEqual(Unit.objects.all().count(), 0)
         self.assertEqual(Variable.objects.all().count(), 0)
         self.assertEqual(Equation.objects.all().count(), 0)
-
-
-class SearchViewsTest(TestCase):
-
-    fixtures = ['linux_testdata.json']
-
-    def test_page_loads(self):
-        """ Test the user-accessible pages to make sure they exist """
-        pages = ['/', '/about/', '/features/', '/contact/', '/references/', 
-                 '/beta/']
-        for page in pages:
-            resp = self.client.get(page)
-            self.assertEqual(resp.status_code, 200)
-
-    def test_search(self):
-        """ for the search view, not individual functions """
-        pass
-
-    def test_spreadsheets(self):
-        """ at this time, spreadsheets are staff only """
-        # They are also not tested, and not useful
-        pass
-
-    def test_adminqueue(self):
-        pass
-
-
-class SearchFunctionsTest(TestCase):
-    """ tests for the actual functions used for the search, located in
-        the utilities directory """
-
-    def test_SmartPQ(self):
-        """ modified priority queue to check for existence in O(1) time """
-        q = SmartPQ()
-        q.put((1,"foo"))
-        q.put((2,"bar"))
-        q.put((4,"baz"))
-        q.put((3,"qux"))
-        self.assertTrue(q.has_value("foo"))
-        self.assertTrue(q.has_value("baz"))
-        self.assertFalse(q.has_value(2))
-        self.assertEqual(q.ordered_list(), ["foo", "bar", "qux", "baz"])
-
-    def test_query_stripping(self):
-        """ check regex for removing trailing/leading punctuation. Leave
-            appropriate parens and brackets. """
-        rmep = lambda s: searching.rm_external_punct(s)
-        self.assertEqual(rmep("foo"), "foo")
-        self.assertEqual(rmep("$$foo$$"), "foo")
-        self.assertEqual(rmep("$$(foo$$)$$"), "(foo$$)")
-        self.assertEqual(rmep("))[({foo{}{{["), "[({foo{}")
-
-    def test_predicate_string_set(self):
-        pss = lambda s: searching.predicate_string_set(s)
-        self.assertEqual(pss("foo"), {"foo",})
-        self.assertEqual(pss("f = ma"), {"fma","f=ma","f = ma", "f  ma"})
-        self.assertEqual(pss("f = k*q_1*q_2/(r^2)"), {"f = k*q_1*q_2/(r^2)",
-            "fkq1q2r2", "f=kq_1q_2/(r^2)", "f=kq1q2/r^2", "f=kq1q2/(r^2)",
-            "f  kq1q2r2", "f=kq_1q_2/r^2"})
