@@ -7,7 +7,7 @@ You need to manually set:
 
  - DATABASES:  change engine to 'django.db.backends.sqlite3' if you don't want
                to create a postgresql database. If you do this, change the NAME
-               attribute to the path to your database.
+               attribute to the absolute path to your database.
 
  - SECRET_KEY: Ideally, you should generate a random string for this.
 
