@@ -17,6 +17,7 @@ pip install -r requirements.txt
 You will need a `local_settings.py` for development. Copy the provided template:
 
 ```sh
+cd physindex
 cp physindex/_local_settings.py physindex/local_settings.py
 ```
 
@@ -32,18 +33,18 @@ python manage.py migrate
 Working with Data
 ----
 
-If you would like to populate the database with some initial data, do this:
+If you would like to populate the database with some initial data, run this:
 
 ```sh
-python manage.py addcsv csv/testdata.csv --settings=physindex.local_settings
+python manage.py addcsv testdata/testdata.csv
 ```
 
 You can clear data using:
 
 ```sh
-python manage.py wipedata --settings=physindex.local_settings
+python manage.py wipedata
 ```
 
 This will remove all Subject, Source, SearchTerm, Variable, Unit, and Equation objects, leaving behind QueryLog and User objects.
 
-If you would like to add your own data, please read the README file located in `physindex/csv`.
+Note that full data sets are not available in this repository. These will become available elsewhere in the near feature.

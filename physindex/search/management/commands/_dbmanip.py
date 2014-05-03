@@ -130,11 +130,10 @@ def add_to_db(datafile):
 
                 ######## GENERAL ########
                 
-                if not defined_var_:
-                    x.add_SearchTerm(quick_name_)
-                    x.add_SearchTerm(full_name_)
-                    for alt in alt_names_.split(','):
-                        x.add_SearchTerm(alt)
+                x.add_SearchTerm(quick_name_)
+                x.add_SearchTerm(full_name_)
+                for alt in alt_names_.split(','):
+                    x.add_SearchTerm(alt)
 
                 x.add_Sources(cited_)
 

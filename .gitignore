@@ -2,7 +2,7 @@
 *.pot
 *.pyc
 local_settings.py
-experimental.py
+.coverage
 
 # Windows image file caches
 Thumbs.db

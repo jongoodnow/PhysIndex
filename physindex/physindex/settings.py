@@ -1,5 +1,5 @@
 """
-PHYSINDEX SERVER Settings
+PHYSINDEX PRODUCTION SETTINGS
 -------
 Not for local use. http://openshift.com for more info.
 """

@@ -45,7 +45,7 @@
 		</script>
 	</head>
 	<body>
-		{% block specialheaderbegin %}{% endblock %}
+		{% block specialheader %}{% endblock %}
 		<div id="title">
 			<a href="{% url 'search' %}"><img src="{% static 'search/title.svg' %}"></a>
 		</div>
@@ -65,6 +65,6 @@
 			<span class="navtext"><a href="{% url 'about' %}">About</a></span><span class="navtext"><a href="{% url 'features' %}">Features</a></span><span class="navtext"><a href="{% url 'contact' %}">Contact</a></span><span class="navtext"><a href="{% url 'references' %}">References</a></span>
 		</div>
 		{% endblock %}
-		{% block specialheaderend %}{% endblock %}
+		{% block specialfooter %}{% endblock %}
 	</body>
 </html>

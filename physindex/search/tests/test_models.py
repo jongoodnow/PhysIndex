@@ -119,13 +119,13 @@ class SearchModelsTest(TestCase):
     def test_addcsv_command(self):
         """ test add_to_db function with small dataset """
         add_to_db(Path(__file__).absolute().ancestor(3)\
-                  .child("csv").child("feb2data.csv"))
+                  .child("testdata").child("testdata.csv"))
         try:
             s1 = Subject.objects.get(title="Mechanics (Physics 1)")
             c1 = Source.objects.get(title="Physics: Volume 1")
             u1 = Unit.objects.get(full_name="second")
-            v1 = Variable.objects.get(full_name="Work")
-            e1 = Equation.objects.get(quick_name="p=mv")
+            v1 = Variable.objects.get(full_name="Mass")
+            e1 = Equation.objects.get(quick_name="F=ma")
         except ObjectDoesNotExist, MultipleObjectsReturned:
             raise AssertionError
         else:
@@ -140,7 +140,7 @@ class SearchModelsTest(TestCase):
     def test_wipedata_command(self):
         """ test clear_data function """
         add_to_db(Path(__file__).absolute().ancestor(3)\
-                  .child("csv").child("feb2data.csv"))
+                  .child("testdata").child("testdata.csv"))
         clear_data()
         self.assertEqual(Source.objects.all().count(), 0)
         self.assertEqual(Subject.objects.all().count(), 0)

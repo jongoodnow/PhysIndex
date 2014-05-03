@@ -13,6 +13,7 @@ import csv
     
 
 def search(request):
+    """ call from when a user types something into the search box """
     if request.method == 'GET':
         form = SearchForm(request.GET)
         if form.is_valid():
@@ -47,7 +48,8 @@ def indiv(request, cls, name):
         raise Http404
         return None
     obj = get_object_or_404(c, full_name=name)
-    return render(request, 'search/indiv.html', {'results': [obj], 'slice_size': ':'})
+    return render(request, 'search/indiv.html', {'results': [obj], 
+                                                 'slice_size': ':'})
 
 
 def features(request):
@@ -73,11 +75,10 @@ def references(request):
     return render(request, 'search/references.html', {'sources': sources})
 
 
-# show the beta page
 def beta(request):
     return render(request, 'search/beta.html', {})
 
-### SUPER SECRET PAGES ###
+### SUPER SECRET PAGES (admin stuff) ###
 
 @staff_member_required
 def spreadsheet(request, model_name):
@@ -100,6 +101,7 @@ def spreadsheet(request, model_name):
 
 @staff_member_required
 def adminqueue(request):
+    """ Display all articles that have not been marked as revised. """
     inqueue = list(chain(Unit.objects.filter(was_revised=False)\
         .prefetch_related('variable_set', 'composition_links', 'cited'),
                          Variable.objects.filter(was_revised=False)\
@@ -112,6 +114,7 @@ def adminqueue(request):
 
 @staff_member_required
 def set_revised(request, cls, name):
+    """ button on adminqueue to mark articles as revised. """
     if cls == "v":
         c = Variable
     elif cls == "e":

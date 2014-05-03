@@ -2,7 +2,7 @@
 
 {% load staticfiles %}
 <script type="text/javascript" src="{% static 'search/scripts.js' %}"></script>
-{% block specialheaderbegin %}
+{% block specialheader %}
 <div id="frontpageTitle"></div>
 {% endblock %}
 
@@ -24,7 +24,9 @@
     </div>
 </div>
 <div class="infoseparate"></div>
+{% endblock %}
 
+{% block specialfooter %}
 <script type="text/javascript">
     window.onunload = function(){};
 </script>
