@@ -55,10 +55,7 @@ else:
 STATICFILES_DIRS = ()
 
 # Make a dictionary of default keys
-with open("default_key.txt") as f:
-    default_key = f.read()
-    
-default_keys = { 'SECRET_KEY': default_key}
+default_keys = { 'SECRET_KEY': 'lfXgAhpizJcWOjw8DsPeZHCHMnLv7JNPGyprFCwg9eq4'}
 
 # Replace default keys with dynamic values if we are in OpenShift
 use_keys = default_keys
