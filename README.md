@@ -8,7 +8,7 @@ PhysIndex is a web database of physics variables, equations, and their relations
 Get Started
 ----
 
-Clone the repository get the dependencies installed. You will need Python 2.7 and pip first. Confirm that you have Django 1.5 (the below command will install this by default).
+Clone the repository and install the dependencies. You will need Python 2.7 and pip first. Confirm that you have Django 1.5 (the below command will install this by default).
 
 ```sh
 git clone https://github.com/jongoodnow/PhysIndex.git
