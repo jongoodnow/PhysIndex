@@ -52,8 +52,13 @@ if 'OPENSHIFT_REPO_DIR' in os.environ:
 else:
     STATIC_ROOT = os.path.join(BASE, STATIC_URL.strip("/"))
 
+STATICFILES_DIRS = ()
+
 # Make a dictionary of default keys
-default_keys = { 'SECRET_KEY': 'vm4rl5*ymb@2&d_(gc$gb-^twq9w(idasofjiopewq39$43' }
+with open("default_key.txt") as f:
+    default_key = f.read()
+    
+default_keys = { 'SECRET_KEY': default_key}
 
 # Replace default keys with dynamic values if we are in OpenShift
 use_keys = default_keys
