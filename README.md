@@ -1,7 +1,9 @@
 PhysIndex
 ====
 
-PhysIndex is a web database of physics variables, equations, and their relationships. It is live (in beta) at [physindex.com].
+PhysIndex is a web database of physics variables, equations, and their relationships. It is designed to quickly find articles about the correct equations and variables based on minimal queries, even if the search is for a single letter. It also provides a list of all other relevant articles and links thereto. 
+
+It is live (in beta) at [physindex.com].
 
 [physindex.com]:http://www.physindex.com
 
