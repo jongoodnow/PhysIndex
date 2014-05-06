@@ -5,6 +5,7 @@
 {% block varblock %}
     <div class="infoblock">
         <div class="full_name"><a href="{% url 'indiv' cls='v' name=obj.full_name %}">{{ obj.full_name }}</a> $({{ obj.rep_without_dollars }})$</div>
+        {% comment %}
         <div class="normal">
             {{ obj.description }}
             {% with sources=obj.cited.all %}
@@ -18,12 +19,13 @@
                 {% endif %}
             {% endwith %}
         </div>
+        {% endcomment %}
         <div class="normal">
             <strong>Units: </strong>
-            {% with units=obj.units_links.all %}
-                {% if units %}
+            {% with units_list=obj.units_links.all %}
+                {% if units_list %}
                     {{ obj.units }}, where 
-                    {% for u in units %}
+                    {% for u in units_list %}
                         {% if forloop.last and not forloop.first %}
                             and {{ u.representation }} is <a href="{% url 'indiv' cls='u' name=u.full_name %}">{{ u.full_name }}</a>.
                         {% elif forloop.first and forloop.last %}
@@ -70,6 +72,7 @@
 {% block unitblock %}
     <div class="infoblock">
         <div class="full_name"><a href="{% url 'indiv' cls='u' name=obj.full_name %}">{{ obj.full_name }}</a> $({{ obj.rep_without_dollars }})$</div>
+        {% comment %}
         <div class="normal">
             {{ obj.description }}
             {% with sources=obj.cited.all %}
@@ -83,9 +86,10 @@
                 {% endif %}
             {% endwith %}
         </div>
+        {% endcomment %}
         <div class="normal">
             <strong>Composition: </strong>
-            {% ifnotequal obj.composition 'base' %}
+            {% if obj.composition %}{% ifnotequal obj.composition 'base' %}
                 {% with units=obj.composition_links.all %}
                     {% if units %}
                         {{ obj.composition }}, where 
@@ -103,8 +107,11 @@
                     {% endif %}
                 {% endwith %}
             {% else %}
-            {{ obj.representation }} is a base unit.
+                {{ obj.representation }} is a base unit.
             {% endifnotequal %}
+            {% else %}
+                {{ obj.representation }} is a base unit.
+            {% endif %}
         </div>
     </div>
     {% block unitadmintools %}{% endblock %}
@@ -115,6 +122,7 @@
     <div class="infoblock">
         <div class="full_name"><a href="{% url 'indiv' cls='e' name=obj.full_name %}">{{ obj.full_name }}</a></div></td>
         <div class="full_name" style="padding-top: 10px;">{{ obj.representation }}</div>
+        {% comment %}
         <div class="normal">
             {{ obj.description }}
             {% with sources=obj.cited.all %}
@@ -128,6 +136,7 @@
                 {% endif %}
             {% endwith %}
         </div>
+        {% endcomment %}
         {% with vars=obj.variables.all %}
             {% with defvar=obj.defined_var %}
             {% if vars or defvar %}
