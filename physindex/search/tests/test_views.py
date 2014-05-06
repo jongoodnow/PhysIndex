@@ -4,7 +4,7 @@ from ..models import Equation, Variable, Unit
 
 class SearchViewsTest(TestCase):
 
-    fixtures = ['testdata.json']
+    #fixtures = ['testdata.json']
 
     def setUp(self):
         self.client = Client()

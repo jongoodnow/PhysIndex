@@ -7,17 +7,20 @@
 {% endblock %}
 
 {% block form %}
+{% comment %}
 <form id="search_form" method="get" action="{% url 'search' %}" onSubmit="javascript:titleUp(); return false;">
 	<div id="searchbox">
 		{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off" autofocus/></span>{% endblock %}<span id="searchglass"><img src="{% static 'search/glass.png' %}"></span>
 	</div>
 </form>
+{% endcomment %}
 {% endblock %}
 
 {% block content %}
 <div class="infoblock" style="opacity: 1;">
 	<div id="message" style="opacity: 1;">
-		Type in a physics variable, equation, or unit.
+		{% comment %}Type in a physics variable, equation, or unit. {% endcomment %}
+        Searching has been disabled for maintenance. Come back soon!
 	</div>
     <div id="load" style="opacity: 0;">
         <img src="{% static 'search/ajax-loader.gif' %}">

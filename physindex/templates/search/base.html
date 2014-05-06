@@ -50,10 +50,12 @@
 			<a href="{% url 'search' %}"><img src="{% static 'search/title.svg' %}"></a>
 		</div>
 		{% block form %}
+		{% comment %}
 		<form method="get" action="{% url 'search' %}">
 			<div id="searchbox">
 				{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off" autofocus /></span>{% endblock %}<span id="searchglass"><img src="{% static 'search/glass.png' %}"></span>
 			</div>
+		{% endcomment %}
 		</form>
 		{% endblock %}
 		{% block content %}{% endblock %}
