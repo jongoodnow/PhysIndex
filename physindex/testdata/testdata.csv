@@ -1,12 +1,10 @@
-Jon,s,Mechanics (Physics 1),,,,,,,,,
-Jon,s,Electricity and Magnetism (Physics 2),,,,,,,,,
-Nick,c,Physics: Volume 1,5,"R. Resnick, D. Halliday, K. Krane","John Wiley & Sons, Inc.",New York,2002,1,,,
-Nick,c,Physics: Volume 2,5,"D. Halliday, R. Resnick, K. Krane","John Wiley & Sons, Inc.",New York,2002,2,,,
-Nick,u,m,$\textrm{m}$,meter,"Historically defined as one ten-millionth of the distance between the North Pole and Paris, the modern meter is the length traveled by a light wave in vacuum in 1/299,792,458 seconds.",base,base,metre,1,,
-Nick,u,kg,$\textrm{kg}$,kilogram,"Historically, a kilogram was defined as the mass of one cubic liter of water. The mass of a kilogram today is defined as the mass of a platinum-iridium cylinder internationally agreed-upon to be one kilogram.",base,base,,1,,
-Nick,u,s,$\textrm{s}$,second,"The second is defined as the duration of 9,192,631,770 vibrations of radiation of a certain cesium atom. On a less formal level, we think of a second as 1/60th of a minute, 1/3600 of an hour, etc.",base,base,,1,,
-Charlie,u,N,$\textrm{N}$,Newton,A Newton is a unit of force. ,$\frac{ \textrm{kg} \cdot {\textrm{m}}{ \textrm{s}^2 }$,"meter,second,kilogram",,1,42,
-Charlie,v,F,$\vec{F}$,Force,"A force is measured as the change in momentum of an object, or equivalently, the mass of an object multiplied by its acceleration in a given direction. Intuitively, a force can be thought of as a push.",Mechanics,,Newton,$ \textrm{N} $,1,42
-Nick,v,m,$\textrm{m}$,Mass,"Mass is an intrinsic property of matter. If something exists and occupies a volume, it has mass. Unlike weight, mass is independent of gravity. If you weighed yourself on Earth and again on the Moon, you would notice a large decrease in your weight, because the Moon has a much weaker gravitational pull, but your mass would remain unchanged.",All,"kg,g,lb,weight",kilogram,$ \textrm{kg} $,1,
-Charlie,v,a,$\vec{a}$,Acceleration,"Acceleration is the change of an object's velocity per unit time. Acceleration, like velocity, is a vector quantity.",Mechanics,"dv/dt,dx^2/dt^2,vdot,xdotdot,xdoubledot,v.,x..","meter,second",$ \frac{ \textrm{m} }{ \textrm{s}^2 } $,1,
-Nick,e,F=ma,$ \sum{ \vec{F} } = \frac{d \vec{p} }{dt} = m \frac{d \vec{v} }{dt} = m\vec{a} $,Newton's Second Law,Newton's second law states that the acceleration experienced by an object of mass $m$ is equal to the vector sum of all forces on the object.,Mechanics,"force,f,Newton's second law","force,mass,acceleration",1,47,
+Jon,s,Mechanics (Physics 1),,,,,,,
+Jon,s,Electricity and Magnetism (Physics 2),,,,,,,
+Nick,u,m,$\textrm{m}$,meter,,base,base,metre,
+Nick,u,kg,$\textrm{kg}$,kilogram,,base,base,,
+Nick,u,s,$\textrm{s}$,second,,base,base,,
+Charlie,u,N,$\textrm{N}$,Newton,,$\frac{ \textrm{kg} \cdot {\textrm{m}}{ \textrm{s}^2 }$,"meter,second,kilogram",,
+Charlie,v,F,$\vec{F}$,Force,,Mechanics,,Newton,$ \textrm{N} $
+Nick,v,m,$\textrm{m}$,Mass,,All,"kg,g,lb,weight",kilogram,$ \textrm{kg} $
+Charlie,v,a,$\vec{a}$,Acceleration,,Mechanics,"dv/dt,dx^2/dt^2,vdot,xdotdot,xdoubledot,v.,x..","meter,second",$ \frac{ \textrm{m} }{ \textrm{s}^2 } $
+Nick,e,F=ma,$ \sum{ \vec{F} } = \frac{d \vec{p} }{dt} = m \frac{d \vec{v} }{dt} = m\vec{a} $,Newton's Second Law,,Mechanics,"force,f,Newton's second law","force,mass,acceleration",

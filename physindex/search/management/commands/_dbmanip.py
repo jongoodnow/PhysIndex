@@ -65,7 +65,6 @@ def add_to_db(datafile):
                 quick_name_ = row[2]
                 representation_ = display_rep(row[3])
                 full_name_ = row[4]
-                print full_name_
 
                 ######## UNITS ########
 
