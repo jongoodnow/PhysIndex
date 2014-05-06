@@ -68,7 +68,7 @@ SUIT_CONFIG = {
     'HEADER_TIME_FORMAT': 'H:i',
 
     # menu
-    'SEARCH_URL': '/admin/auth/user/',
+    'SEARCH_URL': '',
     'MENU_ICONS': {
        'sites': 'icon-leaf',
        'auth': 'icon-lock',
