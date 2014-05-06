@@ -13,7 +13,7 @@ Get Started
 Clone the repository and install the dependencies. You will need Python 2.7 and pip first. Confirm that you have Django 1.5 (the below command will install this by default).
 
 ```sh
-git clone https://github.com/jongoodnow/PhysIndex.git
+git clone https://github.com/jongoodnow/PhysIndex.git && cd physindex
 pip install -r dev_requirements.txt
 ```
 
@@ -32,6 +32,14 @@ Now initialize your database:
 python manage.py syncdb
 python manage.py migrate
 ```
+
+Now you can start your local server with:
+
+```sh
+python manage.py runserver
+```
+
+Open up a web browser and go to `localhost:8000`.
 
 Working with Data
 ----
