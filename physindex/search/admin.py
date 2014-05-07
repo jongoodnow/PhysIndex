@@ -3,7 +3,7 @@ from django.contrib.sites.models import Site
 from django.contrib.auth.models import Group
 from django.db.models import Q
 from search.models import Subject, Unit, Variable, Equation, SearchTerm, Source, QueryLog
-from forms import DescriptionForm
+from forms import InfobaseAdminForm
 
 # Variable Display
 
@@ -17,7 +17,7 @@ class VariableAdmin(admin.ModelAdmin):
 	search_fields = ['quick_name', 'full_name']
 	date_hierarchy = 'pub_date'
 	filter_horizontal = ('subjects', 'cited', 'units_links', 'search_terms',)
-	form = DescriptionForm
+	form = InfobaseAdminForm
 	
 	def related_equations(self,obj):
 		return ', '.join([obj.quick_name for obj in obj.equation_set.all()])
@@ -41,7 +41,7 @@ class UnitAdmin(admin.ModelAdmin):
 	search_fields = ['quick_name', 'full_name']
 	date_hierarchy = 'pub_date'
 	filter_horizontal = ('subjects', 'cited', 'composition_links', 'search_terms',)
-	form = DescriptionForm
+	form = InfobaseAdminForm
 	
 	def related_variables(self,obj):
 		return ', '.join([obj.quick_name for obj in obj.variable_set.all()])
@@ -73,7 +73,7 @@ class EquationAdmin(admin.ModelAdmin):
 	search_fields = ['quick_name', 'full_name']
 	date_hierarchy = 'pub_date'
 	filter_horizontal = ('variables', 'subjects', 'cited', 'search_terms',)
-	form = DescriptionForm
+	form = InfobaseAdminForm
 	
 	def related_variables(self,obj):
 		return ', '.join([obj.quick_name for obj in obj.variables.all()])

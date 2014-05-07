@@ -93,6 +93,14 @@ class InfoBase(models.Model):
     def __unicode__(self):
         return self.full_name
 
+    def save(self, *args, **kwargs):
+        if self.representation != "base" and self.representation != "":
+            self.representation = ''.join(["$\\displaystyle{", 
+                self.representation.strip('$'), "}$"])
+        super(InfoBase, self).save(*args, **kwargs)
+        self.add_SearchTerm(self.quick_name)
+        self.add_SearchTerm(self.full_name)
+
     def rep_without_dollars(self):
         """ so we can add characters to the LaTeX string """
         return self.representation.strip("$")
