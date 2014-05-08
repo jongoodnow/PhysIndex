@@ -8,7 +8,7 @@ class SearchViewsTest(TestCase):
 
     def setUp(self):
         self.client = Client()
-        self.e1 = Equation.objects.get(quick_name="f=ma")
+        self.e1 = Equation.objects.get(quick_name__iexact="f=ma")
         self.v1 = Variable.objects.get(full_name__iexact="mass")
         self.u1 = Unit.objects.get(full_name__iexact="ampere")
         self.v2 = Variable.objects.get(full_name__iexact="linear momentum")
