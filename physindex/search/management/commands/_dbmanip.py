@@ -1,5 +1,5 @@
 import csv
-from search.models import Subject, SearchTerm, Unit, Variable, Equation, Source
+from search.models import Subject, SearchTerm, Unit, Variable, Equation
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
@@ -10,24 +10,10 @@ def add_to_db(datafile):
         reader = csv.reader(csvfile)
         for row in reader:
             model_id = row[1]
-
-################## SOURCE ###################
-
-            if model_id == "c":
-                c = Source(title=row[2],
-                           edition=int(row[3]),
-                           authors=row[4],
-                           publisher=row[5],
-                           pub_city=row[6],
-                           year=row[7],
-                           identifier=row[8],
-                           entered_by=row[0],
-                           add_date=timezone.now())
-                c.save()
                     
 ################## SUBJECT ##################
 
-            elif model_id == "s":
+            if model_id == "s":
                 s = Subject(title=row[2],
                             pub_date=timezone.now(),
                             author=row[0])
@@ -92,7 +78,6 @@ def add_to_db(datafile):
 
 
 def clear_data():
-    Source.objects.all().delete()
     Subject.objects.all().delete()
     SearchTerm.objects.all().delete()
     Unit.objects.all().delete()

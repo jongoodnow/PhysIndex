@@ -16,8 +16,7 @@ class SearchViewsTest(TestCase):
 
     def test_page_loads(self):
         """ Test the user-accessible pages to make sure they exist """
-        pages = ['/', '/about/', '/features/', '/contact/', '/references/', 
-                 '/beta/']
+        pages = ['/', '/about/', '/features/', '/contact/', '/beta/']
         for page in pages:
             resp = self.client.get(page)
             self.assertEqual(resp.status_code, 200)

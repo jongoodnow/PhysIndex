@@ -2,36 +2,10 @@ from django.test import TestCase
 from django.utils import timezone
 from unipath import FSPath as Path
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
-from ..models import Subject, SearchTerm, Source, Unit, Variable, Equation
+from ..models import Subject, SearchTerm, Unit, Variable, Equation
 from ..management.commands._dbmanip import add_to_db, clear_data
 
 class SearchModelsTest(TestCase):
-
-    def test_source_strings(self):
-        """ check the string producing functions for templates """
-        s1 = Source.objects.create(title="The Old Man and the Sea")
-
-        def edstr_check(source, value, expected):
-            source.edition = value
-            return source.edition_string() == expected
-
-        self.assertTrue(edstr_check(s1, 1, "1st"))
-        self.assertTrue(edstr_check(s1, 2, "2nd"))
-        self.assertTrue(edstr_check(s1, 3, "3rd"))
-        self.assertTrue(edstr_check(s1, 6, "6th"))
-        self.assertTrue(edstr_check(s1, 23, "23rd"))
-        self.assertTrue(edstr_check(s1, 100, "100th"))
-
-        def firstauth_check(source, value, expected):
-            source.authors = value
-            return source.first_author() == expected
-            
-        self.assertTrue(firstauth_check(s1, "Nick Boni", "Nick Boni"))
-        self.assertTrue(firstauth_check(s1, "Nick Boni, Ernest Hemingway", 
-                                            "Nick Boni"))
-        self.assertTrue(firstauth_check(s1, "Nick 'The Boss' Boni, E Hemingway",
-                                            "Nick 'The Boss' Boni"))
-        self.assertTrue(firstauth_check(s1, "", ""))
 
     def test_infobase_strings(self):
         """ check representation with $ removed and confirm latex is valid """
@@ -74,17 +48,12 @@ class SearchModelsTest(TestCase):
 
     def test_infobase_add_from_sequence(self):
         v1 = Variable.objects.create(full_name="acceleration")
-        s1 = Source.objects.create(identifier="1")
-        s2 = Source.objects.create(identifier="2")
-        v1.add_Sources("1,2")
         u1 = Unit.objects.create(full_name="ms")
         u2 = Unit.objects.create(full_name="meter")
         u3 = Unit.objects.create(full_name="second")
         u1.make_composition_links("meter,second")
         v1.add_units_links("meter,second")
         try:
-            sget1 = v1.cited.get(identifier="1")
-            sget2 = v1.cited.get(identifier="2")
             uget1 = u1.composition_links.get(full_name="meter")
             uget2 = u1.composition_links.get(full_name="second")
             uget3 = v1.units_links.get(full_name="meter")
@@ -92,8 +61,6 @@ class SearchModelsTest(TestCase):
         except ObjectDoesNotExist, MultipleObjectsReturned:
             raise AssertionError
         v2 = Variable.objects.create(full_name="Jon's Constant")
-        v2.add_Sources("")
-        self.assertFalse(bool(v2.cited.all()))
         u4 = Unit.objects.create(full_name="kilogram")
         u4.make_composition_links("base")
         self.assertFalse(bool(u4.composition_links.all()))
@@ -122,7 +89,6 @@ class SearchModelsTest(TestCase):
                   .child("testdata").child("testdata.csv"))
         try:
             s1 = Subject.objects.get(title="Mechanics (Physics 1)")
-            c1 = Source.objects.get(title="Physics: Volume 1")
             u1 = Unit.objects.get(full_name="second")
             v1 = Variable.objects.get(full_name="Mass")
             e1 = Equation.objects.get(quick_name="F=ma")
@@ -142,7 +108,6 @@ class SearchModelsTest(TestCase):
         add_to_db(Path(__file__).absolute().ancestor(3)\
                   .child("testdata").child("testdata.csv"))
         clear_data()
-        self.assertEqual(Source.objects.all().count(), 0)
         self.assertEqual(Subject.objects.all().count(), 0)
         self.assertEqual(Unit.objects.all().count(), 0)
         self.assertEqual(Variable.objects.all().count(), 0)

@@ -2,6 +2,7 @@ from django.db import models
 from django import forms
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
+import wikipedia
 import re
 
 
@@ -51,10 +52,13 @@ class InfoBase(models.Model):
         return self.full_name
 
     def save(self, *args, **kwargs):
+        # display style representation
         if self.representation != "base" and self.representation != "":
             self.representation = ''.join(["$\\displaystyle{", 
                 self.representation.strip('$'), "}$"])
+        # normal save
         super(InfoBase, self).save(*args, **kwargs)
+        # self referential search terms
         self.add_SearchTerm(self.quick_name)
         self.add_SearchTerm(self.full_name)
 
@@ -81,10 +85,6 @@ class InfoBase(models.Model):
             to_link = cls.objects.get(**{field_id + "__iexact": s})
             field = getattr(self, field_to_add)
             field.add(to_link)
-
-    def add_Sources(self, sources):
-        if sources != '':
-            self._add_from_sequence(Source, sources, "identifier", "cited")
 
 
 class Unit(InfoBase):

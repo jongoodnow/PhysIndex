@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ..models import Subject, SearchTerm, Source, Unit, Variable, Equation
+from ..models import Subject, SearchTerm, Unit, Variable, Equation
 from ..utils.smartpq import SmartPQ
 from ..utils import searching as searching
 
