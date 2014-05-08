@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import Group
 from django.db.models import Q
-from search.models import Subject, Unit, Variable, Equation, SearchTerm, Source, QueryLog
+from search.models import Subject, Unit, Variable, Equation, SearchTerm, QueryLog
 from forms import InfobaseAdminForm
 
 # Variable Display
@@ -16,7 +16,7 @@ class VariableAdmin(admin.ModelAdmin):
 	list_filter = ['author', 'was_revised', 'pub_date']
 	search_fields = ['quick_name', 'full_name']
 	date_hierarchy = 'pub_date'
-	filter_horizontal = ('subjects', 'cited', 'units_links', 'search_terms',)
+	filter_horizontal = ('subjects', 'units_links', 'search_terms',)
 	form = InfobaseAdminForm
 	
 	def related_equations(self,obj):
@@ -40,7 +40,7 @@ class UnitAdmin(admin.ModelAdmin):
 	list_filter = ['author', 'was_revised', 'pub_date']
 	search_fields = ['quick_name', 'full_name']
 	date_hierarchy = 'pub_date'
-	filter_horizontal = ('subjects', 'cited', 'composition_links', 'search_terms',)
+	filter_horizontal = ('subjects', 'composition_links', 'search_terms',)
 	form = InfobaseAdminForm
 	
 	def related_variables(self,obj):
@@ -72,7 +72,7 @@ class EquationAdmin(admin.ModelAdmin):
 	list_filter = ['author', 'was_revised', 'pub_date']
 	search_fields = ['quick_name', 'full_name']
 	date_hierarchy = 'pub_date'
-	filter_horizontal = ('variables', 'subjects', 'cited', 'search_terms',)
+	filter_horizontal = ('variables', 'subjects', 'search_terms',)
 	form = InfobaseAdminForm
 	
 	def related_variables(self,obj):
@@ -94,7 +94,6 @@ admin.site.register(Variable, VariableAdmin)
 admin.site.register(Equation, EquationAdmin)
 admin.site.register(SearchTerm, SearchTermAdmin)
 admin.site.register(Unit, UnitAdmin)
-admin.site.register(Source)
 admin.site.register(QueryLog, QueryLogAdmin)
 
 admin.site.unregister(Group)

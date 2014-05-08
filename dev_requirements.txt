@@ -3,3 +3,4 @@ Unipath==1.0
 South==0.8.2
 django-suit==0.2.5
 django-extensions==1.2.5
+wikipedia==1.1

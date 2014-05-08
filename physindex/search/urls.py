@@ -8,7 +8,6 @@ urlpatterns = patterns('',
     url(r'^features/$', views.features, name='features'),
     url(r'^about/$', views.about, name='about'),
     url(r'^contact/$', views.contact, name='contact'),
-    url(r'^references/$', views.references, name='references'),
     url(r'^beta/$', views.beta, name='beta'),
 
     # super secret pages

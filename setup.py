@@ -6,5 +6,5 @@ setup(name='physindex',
       author='Jonathan Goodnow',
       author_email='physindex@gmail.com',
       url='www.physindex.com',
-      install_requires=['Django==1.5','unipath','south','django-suit','django-extensions'],
+      install_requires=['Django==1.5','unipath','south','django-suit','django-extensions','wikipedia'],
      )

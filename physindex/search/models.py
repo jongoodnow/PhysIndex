@@ -23,46 +23,6 @@ class SearchTerm(models.Model):
     def __unicode__(self):
         return self.term
 
-	
-class Source(models.Model):
-    """ Literature referenced for accuracy """
-    title = models.CharField(max_length=200)
-    edition = models.IntegerField(default=0)    # 0 if there is no edition
-    authors = models.CharField(max_length=200)
-    publisher = models.CharField(max_length=200)
-    pub_city = models.CharField(max_length=200)
-    year = models.CharField(max_length=10)
-    # identifiers are used to easily signal what source is being used in the csv
-    identifier = models.CharField(max_length=20,default='-3', unique=True)
-    add_date = models.DateTimeField('date added',default=timezone.now())
-    entered_by = models.CharField(max_length=100) # person who typed this in
-
-    def __unicode__(self):
-        return self.title
-
-    def edition_string(self):
-        """ edition number as a string """
-        if self.edition % 10 == 1:
-            return str(self.edition) + "st"
-        elif self.edition % 10 == 2:
-            return str(self.edition) + "nd"
-        elif self.edition % 10 == 3:
-            return str(self.edition) + "rd"
-        elif self.edition == 0:
-            return ""
-        else:
-            return str(self.edition) + "th"
-
-    def first_author(self):
-        """ Source.authors is a string where names are separated by commas. 
-            We just need the first one here. """
-        x = re.match(r'^[^,]+,', self.authors)
-        if x is not None:
-            return x.group().strip(',')
-        else:
-            # we have one or no authors
-            return self.authors
-
 
 class InfoBase(models.Model):
     """ abstract base class from which Variable, Equation, and Unit come """
@@ -74,9 +34,6 @@ class InfoBase(models.Model):
     full_name = models.CharField(max_length=200, unique=True)
     # paragraph explaining what it is:
     description = models.CharField(max_length=1000, blank=True)
-    cited = models.ManyToManyField(Source, blank=True)
-    # if the cited_pages is set to 0, page numbers will be ignored:
-    cited_pages = models.CharField(max_length=50,default='0',blank=True)
     pub_date = models.DateTimeField('date updated',default=timezone.now())
     was_revised = models.BooleanField(default=False)
     # person to blame if the entry is bad:
