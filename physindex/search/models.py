@@ -2,8 +2,10 @@ from django.db import models
 from django import forms
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
-import wikipedia
+from utils.wikipedia_fetch import wikipedia_fetch
+from wikipedia.exceptions import WikipediaException
 import re
+import sys
 
 
 class Subject(models.Model):
@@ -33,8 +35,10 @@ class InfoBase(models.Model):
     representation = models.CharField(max_length=1000,blank=True)
     # full, properly written-out name:
     full_name = models.CharField(max_length=200, unique=True)
-    # paragraph explaining what it is:
+    # paragraph explaining what it is, cited from wikipedia 3 sentence summary:
     description = models.CharField(max_length=1000, blank=True)
+    # url to wikipedia artcle:
+    description_url = models.URLField(blank=True)
     pub_date = models.DateTimeField('date updated',default=timezone.now())
     was_revised = models.BooleanField(default=False)
     # person to blame if the entry is bad:
@@ -52,15 +56,32 @@ class InfoBase(models.Model):
         return self.full_name
 
     def save(self, *args, **kwargs):
-        # display style representation
-        if self.representation != "base" and self.representation != "":
-            self.representation = ''.join(["$\\displaystyle{", 
-                self.representation.strip('$'), "}$"])
-        # normal save
-        super(InfoBase, self).save(*args, **kwargs)
-        # self referential search terms
-        self.add_SearchTerm(self.quick_name)
-        self.add_SearchTerm(self.full_name)
+        if not self.pk:
+            # only runs on creation...
+            # normal save first
+            super(InfoBase, self).save(*args, **kwargs)
+            # display style representation
+            if self.representation != "base" and self.representation != "":
+                self.representation = ''.join(["$\\displaystyle{", 
+                    self.representation.strip('$'), "}$"])
+            # auto descriptions
+            try:
+                wiki_data = wikipedia_fetch(self.full_name)
+            except WikipediaException:
+                if 'from_admin' in kwargs and kwargs['from_admin']:
+                    pass # we're in the admin. do something
+                else:
+                    sys.stdout.write("Can't find wikipedia article for %s, or something else bad happened. Please add manually.\n" 
+                        %self.full_name)
+            else:
+                self.description = wiki_data[1]
+                self.description_url = wiki_data[0]
+            super(InfoBase, self).save(*args, **kwargs)
+            # meta search terms
+            self.add_SearchTerm(self.quick_name)
+            self.add_SearchTerm(self.full_name)
+        else:
+            super(InfoBase, self).save(*args, **kwargs)
 
     def rep_without_dollars(self):
         """ so we can add characters to the LaTeX string """
