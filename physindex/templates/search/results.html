@@ -1,10 +1,18 @@
 {% extends 'search/resultsbase.html' %}
 
 {% load safecycle %}
+{% load staticfiles %}
 
 {% block varblock %}
     <div class="infoblock">
         <div class="full_name"><a href="{% url 'indiv' cls='v' name=obj.full_name %}">{{ obj.full_name }}</a> $({{ obj.rep_without_dollars }})$</div>
+        <div class="normal">
+            {{ obj.description }}
+            <a href="{{ obj.description_url }}">
+            <span class="source">
+                <sup style="font-size: 7pt;">[1]</sup><span class="sourceInfo">Learn more on Wikipedia.</span>
+            </span></a>
+        </div>
         <div class="normal">
             <strong>Units: </strong>
             {% with units_list=obj.units_links.all %}
@@ -58,6 +66,13 @@
     <div class="infoblock">
         <div class="full_name"><a href="{% url 'indiv' cls='u' name=obj.full_name %}">{{ obj.full_name }}</a> $({{ obj.rep_without_dollars }})$</div>
         <div class="normal">
+            {{ obj.description }}
+            <a href="{{ obj.description_url }}">
+            <span class="source">
+                <sup style="font-size: 7pt;">[1]</sup><span class="sourceInfo">Learn more on Wikipedia.</span>
+            </span></a>
+        </div>
+        <div class="normal">
             <strong>Composition: </strong>
             {% if obj.composition %}{% ifnotequal obj.composition 'base' %}
                 {% with units=obj.composition_links.all %}
@@ -91,6 +106,13 @@
 {% block eqblock %}
     <div class="infoblock">
         <div class="full_name"><a href="{% url 'indiv' cls='e' name=obj.full_name %}">{{ obj.full_name }}</a></div></td>
+        <div class="normal">
+            {{ obj.description }}
+            <a href="{{ obj.description_url }}">
+            <span class="source">
+                <sup style="font-size: 7pt;">[1]</sup><span class="sourceInfo">Learn more on Wikipedia.</span>
+            </span></a>
+        </div>
         <div class="full_name" style="padding-top: 10px;">{{ obj.representation }}</div>
         {% with vars=obj.variables.all %}
             {% with defvar=obj.defined_var %}
