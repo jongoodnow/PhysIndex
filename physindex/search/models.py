@@ -1,12 +1,9 @@
 from django.db import models
-from django import forms
 from django.utils import timezone
-from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
+from django.core.exceptions import ObjectDoesNotExist
 from utils.wikipedia_fetch import wikipedia_fetch
 from wikipedia.exceptions import WikipediaException
-import re
 import sys
-
 
 class Subject(models.Model):
     """ the field of study that an object appears in (physics 1, physics 2, etc)
@@ -39,10 +36,10 @@ class InfoBase(models.Model):
     description = models.CharField(max_length=1000, blank=True)
     # url to wikipedia artcle:
     description_url = models.URLField(blank=True)
-    pub_date = models.DateTimeField('date updated',default=timezone.now())
-    was_revised = models.BooleanField(default=False)
+    pub_date = models.DateTimeField('date updated',default=timezone.now(), editable=False)
+    was_revised = models.BooleanField(default=False, editable=False)
     # person to blame if the entry is bad:
-    author = models.CharField(max_length=100,default="anon",blank=True)
+    author = models.CharField(max_length=100,default="anon",blank=True, editable=False)
     # relevant areas of study:
     subjects = models.ManyToManyField(Subject,blank=True)
     # keywords that will be scanned on a search. Includes quick_name and
@@ -55,11 +52,9 @@ class InfoBase(models.Model):
     def __unicode__(self):
         return self.full_name
 
-    def save(self, *args, **kwargs):
+    def save(self, from_admin, *args, **kwargs):
         if not self.pk:
             # only runs on creation...
-            # normal save first
-            super(InfoBase, self).save(*args, **kwargs)
             # display style representation
             if self.representation != "base" and self.representation != "":
                 self.representation = ''.join(["$\\displaystyle{", 
@@ -67,7 +62,7 @@ class InfoBase(models.Model):
             # auto descriptions
             try:
                 wiki_data = wikipedia_fetch(self.full_name)
-            except WikipediaException:
+            except:
                 if 'from_admin' in kwargs and kwargs['from_admin']:
                     pass # we're in the admin. do something
                 else:
@@ -76,12 +71,7 @@ class InfoBase(models.Model):
             else:
                 self.description = wiki_data[1]
                 self.description_url = wiki_data[0]
-            super(InfoBase, self).save(*args, **kwargs)
-            # meta search terms
-            self.add_SearchTerm(self.quick_name)
-            self.add_SearchTerm(self.full_name)
-        else:
-            super(InfoBase, self).save(*args, **kwargs)
+        super(InfoBase, self).save(*args, **kwargs)
 
     def rep_without_dollars(self):
         """ so we can add characters to the LaTeX string """
@@ -203,3 +193,12 @@ class QueryLog(models.Model):
 
     def __unicode__(self):
         return self.query
+
+
+def meta_SearchTerms(sender, instance, action, **kwargs):
+    """ add full_name and quick_name as SearchTerms. """
+    if action == "post_clear":
+        instance.add_SearchTerm(instance.quick_name)
+        instance.add_SearchTerm(instance.full_name)
+
+models.signals.m2m_changed.connect(meta_SearchTerms, sender=InfoBase.search_terms.through)
