@@ -96,7 +96,7 @@ def adminqueue(request):
                          Variable.objects.filter(was_revised=False)\
         .prefetch_related('equation_set', 'units_links', 'definition'),
                          Equation.objects.filter(was_revised=False)\
-        .prefetch_related('variables', 'defined_var', 'cited')))
+        .prefetch_related('variables', 'defined_var')))
     return render(request, 'search/adminqueue.html', {'results': inqueue, 
                                                       'slice_size': ':'})
 
