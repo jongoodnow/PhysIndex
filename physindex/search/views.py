@@ -5,7 +5,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404, HttpResponse
 from django.core.mail import mail_admins
 from forms import SearchForm
-from models import Variable, Equation, Unit, Source
+from models import Variable, Equation, Unit
 from utils.searching import find_results
 from utils.spreadsheets import UnicodeWriter, _field_extractor_function
 from itertools import chain
@@ -62,17 +62,6 @@ def about(request):
 
 def contact(request):
     return render(request, 'search/contact.html', {})
-
-
-def references(request):
-    try:
-        sources = Source.objects.all()
-    except DatabaseError:
-        mail_admins("PHYSINDEX DATABASE ERROR", 
-                    "Database raised an exception on the REFERENCES page.",
-                    fail_silently=True)
-        return render(request, 'search/dbfailure.html', {})
-    return render(request, 'search/references.html', {'sources': sources})
 
 
 def beta(request):

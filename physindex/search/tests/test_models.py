@@ -2,46 +2,22 @@ from django.test import TestCase
 from django.utils import timezone
 from unipath import FSPath as Path
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
-from ..models import Subject, SearchTerm, Source, Unit, Variable, Equation
+from ..models import Subject, SearchTerm, Unit, Variable, Equation
 from ..management.commands._dbmanip import add_to_db, clear_data
 
 class SearchModelsTest(TestCase):
 
-    def test_source_strings(self):
-        """ check the string producing functions for templates """
-        s1 = Source.objects.create(title="The Old Man and the Sea")
-
-        def edstr_check(source, value, expected):
-            source.edition = value
-            return source.edition_string() == expected
-
-        self.assertTrue(edstr_check(s1, 1, "1st"))
-        self.assertTrue(edstr_check(s1, 2, "2nd"))
-        self.assertTrue(edstr_check(s1, 3, "3rd"))
-        self.assertTrue(edstr_check(s1, 6, "6th"))
-        self.assertTrue(edstr_check(s1, 23, "23rd"))
-        self.assertTrue(edstr_check(s1, 100, "100th"))
-
-        def firstauth_check(source, value, expected):
-            source.authors = value
-            return source.first_author() == expected
-            
-        self.assertTrue(firstauth_check(s1, "Nick Boni", "Nick Boni"))
-        self.assertTrue(firstauth_check(s1, "Nick Boni, Ernest Hemingway", 
-                                            "Nick Boni"))
-        self.assertTrue(firstauth_check(s1, "Nick 'The Boss' Boni, E Hemingway",
-                                            "Nick 'The Boss' Boni"))
-        self.assertTrue(firstauth_check(s1, "", ""))
-
     def test_infobase_strings(self):
         """ check representation with $ removed and confirm latex is valid """
-        v1 = Variable.objects.create(representation=r'$a$')
+        v1 = Variable(representation=r'$a$')
+        v1.save(no_wiki=True)
         self.assertEqual(v1.rep_without_dollars(), r'\displaystyle{a}')
 
     def test_infobase_add_SearchTerm(self):
         """ test linking a search term to an infobase or creating it if it 
             doesn't exist. """
-        v1 = Variable.objects.create(full_name="acceleration", quick_name="a")
+        v1 = Variable(full_name="acceleration")
+        v1.save(no_wiki=True)
         # creating a search term for the first time
         v1.add_SearchTerm("acc")
         try:
@@ -61,9 +37,10 @@ class SearchModelsTest(TestCase):
             raise AssertionError
         else:
             self.assertEqual({x for x in s2.variable_set.all()}, {v1})
-            self.assertEqual({x for x in v1.search_terms.all()}, {s2, s3, s4})
+            self.assertTrue(s2 in v1.search_terms.all())
         # now try adding the same search term to a different object
-        e1 = Equation.objects.create(full_name="Jon's Law")
+        e1 = Equation(full_name="Jon's Law")
+        e1.save(no_wiki=True)
         e1.add_SearchTerm("acc")
         try:
             s3 = SearchTerm.objects.get(term="acc")
@@ -73,44 +50,48 @@ class SearchModelsTest(TestCase):
             self.assertTrue(e1 in s3.equation_set.all())
             self.assertTrue(s3 in e1.search_terms.all())
 
-
     def test_infobase_add_from_sequence(self):
-        v1 = Variable.objects.create(full_name="acceleration")
-        s1 = Source.objects.create(identifier="1")
-        s2 = Source.objects.create(identifier="2")
-        v1.add_Sources("1,2")
-        u1 = Unit.objects.create(full_name="ms")
-        u2 = Unit.objects.create(full_name="meter")
-        u3 = Unit.objects.create(full_name="second")
+        v1 = Variable(full_name="acceleration")
+        v1.save(no_wiki=True)
+        u1 = Unit(full_name="ms")
+        u1.save(no_wiki=True)
+        u2 = Unit(full_name="meter")
+        u2.save(no_wiki=True)
+        u3 = Unit(full_name="second")
+        u3.save(no_wiki=True)
         u1.make_composition_links("meter,second")
         v1.add_units_links("meter,second")
         try:
-            sget1 = v1.cited.get(identifier="1")
-            sget2 = v1.cited.get(identifier="2")
             uget1 = u1.composition_links.get(full_name="meter")
             uget2 = u1.composition_links.get(full_name="second")
             uget3 = v1.units_links.get(full_name="meter")
             uget4 = v1.units_links.get(full_name="second")
         except ObjectDoesNotExist, MultipleObjectsReturned:
             raise AssertionError
-        v2 = Variable.objects.create(full_name="Jon's Constant")
-        v2.add_Sources("")
-        self.assertFalse(bool(v2.cited.all()))
-        u4 = Unit.objects.create(full_name="kilogram")
+        v2 = Variable(full_name="Jon's Constant")
+        v2.save(no_wiki=True)
+        u4 = Unit(full_name="kilogram")
+        u4.save(no_wiki=True)
         u4.make_composition_links("base")
         self.assertFalse(bool(u4.composition_links.all()))
 
     def test_definitions(self):
-        e1 = Equation.objects.create(full_name="Jon's Law")
-        v1 = Variable.objects.create(full_name="Jon's Constant")
+        e1 = Equation(full_name="Jon's Law")
+        e1.save(no_wiki=True)
+        v1 = Variable(full_name="Jon's Constant")
+        v1.save(no_wiki=True)
         e1.add_defined_var(v1.full_name)
         self.assertEqual(e1.defined_var.full_name, v1.full_name)
 
     def test_equation_add_variables(self):
-        e1 = Equation.objects.create(full_name="Jon's Law")
-        v1 = Variable.objects.create(full_name="Jon's Constant")
-        v2 = Variable.objects.create(full_name="Jon's Operator")
-        v3 = Variable.objects.create(full_name="Jon's Plus Sign")
+        e1 = Equation(full_name="Jon's Law")
+        e1.save(no_wiki=True)
+        v1 = Variable(full_name="Jon's Constant")
+        v1.save(no_wiki=True)
+        v2 = Variable(full_name="Jon's Operator")
+        v2.save(no_wiki=True)
+        v3 = Variable(full_name="Jon's Plus Sign")
+        v3.save(no_wiki=True)
         e1.add_defined_var("Jon's Constant")
         e1.add_variables("Jon's Constant,Jon's Operator,Jon's Plus Sign")
         self.assertEqual(e1.defined_var.full_name, v1.full_name)
@@ -125,20 +106,11 @@ class SearchModelsTest(TestCase):
                   .child("testdata").child("testdata.csv"))
         try:
             s1 = Subject.objects.get(title="Mechanics (Physics 1)")
-            c1 = Source.objects.get(title="Physics: Volume 1")
             u1 = Unit.objects.get(full_name="second")
             v1 = Variable.objects.get(full_name="Mass")
             e1 = Equation.objects.get(quick_name="F=ma")
         except (ObjectDoesNotExist, MultipleObjectsReturned), e:
             raise AssertionError
-        else:
-            self.assertEqual(c1.edition, 5)
-            self.assertEqual(c1.authors, "R. Resnick, D. Halliday, K. Krane")
-            self.assertEqual(c1.publisher, "John Wiley & Sons, Inc.")
-            self.assertEqual(c1.pub_city, "New York")
-            self.assertEqual(c1.year, "2002")
-            self.assertEqual(c1.identifier, "1")
-            self.assertEqual(u1.quick_name, "s")
     
 
     def test_wipedata_command(self):
@@ -146,9 +118,35 @@ class SearchModelsTest(TestCase):
         add_to_db(Path(__file__).absolute().ancestor(3)\
                   .child("testdata").child("testdata.csv"))
         clear_data()
-        self.assertEqual(Source.objects.all().count(), 0)
         self.assertEqual(Subject.objects.all().count(), 0)
         self.assertEqual(Unit.objects.all().count(), 0)
         self.assertEqual(Variable.objects.all().count(), 0)
         self.assertEqual(Equation.objects.all().count(), 0)
-    """
+
+    def test_infobase_save(self):
+        """ the save function is automated to add displaystyle to the latex,
+            add a description and link from wikipedia, and full_name and 
+            quick_name as search terms. """
+        v1 = Variable(full_name="Newton's Second Law", 
+                      quick_name="F=ma", 
+                      representation="F=ma")
+        v1.save()
+        self.assertEqual(v1.representation, "$\\displaystyle{F=ma}$")
+        self.assertEqual(v1.description, u"Newton's laws of motion are three physical laws that together laid the foundation for classical mechanics. They describe the relationship between a body and the forces acting upon it, and its motion in response to said forces. ")
+        self.assertEqual(v1.description_url, u"http://en.wikipedia.org/wiki/Newton%27s_laws_of_motion")
+        # NOTE: The above represents a case where the description returned by
+        #       wikipedia is NOT what we want, so we need to revise it.
+        #
+        try:
+            s1 = SearchTerm.objects.get(term=v1.full_name)
+            s2 = SearchTerm.objects.get(term=v1.quick_name)
+        except ObjectDoesNotExist:
+            raise AssertionError
+        self.assertTrue(s1 in v1.search_terms.all())
+        self.assertTrue(s2 in v1.search_terms.all())
+        # test save method on existing object
+        v1.description = "something else"
+        v1.save()
+        self.assertEqual(v1.description, "something else")
+
+

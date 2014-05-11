@@ -1,9 +1,9 @@
 from django.db import models
-from django import forms
 from django.utils import timezone
-from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
-import re
-
+from django.core.exceptions import ObjectDoesNotExist
+from utils.wikipedia_fetch import wikipedia_fetch
+from wikipedia.exceptions import WikipediaException
+import sys
 
 class Subject(models.Model):
     """ the field of study that an object appears in (physics 1, physics 2, etc)
@@ -23,46 +23,6 @@ class SearchTerm(models.Model):
     def __unicode__(self):
         return self.term
 
-	
-class Source(models.Model):
-    """ Literature referenced for accuracy """
-    title = models.CharField(max_length=200)
-    edition = models.IntegerField(default=0)    # 0 if there is no edition
-    authors = models.CharField(max_length=200)
-    publisher = models.CharField(max_length=200)
-    pub_city = models.CharField(max_length=200)
-    year = models.CharField(max_length=10)
-    # identifiers are used to easily signal what source is being used in the csv
-    identifier = models.CharField(max_length=20,default='-3', unique=True)
-    add_date = models.DateTimeField('date added',default=timezone.now())
-    entered_by = models.CharField(max_length=100) # person who typed this in
-
-    def __unicode__(self):
-        return self.title
-
-    def edition_string(self):
-        """ edition number as a string """
-        if self.edition % 10 == 1:
-            return str(self.edition) + "st"
-        elif self.edition % 10 == 2:
-            return str(self.edition) + "nd"
-        elif self.edition % 10 == 3:
-            return str(self.edition) + "rd"
-        elif self.edition == 0:
-            return ""
-        else:
-            return str(self.edition) + "th"
-
-    def first_author(self):
-        """ Source.authors is a string where names are separated by commas. 
-            We just need the first one here. """
-        x = re.match(r'^[^,]+,', self.authors)
-        if x is not None:
-            return x.group().strip(',')
-        else:
-            # we have one or no authors
-            return self.authors
-
 
 class InfoBase(models.Model):
     """ abstract base class from which Variable, Equation, and Unit come """
@@ -72,15 +32,14 @@ class InfoBase(models.Model):
     representation = models.CharField(max_length=1000,blank=True)
     # full, properly written-out name:
     full_name = models.CharField(max_length=200, unique=True)
-    # paragraph explaining what it is:
+    # paragraph explaining what it is, cited from wikipedia 3 sentence summary:
     description = models.CharField(max_length=1000, blank=True)
-    cited = models.ManyToManyField(Source, blank=True)
-    # if the cited_pages is set to 0, page numbers will be ignored:
-    cited_pages = models.CharField(max_length=50,default='0',blank=True)
-    pub_date = models.DateTimeField('date updated',default=timezone.now())
-    was_revised = models.BooleanField(default=False)
+    # url to wikipedia artcle:
+    description_url = models.URLField(blank=True)
+    pub_date = models.DateTimeField('date updated',default=timezone.now(), editable=False)
+    was_revised = models.BooleanField(default=False, editable=False)
     # person to blame if the entry is bad:
-    author = models.CharField(max_length=100,default="anon",blank=True)
+    author = models.CharField(max_length=100,default="anon",blank=True, editable=False)
     # relevant areas of study:
     subjects = models.ManyToManyField(Subject,blank=True)
     # keywords that will be scanned on a search. Includes quick_name and
@@ -93,13 +52,31 @@ class InfoBase(models.Model):
     def __unicode__(self):
         return self.full_name
 
-    def save(self, *args, **kwargs):
-        if self.representation != "base" and self.representation != "":
-            self.representation = ''.join(["$\\displaystyle{", 
-                self.representation.strip('$'), "}$"])
-        super(InfoBase, self).save(*args, **kwargs)
-        self.add_SearchTerm(self.quick_name)
-        self.add_SearchTerm(self.full_name)
+    def save(self, from_admin=False, no_wiki=False, *args, **kwargs):
+        if not self.pk:
+            # only runs on creation...
+            # display style representation
+            if self.representation != "base" and self.representation != "":
+                self.representation = ''.join(["$\\displaystyle{", 
+                    self.representation.strip('$'), "}$"])
+            # auto descriptions
+            if not no_wiki:
+                try:
+                    wiki_data = wikipedia_fetch(self.full_name)
+                except:
+                    if 'from_admin' in kwargs and kwargs['from_admin']:
+                        pass # we're in the admin. do something
+                    else:
+                        sys.stdout.write("Can't find wikipedia article for %s, or something else bad happened. Please add manually.\n" 
+                            %self.full_name)
+                else:
+                    self.description = wiki_data[1]
+                    self.description_url = wiki_data[0]
+            super(InfoBase, self).save(*args, **kwargs)
+            self.add_SearchTerm(self.full_name)
+            self.add_SearchTerm(self.quick_name)
+        else:
+            super(InfoBase, self).save(*args, **kwargs)
 
     def rep_without_dollars(self):
         """ so we can add characters to the LaTeX string """
@@ -124,10 +101,6 @@ class InfoBase(models.Model):
             to_link = cls.objects.get(**{field_id + "__iexact": s})
             field = getattr(self, field_to_add)
             field.add(to_link)
-
-    def add_Sources(self, sources):
-        if sources != '':
-            self._add_from_sequence(Source, sources, "identifier", "cited")
 
 
 class Unit(InfoBase):
@@ -225,3 +198,12 @@ class QueryLog(models.Model):
 
     def __unicode__(self):
         return self.query
+
+
+def meta_SearchTerms(sender, instance, action, **kwargs):
+    """ add full_name and quick_name as SearchTerms. """
+    if action == "post_clear":
+        instance.add_SearchTerm(instance.quick_name)
+        instance.add_SearchTerm(instance.full_name)
+
+models.signals.m2m_changed.connect(meta_SearchTerms, sender=InfoBase.search_terms.through)

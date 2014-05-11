@@ -1,25 +1,18 @@
 {% extends 'search/resultsbase.html' %}
 
 {% load safecycle %}
+{% load staticfiles %}
 
 {% block varblock %}
     <div class="infoblock">
         <div class="full_name"><a href="{% url 'indiv' cls='v' name=obj.full_name %}">{{ obj.full_name }}</a> $({{ obj.rep_without_dollars }})$</div>
-        {% comment %}
         <div class="normal">
             {{ obj.description }}
-            {% with sources=obj.cited.all %}
-                {% if sources %}
-                    {% for s in sources %}
-                    <a href="{% url 'references' %}">
-                    <span class="source">
-                        <sup style="font-size: 7pt;">[{{ s.identifier }}]</sup><span class="sourceInfo">{{ s.first_author }}{% ifnotequal obj.cited_pages '0' %}, pp. {{ obj.cited_pages }} {% endifnotequal %}</span>
-                    </span></a>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+            <a href="{{ obj.description_url }}">
+            <span class="source">
+                <sup style="font-size: 7pt;">[1]</sup><span class="sourceInfo">Learn more on Wikipedia.</span>
+            </span></a>
         </div>
-        {% endcomment %}
         <div class="normal">
             <strong>Units: </strong>
             {% with units_list=obj.units_links.all %}
@@ -72,21 +65,13 @@
 {% block unitblock %}
     <div class="infoblock">
         <div class="full_name"><a href="{% url 'indiv' cls='u' name=obj.full_name %}">{{ obj.full_name }}</a> $({{ obj.rep_without_dollars }})$</div>
-        {% comment %}
         <div class="normal">
             {{ obj.description }}
-            {% with sources=obj.cited.all %}
-                {% if sources %}
-                    {% for s in sources %}
-                    <a href="{% url 'references' %}">
-                    <span class="source">
-                        <sup style="font-size: 7pt;">[{{ s.identifier }}]</sup><span class="sourceInfo">{{ s.first_author }}{% ifnotequal obj.cited_pages '0' %}{% ifnotequal obj.cited_pages '' %}, pp. {{ obj.cited_pages }} {% endifnotequal %}{% endifnotequal %}</span>
-                    </span></a>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+            <a href="{{ obj.description_url }}">
+            <span class="source">
+                <sup style="font-size: 7pt;">[1]</sup><span class="sourceInfo">Learn more on Wikipedia.</span>
+            </span></a>
         </div>
-        {% endcomment %}
         <div class="normal">
             <strong>Composition: </strong>
             {% if obj.composition %}{% ifnotequal obj.composition 'base' %}
@@ -121,22 +106,14 @@
 {% block eqblock %}
     <div class="infoblock">
         <div class="full_name"><a href="{% url 'indiv' cls='e' name=obj.full_name %}">{{ obj.full_name }}</a></div></td>
-        <div class="full_name" style="padding-top: 10px;">{{ obj.representation }}</div>
-        {% comment %}
         <div class="normal">
             {{ obj.description }}
-            {% with sources=obj.cited.all %}
-                {% if sources %}
-                    {% for s in sources %}
-                    <a href="{% url 'references' %}">
-                    <span class="source">
-                        <sup style="font-size: 7pt;">[{{ s.identifier }}]</sup><span class="sourceInfo">{{ s.first_author }}{% ifnotequal obj.cited_pages '0' %}, pp. {{ obj.cited_pages }} {% endifnotequal %}</span>
-                    </span></a>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+            <a href="{{ obj.description_url }}">
+            <span class="source">
+                <sup style="font-size: 7pt;">[1]</sup><span class="sourceInfo">Learn more on Wikipedia.</span>
+            </span></a>
         </div>
-        {% endcomment %}
+        <div class="full_name" style="padding-top: 10px;">{{ obj.representation }}</div>
         {% with vars=obj.variables.all %}
             {% with defvar=obj.defined_var %}
             {% if vars or defvar %}

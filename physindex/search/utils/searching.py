@@ -10,11 +10,11 @@ import re
 
 # prefetch lists
 __VAR_PREFETCH = ['variable_set__equation_set', 'variable_set__units_links', 
-    'variable_set__cited', 'variable_set__definition', 'variable_set__search_terms']
-__EQ_PREFETCH = ['equation_set', 'equation_set__variables', 'equation_set__defined_var', 
-    'equation_set__cited', 'equation_set__search_terms']
-__UNIT_PREFETCH = ['unit_set', 'unit_set__variable_set', 'unit_set__composition_links',
-    'unit_set__cited', 'unit_set__search_terms']
+    'variable_set__definition', 'variable_set__search_terms']
+__EQ_PREFETCH = ['equation_set', 'equation_set__variables', 
+    'equation_set__defined_var', 'equation_set__search_terms']
+__UNIT_PREFETCH = ['unit_set', 'unit_set__variable_set', 
+    'unit_set__composition_links','unit_set__search_terms']
 
 
 def find_results(query):
