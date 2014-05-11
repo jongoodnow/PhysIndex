@@ -52,7 +52,7 @@ class InfoBase(models.Model):
     def __unicode__(self):
         return self.full_name
 
-    def save(self, from_admin, *args, **kwargs):
+    def save(self, from_admin=False, no_wiki=False, *args, **kwargs):
         if not self.pk:
             # only runs on creation...
             # display style representation
@@ -60,18 +60,23 @@ class InfoBase(models.Model):
                 self.representation = ''.join(["$\\displaystyle{", 
                     self.representation.strip('$'), "}$"])
             # auto descriptions
-            try:
-                wiki_data = wikipedia_fetch(self.full_name)
-            except:
-                if 'from_admin' in kwargs and kwargs['from_admin']:
-                    pass # we're in the admin. do something
+            if not no_wiki:
+                try:
+                    wiki_data = wikipedia_fetch(self.full_name)
+                except:
+                    if 'from_admin' in kwargs and kwargs['from_admin']:
+                        pass # we're in the admin. do something
+                    else:
+                        sys.stdout.write("Can't find wikipedia article for %s, or something else bad happened. Please add manually.\n" 
+                            %self.full_name)
                 else:
-                    sys.stdout.write("Can't find wikipedia article for %s, or something else bad happened. Please add manually.\n" 
-                        %self.full_name)
-            else:
-                self.description = wiki_data[1]
-                self.description_url = wiki_data[0]
-        super(InfoBase, self).save(*args, **kwargs)
+                    self.description = wiki_data[1]
+                    self.description_url = wiki_data[0]
+            super(InfoBase, self).save(*args, **kwargs)
+            self.add_SearchTerm(self.full_name)
+            self.add_SearchTerm(self.quick_name)
+        else:
+            super(InfoBase, self).save(*args, **kwargs)
 
     def rep_without_dollars(self):
         """ so we can add characters to the LaTeX string """
