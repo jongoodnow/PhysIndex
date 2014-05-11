@@ -92,9 +92,9 @@ def spreadsheet(request, model_name):
 def adminqueue(request):
     """ Display all articles that have not been marked as revised. """
     inqueue = list(chain(Unit.objects.filter(was_revised=False)\
-        .prefetch_related('variable_set', 'composition_links', 'cited'),
+        .prefetch_related('variable_set', 'composition_links'),
                          Variable.objects.filter(was_revised=False)\
-        .prefetch_related('equation_set', 'units_links', 'cited', 'definition'),
+        .prefetch_related('equation_set', 'units_links', 'definition'),
                          Equation.objects.filter(was_revised=False)\
         .prefetch_related('variables', 'defined_var', 'cited')))
     return render(request, 'search/adminqueue.html', {'results': inqueue, 
