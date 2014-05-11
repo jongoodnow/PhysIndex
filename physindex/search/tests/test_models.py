@@ -15,7 +15,7 @@ class SearchModelsTest(TestCase):
 
     def test_infobase_add_SearchTerm(self):
         """ test linking a search term to an infobase or creating it if it
-doesn't exist. """
+            doesn't exist. """
         v1 = Variable(full_name="acceleration")
         v1.save(no_wiki=True)
         # creating a search term for the first time

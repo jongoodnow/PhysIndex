@@ -33,11 +33,11 @@
             {% endwith %}
         </div>
         {% with eqns=obj.equation_set.all %}
-            {% if eqns %}
+        {% with def=obj.definition %}
+            {% if eqns or def %}
                 <div class="usage">
                     <span class="usagebars"></span><span class="usagetext">Usage</span><span class="usagebars"></span>
                 </div>
-                {% with def=obj.definition %}
                     {% if def %}
                         <div class="odddisplay">
                             <span class="eqmath">{{ def.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='e' name=def %}">{{ def.full_name }}</a></span>
@@ -54,8 +54,8 @@
                             </div>
                         {% endfor %}
                     {% endif %}
-                {% endwith %}
             {% endif %}
+        {% endwith %}
         {% endwith %}
     </div>
     {% block varadmintools %}{% endblock %}
@@ -106,6 +106,7 @@
 {% block eqblock %}
     <div class="infoblock">
         <div class="full_name"><a href="{% url 'indiv' cls='e' name=obj.full_name %}">{{ obj.full_name }}</a></div></td>
+        <div class="full_name" style="padding-top: 10px;">{{ obj.representation }}</div>
         <div class="normal">
             {{ obj.description }}
             <a href="{{ obj.description_url }}">
@@ -113,7 +114,6 @@
                 <sup style="font-size: 7pt;">[1]</sup><span class="sourceInfo">Learn more on Wikipedia.</span>
             </span></a>
         </div>
-        <div class="full_name" style="padding-top: 10px;">{{ obj.representation }}</div>
         {% with vars=obj.variables.all %}
             {% with defvar=obj.defined_var %}
             {% if vars or defvar %}

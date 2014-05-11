@@ -86,7 +86,7 @@ class InfoBase(models.Model):
         """ create a link between a keyword and the object. If the keyword is
             not known, instantiate a SearchTerm object for it. """
         try:
-            to_link = SearchTerm.objects.get(term__iexact=word)
+            to_link = SearchTerm.objects.get(term=word)
             self.search_terms.add(to_link)
         except ObjectDoesNotExist:
             a = SearchTerm(term=word)
