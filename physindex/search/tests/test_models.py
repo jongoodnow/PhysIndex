@@ -14,8 +14,8 @@ class SearchModelsTest(TestCase):
         self.assertEqual(v1.rep_without_dollars(), r'\displaystyle{a}')
 
     def test_infobase_add_SearchTerm(self):
-        """ test linking a search term to an infobase or creating it if it 
-            doesn't exist. """
+        """ test linking a search term to an infobase or creating it if it
+doesn't exist. """
         v1 = Variable(full_name="acceleration")
         v1.save(no_wiki=True)
         # creating a search term for the first time
@@ -31,12 +31,10 @@ class SearchModelsTest(TestCase):
         v1.add_SearchTerm("acc")
         try:
             s2 = SearchTerm.objects.get(term="acc")
-            s3 = SearchTerm.objects.get(term="acceleration")
-            s4 = SearchTerm.objects.get(term="a")
         except (ObjectDoesNotExist, MultipleObjectsReturned), e:
             raise AssertionError
         else:
-            self.assertEqual({x for x in s2.variable_set.all()}, {v1})
+            self.assertEqual([x for x in s2.variable_set.all()], [v1])
             self.assertTrue(s2 in v1.search_terms.all())
         # now try adding the same search term to a different object
         e1 = Equation(full_name="Jon's Law")
@@ -66,7 +64,7 @@ class SearchModelsTest(TestCase):
             uget2 = u1.composition_links.get(full_name="second")
             uget3 = v1.units_links.get(full_name="meter")
             uget4 = v1.units_links.get(full_name="second")
-        except ObjectDoesNotExist, MultipleObjectsReturned:
+        except (ObjectDoesNotExist, MultipleObjectsReturned), e:
             raise AssertionError
         v2 = Variable(full_name="Jon's Constant")
         v2.save(no_wiki=True)
@@ -99,9 +97,8 @@ class SearchModelsTest(TestCase):
         self.assertTrue(v3 in e1.variables.all())
         self.assertFalse(v1 in e1.variables.all())
     
-    """ Won't run until source handling is fixed.
     def test_addcsv_command(self):
-        #test add_to_db function with small dataset
+        """ test add_to_db function with small dataset """
         add_to_db(Path(__file__).absolute().ancestor(3)\
                   .child("testdata").child("testdata.csv"))
         try:
@@ -111,10 +108,9 @@ class SearchModelsTest(TestCase):
             e1 = Equation.objects.get(quick_name="F=ma")
         except (ObjectDoesNotExist, MultipleObjectsReturned), e:
             raise AssertionError
-    
 
     def test_wipedata_command(self):
-        #test clear_data function
+        """ test clear_data function """
         add_to_db(Path(__file__).absolute().ancestor(3)\
                   .child("testdata").child("testdata.csv"))
         clear_data()
@@ -125,17 +121,17 @@ class SearchModelsTest(TestCase):
 
     def test_infobase_save(self):
         """ the save function is automated to add displaystyle to the latex,
-            add a description and link from wikipedia, and full_name and 
-            quick_name as search terms. """
-        v1 = Variable(full_name="Newton's Second Law", 
-                      quick_name="F=ma", 
+        add a description and link from wikipedia, and full_name and
+        quick_name as search terms. """
+        v1 = Variable(full_name="Newton's Second Law",
+                      quick_name="F=ma",
                       representation="F=ma")
         v1.save()
         self.assertEqual(v1.representation, "$\\displaystyle{F=ma}$")
         self.assertEqual(v1.description, u"Newton's laws of motion are three physical laws that together laid the foundation for classical mechanics. They describe the relationship between a body and the forces acting upon it, and its motion in response to said forces. ")
         self.assertEqual(v1.description_url, u"http://en.wikipedia.org/wiki/Newton%27s_laws_of_motion")
         # NOTE: The above represents a case where the description returned by
-        #       wikipedia is NOT what we want, so we need to revise it.
+        # wikipedia is NOT what we want, so we need to revise it.
         #
         try:
             s1 = SearchTerm.objects.get(term=v1.full_name)
@@ -148,5 +144,3 @@ class SearchModelsTest(TestCase):
         v1.description = "something else"
         v1.save()
         self.assertEqual(v1.description, "something else")
-
-
