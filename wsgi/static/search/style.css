@@ -153,7 +153,7 @@ input{
 	width: 800px;
 	position: relative;
 	background: #E3E3E3;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	padding-top: 10px;
 	opacity: 0;
 	border-radius: 5px;
