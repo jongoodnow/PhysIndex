@@ -32,7 +32,7 @@ def find_results(query):
 
 def rm_external_punct(sequence):
     """ remove all leading or trailing punctuation except appropriate parens """
-    return re.sub(r'^[^\w&^(&^\[&^\{]+|[^\w&^)&^\]&^\}]+$', '', sequence)
+    return re.sub(r'^[^\w&^\(&^\[&^\{]+|[^\w&^\)&^\]&^\}]+$', '', sequence)
 
 
 def equation_exclusive_search(query):
