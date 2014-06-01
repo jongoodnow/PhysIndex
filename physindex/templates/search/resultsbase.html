@@ -5,19 +5,43 @@
 {% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" value="{{ query_string }}" autocomplete="off" autofocus/></span>{% endblock %}
 
 {% block content %}
-	{% block admingreet %}{% endblock %}
-	{% if results %}
-		{% for obj in results|slice:slice_size %}
-			{% if obj.is_var %}
-				{% block varblock %}{% endblock %}
-			{% elif obj.is_unit %}
-				{% block unitblock %}{% endblock %}
-			{% elif obj.is_eq %}
-				{% block eqblock %}{% endblock %}
-			{% endif %}
-		{% endfor %}
-	{% else %}
-		{% block noresults %}{% endblock %}
-	{% endif %}
-	<script> infoblockIn(); </script>
+    {% block admingreet %}{% endblock %}
+    {% if results %}
+        {% for obj in results %}
+            {% if obj.is_var %}
+                {% block varblock %}{% endblock %}
+            {% elif obj.is_unit %}
+                {% block unitblock %}{% endblock %}
+            {% elif obj.is_eq %}
+                {% block eqblock %}{% endblock %}
+            {% endif %}
+            {% if not forloop.last %}
+                <div class="infoseparate"></div>
+            {% else %}
+                {% ifequal results.paginator.num_pages 1 %}
+                    <div class="infoseparate"></div>
+                {% endifequal %}
+                {% if not results.paginator %}
+                    <div class="infoseparate"></div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% if results.paginator %}
+            {% ifnotequal results.paginator.num_pages 1 %}
+                <div style="text-align: center;">
+                    {% if results.has_previous %}
+                        <a href="?query={{ query_string }}&page={{ results.previous_page_number }}">&laquo;</a>
+                    {% endif %}
+                    Page {{ results.number }} of {{ results.paginator.num_pages }}
+                    {% if results.has_next %}
+                        <a href="?query={{ query_string }}&page={{ results.next_page_number }}">&raquo;</a>
+                    {% endif %}
+                </div>
+                <div class="infoseparate"></div>
+            {% endifnotequal %}
+        {% endif %}
+    {% else %}
+        {% block noresults %}{% endblock %}
+    {% endif %}
+    <script> infoblockIn(); </script>
 {% endblock %}

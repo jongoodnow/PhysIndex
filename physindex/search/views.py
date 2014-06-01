@@ -4,6 +4,7 @@ from django.db.models.loading import get_model, get_apps, get_models
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404, HttpResponse
 from django.core.mail import mail_admins
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from forms import SearchForm
 from models import Variable, Equation, Unit
 from utils.searching import find_results
@@ -20,7 +21,7 @@ def search(request):
             query_string = form.cleaned_data['query']
             if query_string:
                 try:
-                    results = find_results(query_string)
+                    all_results = find_results(query_string)
                 except DatabaseError:
                     mail_admins("PHYSINDEX DATABASE ERROR", 
                                 "Database raised an exception on query \"%s\"" 
@@ -28,10 +29,17 @@ def search(request):
                                 fail_silently=True)
                     return render(request, 'search/dbfailure.html', {})
                 else:
-                    info_to_push = {'results': results, 
-                                    'query_string': query_string,
-                                    'slice_size': ':10'}
-                    return render(request, 'search/results.html', info_to_push)
+                    paginator = Paginator(all_results, 10)
+                    page = request.GET.get('page')
+                    try:
+                        results = paginator.page(page)
+                    except PageNotAnInteger:
+                        results = paginator.page(1)
+                    except EmptyPage:
+                        results = paginator.page(paginator.num_pages)
+                    context = {'results': results, 
+                                    'query_string': query_string}
+                    return render(request, 'search/results.html', context)
     form = SearchForm()
     return render(request, 'search/main.html', {'form': form,})
 
@@ -48,8 +56,7 @@ def indiv(request, cls, name):
         raise Http404
         return None
     obj = get_object_or_404(c, full_name=name)
-    return render(request, 'search/indiv.html', {'results': [obj], 
-                                                 'slice_size': ':'})
+    return render(request, 'search/indiv.html', {'results': [obj]})
 
 
 def features(request):
@@ -97,8 +104,7 @@ def adminqueue(request):
         .prefetch_related('equation_set', 'units_links', 'definition'),
                          Equation.objects.filter(was_revised=False)\
         .prefetch_related('variables', 'defined_var')))
-    return render(request, 'search/adminqueue.html', {'results': inqueue, 
-                                                      'slice_size': ':'})
+    return render(request, 'search/adminqueue.html', {'results': inqueue})
 
 
 @staff_member_required

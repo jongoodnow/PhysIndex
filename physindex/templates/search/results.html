@@ -59,7 +59,6 @@
         {% endwith %}
     </div>
     {% block varadmintools %}{% endblock %}
-    <div class="infoseparate"></div>
 {% endblock %}
 
 {% block unitblock %}
@@ -100,7 +99,6 @@
         </div>
     </div>
     {% block unitadmintools %}{% endblock %}
-    <div class="infoseparate"></div>
 {% endblock %}
 
 {% block eqblock %}
@@ -141,9 +139,6 @@
         {% endwith %}
     </div>
     {% block eqadmintools %}{% endblock %}
-    {% comment %}{% if not forloop.last %} REMOVE THIS WHEN WE REMOVE THE BETA WARNING {% endcomment %}
-        <div class="infoseparate"></div>
-    {% comment %}{% endif %}{% endcomment %}
 {% endblock %}
 
 {% block noresults %}
