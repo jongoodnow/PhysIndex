@@ -64,7 +64,7 @@ class InfoBase(models.Model):
                 try:
                     wiki_data = wikipedia_fetch(self.full_name)
                 except:
-                    if 'from_admin' in kwargs and kwargs['from_admin']:
+                    if from_admin:
                         pass # we're in the admin. do something
                     else:
                         sys.stdout.write("Can't find wikipedia article for %s, or something else bad happened. Please add manually.\n" 
