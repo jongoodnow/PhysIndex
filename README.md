@@ -13,7 +13,7 @@ Get Started
 Clone the repository and install the dependencies. You will need Python 2.7 and pip first. Confirm that you have Django 1.5 (the below command will install this by default).
 
 ```sh
-git clone https://github.com/jongoodnow/PhysIndex.git && cd physindex
+git clone https://github.com/jongoodnow/PhysIndex.git && cd PhysIndex
 pip install -r dev_requirements.txt
 ```
 
