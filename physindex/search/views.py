@@ -29,14 +29,16 @@ def search(request):
                                 fail_silently=True)
                     return render(request, 'search/dbfailure.html', {})
                 else:
-                    paginator = Paginator(all_results, 10)
-                    page = request.GET.get('page')
-                    try:
-                        results = paginator.page(page)
-                    except PageNotAnInteger:
-                        results = paginator.page(1)
-                    except EmptyPage:
-                        results = paginator.page(paginator.num_pages)
+                    results = all_results
+                    if all_results:
+                        paginator = Paginator(all_results, 10)
+                        page = request.GET.get('page')
+                        try:
+                            results = paginator.page(page)
+                        except PageNotAnInteger:
+                            results = paginator.page(1)
+                        except EmptyPage:
+                            results = paginator.page(paginator.num_pages)
                     context = {'results': results, 
                                     'query_string': query_string}
                     return render(request, 'search/results.html', context)
