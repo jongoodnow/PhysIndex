@@ -3,7 +3,6 @@
 	<head>
 		<title>{% block title %}PhysIndex{% endblock %}</title>
 		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-		<meta content="utf-8" http-equiv="encoding">
 		<meta name="description" content="A searchable database of physics variables, equations and their associations.">
 		<meta name="keywords" content="physics,equation,equations,variable,variables,search,find,database,units,mechanics,electricity,magnetism">
 		<meta name="application-name" content="physindex">
@@ -47,12 +46,12 @@
 	<body>
 		{% block specialheader %}{% endblock %}
 		<div id="title">
-			<a href="{% url 'search' %}"><img src="{% static 'search/title.svg' %}"></a>
+			<a href="{% url 'search' %}"><img src="{% static 'search/title.svg' %}" alt="PhysIndex"></a>
 		</div>
 		{% block form %}
 		<form method="get" action="{% url 'search' %}">
 			<div id="searchbox">
-				{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off" autofocus /></span>{% endblock %}<span id="searchglass"><img src="{% static 'search/glass.png' %}"></span>
+				{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off" autofocus /></span>{% endblock %}<span id="searchglass"><img src="{% static 'search/glass.png' %}" alt="Search"></span>
 			</div>
 		</form>
 		{% endblock %}

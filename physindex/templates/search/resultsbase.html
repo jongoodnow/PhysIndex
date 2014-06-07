@@ -30,11 +30,11 @@
             {% ifnotequal results.paginator.num_pages 1 %}
                 <div style="text-align: center;">
                     {% if results.has_previous %}
-                        <a href="?query={{ query_string }}&page={{ results.previous_page_number }}">&laquo;</a>
+                        <a href="?query={{ query_string }}&amp;page={{ results.previous_page_number }}">&laquo;</a>
                     {% endif %}
                     Page {{ results.number }} of {{ results.paginator.num_pages }}
                     {% if results.has_next %}
-                        <a href="?query={{ query_string }}&page={{ results.next_page_number }}">&raquo;</a>
+                        <a href="?query={{ query_string }}&amp;page={{ results.next_page_number }}">&raquo;</a>
                     {% endif %}
                 </div>
                 <div class="infoseparate"></div>
