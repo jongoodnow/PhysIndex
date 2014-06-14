@@ -118,9 +118,7 @@ def general_search(query):
         return None
     dataQ = SmartPQ()
     for t in term_results:
-        for obj in list(chain(t.variable_set.all(), 
-                              t.equation_set.all(), 
-                              t.unit_set.all())):
+        for obj in chain(t.variable_set.all(), t.equation_set.all(), t.unit_set.all()):
             investigate_object(obj, query, dataQ)
     return dataQ.ordered_list()
 
