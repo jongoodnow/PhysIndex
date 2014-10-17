@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from utils.wikipedia_fetch import wikipedia_fetch
 from wikipedia.exceptions import WikipediaException
 import sys
@@ -92,6 +92,10 @@ class InfoBase(models.Model):
             a = SearchTerm(term=word)
             a.save()
             self.search_terms.add(a)
+        except MultipleObjectsReturned:
+            # This shouldn't happen
+            terms = SearchTerm.objects.filter(term=word)
+            self.search_terms.add(terms[0])
 
     def _add_from_sequence(self, cls, sequence, field_id, field_to_add):
         """ versatile function for adding links given a string of data
