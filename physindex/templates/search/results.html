@@ -5,7 +5,7 @@
 
 {% block varblock %}
     <div class="infoblock">
-        <div class="full_name"><a href="{% url 'indiv' cls='v' name=obj.full_name %}">{{ obj.full_name }}</a> $({{ obj.rep_without_dollars }})$</div>
+        <div class="full_name"><a href="{% url 'indiv' cls='v' name=obj.full_name %}">{{ obj.full_name }}</a> $\left({{ obj.rep_without_dollars }}\right)$</div>
         <div class="normal">
             {{ obj.description }}
             <a href="{{ obj.description_url }}">
@@ -63,7 +63,7 @@
 
 {% block unitblock %}
     <div class="infoblock">
-        <div class="full_name"><a href="{% url 'indiv' cls='u' name=obj.full_name %}">{{ obj.full_name }}</a> $({{ obj.rep_without_dollars }})$</div>
+        <div class="full_name"><a href="{% url 'indiv' cls='u' name=obj.full_name %}">{{ obj.full_name }}</a> $\left({{ obj.rep_without_dollars }}\right)$</div>
         <div class="normal">
             {{ obj.description }}
             <a href="{{ obj.description_url }}">
