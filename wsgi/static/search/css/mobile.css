@@ -1,18 +1,7 @@
-/* ICONS */
-@font-face {
-    font-family: 'entypo';
-    src: url('entypo.eot');
-    src: url('entypo.eot?#iefix') format('embedded-opentype'),
-         url('entypo.ttf') format('truetype'),
-         url('entypo.svg#entypo') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
 /* BODY */
 
 body{
-    background-image: url("brushed.png");
+    background-image: url("../img/brushed.png");
     font-family: 'Noto Sans';
     margin: 0 auto;
     font-size: 10pt;
