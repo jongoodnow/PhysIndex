@@ -20,7 +20,7 @@ MEDIA_ROOT = BASE.child('media')
 
 MEDIA_URL = '/m/'
 
-SOUTH_TESTS_MIGRATE = False
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 STATIC_ROOT = BASE.ancestor(1).child('static_root')
 

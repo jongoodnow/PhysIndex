@@ -1,18 +1,17 @@
 from django.test import TestCase
 from django.test.client import Client
-from ..models import Equation, Variable, Unit
+from models import Equation, Variable, Unit
 
 class SearchViewsTest(TestCase):
 
-    #fixtures = ['testdata.json']
-
     def setUp(self):
         self.client = Client()
-        self.e1 = Equation.objects.get(quick_name__iexact="f=ma")
-        self.v1 = Variable.objects.get(full_name__iexact="mass")
-        self.u1 = Unit.objects.get(full_name__iexact="ampere")
-        self.v2 = Variable.objects.get(full_name__iexact="linear momentum")
-        self.e2 = Equation.objects.get(full_name__iexact="definition of linear momentum")
+        self.e1 = Equation.objects.create(quick_name="f=ma", full_name="Newton's Second Law")
+        self.v1 = Variable.objects.create(quick_name="m", full_name="Mass")
+        self.u1 = Unit.objects.create(quick_name="A", full_name="Ampere")
+        self.v2 = Variable.objects.create(quick_name="p", full_name="Linear Momentum")
+        self.e2 = Equation.objects.create(quick_name="p=mv", full_name="Definition of Linear Momentum", 
+            defined_var=self.v2)
 
     def test_page_loads(self):
         """ Test the user-accessible pages to make sure they exist """

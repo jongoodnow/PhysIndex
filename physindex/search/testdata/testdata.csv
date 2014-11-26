@@ -1,0 +1,10 @@
+Jon,s,Mechanics (Physics 1),,,,,,
+Jon,s,Electricity and Magnetism (Physics 2),,,,,,
+Nick,u,m,$\textrm{m}$,meter,base,base,metre,
+Nick,u,kg,$\textrm{kg}$,kilogram,base,base,,
+Nick,u,s,$\textrm{s}$,second,base,base,,
+Charlie,u,N,$\textrm{N}$,Newton,$\frac{ \textrm{kg} \cdot {\textrm{m}}{ \textrm{s}^2 }$,"meter,second,kilogram",,
+Charlie,v,F,$\vec{F}$,Force,Mechanics,,Newton,$ \textrm{N} $
+Nick,v,m,$\textrm{m}$,Mass,All,"kg,g,lb,weight",kilogram,$ \textrm{kg} $
+Charlie,v,a,$\vec{a}$,Acceleration,Mechanics,"dv/dt,dx^2/dt^2,vdot,xdotdot,xdoubledot,v.,x..","meter,second",$ \frac{ \textrm{m} }{ \textrm{s}^2 } $
+Nick,e,F=ma,$ \sum{ \vec{F} } = \frac{d \vec{p} }{dt} = m \frac{d \vec{v} }{dt} = m\vec{a} $,Newton's Second Law,Mechanics,"force,f,Newton's second law","force,mass,acceleration",

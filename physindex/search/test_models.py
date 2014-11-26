@@ -2,10 +2,13 @@ from django.test import TestCase
 from django.utils import timezone
 from unipath import FSPath as Path
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
-from ..models import Subject, SearchTerm, Unit, Variable, Equation
-from ..management.commands._dbmanip import add_to_db, clear_data
+from models import Subject, SearchTerm, Unit, Variable, Equation
+from management.commands._dbmanip import add_to_db, clear_data
 
 class SearchModelsTest(TestCase):
+
+    def setUp(self):
+        self.maxDiff = None
 
     def test_infobase_strings(self):
         """ check representation with $ removed and confirm latex is valid """
@@ -99,7 +102,7 @@ class SearchModelsTest(TestCase):
     
     def test_addcsv_command(self):
         """ test add_to_db function with small dataset """
-        add_to_db(Path(__file__).absolute().ancestor(3)\
+        add_to_db(Path(__file__).absolute().ancestor(1)\
                   .child("testdata").child("testdata.csv"))
         try:
             s1 = Subject.objects.get(title="Mechanics (Physics 1)")
@@ -111,7 +114,7 @@ class SearchModelsTest(TestCase):
 
     def test_wipedata_command(self):
         """ test clear_data function """
-        add_to_db(Path(__file__).absolute().ancestor(3)\
+        add_to_db(Path(__file__).absolute().ancestor(1)\
                   .child("testdata").child("testdata.csv"))
         clear_data()
         self.assertEqual(Subject.objects.all().count(), 0)
@@ -128,11 +131,9 @@ class SearchModelsTest(TestCase):
                       representation="F=ma")
         v1.save()
         self.assertEqual(v1.representation, "$\\displaystyle{F=ma}$")
-        self.assertEqual(v1.description, u"Newton's laws of motion are three physical laws that together laid the foundation for classical mechanics. They describe the relationship between a body and the forces acting upon it, and its motion in response to said forces. ")
         self.assertEqual(v1.description_url, u"http://en.wikipedia.org/wiki/Newton%27s_laws_of_motion")
         # NOTE: The above represents a case where the description returned by
         # wikipedia is NOT what we want, so we need to revise it.
-        #
         try:
             s1 = SearchTerm.objects.get(term=v1.full_name)
             s2 = SearchTerm.objects.get(term=v1.quick_name)
