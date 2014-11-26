@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db import DatabaseError
 from django.db.models.loading import get_model, get_apps, get_models
 from django.contrib.admin.views.decorators import staff_member_required
@@ -62,7 +62,7 @@ def indiv(request, cls, name):
 
 
 def features(request):
-    return render(request, 'search/features.html', {})
+    return redirect('about')
 
 
 def about(request):
@@ -70,11 +70,11 @@ def about(request):
 
 
 def contact(request):
-    return render(request, 'search/contact.html', {})
+    return redirect('about')
 
 
 def beta(request):
-    return render(request, 'search/beta.html', {})
+    return redirect('about')
 
 ### SUPER SECRET PAGES (admin stuff) ###
 

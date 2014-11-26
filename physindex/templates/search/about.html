@@ -4,14 +4,49 @@
 
 {% block content %}
 <div class="infoblock">
-    <div class="full_name"><a href="{% url 'about' %}">About PhysIndex</a></div>
+    <div class="full_name"><a name="features" href="#features">About PhysIndex</a></div>
     <div class="normal">
-        We are a team of physics majors at Rensselaer Polytechnic Institute, and we spend countless hours studying and doing homework from our textbooks. We understand the difficulties students face, whether it be at the high school or college level. PhysIndex was created with the intent to make your life easier. Our name was inspired by our constant use of the index of our physics textbook. We each have years of experience in this field of study. Our goal is to provide quick and simple information about equations and variables so that you can get back to solving problems. Physindex is currently in a beta phase, so the content currently present will be limited. We will constantly be adding more useful knowledge to the site. You can check the <a href="{% url 'beta' %}">beta page</a> for updates on the current scope of the project. Also, check out the <a href="{% url 'features' %}">features</a> of PhysIndex to see how it can help you, or <a href="{% url 'contact' %}">contact us</a> with any feedback you have.
+        PhysIndex lets you do quick, simple queries for equations and variables so that you can get back to solving problems. There are a few key features that you can use to find the information you need.
     </div>
-    <div class="usage" style="padding-top: 5px;">
-        <span class="usagebars"></span><span class="usagetext">Legal</span><span class="usagebars"></span>
+    <div class="usage">
+        <span class="usagebars"></span><span class="usagetext">Single Letter Searching</span><span class="usagebars"></span>
     </div>
     <div class="normal" style="padding-top: 0px;">
+        In most search engines, it can be impossible to type in a single letter and get exactly what you want, which can make searching for unknown variables difficult. Let's say you can't remember what the $K$ in $\displaystyle{ K = \frac{1}{2} m v^2 }$ stands for. All you need to do is type <a href="http://www.physindex.com/?query=K">K</a> into the search bar above to find all the information you need.
+    </div>
+    <div class="usage">
+        <span class="usagebars"></span><span class="usagetext">List All Relevant Equations</span><span class="usagebars"></span>
+    </div>
+    <div class="normal" style="padding-top: 0px;">
+        A difficult problem might ask you to leave your answers in terms of $x$, but you may be unsure of where to start the problem. It might be helpful to
+        get a large list of all relevant equations so that you can decide which you need to solve the problem. Simply search for the variable to get this information.
+    </div>
+    <div class="usage">
+        <span class="usagebars"></span><span class="usagetext">Simple Equation, Variable, and Unit Data</span><span class="usagebars"></span>
+    </div>
+    <div class="normal" style="padding-top: 0px;">
+        The search results are designed to convey the maximum amount of information in the smallest amount of reading. Most of our information is cited from <a href="http://wikipedia.org">Wikipedia</a>, where you can go to learn more by clicking on the <sup style="font-size: 7pt;">[1]</sup> at the end of each article. 
+        <p>PhysIndex is not meant replace textbooks or in-depth articles, rather PhysIndex is meant to give you a quick solution to a quick problem without extensive research.
+    </div>
+</div>
+<div class="infoseparate"></div>
+<div class="infoblock">
+    <div class="full_name"><a name="contact" href="#contact">Get In Touch</a></div>
+    <div class="normal">
+        Have concerns about PhysIndex? We'd love to hear from you via email at <a href="mailto:physindex@gmail.com">physindex@gmail.com</a>. If you find a bug or a software issue, you can also <a href="https://github.com/jongoodnow/PhysIndex/issues">open a ticket on Github</a>.
+    </div>
+</div>
+<div class="infoseparate"></div>
+<div class="infoblock">
+    <div class="full_name"><a name="oss" href="#oss">Open Source</a></div>
+    <div class="normal">
+        PhysIndex is Open Source Software licensed under the <a href="https://github.com/jongoodnow/PhysIndex/blob/master/LICENSE">BSD License</a>. You are welcome to contribute, or otherwise use our code, by <a href="https://github.com/jongoodnow/PhysIndex">forking the repository on Github</a>.
+    </div>
+</div>
+<div class="infoseparate"></div>
+<div class="infoblock">
+    <div class="full_name"><a name="legal" href="#legal">Legal</a></div>
+    <div class="normal">
         <div style="padding-bottom: 5px;">The following web resources are used on this web site:</div>
         <div><a href="http://www.entypo.com">Entypo</a> pictograms by Daniel Bruce used under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license.</div>
         <div>"White Brushed" pattern by <a href="http://uniqappz.com/">Andre Schouten</a> (modified) used under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license.</div>
@@ -21,8 +56,6 @@
         &copy;2014 Jonathan Goodnow, Charles Khachian, Nicholas Boni
     </div>
 </div>
-
-<div class="infoseparate"></div>
 
 <script>infoblockIn();</script>
 {% endblock %}

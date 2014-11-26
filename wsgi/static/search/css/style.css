@@ -117,21 +117,17 @@ input{
 /* NAVIGATION */
 
 #navbar{
-	margin: 0px auto;
-	text-align: center;
 	width: 800px;
-	position: relative;
-	pointer-events: none;
-}
-
-#navbar a{
-	pointer-events: auto;
 }
 
 .navtext{
-	text-align: center;
-	padding: 15px;
 	font-size: 12px;
+}
+
+.navtext-right{
+	padding-top: 5px;
+	float: right;
+	text-align: right;
 }
 
 /* DATA DISPLAY */
@@ -245,9 +241,27 @@ input{
     -o-transition: opacity 0.5s;
     -ms-transition: opacity 0.5s;
     transition: opacity 0.5s;
-
+}
+.source .sourceInfoWrap{
+    opacity: 0;
+    position: relative;
+    padding-top: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-bottom: 2px;
+    color: #ffffff;
+    background: #000000;
+    text-decoration: none;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    -ms-transition: opacity 0.5s;
+    transition: opacity 0.5s;
 }
 .source:hover .sourceInfo {
+    opacity: 0.8;
+}
+.source:hover .sourceInfoWrap{
     opacity: 0.8;
 }
 #message{

@@ -57,11 +57,9 @@
 		{% endblock %}
 		{% block content %}{% endblock %}
 		{% block navbarbottom %}
-		<div id="betawarning">
-			PhysIndex is currently in a <a href="{% url 'beta' %}">public beta phase.</a>
-		</div>
 		<div id="navbar">
-			<span class="navtext"><a href="{% url 'about' %}">About</a></span><span class="navtext"><a href="{% url 'features' %}">Features</a></span><span class="navtext"><a href="{% url 'contact' %}">Contact</a></span><span class="navtext"><a href="https://github.com/jongoodnow/PhysIndex">Code</a></span>
+			<span class="navtext navtext-left"><a href="{% url 'about' %}">About</a></span>
+			<span class="navtext navtext-right source"><a href="{% url 'about' %}#legal">&copy;2014</a><div class="sourceInfoWrap"><a href="http://goodnow.io" style="color: white;">Jonathan Goodnow</a>, Charles Khachian, and Nicholas Boni</div></span>
 		</div>
 		{% endblock %}
 		{% block specialfooter %}{% endblock %}

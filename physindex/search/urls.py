@@ -5,13 +5,14 @@ from search import views
 urlpatterns = patterns('',
     url(r'^$', views.search, name='search'),
     url(r'^(?P<cls>[veu])/(?P<name>.+)/$', views.indiv, name='indiv'),
-    url(r'^features/$', views.features, name='features'),
     url(r'^about/$', views.about, name='about'),
+
+    # depreciated views - these all redirect to 'about'
+    url(r'^features/$', views.features, name='features'),
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^beta/$', views.beta, name='beta'),
 
     # super secret pages
-
     url(r'^admin/spreadsheets/(?P<model_name>\w+)/$', views.spreadsheet, 
         name="spreadsheet"),
     url(r'^admin/queue/$', views.adminqueue, name="adminqueue"),
