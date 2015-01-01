@@ -8,9 +8,14 @@
 
 {% block form %}
 <form id="search_form" method="get" action="{% url 'search' %}" onSubmit="javascript:titleUp(); return false;">
-	<div id="searchbox">
-		{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off" autofocus/></span>{% endblock %}<span id="searchglass"><img src="{% static 'search/img/glass.png' %}"></span>
-	</div>
+    <div id="searchbox">
+        <div class="input-group">
+            {% block input %}<input type="text" class="form-control" placeholder="Search" name="query" maxlength="200" autocomplete="off" autofocus>{% endblock %}
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" style="height: 100%;"><i class="glyphicon glyphicon-search"></i></button>
+            </span>
+        </div>
+    </div>
 </form>
 {% endblock %}
 
