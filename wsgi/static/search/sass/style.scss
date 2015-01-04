@@ -1,0 +1,200 @@
+body{
+    background-image: url("../img/brushed.png");
+    font-family: "Noto Sans";
+    color: black;
+
+    a{
+        text-decoration: none;
+        color: #0000B0;
+    }
+
+    a:hover{
+        color: #00B000;
+        text-decoration: none;
+    }
+
+    header{
+        text-align: center;
+        padding: 30px 0px 10px 0px;
+    }
+
+    header#homepage{
+        @media (min-width: 800px){
+            padding-top: 270px;
+        }
+    }
+
+    form#searchform{
+        padding-bottom: 20px;
+        width: 500px;
+        margin: 0 auto;
+
+        #query{
+            @media (min-width: 800px){
+                border-radius: 5px;
+            }
+        }
+
+        @media (max-width: 799px){
+            width: 100%;
+        }
+    }
+
+    article{
+        margin: 0px auto;
+        width: 800px;
+        text-align: left;
+        position: relative;
+        background: #E3E3E3;
+        padding: 10px 0px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 3px 4px 0px rgba(50,50,50,0.2);
+
+        @media (max-width: 799px){
+            width: 100%;
+        }
+
+        .greeting{
+            text-align: center;
+            font-size: 12pt;
+        }
+
+        h1{
+            font-size: 16pt;
+            color: black;
+            text-align: center;
+            font-family: "Ubuntu";
+            margin: 0;
+        }
+
+        h2{
+            font-size: 14pt;
+            color: black;
+            text-align: center;
+            padding-bottom: 13px;
+            margin: 0;
+
+            .blackbar{
+                display: inline-block;
+                height: 1px;
+                background-color: black;
+                width: 100px;
+                position: relative;
+                bottom: 5px;
+            }
+
+            .sectname{
+                padding: 0px 10px 0px 10px;
+            }
+        }
+
+        p, div{
+            font-size: 12pt;
+            color: black;
+            padding: 10px 15px 10px 15px;
+            text-align: justify;
+            margin: 0;
+
+            .source{
+                position: relative;
+                overflow: visible;
+
+                .sourceInfo{
+                    opacity: 0;
+                    position: absolute;
+                    display: table-cell;
+                    white-space: nowrap;
+                    bottom: 0px;
+                    left: 0px;
+                    padding: 2px 6px;
+                    color: #ffffff;
+                    background: #000000;
+                    text-decoration: none;
+                    -webkit-transition: opacity 0.5s;
+                    -moz-transition: opacity 0.5s;
+                    -o-transition: opacity 0.5s;
+                    -ms-transition: opacity 0.5s;
+                    transition: opacity 0.5s;
+                }
+            }
+        }
+
+        div{
+            padding: 0px 15px;
+        }
+
+        ul{
+            font-size: 12pt;
+            color: black;
+            list-style-type: none;
+
+            li{
+                padding: 10px 15px;
+
+                .oddnumbered{
+                    background-color: #D3D3D3;
+                }
+
+                .eqname{
+                    float: right;
+                }
+            }
+        }
+
+        table #fixed{
+            table-layout: fixed;
+            padding-left: 12px;
+
+            td{
+                overflow: hidden;
+                padding-bottom: 10px;
+                vertical-align: top;
+            }
+        }
+    }
+
+    .twitter-typeahead{
+        width: 500px;
+        border-radius: 5px;
+
+        .tt-hint{
+            border-radius: 5px !important;
+        }
+
+        .tt-dropdown-menu {
+            width: 500px;
+            max-height: 160px;
+            overflow-y: auto;
+            padding: 8px 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            -webkit-border-radius: 8px;
+               -moz-border-radius: 8px;
+                    border-radius: 8px;
+            -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+               -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+                    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        }
+
+        .tt-suggestion {
+            padding: 3px 10px;
+        }
+
+        .tt-suggestion.tt-cursor {
+            color: #fff;
+            background-color: #0097cf;
+
+        }
+
+        .tt-suggestion p {
+            margin: 0;
+        }
+    }
+
+    nav.navbar{
+        margin-bottom: 0;
+        border-radius: 0;
+    }
+}

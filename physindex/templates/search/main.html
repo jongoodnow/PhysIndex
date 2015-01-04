@@ -2,33 +2,19 @@
 
 {% load staticfiles %}
 <script type="text/javascript" src="{% static 'search/js/scripts.js' %}"></script>
-{% block specialheader %}
-<div id="frontpageTitle"></div>
-{% endblock %}
+{% block headerids %}homepage{% endblock %}
 
-{% block form %}
-<form id="search_form" method="get" action="{% url 'search' %}" onSubmit="javascript:titleUp(); return false;">
-    <div id="searchbox">
-        <div class="input-group">
-            {% block input %}<input type="text" class="form-control" placeholder="Search" name="query" maxlength="200" autocomplete="off" autofocus>{% endblock %}
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" style="height: 100%;"><i class="glyphicon glyphicon-search"></i></button>
-            </span>
-        </div>
-    </div>
-</form>
-{% endblock %}
+{% block searchonsubmit %}javascript:titleUp(); return false;{% endblock %}
 
 {% block content %}
-<div class="infoblock" style="opacity: 1; overflow: hidden;">
-	<div id="message" style="opacity: 1;">
-		Type in a physics variable, equation, or unit.
-	</div>
-    <div id="load" style="opacity: 0;">
-        <img src="{% static 'search/img/ajax-loader.gif' %}">
+<article>
+    <div class="greeting">
+        Type in a physics variable, equation, or unit.
     </div>
-</div>
+</article>
 {% endblock %}
+
+{% block navbarclass %}navbar-fixed-bottom{% endblock %}
 
 {% block specialfooter %}
 <script type="text/javascript">
