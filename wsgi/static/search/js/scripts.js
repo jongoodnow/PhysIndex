@@ -25,7 +25,7 @@ function titleUp()
     setTimeout(function(){
         var s = document.getElementById("search_form");
         if(s.query.value != "" && !ContainsAny(s.query.value.toLowerCase(), 
-            ['select', 'union', 'benchmark', 'md5', 'db_name', 'concat', 'null', 'drop']
+            ['select', 'union', 'benchmark', 'md5', 'db_name', 'concat', 'null', 'drop', 'convert']
         )){
             var top_pad = document.getElementById("frontpageTitle");
             var text_obj = document.getElementById("message");

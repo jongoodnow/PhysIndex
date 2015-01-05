@@ -20,6 +20,10 @@ def search(request):
         if form.is_valid():
             query_string = form.cleaned_data['query']
             if query_string:
+                if any(word in query_string.lower() for word in 
+                    ['select', 'union', 'benchmark', 'md5', 'db_name', 
+                    'concat', 'null', 'drop', 'convert']):
+                    return redirect('http://127.0.0.1')
                 try:
                     all_results = find_results(query_string)
                 except DatabaseError:
