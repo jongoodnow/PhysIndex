@@ -22,7 +22,7 @@ def search(request):
             if query_string:
                 if any(word in query_string.lower() for word in 
                     ['select', 'union', 'benchmark', 'md5', 'db_name', 
-                    'concat', 'null', 'drop', 'convert']):
+                    'concat', 'null', 'drop', 'convert']) or len(query_string) > 200:
                     return redirect('search')
                 try:
                     all_results = find_results(query_string)
