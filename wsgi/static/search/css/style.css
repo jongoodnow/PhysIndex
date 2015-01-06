@@ -21,6 +21,8 @@ body {
     @media (min-width: 800px) {
       body form#searchform #query {
         border-radius: 5px; } }
+    body form#searchform .hidden {
+      display: hidden; }
     @media (max-width: 799px) {
       body form#searchform {
         width: 100%; } }

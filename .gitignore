@@ -4,4 +4,6 @@
 *.pyo
 local_settings.py
 .coverage
+.sass-cache
 node_modules
+wsgi/static/search/data
