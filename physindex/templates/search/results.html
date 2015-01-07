@@ -4,7 +4,7 @@
 {% load staticfiles %}
 
 {% block varblock %}
-    <div class="infoblock">
+    <article>
         <div class="full_name"><a href="{% url 'indiv' cls='v' name=obj.full_name %}">{{ obj.full_name }}</a> $\left({{ obj.rep_without_dollars }}\right)$</div>
         <div class="normal">
             {{ obj.description }}
@@ -62,7 +62,7 @@
 {% endblock %}
 
 {% block unitblock %}
-    <div class="infoblock">
+    <article>
         <div class="full_name"><a href="{% url 'indiv' cls='u' name=obj.full_name %}">{{ obj.full_name }}</a> $\left({{ obj.rep_without_dollars }}\right)$</div>
         <div class="normal">
             {{ obj.description }}
@@ -102,10 +102,10 @@
 {% endblock %}
 
 {% block eqblock %}
-    <div class="infoblock">
-        <div class="full_name"><a href="{% url 'indiv' cls='e' name=obj.full_name %}">{{ obj.full_name }}</a></div>
-        <div class="full_name" style="padding-top: 10px;">{{ obj.representation }}</div>
-        <div class="normal">
+    <article>
+        <h1><a href="{% url 'indiv' cls='e' name=obj.full_name %}">{{ obj.full_name }}</a></h1>
+        <h1 class="full_name" style="padding-top: 10px;">{{ obj.representation }}</h1>
+        <div>
             {{ obj.description }}
             <a href="{{ obj.description_url }}">
             <span class="source">
@@ -115,37 +115,37 @@
         {% with vars=obj.variables.all %}
             {% with defvar=obj.defined_var %}
             {% if vars or defvar %}
-                <div class="usage">
-                    <span class="usagebars"></span><span class="usagetext">Composition</span><span class="usagebars"></span>
-                </div>
+                <h2><span class="blackbar hidden-xs"></span><span class="sectname">Composition</span><span class="blackbar hidden-xs"></span></h2>
+                <ul>
                 {% if defvar %}
-                    <div class="odddisplay">
-                        <span class="eqmath">{{ defvar.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='v' name=defvar %}">{{ defvar.full_name }}</a></span>
-                    </div>
+                    <li class="oddnumbered">
+                        <span>{{ defvar.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='v' name=defvar %}">{{ defvar.full_name }}</a></span>
+                    </li>
                     {% for var in vars %}
-                    <div class="{% safe_cycle 'normalrow' 'odddisplay' %}">
-                        <span class="{% safe_cycle '' 'eqmath' %}">{{ var.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='v' name=var.full_name %}">{{ var.full_name }}</a></span>
-                    </div>
+                    <li class="{% safe_cycle '' 'odddisplay' %}">
+                        <span>{{ var.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='v' name=var.full_name %}">{{ var.full_name }}</a></span>
+                    </li>
                     {% endfor %}
                 {% else %}
                     {% for var in vars %}
-                        <div class="{% safe_cycle 'odddisplay' 'normalrow' %}">
-                            <span class="{% safe_cycle 'eqmath' '' %}">{{ var.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='v' name=var.full_name %}">{{ var.full_name }}</a></span>
-                        </div>
+                        <li class="{% safe_cycle 'odddisplay' '' %}">
+                            <span>{{ var.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='v' name=var.full_name %}">{{ var.full_name }}</a></span>
+                        </li>
                     {% endfor %}
                 {% endif %}
+                </ul>
             {% endif %}
             {% endwith %}
         {% endwith %}
-    </div>
+    </article>
     {% block eqadmintools %}{% endblock %}
 {% endblock %}
 
 {% block noresults %}
-    <div class="infoblock">
-        <div class="full_name">Sorry, we can't find any results for that.</div>
-        <div class="normal">These are the kind of things you should try searching for:</div>
-        <table class="fixed">
+    <article>
+        <h1>Sorry, we can't find any results for that.</h1>
+        <p>These are the kind of things you should try searching for:</p>
+        <div><table class="fixed">
             <tr>
                 <td><strong>1.</strong></td>
                 <td>The symbol used to represent a physics variable<br />
@@ -161,9 +161,9 @@
                 <td>A full equation or a piece of it<br />
                     <i>Examples: <a href="http://www.physindex.com/?query=F+%3D+ma">F = ma</a>, <a href="http://www.physindex.com/?query=rxf">rxf</a>, <a href="http://www.physindex.com/?query=T+%3D+1%2F(freq)">T = 1/(freq)</a></i></td>
             </tr>
-        </table>
-        <div class="normal"><strong>Still can't find what you need?</strong><br />
+        </table></div>
+        <p><strong>Still can't find what you need?</strong><br />
             <a href="mailto:physindex@gmail.com">Send us an email</a> and let us know what's missing.
-        </div>
-    </div>
+        </p>
+    </article>
 {% endblock %}

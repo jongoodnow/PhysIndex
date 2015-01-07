@@ -5,6 +5,9 @@ export PYTHON_EGG_CACHE=${OPENSHIFT_HOME_DIR}python/virtenv/lib/python-2.7/site-
 echo "Executing 'python ${OPENSHIFT_REPO_DIR}physindex/manage.py collectstatic --noinput -v0'"
 python "$OPENSHIFT_REPO_DIR"physindex/manage.py collectstatic --noinput -v0
 
+echo "Executing 'python ${OPENSHIFT_REPO_DIR}physindex/manage.py jsoninit'"
+python "$OPENSHIFT_REPO_DIR"physindex/manage.py jsoninit
+
 if [ ! -d $OPENSHIFT_DATA_DIR/media ]; then
 mkdir $OPENSHIFT_DATA_DIR/media
 fi

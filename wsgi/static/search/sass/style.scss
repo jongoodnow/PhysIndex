@@ -136,17 +136,17 @@ body{
             li{
                 padding: 10px 15px;
 
-                .oddnumbered{
-                    background-color: #D3D3D3;
-                }
-
                 .eqname{
                     float: right;
                 }
             }
+
+            li.oddnumbered{
+                background-color: #D3D3D3;
+            }
         }
 
-        table #fixed{
+        table.fixed{
             table-layout: fixed;
             padding-left: 12px;
 

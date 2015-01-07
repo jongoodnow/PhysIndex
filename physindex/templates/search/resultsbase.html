@@ -2,7 +2,7 @@
 
 {% block title %}PhysIndex | Results for {{ query_string }}{% endblock %}
 
-{% block input %}<input type="text" class="form-control" placeholder="{{ query_string }}" id="query" name="query" maxlength="200" autocomplete="off" autofocus>{% endblock %}
+{% block input %}<input type="text" class="form-control" placeholder="Search" value="{{ query_string }}" id="query" name="query" maxlength="200" autocomplete="off" autofocus>{% endblock %}
 
 {% block content %}
     {% block admingreet %}{% endblock %}

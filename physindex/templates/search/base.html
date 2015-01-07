@@ -60,7 +60,7 @@
 		{% endblock %}
 		{% block content %}{% endblock %}
 		{% block navbarbottom %}
-		<nav class="navbar navbar-inner navbar-inverse {% block navbarclass %}{% endblock %}">
+		<nav id="bottom-nav" class="navbar navbar-inner navbar-inverse {% block navbarclass %}{% endblock %}">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li class="{% block aboutclass %}{% endblock %}"><a href="{% url 'about' %}">About</a></li>

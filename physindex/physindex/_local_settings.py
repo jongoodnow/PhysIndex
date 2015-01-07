@@ -55,7 +55,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'search',
-    'south',
     'django_extensions',
     # uncomment below for debug_toolbar. ("django-debug-toolbar" must be installed)
     #'debug_toolbar',

@@ -26,31 +26,31 @@ function titleUp()
 }
  
 $(document).ready(function(){
-    var countries = new Bloodhound({
+    if($('body').height() <= $(window).height()){
+        $('#bottom-nav').addClass('navbar-fixed-bottom');
+    }
+
+    var names = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         limit: 10,
         prefetch: {
             url: '/static/search/data/names.json',
-            // the json file contains an array of strings, but the Bloodhound
-            // suggestion engine expects JavaScript objects so this converts all of
-            // those strings
             filter: function(list) {
-                return $.map(list, function(country) { return { name: country }; });
+                return $.map(list, function(value) { return { name: value }; });
             }
         }
     });
      
-    // kicks off the loading/processing of `local` and `prefetch`
-    countries.initialize(); 
+    names.initialize(); 
 
     $('#query').typeahead({
         hint: true,
         highlight: true,
         minLength: 1
     },{
-        name: 'countries',
+        name: 'names',
         displayKey: 'name',
-        source: countries.ttAdapter()
+        source: names.ttAdapter()
     });
 });

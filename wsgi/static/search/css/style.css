@@ -96,14 +96,14 @@ body {
       list-style-type: none; }
       body article ul li {
         padding: 10px 15px; }
-        body article ul li .oddnumbered {
-          background-color: #D3D3D3; }
         body article ul li .eqname {
           float: right; }
-    body article table #fixed {
+      body article ul li.oddnumbered {
+        background-color: #D3D3D3; }
+    body article table.fixed {
       table-layout: fixed;
       padding-left: 12px; }
-      body article table #fixed td {
+      body article table.fixed td {
         overflow: hidden;
         padding-bottom: 10px;
         vertical-align: top; }
