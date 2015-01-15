@@ -90,16 +90,12 @@ body {
           transition: opacity 0.5s; }
     body article div {
       padding: 0px 15px; }
-    body article ul {
-      font-size: 12pt;
-      color: black;
-      list-style-type: none; }
-      body article ul li {
-        padding: 10px 15px; }
-        body article ul li .eqname {
-          float: right; }
-      body article ul li.oddnumbered {
-        background-color: #D3D3D3; }
+    body article div.even, body article div.odd {
+      padding: 10px 15px; }
+      body article div.even .eqname, body article div.odd .eqname {
+        float: right; }
+    body article div.odd {
+      background-color: #D3D3D3; }
     body article table.fixed {
       table-layout: fixed;
       padding-left: 12px; }

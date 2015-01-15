@@ -128,22 +128,16 @@ body{
             padding: 0px 15px;
         }
 
-        ul{
-            font-size: 12pt;
-            color: black;
-            list-style-type: none;
+        div.even, div.odd{
+            padding: 10px 15px;
 
-            li{
-                padding: 10px 15px;
-
-                .eqname{
-                    float: right;
-                }
+            .eqname{
+                float: right;
             }
+        }
 
-            li.oddnumbered{
-                background-color: #D3D3D3;
-            }
+        div.odd{
+            background-color: #D3D3D3;
         }
 
         table.fixed{

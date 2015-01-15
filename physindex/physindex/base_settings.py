@@ -22,11 +22,11 @@ MEDIA_URL = '/m/'
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
-STATIC_ROOT = BASE.ancestor(1).child('wsgi').child('static')
+STATIC_ROOT = BASE
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = ()
+STATICFILES_DIRS = (BASE.ancestor(1).child('wsgi').child('static'),)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

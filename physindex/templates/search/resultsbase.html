@@ -28,15 +28,21 @@
         {% endfor %}
         {% if results.paginator %}
             {% ifnotequal results.paginator.num_pages 1 %}
-                <div style="text-align: center;">
-                    {% if results.has_previous %}
-                        <a href="?query={{ query_string }}&amp;page={{ results.previous_page_number }}">&laquo;</a>
-                    {% endif %}
-                    Page {{ results.number }} of {{ results.paginator.num_pages }}
-                    {% if results.has_next %}
-                        <a href="?query={{ query_string }}&amp;page={{ results.next_page_number }}">&raquo;</a>
-                    {% endif %}
-                </div>
+                <nav>
+                    <ul class="pager">
+                        {% if results.has_previous %}
+                            <li><a href="?query={{ query_string }}&amp;page={{ results.previous_page_number }}">&larr;</a></li>
+                        {% else %}
+                            <li class="disabled"><a href="#">&larr;</a></li>
+                        {% endif %}
+                        <li>{{ results.number }} of {{ results.paginator.num_pages }}</li>
+                        {% if results.has_next %}
+                            <li><a href="?query={{ query_string }}&amp;page={{ results.next_page_number }}">&rarr;</a></li>
+                        {% else %}
+                            <li class="disabled"><a href="#">&rarr;</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
             {% endifnotequal %}
         {% endif %}
     {% else %}
