@@ -13,6 +13,6 @@ class Command(BaseCommand):
             if not eq.full_name.lower().startswith('definition')]
         full_names += [var.full_name for var in Variable.objects.all()]
         full_names += [un.full_name for un in Unit.objects.all()]
-        dest_path = '/home/jon/projects/PhysIndex/wsgi/static/search/data/names.json' #os.path.join(settings.STATIC_ROOT, 'search', 'data', 'names.json')
+        dest_path = os.path.join(settings.STATIC_ROOT, 'search', 'data', 'names.json')
         with open(dest_path, 'w') as dest:
             dest.write(json.dumps(full_names))
