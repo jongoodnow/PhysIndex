@@ -33,13 +33,13 @@
                         {% if results.has_previous %}
                             <li><a href="?query={{ query_string }}&amp;page={{ results.previous_page_number }}">&larr;</a></li>
                         {% else %}
-                            <li class="disabled"><a href="#">&larr;</a></li>
+                            <li class="disabled"><a href="#" onclick="return false;">&larr;</a></li>
                         {% endif %}
                         <li>{{ results.number }} of {{ results.paginator.num_pages }}</li>
                         {% if results.has_next %}
                             <li><a href="?query={{ query_string }}&amp;page={{ results.next_page_number }}">&rarr;</a></li>
                         {% else %}
-                            <li class="disabled"><a href="#">&rarr;</a></li>
+                            <li class="disabled"><a href="#" onclick="return false;">&rarr;</a></li>
                         {% endif %}
                     </ul>
                 </nav>

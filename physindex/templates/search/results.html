@@ -36,18 +36,18 @@
                     <span class="blackbar hidden-xs"></span><span class="sectname">Usage</span><span class="blackbar hidden-xs"></span>
                 </h2>
                     {% if def %}
-                        <div class="odd">
-                            <span class="eqmath">{{ def.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='e' name=def %}">{{ def.full_name }}</a></span>
+                        <div class="odd row {% if eqns %}{% else %}last{% endif %}">
+                            <div class="eqmath col-md-6 col-xs-12">{{ def.representation }}</div><div class="eqname col-md-6 col-xs-12"><a href="{% url 'indiv' cls='e' name=def %}">{{ def.full_name }}</a></div>
                         </div>
                         {% for eq in eqns %}
-                        <div class="{% safe_cycle 'even' 'odd' %}">
-                            <span class="{% safe_cycle '' 'eqmath' %}">{{ eq.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='e' name=eq.full_name %}">{{ eq.full_name }}</a></span>
+                        <div class="{% safe_cycle 'even' 'odd' %} row {% if forloop.last %}last{% endif %}">
+                            <div class="eqmath col-md-6 col-xs-12">{{ eq.representation }}</div><div class="eqname col-md-6 col-xs-12"><a href="{% url 'indiv' cls='e' name=eq.full_name %}">{{ eq.full_name }}</a></div>
                         </div>
                         {% endfor %}
                     {% else %}
                         {% for eq in eqns %}
-                            <div class="{% safe_cycle 'odd' 'even' %}">
-                                <span class="{% safe_cycle 'eqmath' '' %}">{{ eq.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='e' name=eq.full_name %}">{{ eq.full_name }}</a></span>
+                            <div class="{% safe_cycle 'odd' 'even' %} row {% if forloop.last %}last{% endif %}">
+                                <div class="eqmath col-md-6 col-xs-12">{{ eq.representation }}</div><div class="eqname col-md-6 col-xs-12"><a href="{% url 'indiv' cls='e' name=eq.full_name %}">{{ eq.full_name }}</a></div>
                             </div>
                         {% endfor %}
                     {% endif %}
@@ -63,10 +63,7 @@
         <h1><a href="{% url 'indiv' cls='u' name=obj.full_name %}">{{ obj.full_name }}</a> $\left({{ obj.rep_without_dollars }}\right)$</h1>
         <p>
             {{ obj.description }}
-            <a href="{{ obj.description_url }}">
-            <span class="source">
-                <sup style="font-size: 7pt;">[1]</sup><span class="sourceInfo">Learn more on Wikipedia.</span>
-            </span></a>
+            <a href="{{ obj.description_url }}">Read more.</a>
         </p>
         <p>
             <strong>Composition: </strong>
@@ -104,28 +101,25 @@
         <h1 class="full_name" style="padding-top: 10px;">{{ obj.representation }}</h1>
         <p>
             {{ obj.description }}
-            <a href="{{ obj.description_url }}">
-            <span class="source">
-                <sup style="font-size: 7pt;">[1]</sup><span class="sourceInfo">Learn more on Wikipedia.</span>
-            </span></a>
+            <a href="{{ obj.description_url }}">Read more.</a>
         </p>
         {% with vars=obj.variables.all %}
             {% with defvar=obj.defined_var %}
             {% if vars or defvar %}
                 <h2><span class="blackbar hidden-xs"></span><span class="sectname">Composition</span><span class="blackbar hidden-xs"></span></h2>
                 {% if defvar %}
-                    <div class="odd">
-                        <span>{{ defvar.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='v' name=defvar %}">{{ defvar.full_name }}</a></span>
+                    <div class="odd row {% if vars %}{% else %}last{% endif %}">
+                        <div class="eqmath col-md-6 col-xs-12">{{ defvar.representation }}</div><div class="eqname col-md-6 col-xs-12"><a href="{% url 'indiv' cls='v' name=defvar %}">{{ defvar.full_name }}</a></div>
                     </div>
                     {% for var in vars %}
-                    <div class="{% safe_cycle 'even' 'odd' %}">
-                        <span>{{ var.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='v' name=var.full_name %}">{{ var.full_name }}</a></span>
+                    <div class="{% safe_cycle 'even' 'odd' %} row {% if forloop.last %}last{% endif %}">
+                        <div class="eqmath col-md-6 col-xs-12">{{ var.representation }}</div><div class="eqname col-md-6 col-xs-12"><a href="{% url 'indiv' cls='v' name=var.full_name %}">{{ var.full_name }}</a></div>
                     </div>
                     {% endfor %}
                 {% else %}
                     {% for var in vars %}
-                        <div class="{% safe_cycle 'odd' 'even' %}">
-                            <span>{{ var.representation }}</span><span class="eqname"><a href="{% url 'indiv' cls='v' name=var.full_name %}">{{ var.full_name }}</a></span>
+                        <div class="{% safe_cycle 'odd' 'even' %} row {% if forloop.last %}last{% endif %}">
+                            <div class="eqmath col-md-6 col-xs-12">{{ var.representation }}</div><div class="eqname col-md-6 col-xs-12"><a href="{% url 'indiv' cls='v' name=var.full_name %}">{{ var.full_name }}</a></div>
                         </div>
                     {% endfor %}
                 {% endif %}

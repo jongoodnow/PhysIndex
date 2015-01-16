@@ -61,11 +61,19 @@
 		{% block content %}{% endblock %}
 		{% block navbarbottom %}
 		<nav id="bottom-nav" class="navbar navbar-inner navbar-inverse {% block navbarclass %}{% endblock %}">
-			<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navdata">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="container-fluid collapse navbar-collapse" id="navdata">
 				<ul class="nav navbar-nav">
-					<li class="{% block aboutclass %}{% endblock %}"><a href="{% url 'about' %}">About</a></li>
+					<li><a href="{% url 'about' %}">About</a></li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right hidden-xs">
+				<ul class="nav navbar-nav navbar-right">
 					<li><a href="{% url 'about' %}#legal">&copy;2015</li>
 				</ul>
 			</div>
