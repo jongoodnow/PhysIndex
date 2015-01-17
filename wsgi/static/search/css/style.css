@@ -17,6 +17,9 @@ body {
   @media (min-width: 800px) {
     body header#homepage {
       padding-top: 270px; } }
+  body #loader {
+    display: none;
+    text-align: center; }
   body form#searchform {
     padding-bottom: 20px;
     margin: 0 auto; }
@@ -60,6 +63,7 @@ body {
     body form#searchform .hidden {
       display: hidden; }
   body article {
+    opacity: 0;
     margin: 0px auto;
     width: 800px;
     text-align: left;
@@ -68,7 +72,12 @@ body {
     padding: 10px 0px 0px 0px;
     margin-bottom: 10px;
     border-radius: 5px;
-    box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.2); }
+    box-shadow: 0px 3px 4px 0px rgba(50, 50, 50, 0.2);
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    -ms-transition: opacity 0.5s;
+    transition: opacity 0.5s; }
     @media (max-width: 799px) {
       body article {
         border-radius: 0;
