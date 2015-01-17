@@ -1,15 +1,3 @@
-function infoblockIn()
-{
-    setTimeout(function(){
-        var list = document.getElementsByClassName("infoblock");
-        for(var i = 0; i < list.length; i++)
-        {
-            list[i].style.opacity = 1;
-        }
-    },
-    1);
-}
-
 function ContainsAny(str, items){
     for(var i in items){
         var item = items[i];
@@ -20,30 +8,51 @@ function ContainsAny(str, items){
     return false;
 }
 
-function titleUp()
-{
+function titleUp(){
     setTimeout(function(){
-        var s = document.getElementById("search_form");
+        var s = document.getElementById('searchform');
         if(s.query.value != "" && !ContainsAny(s.query.value.toLowerCase(), 
-            ['select', 'union', 'benchmark', 'md5', 'db_name', 'concat', 'null', 'drop', 'convert']
+            ['select', 'union', 'benchmark', 'md5', 'db_name', 'concat', 'null', 'drop', '1=1']
         )){
-            var top_pad = document.getElementById("frontpageTitle");
-            var text_obj = document.getElementById("message");
-            var loading = document.getElementById("load");
-            top_pad.style.padding = "0px";
-            text_obj.style.opacity = "0";
-            loading.style.opacity = "1";
-            s.submit();
+            $('#homepage').animate({'padding-top': '30px'}, 300, function(){
+                s.submit();
+                $('.tt-dropdown-menu').hide();
+            });
+            $('#loader').fadeIn(300);
         }
-    },
-    1);
+    }, 1);
 }
 
-function checkForm(){
-    var s = document.getElementById("search_form");
-    if(s.query.value != "" && !ContainsAny(s.query.value.toLowerCase(), 
-        ['select', 'union', 'benchmark', 'md5', 'db_name', 'concat', 'null', 'drop']
-    )){
-        s.submit();
+$(document).ready(function(){  
+    if($('body').height() <= $(window).height()){
+        $('#bottom-nav').addClass('navbar-fixed-bottom');
     }
-}
+
+    var names = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        limit: 10,
+        prefetch: {
+            url: '/static/search/data/names.json',
+            filter: function(list) {
+                return $.map(list, function(value) { return { name: value }; });
+            }
+        }
+    });
+     
+    names.initialize(); 
+
+    $('#query').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 1
+    },{
+        name: 'names',
+        displayKey: 'name',
+        source: names.ttAdapter()
+    });
+
+    setTimeout(function(){
+        $('article').css('opacity', 1);
+    }, 1);
+});

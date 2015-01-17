@@ -40,22 +40,3 @@ python manage.py runserver
 ```
 
 Open up a web browser and go to `localhost:8000`.
-
-Working with Data
-----
-
-If you would like to populate the database with some initial data, run this:
-
-```sh
-python manage.py addcsv testdata/testdata.csv
-```
-
-You can clear data using:
-
-```sh
-python manage.py wipedata
-```
-
-This will remove all Subject, Source, SearchTerm, Variable, Unit, and Equation objects, leaving behind QueryLog and User objects.
-
-Note that full data sets are not available in this repository. These will become available elsewhere in the near future.

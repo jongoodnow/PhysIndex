@@ -2,28 +2,22 @@
 
 {% load staticfiles %}
 <script type="text/javascript" src="{% static 'search/js/scripts.js' %}"></script>
-{% block specialheader %}
-<div id="frontpageTitle"></div>
-{% endblock %}
+{% block headerids %}homepage{% endblock %}
 
-{% block form %}
-<form id="search_form" method="get" action="{% url 'search' %}" onSubmit="javascript:titleUp(); return false;">
-	<div id="searchbox">
-		{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" placeholder="Search" autocomplete="off" autofocus/></span>{% endblock %}<span id="searchglass"><img src="{% static 'search/img/glass.png' %}"></span>
-	</div>
-</form>
-{% endblock %}
+{% block searchonsubmit %}javascript:titleUp(); return false;{% endblock %}
 
 {% block content %}
-<div class="infoblock" style="opacity: 1; overflow: hidden;">
-	<div id="message" style="opacity: 1;">
-		Type in a physics variable, equation, or unit.
-	</div>
-    <div id="load" style="opacity: 0;">
-        <img src="{% static 'search/img/ajax-loader.gif' %}">
+<article>
+    <div class="greeting">
+        Type in a physics variable, equation, or unit.
     </div>
+</article>
+<div id="loader">
+	<img src="{% static 'search/img/load.svg' %}" alt="Fetching your results now!">
 </div>
 {% endblock %}
+
+{% block navbarclass %}navbar-fixed-bottom{% endblock %}
 
 {% block specialfooter %}
 <script type="text/javascript">

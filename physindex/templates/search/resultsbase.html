@@ -2,7 +2,7 @@
 
 {% block title %}PhysIndex | Results for {{ query_string }}{% endblock %}
 
-{% block input %}<span id="searchtext"><input id="query" type="text" name="query" maxlength="200" value="{{ query_string }}" autocomplete="off" autofocus/></span>{% endblock %}
+{% block input %}<input type="text" class="form-control" placeholder="Search" value="{{ query_string }}" id="query" name="query" maxlength="200" autocomplete="off" autofocus>{% endblock %}
 
 {% block content %}
     {% block admingreet %}{% endblock %}
@@ -28,19 +28,24 @@
         {% endfor %}
         {% if results.paginator %}
             {% ifnotequal results.paginator.num_pages 1 %}
-                <div style="text-align: center;">
-                    {% if results.has_previous %}
-                        <a href="?query={{ query_string }}&amp;page={{ results.previous_page_number }}">&laquo;</a>
-                    {% endif %}
-                    Page {{ results.number }} of {{ results.paginator.num_pages }}
-                    {% if results.has_next %}
-                        <a href="?query={{ query_string }}&amp;page={{ results.next_page_number }}">&raquo;</a>
-                    {% endif %}
-                </div>
+                <nav>
+                    <ul class="pager">
+                        {% if results.has_previous %}
+                            <li><a href="?query={{ query_string }}&amp;page={{ results.previous_page_number }}">&larr;</a></li>
+                        {% else %}
+                            <li class="disabled"><a href="#" onclick="return false;">&larr;</a></li>
+                        {% endif %}
+                        <li>{{ results.number }} of {{ results.paginator.num_pages }}</li>
+                        {% if results.has_next %}
+                            <li><a href="?query={{ query_string }}&amp;page={{ results.next_page_number }}">&rarr;</a></li>
+                        {% else %}
+                            <li class="disabled"><a href="#" onclick="return false;">&rarr;</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
             {% endifnotequal %}
         {% endif %}
     {% else %}
         {% block noresults %}{% endblock %}
     {% endif %}
-    <script> infoblockIn(); </script>
 {% endblock %}
