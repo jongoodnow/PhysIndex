@@ -8,7 +8,6 @@ function titleUp()
                 s.submit();
                 $('.tt-dropdown-menu').hide();
             });
-            //$('article').animate({'opacity': '0'}, 300);
             $('#loader').fadeIn(300);
         }
     },
