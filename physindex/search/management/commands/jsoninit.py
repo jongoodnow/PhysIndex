@@ -13,6 +13,9 @@ class Command(BaseCommand):
             if not eq.full_name.lower().startswith('definition')]
         full_names += [var.full_name for var in Variable.objects.all()]
         full_names += [un.full_name for un in Unit.objects.all()]
-        dest_path = os.path.join(settings.STATIC_ROOT, 'search', 'data', 'names.json')
+        dirname = os.path.join(settings.STATIC_ROOT, 'search', 'data')
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
+        dest_path = os.path.join(dirname, 'names.json')
         with open(dest_path, 'w') as dest:
             dest.write(json.dumps(full_names))
