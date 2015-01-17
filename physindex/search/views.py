@@ -20,10 +20,16 @@ def search(request):
         if form.is_valid():
             query_string = form.cleaned_data['query']
             if query_string:
+                # check for SQL injection attempts. Django protects against
+                # these anyway, but if there are certain keywords in the query
+                # there's no reason to waste server resources doing the search,
+                # so just send them to a no results page.
                 if any(word in query_string.lower() for word in 
                     ['select', 'union', 'benchmark', 'md5', 'db_name', 
-                    'concat', 'null', 'drop', 'convert']) or len(query_string) > 200:
-                    return redirect('search')
+                    'concat', 'null', 'drop', 'convert']
+                ) or len(query_string) > 200:
+                    return render(request, 'search/results.html', 
+                        {'results': '', 'query_string': ''})
                 try:
                     all_results = find_results(query_string)
                 except DatabaseError:

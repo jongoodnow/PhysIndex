@@ -1,19 +1,7 @@
-function ContainsAny(str, items){
-    for(var i in items){
-        var item = items[i];
-        if (str.indexOf(item) > -1){
-            return true;
-        }
-    }
-    return false;
-}
-
 function titleUp(){
     setTimeout(function(){
         var s = document.getElementById('searchform');
-        if(s.query.value != "" && !ContainsAny(s.query.value.toLowerCase(), 
-            ['select', 'union', 'benchmark', 'md5', 'db_name', 'concat', 'null', 'drop', '1=1']
-        )){
+        if(s.query.value){
             $('#homepage').animate({'padding-top': '30px'}, 300, function(){
                 s.submit();
                 $('.tt-dropdown-menu').hide();
