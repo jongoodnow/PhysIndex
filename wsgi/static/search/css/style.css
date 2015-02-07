@@ -64,7 +64,8 @@ body {
       visibility: hidden;
       height: 0;
       width: 0;
-      position: absolute; }
+      position: absolute;
+      display: block; }
   body article {
     opacity: 0;
     margin: 0px auto;
