@@ -60,8 +60,8 @@ body {
         background-color: #0097cf; }
       body form#searchform .input-group .twitter-typeahead .tt-suggestion p {
         margin: 0; }
-    body form#searchform .hidden {
-      display: hidden; }
+    body form#searchform .inp-hidden {
+      visibility: hidden; }
   body article {
     opacity: 0;
     margin: 0px auto;
