@@ -40,7 +40,7 @@ body{
         margin: 0 auto;
 
         @media (min-width: 800px){
-            width: 500px;
+            width: 504px;
 
             #query{
                 border-radius: 5px;
@@ -99,6 +99,9 @@ body{
 
         .inp-hidden{
             visibility: hidden;
+            height: 0;
+            width: 0;
+            position: absolute;
         }
     }
 

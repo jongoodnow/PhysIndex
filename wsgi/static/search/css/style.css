@@ -25,7 +25,7 @@ body {
     margin: 0 auto; }
     @media (min-width: 800px) {
       body form#searchform {
-        width: 500px; }
+        width: 504px; }
         body form#searchform #query {
           border-radius: 5px; } }
     @media (max-width: 799px) {
@@ -61,7 +61,10 @@ body {
       body form#searchform .input-group .twitter-typeahead .tt-suggestion p {
         margin: 0; }
     body form#searchform .inp-hidden {
-      visibility: hidden; }
+      visibility: hidden;
+      height: 0;
+      width: 0;
+      position: absolute; }
   body article {
     opacity: 0;
     margin: 0px auto;
