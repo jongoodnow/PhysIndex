@@ -145,5 +145,7 @@ body {
     border-radius: 0; }
     body nav.navbar .navbar-right li a {
       padding-right: 30px; }
+    body nav.navbar .navbar-collapse {
+      padding-left: 0; }
 
 /*# sourceMappingURL=style.css.map */

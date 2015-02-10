@@ -71,7 +71,7 @@
 			</div>
 			<div class="container-fluid collapse navbar-collapse" id="navdata">
 				<ul class="nav navbar-nav">
-					<li><a href="{% url 'about' %}">About</a></li>
+					<li class="{% block aboutclass %}{% endblock %}"><a href="{% url 'about' %}">About</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="{% url 'about' %}#legal">&copy;2015</li>
