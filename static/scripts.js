@@ -26,7 +26,7 @@ $(document).ready(function(){
 
 angular.module("physindexApp", [])
     .config(function($locationProvider) {
-        //$locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true);
     })
     .controller("physindexController", function ($rootScope, $attrs, $http, $location, $q) {
         $rootScope.$on("$locationChangeSuccess", () => {
