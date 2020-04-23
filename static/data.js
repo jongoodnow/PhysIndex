@@ -304,7 +304,7 @@ var db = {
 			"id": "94",
 			"quickName": "omega = theta/t",
 			"representation": "$\\displaystyle{ \\vec{ \\omega } = \\frac{ d \\vec{\\theta} }{ dt }}$",
-			"fullName": "Angular Velocity",
+			"fullName": "Definition of Angular Velocity",
 			"description": "Angular velocity is the change in angle per unit time. For a rigid body in constant rotation, the angular velocity is the same for all points on the body. Angular velocity is a vector quantity, and angular speed is the magnitude of this velocity. The direction of the angular velocity vector is perpendicular to the plane of rotation, in a direction which is usually specified by the right-hand rule",
 			"definedVariable": "153",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_velocity",
@@ -645,8 +645,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Force",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}}\\right)$",
 			"unitComposition": ["47"],
-			"equations": ["65", "70", "72", "75", "81", "85", "93"],
-			"definedEquation": null
+			"equations": ["65", "70", "72", "75", "81", "85", "93"]
 		},
 		"104": {
 			"id": "104",
@@ -658,8 +657,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Mass",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{m}}\\right)$",
 			"unitComposition": ["40"],
-			"equations": ["65", "71", "73", "74", "78", "82", "83", "86", "87", "88", "98"],
-			"definedEquation": null
+			"equations": ["65", "71", "73", "74", "78", "82", "83", "86", "87", "88", "98"]
 		},
 		"105": {
 			"id": "105",
@@ -671,8 +669,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Position_%28vector%29",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{x}}\\right)$",
 			"unitComposition": ["39"],
-			"equations": ["66", "67", "74", "75", "76", "77", "81", "95", "96", "97", "103"],
-			"definedEquation": null
+			"equations": ["66", "67", "74", "75", "76", "77", "81", "95", "96", "97", "103"]
 		},
 		"106": {
 			"id": "106",
@@ -684,8 +681,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Speed_of_light",
 			"definitionRepresentation": "$\\left(\\displaystyle{c}\\right)$",
 			"unitComposition": ["41", "39"],
-			"equations": ["98", "101"],
-			"definedEquation": null
+			"equations": ["98", "101"]
 		},
 		"107": {
 			"id": "107",
@@ -721,8 +717,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Vacuum_permittivity",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\epsilon_0}\\right)$",
 			"unitComposition": ["56", "39"],
-			"equations": ["84"],
-			"definedEquation": null
+			"equations": ["84"]
 		},
 		"110": {
 			"id": "110",
@@ -765,7 +760,7 @@ var db = {
 			"quickName": "electron mass",
 			"representation": "$\\displaystyle{m_e}$",
 			"fullName": "Electron Mass",
-			"description": "The electron (symbol: e−) is a subatomic particle with a negative elementary electric charge. Electrons belong to the first generation of the lepton particle family, and are generally thought to be elementary particles because they have no known components or substructure. The electron has a mass that is approximately 1/1836 that of the proton. ",
+			"description": "The electron (symbol: $e−$) is a subatomic particle with a negative elementary electric charge. Electrons belong to the first generation of the lepton particle family, and are generally thought to be elementary particles because they have no known components or substructure. The electron has a mass that is approximately 1/1836 that of the proton. ",
 			"units": "$ \\textrm{kg} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electron",
 			"definitionRepresentation": "$\\left(\\displaystyle{m_e}\\right)$",
@@ -794,8 +789,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Acceleration",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{a}}\\right)$",
 			"unitComposition": ["39", "41"],
-			"equations": ["64", "65", "66", "67", "96"],
-			"definedEquation": null
+			"equations": ["95", "64", "65", "66", "67", "96"]
 		},
 		"116": {
 			"id": "116",
@@ -819,8 +813,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Momentum",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\vec{p} }\\right)$",
 			"unitComposition": ["40", "41", "39"],
-			"equations": ["65", "71", "92"],
-			"definedEquation": null
+			"equations": ["71", "65", "92"]
 		},
 		"118": {
 			"id": "118",
@@ -832,8 +825,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Impulse_(physics)",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\vec{J} }\\right)$",
 			"unitComposition": ["40", "41", "39"],
-			"equations": ["72"],
-			"definedEquation": null
+			"equations": ["72"]
 		},
 		"119": {
 			"id": "119",
@@ -845,8 +837,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Work_(physics)",
 			"definitionRepresentation": "$\\left(\\displaystyle{W}\\right)$",
 			"unitComposition": ["46"],
-			"equations": ["93"],
-			"definedEquation": null
+			"equations": ["75", "93"]
 		},
 		"120": {
 			"id": "120",
@@ -857,8 +848,7 @@ var db = {
 			"units": "",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Pi",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\pi}\\right)$",
-			"equations": ["78", "79", "84"],
-			"definedEquation": null
+			"equations": ["78", "79", "84"]
 		},
 		"121": {
 			"id": "121",
@@ -869,8 +859,7 @@ var db = {
 			"units": "",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Friction",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\mu}\\right)$",
-			"equations": ["68"],
-			"definedEquation": null
+			"equations": ["68"]
 		},
 		"122": {
 			"id": "122",
@@ -882,8 +871,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinetic_energy",
 			"definitionRepresentation": "$\\left(\\displaystyle{ K }\\right)$",
 			"unitComposition": ["46"],
-			"equations": ["89"],
-			"definedEquation": null
+			"equations": ["73", "89"]
 		},
 		"123": {
 			"id": "123",
@@ -895,8 +883,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Work_(physics)",
 			"definitionRepresentation": "$\\left(\\displaystyle{W_{net}}\\right)$",
 			"unitComposition": ["46"],
-			"equations": ["89"],
-			"definedEquation": null
+			"equations": ["89"]
 		},
 		"124": {
 			"id": "124",
@@ -908,8 +895,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Frequency",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{T}}\\right)$",
 			"unitComposition": ["41"],
-			"equations": ["80"],
-			"definedEquation": null
+			"equations": ["80"]
 		},
 		"125": {
 			"id": "125",
@@ -921,8 +907,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Frequency",
 			"definitionRepresentation": "$\\left(\\displaystyle{f , \\nu}\\right)$",
 			"unitComposition": ["52"],
-			"equations": ["80"],
-			"definedEquation": null
+			"equations": ["80"]
 		},
 		"126": {
 			"id": "126",
@@ -934,8 +919,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Friction",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}_{fric}}\\right)$",
 			"unitComposition": ["47"],
-			"equations": ["68"],
-			"definedEquation": null
+			"equations": ["68"]
 		},
 		"127": {
 			"id": "127",
@@ -947,8 +931,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Acceleration",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{a}_c}\\right)$",
 			"unitComposition": ["41", "39"],
-			"equations": ["69", "87"],
-			"definedEquation": null
+			"equations": ["69", "87"]
 		},
 		"128": {
 			"id": "128",
@@ -960,8 +943,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_dipole_moment",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{p}}\\right)$",
 			"unitComposition": ["48", "39"],
-			"equations": ["90"],
-			"definedEquation": null
+			"equations": ["90"]
 		},
 		"129": {
 			"id": "129",
@@ -973,8 +955,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Coulomb's_constant",
 			"definitionRepresentation": "$\\left(\\displaystyle{K}\\right)$",
 			"unitComposition": ["48", "47", "39"],
-			"equations": ["84"],
-			"definedEquation": null
+			"equations": ["84"]
 		},
 		"130": {
 			"id": "130",
@@ -986,8 +967,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Angle",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\theta}\\right)$",
 			"unitComposition": ["55"],
-			"equations": ["70", "86", "92", "93", "94"],
-			"definedEquation": null
+			"equations": ["70", "86", "92", "93", "94"]
 		},
 		"131": {
 			"id": "131",
@@ -999,8 +979,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Time",
 			"definitionRepresentation": "$\\left(\\displaystyle{t}\\right)$",
 			"unitComposition": ["41"],
-			"equations": ["64", "66", "93", "95", "96", "97", "102"],
-			"definedEquation": null
+			"equations": ["64", "66", "93", "95", "96", "97", "102"]
 		},
 		"132": {
 			"id": "132",
@@ -1012,8 +991,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Velocity",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{v}}\\right)$",
 			"unitComposition": ["39", "41"],
-			"equations": ["64", "65", "66", "67", "69", "71", "73", "93", "95", "96", "97", "101"],
-			"definedEquation": null
+			"equations": ["64", "65", "66", "67", "69", "71", "73", "93", "95", "96", "97", "101"]
 		},
 		"133": {
 			"id": "133",
@@ -1025,8 +1003,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Normal_force",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}_n}\\right)$",
 			"unitComposition": ["47"],
-			"equations": ["68", "86"],
-			"definedEquation": null
+			"equations": ["68", "86"]
 		},
 		"134": {
 			"id": "134",
@@ -1038,8 +1015,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Radius",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{r}}\\right)$",
 			"unitComposition": ["39"],
-			"equations": ["69", "70", "79", "82", "83", "84", "88", "92"],
-			"definedEquation": null
+			"equations": ["69", "70", "79", "82", "83", "84", "88", "92"]
 		},
 		"135": {
 			"id": "135",
@@ -1051,8 +1027,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Gravitational_acceleration",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\vec{g} }\\right)$",
 			"unitComposition": ["39", "41"],
-			"equations": ["74", "79", "86"],
-			"definedEquation": null
+			"equations": ["74", "79", "86"]
 		},
 		"136": {
 			"id": "136",
@@ -1064,8 +1039,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_charge",
 			"definitionRepresentation": "$\\left(\\displaystyle{q}\\right)$",
 			"unitComposition": ["48"],
-			"equations": ["84", "85", "91"],
-			"definedEquation": null
+			"equations": ["84", "85", "91"]
 		},
 		"137": {
 			"id": "137",
@@ -1077,8 +1051,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Centripetal_force",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}_c}\\right)$",
 			"unitComposition": ["47"],
-			"equations": ["87"],
-			"definedEquation": ["87"]
+			"equations": ["87"]
 		},
 		"138": {
 			"id": "138",
@@ -1090,8 +1063,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_field",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{E}}\\right)$",
 			"unitComposition": ["47", "48", "49", "39"],
-			"equations": ["85"],
-			"definedEquation": null
+			"equations": ["85"]
 		},
 		"139": {
 			"id": "139",
@@ -1103,8 +1075,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electromagnetism",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}_E}\\right)$",
 			"unitComposition": ["47"],
-			"equations": ["84"],
-			"definedEquation": null
+			"equations": ["84"]
 		},
 		"140": {
 			"id": "140",
@@ -1116,8 +1087,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy",
 			"definitionRepresentation": "$\\left(\\displaystyle{U_g}\\right)$",
 			"unitComposition": ["46"],
-			"equations": ["83"],
-			"definedEquation": null
+			"equations": ["74", "83"]
 		},
 		"141": {
 			"id": "141",
@@ -1129,8 +1099,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Gravitation",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}_g}\\right)$",
 			"unitComposition": ["47"],
-			"equations": ["82"],
-			"definedEquation": null
+			"equations": ["82"]
 		},
 		"142": {
 			"id": "142",
@@ -1142,8 +1111,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy",
 			"definitionRepresentation": "$\\left(\\displaystyle{U}\\right)$",
 			"unitComposition": ["46"],
-			"equations": ["81"],
-			"definedEquation": null
+			"equations": ["81"]
 		},
 		"143": {
 			"id": "143",
@@ -1155,8 +1123,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Pendulum_(mathematics)",
 			"definitionRepresentation": "$\\left(\\displaystyle{T_p}\\right)$",
 			"unitComposition": ["41"],
-			"equations": ["79"],
-			"definedEquation": null
+			"equations": ["79"]
 		},
 		"144": {
 			"id": "144",
@@ -1168,8 +1135,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Stiffness",
 			"definitionRepresentation": "$\\left( k = \\frac{ F }{ \\delta }\\right)$",
 			"unitComposition": ["47", "39"],
-			"equations": ["76", "77", "78"],
-			"definedEquation": null
+			"equations": ["76", "77", "78"]
 		},
 		"145": {
 			"id": "145",
@@ -1181,8 +1147,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Spring_physics",
 			"definitionRepresentation": "$\\left(\\displaystyle{T_s}\\right)$",
 			"unitComposition": ["41"],
-			"equations": ["78"],
-			"definedEquation": null
+			"equations": ["78"]
 		},
 		"146": {
 			"id": "146",
@@ -1194,8 +1159,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Hooke%27s_law",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}_{spring}}\\right)$",
 			"unitComposition": ["47"],
-			"equations": ["76"],
-			"definedEquation": null
+			"equations": ["76"]
 		},
 		"147": {
 			"id": "147",
@@ -1207,7 +1171,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy",
 			"definitionRepresentation": "$\\left(\\displaystyle{U_s}\\right)$",
 			"unitComposition": ["46"],
-			"equations": []
+			"equations": ["77"]
 		},
 		"148": {
 			"id": "148",
@@ -1219,7 +1183,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Coulomb%27s_law",
 			"definitionRepresentation": "$\\left(\\displaystyle{F}\\right)$",
 			"unitComposition": ["47"],
-			"equations": []
+			"equations": ["84"]
 		},
 		"149": {
 			"id": "149",
@@ -1231,8 +1195,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_momentum",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\vec{L} }\\right)$",
 			"unitComposition": ["40", "41", "39"],
-			"equations": ["92"],
-			"definedEquation": null
+			"equations": ["92"]
 		},
 		"150": {
 			"id": "150",
@@ -1244,7 +1207,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Power_(physics)",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{P}}\\right)$",
 			"unitComposition": ["57"],
-			"equations": []
+			"equations": ["93"]
 		},
 		"151": {
 			"id": "151",
@@ -1268,8 +1231,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Voltage",
 			"definitionRepresentation": "$\\left(\\displaystyle{V}\\right)$",
 			"unitComposition": ["49"],
-			"equations": ["100"],
-			"definedEquation": null
+			"equations": ["100"]
 		},
 		"153": {
 			"id": "153",
@@ -1281,8 +1243,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_velocity",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\omega}\\right)$",
 			"unitComposition": ["41"],
-			"equations": ["92"],
-			"definedEquation": null
+			"equations": ["94", "92"]
 		},
 		"154": {
 			"id": "154",
@@ -1294,8 +1255,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Moment_of_inertia",
 			"definitionRepresentation": "$\\left(\\displaystyle{I}\\right)$",
 			"unitComposition": ["40", "39"],
-			"equations": ["70"],
-			"definedEquation": null
+			"equations": ["70"]
 		},
 		"155": {
 			"id": "155",
@@ -1307,7 +1267,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Center_of_mass",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\vec{r}_{cm} }\\right)$",
 			"unitComposition": ["39"],
-			"equations": []
+			"equations": ["88"]
 		},
 		"156": {
 			"id": "156",
@@ -1319,8 +1279,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_acceleration",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\alpha =\\frac{d\\omega}{dt}=\\frac{d^{2}\\theta}{dt^{2}} }=\\frac{a_T}{r}\\right)$",
 			"unitComposition": ["41"],
-			"equations": ["70"],
-			"definedEquation": null
+			"equations": ["70"]
 		},
 		"158": {
 			"id": "158",
@@ -1344,8 +1303,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Energy",
 			"definitionRepresentation": "$\\left(\\displaystyle{E}\\right)$",
 			"unitComposition": ["46"],
-			"equations": ["98"],
-			"definedEquation": null
+			"equations": ["98"]
 		},
 		"160": {
 			"id": "160",
@@ -1357,8 +1315,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_current",
 			"definitionRepresentation": "$\\left(\\displaystyle{I}\\right)$",
 			"unitComposition": ["45"],
-			"equations": ["100"],
-			"definedEquation": null
+			"equations": ["100"]
 		},
 		"161": {
 			"id": "161",
@@ -1370,8 +1327,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electrical_resistance_and_conductance",
 			"definitionRepresentation": "$\\left(\\displaystyle{R}\\right)$",
 			"unitComposition": ["51"],
-			"equations": ["99", "100"],
-			"definedEquation": null
+			"equations": ["99", "100"]
 		},
 		"162": {
 			"id": "162",
@@ -1383,8 +1339,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Cross_section_(geometry)",
 			"definitionRepresentation": "$\\left(\\displaystyle{A}\\right)$",
 			"unitComposition": ["39"],
-			"equations": ["99"],
-			"definedEquation": null
+			"equations": ["99"]
 		},
 		"163": {
 			"id": "163",
@@ -1396,8 +1351,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\rho}\\right)$",
 			"unitComposition": ["51", "39"],
-			"equations": ["99"],
-			"definedEquation": null
+			"equations": ["99"]
 		},
 		"164": {
 			"id": "164",
@@ -1409,8 +1363,7 @@ var db = {
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Length",
 			"definitionRepresentation": "$\\left(\\displaystyle{L}\\right)$",
 			"unitComposition": ["39"],
-			"equations": ["99"],
-			"definedEquation": null
+			"equations": ["99"]
 		},
 		"165": {
 			"id": "165",
@@ -1469,8 +1422,7 @@ var db = {
 			"units": "none",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Lorentz_factor",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\gamma}\\right)$",
-			"equations": ["102", "103"],
-			"definedEquation": null
+			"equations": ["101", "102", "103"]
 		},
 		"179": {
 			"id": "179",
@@ -1481,51 +1433,8 @@ var db = {
 			"units": "none",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Lorentz_factor",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\beta}\\right)$",
-			"equations": ["101"],
-			"definedEquation": null
+			"equations": ["101"]
 		}
-	},
-	"equationToVariablesMap": {
-		"69": [ "127","132","134" ],
-		"70": [ "134", "103", "130", "154", "156" ],
-		"71": [ "117", "104", "132" ],
-		"73": [ "104", "132" ],
-		"74": [ "104", "135", "105" ],
-		"76": [ "146", "144", "105" ],
-		"77": [ "144", "105" ],
-		"79": [ "143", "120", "134", "135" ],
-		"81": [ "142", "103", "105" ],
-		"82": [ "141", "104", "134" ],
-		"85": [ "138", "103", "136" ],
-		"86": [ "133", "104", "135", "130" ],
-		"87": [ "104", "127" ],
-		"88": [ "104", "134" ],
-		"89": [ "122", "123" ],
-		"90": [ "128" ],
-		"91": [ "136" ],
-		"95": [ "132", "105", "131" ],
-		"83": [ "104", "140", "134" ],
-		"84": [ "129", "134", "136", "139", "109", "120" ],
-		"78": [ "120", "144", "104", "145" ],
-		"97": [ "105", "131", "132" ],
-		"66": [ "105", "115", "132", "131" ],
-		"72": [ "118", "103" ],
-		"64": [ "115", "132", "131" ],
-		"75": [ "105", "103" ],
-		"65": [ "104", "115", "132", "117", "103" ],
-		"96": [ "105", "115", "132", "131" ],
-		"67": [ "105", "115", "132" ],
-		"80": [ "124", "125" ],
-		"98": [ "104", "106", "159" ],
-		"68": [ "121", "133", "126" ],
-		"94": [ "130" ],
-		"99": [ "161", "162", "163", "164" ],
-		"100": [ "152", "161", "160" ],
-		"92": [ "153", "130", "117", "134", "149" ],
-		"103": [ "105", "178" ],
-		"102": [ "178", "131" ],
-		"93": [ "119", "130", "131", "132", "103" ],
-		"101": ["106", "179", "132"]
 	},
 	"searchTerms": {
 		"meter": [{
@@ -2550,6 +2459,10 @@ var db = {
 		}, {
 			"type": "variable",
 			"id": "153"
+		}],
+		"Definition of Angular Velocity": [{
+			"type": "equation",
+			"id": "94"
 		}],
 		"angular speed": [{
 			"type": "variable",

@@ -33,11 +33,11 @@
     <body ng-app="physindexApp">
         <div ng-controller="physindexController as app">
             <header id="homepage">
-                <a href="/"><img src="static/title.svg" alt="PhysIndex"></a>
+                <a ng-click="app.resetPage()"><img src="static/title.svg" alt="PhysIndex"></a>
             </header>
             <form id="searchform" ng-submit="app.search()">
                 <div class="input-group">
-                    <input ng-model="app.searchText" type="text" class="form-control" placeholder="Search" id="query" name="query" maxlength="200" autocomplete="off" autofocus>
+                    <input ng-model="app.searchText" type="text" class="typeahead form-control" placeholder="Search" id="query" name="query" maxlength="200" autocomplete="off" autofocus>
                     <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
                     <input type="submit" class="inp-hidden">
                 </div>
@@ -47,9 +47,6 @@
                     Type in a physics variable, equation, or unit.
                 </div>
             </article>
-            <div id="loader">
-                <img src="static/load.svg" alt="Fetching your results now!">
-            </div>
             <div ng-if="app.results">
                 <div ng-repeat="result in app.results">
                     <article ng-if="result.type === 'variable'">
@@ -65,7 +62,7 @@
                                 <span ng-repeat="unit in result.value.unitCompositionValues">
                                     <span ng-if="!$last">{{ unit.representation }} is <a ng-click="app.showUnit(unit.fullName)">{{ unit.fullName }}</a>, </span>
                                     <span ng-if="$last && !$first">and {{ unit.representation }} is <a ng-click="app.showUnit(unit.fullName)">{{ unit.fullName }}</a>.</span>
-                                    <span ng-if="$last && $first">{{ unit.representation }} is {{ unit.fullName }}<a ng-click="app.showUnit(unit.fullName)"></a>.</span>
+                                    <span ng-if="$last && $first">{{ unit.representation }} is <a ng-click="app.showUnit(unit.fullName)">{{ unit.fullName }}</a>.</span>
                                 </span>
                             </span>
                             <span ng-if="result.value.unitCompositionValues.length === 0">dimensionless</span>
@@ -179,7 +176,7 @@
                         <li><a ng-click="app.showAboutPage()">About</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li>&copy;2015</li>
+                        <li><a ng-click="app.showAboutPage()">&copy;2015</li>
                     </ul>
                 </div>
             </nav>
