@@ -1,8 +1,4 @@
 $(document).ready(function(){  
-    if($('body').height() <= $(window).height()){
-        $('#bottom-nav').addClass('navbar-fixed-bottom');
-    }
-
     var names = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -30,29 +26,6 @@ $(document).ready(function(){
     setTimeout(function(){
         $('article').css('opacity', 1);
     }, 1);
-
-    // var l = {};
-    // for(let [k, x] of Object.entries(db["variables"])){
-    //     x["definitionRepresentation"] = "$\\left(" + x["representation"].replace(/^[\$]+|[\$]+$/g, "") + "\\right)$";
-    //     x["unitComposition"] = db["variableToUnitsMap"][k];
-    //     x["equations"] = [];
-    //     for(let [ek, ex] of Object.entries(db["equationToVariablesMap"])){
-    //         if(ex.includes(k)){
-    //             x["equations"].push(ek);
-    //         }
-    //     }
-    //     x["equations"].forEach(eex => {
-    //         if(db["equations"][eex]["definedVariable"] === k){
-    //             x["definedEquation"] = eex;
-    //         }
-    //         else{
-    //             x["definedEquation"] = null;
-    //         }
-    //     });
-        
-    //     l[k] = x;
-    // }
-    // console.log(JSON.stringify(l));
 });
 
 angular.module("physindexApp", [])
@@ -67,12 +40,13 @@ angular.module("physindexApp", [])
             }
         });
 
-        // $rootScope.$watch(function(){
-        //     MathJax.typeset();
-        //     return true;
-        // });
+        $rootScope.$watch(function(){
+            app.fixedNavbar = $('body').height() <= $(window).height();
+        });
 
         var app = this;
+        app.showGreeting = true;
+        app.fixedNavbar = $('body').height() <= $(window).height();
 
         app.search = () => {
             if(!app.searchText){
@@ -82,6 +56,7 @@ angular.module("physindexApp", [])
             $('#homepage').animate({'padding-top': '30px'}, 300, function(){
                 $('.tt-dropdown-menu').hide();
             });
+            app.showGreeting = false;
 
             var escapedSearch = app.searchText.replace(/^[^\w&^\(&^\[&^\{]+|[^\w&^\)&^\]&^\}]+$/g, "");
             var noPunctuation = escapedSearch.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
@@ -92,10 +67,52 @@ angular.module("physindexApp", [])
             var noParensOrUnderscores = noParens.replace(/\_/g, "");
             var predicates = _.uniq([escapedSearch, noPunctuation, noPunctuationOrSpaces, noSpacesOrStars, noParens, noUnderscores, noParensOrUnderscores]);
 
-            var equationSearch = escapedSearch.match(/\=|\+|\<|\>/) !== null;
+            // if the query contains math symbols, we know the query is for an equation, and can make more assumptions about the results.
+            var equationSearch = escapedSearch.match(/[=+<>]/g) !== null;
             var prioritizedResults = [];
             if(equationSearch){
+                var originalPredicates = predicates;
+                var additionalPredicates = [];
+                predicates.forEach(p => p.split(/[=+\-*/^<>]+/g).forEach(s => additionalPredicates.push(s)));
+                predicates = _.uniq(predicates.concat(additionalPredicates));
 
+                var allMatches = [];
+                for(let [term, matches] of Object.entries(db["searchTerms"])){
+                    predicates.forEach(predicate => {
+                        if(term.toLowerCase().includes(predicate.toLowerCase())){
+                            allMatches = _.uniq(allMatches.concat(matches), false, m => m.id);
+                        }
+                    });
+                }
+
+                var prioritizedLists = [[], [], [], []];
+                allMatches.forEach(match => {
+                    var obj = db[match.type + "s"][match.id];
+
+                    if(match.type === "equation" && obj.definedVariable !== null){
+                        obj = db["variables"][obj.definedVariable];
+                    }
+                    var resultObj = {type: match.type, value: obj};
+
+                    if(_.some(originalPredicates, p => p === obj.quickName)){
+                        prioritizedLists[0].push(resultObj);
+                    }
+                    else if(_.some(originalPredicates, p => p.toLowerCase() === obj.quickName.toLowerCase())){
+                        prioritizedLists[1].push(resultObj);
+                    }
+                    else if(_.some(predicates, p => p.toLowerCase() === obj.quickName.toLowerCase())){
+                        prioritizedLists[2].push(resultObj);
+                    }
+                    else{
+                        prioritizedLists[3].push(resultObj);
+                    }
+                });
+
+                prioritizedResults = prioritizedLists[0];
+                for(var i = 1; i < prioritizedLists.length; i++){
+                    prioritizedResults = prioritizedResults.concat(prioritizedLists[i]);
+                }
+                prioritizedResults = prioritizedResults.slice(0, 6);
             }
             else{
                 var allMatches = [];
@@ -107,14 +124,14 @@ angular.module("physindexApp", [])
                     });
                 }
 
-                var prioritizedLists = [[], [], [], [], [], []];
+                var prioritizedLists = [[], [], [], [], []];
                 allMatches.forEach(match => {
                     var obj = db[match.type + "s"][match.id];
 
                     if(match.type === "equation" && obj.definedVariable !== null){
                         obj = db["variables"][obj.definedVariable];
                     }
-                    var resultObj ={type: match.type, value: obj}; 
+                    var resultObj = {type: match.type, value: obj}; 
 
                     if(obj.quickName === escapedSearch || obj.fullName.toLowerCase() === escapedSearch.toLowerCase()){
                         if(match.type === "variable"){
@@ -127,14 +144,11 @@ angular.module("physindexApp", [])
                     else if(obj.quickName.toLowerCase() === escapedSearch.toLowerCase()){
                         prioritizedLists[2].push(resultObj);
                     }
-                    else if(false){
-
-                    }
                     else if(escapedSearch.toLowerCase().includes(obj.fullName.toLowerCase()) || obj.fullName.toLowerCase().includes(escapedSearch.toLowerCase())){
-                        prioritizedLists[4].push(resultObj);
+                        prioritizedLists[3].push(resultObj);
                     }
                     else{
-                        prioritizedLists[5].push(resultObj);
+                        prioritizedLists[4].push(resultObj);
                     }
                 });
 
@@ -142,6 +156,7 @@ angular.module("physindexApp", [])
                 for(var i = 1; i < prioritizedLists.length; i++){
                     prioritizedResults = prioritizedResults.concat(prioritizedLists[i]);
                 }
+                prioritizedResults = prioritizedResults.slice(0, 6);
             }
 
             app.results = _.map(prioritizedResults, obj => {
@@ -150,10 +165,19 @@ angular.module("physindexApp", [])
                     obj.value["equationValues"] = _.sortBy(_.map(obj.value["equations"], id => db["equations"][id]), 
                         eq => eq.definedVariable == obj.value.id ? 0 : 1);
                 }
+                else if(obj.type === "unit"){
+                    obj.value["compositionValues"] = _.map(obj.value["composition"], id => db["units"][id]);
+                }
+                else if(obj.type === "equation"){
+                    obj.value["variableValues"] = _.sortBy(_.map(obj.value["variables"], id => db["variables"][id]),
+                        v => obj.value.definedVariable == v.id ? 0 : 1);
+                }
 
                 return obj;
             });
 
-            setTimeout(() => MathJax.typeset(), 1);
+            setTimeout(() => {
+                MathJax.typeset();
+            }, 1);
         };
     });

@@ -119,6 +119,8 @@ body {
       margin: 0; }
     body article div {
       padding: 0px 15px; }
+    body article div.usageContainer {
+      padding: 0; }
     body article div.even, body article div.odd {
       padding: 10px 0px; }
       body article div.even .eqname, body article div.odd .eqname {

@@ -1,347 +1,364 @@
 var db = {
 	"equations": {
-		"69": { 
-			"id": "69",
-			"quickName": "a_c=(v^2)/r",
-			"representation": "$\\displaystyle{ \\vec{a}_c = \\frac{ \\vec{v}^2 }{r} }$",
-			"fullName": "Centripetal Acceleration",
-			"description": "Acceleration, in physics, is the rate at which the velocity of an object changes over time. Velocity and acceleration are vector quantities, with magnitude and direction that add according to the parallelogram law. An object's acceleration, as described by Newton's Second Law, is due to the net force acting on the object, i.e., the net result of any and all forces acting on the object.",
-			"definedVariable": "127",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Acceleration"
-		},
-		"70": {
-			"id": "70",
-			"quickName": "Tau=rxf",
-			"representation": "$\\displaystyle{ \\vec{\\tau} = \\vec{r} \\times \\vec{F} = |r||F|\\sin{\\theta} = I \\vec{\\alpha} = \\frac{ d\\vec{L} }{ dt } }$",
-			"fullName": "Torque",
-			"description": "Torque, moment or moment of force (see the terminology below), is the tendency of a force to rotate an object about an axis, fulcrum, or pivot. Just as a force is a push or a pull, a torque can be thought of as a twist to an object. Mathematically, torque is defined as the cross product of the lever-arm distance vector and the force vector, which tends to produce rotation",
-			"definedVariable": "116",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Torque"
-		},
-		"71": { 
-			"id": "71",
-			"quickName": "p=mv",
-			"representation": "$\\displaystyle{ \\vec{p} = m\\vec{v} }$",
-			"fullName": "Definition of Linear Momentum",
-			"description": "In classical mechanics, linear momentum or translational momentum (pl. momenta; SI unit kg m/s, or equivalently, N s) is the product of the mass and velocity of an object. For example, a heavy truck moving quickly has a large momentum—it takes a large and prolonged force to get the truck up to this speed, and it takes a large and prolonged force to bring it to a stop afterwards.",
-			"definedVariable": "117",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Momentum"
-		},
-		"73": { 
-			"id": "73",
-			"quickName": "K=0.5(mv^2)",
-			"representation": "$\\displaystyle{ K = \\frac{1}{2} m v^2 }$",
-			"fullName": "Definition of Kinetic Energy",
-			"description": "In physics, the kinetic energy of an object is the energy which it possesses due to its motion. It is defined as the work needed to accelerate a body of a given mass from rest to its stated velocity. Having gained this energy during its acceleration, the body maintains this kinetic energy unless its speed changes.",
-			"definedVariable": "122",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinetic_energy"
-		},
-		"74": { 
-			"id": "74",
-			"quickName": "U=mgh",
-			"representation": "$\\displaystyle{ U = mgh }$",
-			"fullName": "Definition of Gravitational Potential Energy",
-			"description": "In physics, potential energy is energy stored in a system of forcefully interacting physical entities. The SI unit for measuring work and energy is the joule (symbol J).The term potential energy was introduced by the 19th century Scottish engineer and physicist William Rankine, although it has links to Greek philosopher Aristotle's concept of potentiality.",
-			"definedVariable": "140",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy"
-		},
-		"76": { 
-			"id": "76",
-			"quickName": "F_spring=-kx",
-			"representation": "$\\displaystyle{ \\vec{F}_{spring} = -k \\vec{x} }$",
-			"fullName": "Hooke's Law",
-			"description": "Hooke's law is a principle of physics that states that the force  needed to extend or compress a spring by some distance  is proportional to that distance. That is: where  is a constant factor characteristic of the spring, its stiffness.Hooke's equation in fact holds (to some extent) in many other situations where an elastic body is deformed, such as wind blowing on a tall building, a musician plucking a string of a guitar, or the filling of a party balloon.",
-			"definedVariable": "146",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Hooke%27s_law"
-		},
-		"66": { 
-			"id": "66",
-			"quickName": "x=(x_0)+(v_0)*t+0.5a*(t^2)",
-			"representation": "$\\displaystyle{ x = \\frac{1}{2}(v_0 + v)t}$",
-			"fullName": "Kinematics Equation (no \"a\")",
-			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
-			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics"
-		},
-		"65": { 
-			"id": "65",
-			"quickName": "f=ma",
-			"representation": "$\\displaystyle{ \\sum{ \\vec{F} } = \\frac{d \\vec{p} }{dt} = m \\frac{d \\vec{v} }{dt} = m\\vec{a} }$",
-			"fullName": "Newton's Second Law",
-			"description": "The second law states that the net force on an object is equal to the rate of change (that is, the derivative) of its linear momentum p in an inertial reference frame. The second law can also be stated in terms of an object's acceleration. Since Newton's second law is only valid for constant-mass systems. Mass can be taken outside the differentiation operator by the constant factor rule in differentiation.",
-			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Newton%27s_laws_of_motion"
-		},
-		"64": { 
+		"64": {
 			"id": "64",
 			"quickName": "v=v0+at",
 			"representation": "$\\displaystyle{v=v_0+at}$",
 			"fullName": "Kinematics Equation (no $\\Delta X$)",
 			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
 			"definedVariable": "132",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics",
+			"variables": ["115", "132", "131"]
 		},
-		"72": { 
-			"id": "72",
-			"quickName": "J=int(F)dt",
-			"representation": "$\\displaystyle{ \\vec{J} = \\int{ \\vec{F} \\cdot dt} = \\Delta \\vec{p} }$",
-			"fullName": "Impulse",
-			"description": "In classical mechanics, impulse (symbolized by J or Imp) is the change in linear momentum of a body. It may be defined or calculated as the product of the average force multiplied by the time over which the force is exerted. Impulse is a vector quantity since it is the result of integrating force, a vector quantity, over time. The SI unit of impulse is the newton second (N·s) or, in base units, the kilogram meter per second (kg·m/s)",
-			"definedVariable": "118",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Impulse_(physics)"
+		"65": {
+			"id": "65",
+			"quickName": "f=ma",
+			"representation": "$\\displaystyle{ \\sum{ \\vec{F} } = \\frac{d \\vec{p} }{dt} = m \\frac{d \\vec{v} }{dt} = m\\vec{a} }$",
+			"fullName": "Newton's Second Law",
+			"description": "The second law states that the net force on an object is equal to the rate of change (that is, the derivative) of its linear momentum p in an inertial reference frame. The second law can also be stated in terms of an object's acceleration. Since Newton's second law is only valid for constant-mass systems. Mass can be taken outside the differentiation operator by the constant factor rule in differentiation.",
+			"definedVariable": null,
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Newton%27s_laws_of_motion",
+			"variables": ["104", "115", "132", "117", "103"]
 		},
-		"75": { 
-			"id": "75",
-			"quickName": "W=int(f)dx",
-			"representation": "$\\displaystyle{ W = \\int{\\vec{F} \\cdot d\\vec{x}} = \\vec{F} \\cdot \\vec{d} = |F||d|\\cos{\\theta} }$",
-			"fullName": "Definition of Work",
-			"description": "A force is said to do work when it acts on a body, and there is a displacement of the point of application in the direction of the force. For example, when you lift a suitcase from the floor, the work done on the suitcase is the force it takes to lift it (its weight) times the height that it is lifted",
-			"definedVariable": "119",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Work_%28physics%29"
+		"66": {
+			"id": "66",
+			"quickName": "x=(x_0)+(v_0)*t+0.5a*(t^2)",
+			"representation": "$\\displaystyle{ x = \\frac{1}{2}(v_0 + v)t}$",
+			"fullName": "Kinematics Equation (no \"$a$\")",
+			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
+			"definedVariable": null,
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics",
+			"variables": ["105", "115", "132", "131"]
 		},
-		"67": { 
+		"67": {
 			"id": "67",
 			"quickName": "v^2=(v_0^2)+2a*(x-x_0)",
 			"representation": "$\\displaystyle{ v^2 = {v_0}^2 + 2a(x-x_0) }$",
-			"fullName": "Kinematics Equation (no \"t\")",
+			"fullName": "Kinematics Equation (no \"$t$\")",
 			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
 			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics",
+			"variables": ["105", "115", "132"]
 		},
-		"68": { 
+		"68": {
 			"id": "68",
 			"quickName": "F_fric=muF_n",
 			"representation": "$\\displaystyle{ \\vec{F}_{fric} = \\mu \\vec{F}_n }$",
 			"fullName": "Force of Friction",
 			"description": "Friction is the force resisting the relative motion of solid surfaces, fluid layers, and material elements sliding against each other. When surfaces in contact move relative to each other, the friction between the two surfaces converts kinetic energy into heat. This property can have dramatic consequences, as illustrated by the use of friction created by rubbing pieces of wood together to start a fire",
 			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Friction"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Friction",
+			"variables": ["121", "133", "126"]
 		},
-		"77": { 
+		"69": {
+			"id": "69",
+			"quickName": "a_c=(v^2)/r",
+			"representation": "$\\displaystyle{ \\vec{a}_c = \\frac{ \\vec{v}^2 }{r} }$",
+			"fullName": "Definition of Centripetal Acceleration",
+			"description": "Acceleration, in physics, is the rate at which the velocity of an object changes over time. Velocity and acceleration are vector quantities, with magnitude and direction that add according to the parallelogram law. An object's acceleration, as described by Newton's Second Law, is due to the net force acting on the object, i.e., the net result of any and all forces acting on the object.",
+			"definedVariable": "127",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Acceleration",
+			"variables": ["127", "132", "134"]
+		},
+		"70": {
+			"id": "70",
+			"quickName": "Tau=rxf",
+			"representation": "$\\displaystyle{ \\vec{\\tau} = \\vec{r} \\times \\vec{F} = |r||F|\\sin{\\theta} = I \\vec{\\alpha} = \\frac{ d\\vec{L} }{ dt } }$",
+			"fullName": "Definition of Torque",
+			"description": "Torque, moment or moment of force (see the terminology below), is the tendency of a force to rotate an object about an axis, fulcrum, or pivot. Just as a force is a push or a pull, a torque can be thought of as a twist to an object. Mathematically, torque is defined as the cross product of the lever-arm distance vector and the force vector, which tends to produce rotation",
+			"definedVariable": "116",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Torque",
+			"variables": ["116", "134", "103", "130", "154", "156"]
+		},
+		"71": {
+			"id": "71",
+			"quickName": "p=mv",
+			"representation": "$\\displaystyle{ \\vec{p} = m\\vec{v} }$",
+			"fullName": "Definition of Linear Momentum",
+			"description": "In classical mechanics, linear momentum or translational momentum (pl. momenta; SI unit kg m/s, or equivalently, N s) is the product of the mass and velocity of an object. For example, a heavy truck moving quickly has a large momentum—it takes a large and prolonged force to get the truck up to this speed, and it takes a large and prolonged force to bring it to a stop afterwards.",
+			"definedVariable": "117",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Momentum",
+			"variables": ["117", "104", "132"]
+		},
+		"72": {
+			"id": "72",
+			"quickName": "J=int(F)dt",
+			"representation": "$\\displaystyle{ \\vec{J} = \\int{ \\vec{F} \\cdot dt} = \\Delta \\vec{p} }$",
+			"fullName": "Definition of Impulse",
+			"description": "In classical mechanics, impulse (symbolized by J or Imp) is the change in linear momentum of a body. It may be defined or calculated as the product of the average force multiplied by the time over which the force is exerted. Impulse is a vector quantity since it is the result of integrating force, a vector quantity, over time. The SI unit of impulse is the newton second (N·s) or, in base units, the kilogram meter per second (kg·m/s)",
+			"definedVariable": "118",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Impulse_(physics)",
+			"variables": ["118", "103"]
+		},
+		"73": {
+			"id": "73",
+			"quickName": "K=0.5(mv^2)",
+			"representation": "$\\displaystyle{ K = \\frac{1}{2} m v^2 }$",
+			"fullName": "Definition of Kinetic Energy",
+			"description": "In physics, the kinetic energy of an object is the energy which it possesses due to its motion. It is defined as the work needed to accelerate a body of a given mass from rest to its stated velocity. Having gained this energy during its acceleration, the body maintains this kinetic energy unless its speed changes.",
+			"definedVariable": "122",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinetic_energy",
+			"variables": ["122", "104", "132"]
+		},
+		"74": {
+			"id": "74",
+			"quickName": "U=mgh",
+			"representation": "$\\displaystyle{ U = mgh }$",
+			"fullName": "Definition of Gravitational Potential Energy",
+			"description": "In physics, potential energy is energy stored in a system of forcefully interacting physical entities. The SI unit for measuring work and energy is the joule (symbol J).The term potential energy was introduced by the 19th century Scottish engineer and physicist William Rankine, although it has links to Greek philosopher Aristotle's concept of potentiality.",
+			"definedVariable": "140",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy",
+			"variables": ["140", "104", "135", "105"]
+		},
+		"75": {
+			"id": "75",
+			"quickName": "W=int(f)dx",
+			"representation": "$\\displaystyle{ W = \\int{\\vec{F} \\cdot d\\vec{x}} = \\vec{F} \\cdot \\vec{d} = |F||d|\\cos{\\theta} }$",
+			"fullName": "Definition of Work",
+			"description": "A force is said to do work when it acts on a body, and there is a displacement of the point of application in the direction of the force. For example, when you lift a suitcase from the floor, the work done on the suitcase is the force it takes to lift it (its weight) times the height that it is lifted",
+			"definedVariable": "119",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Work_%28physics%29",
+			"variables": ["119", "105", "103"]
+		},
+		"76": {
+			"id": "76",
+			"quickName": "F_spring=-kx",
+			"representation": "$\\displaystyle{ \\vec{F}_{spring} = -k \\vec{x} }$",
+			"fullName": "Hooke's Law",
+			"description": "Hooke's law is a principle of physics that states that the force  needed to extend or compress a spring by some distance  is proportional to that distance. That is: where  is a constant factor characteristic of the spring, its stiffness.Hooke's equation in fact holds (to some extent) in many other situations where an elastic body is deformed, such as wind blowing on a tall building, a musician plucking a string of a guitar, or the filling of a party balloon.",
+			"definedVariable": "146",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Hooke%27s_law",
+			"variables": ["146", "144", "105"]
+		},
+		"77": {
 			"id": "77",
 			"quickName": "U_spring=0.5k(x^2)",
 			"representation": "$\\displaystyle{ U_{spring} = \\frac{1}{2} k x^2 }$",
 			"fullName": "Definition of Spring Potential Energy",
 			"description": "In physics, potential energy is energy stored in a system of forcefully interacting physical entities. The SI unit for measuring work and energy is the joule (symbol J).The term potential energy was introduced by the 19th century Scottish engineer and physicist William Rankine, although it has links to Greek philosopher Aristotle's concept of potentiality.",
 			"definedVariable": "147",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy",
+			"variables": ["147", "144", "105"]
 		},
-		"79": { 
-			"id": "79",
-			"quickName": "T_pendulum=2pi(sqrt(l/g))",
-			"representation": "$\\displaystyle{ T_{pendulum} = 2 \\pi \\sqrt{ \\frac{l}{g} } }$",
-			"fullName": "Pendulum Period",
-			"description": "The mathematics of pendulums are in general quite complicated. Simplifying assumptions can be made, which in the case of a simple pendulum allows the equations of motion to be solved analytically for small-angle oscillations",
-			"definedVariable": "143",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Pendulum_(mathematics)"
-		},
-		"81": { 
-			"id": "81",
-			"quickName": "U = -int(F)dx",
-			"representation": "$\\displaystyle{ U = - \\int{ \\vec{F} \\cdot d\\vec{x} } }$",
-			"fullName": "Potential Energy",
-			"description": "In physics, potential energy is energy stored in a system of forcefully interacting physical entities. The SI unit for measuring work and energy is the joule (symbol J).The term potential energy was introduced by the 19th century Scottish engineer and physicist William Rankine, although it has links to Greek philosopher Aristotle's concept of potentiality.",
-			"definedVariable": "142",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy"
-		},
-		"82": { 
-			"id": "82",
-			"quickName": "F_grav = -(Gm1m2)/(r^2)",
-			"representation": "$\\displaystyle{ \\vec{F}_G = -G \\frac{ m_1 m_2 }{ \\vec{ r } ^2 } }$",
-			"fullName": "Newton's Law of Gravitation",
-			"description": "Newton's law of universal gravitation states that any two bodies in the universe attract each other with a force that is directly proportional to the product of their masses and inversely proportional to the square of the distance between them. (Separately it was shown that large spherically symmetrical masses attract and are attracted as if all their mass were concentrated at their centers.) This is a general physical law derived from empirical observations by what Isaac Newton called induction.",
-			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation"
-		},
-		"85": { 
-			"id": "85",
-			"quickName": "E=F/q",
-			"representation": "$\\displaystyle{ \\vec{E} = \\frac{ \\vec{F} }{q} }$",
-			"fullName": "Electric Field Strength",
-			"description": "An electric field is generated by electrically charged particles and time-varying magnetic fields. The electric field describes the electric force experienced by a motionless positively charged test particle at any point in space relative to the source(s) of the field. The concept of an electric field was introduced by Michael Faraday",
-			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_field"
-		},
-		"86": { 
-			"id": "86",
-			"quickName": "F_n = mg",
-			"representation": "$\\displaystyle{ \\vec{F}_n = m \\vec{ g } \\cos{\\theta} }$",
-			"fullName": "Normal Force",
-			"description": "In mechanics, the normal force  is the component, perpendicular to the surface (surface being a plane) of contact, of the contact force exerted on an object by, for example, the surface of a floor or wall, preventing the object from penetrating the surface.The normal force is one of the components of the ground reaction force and may coincide with it, for example considering a person standing still on the ground, in which case the ground reaction force reduces to the normal force. In another common situation, if an object hits a surface with some speed, and the surface can withstand it, the normal force provides for a rapid deceleration, which will depend on the flexibility of the surface",
-			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Normal_force"
-		},
-		"87": { 
-			"id": "87",
-			"quickName": "F_c = ma_c",
-			"representation": "$\\displaystyle{ \\vec{F}_c = m \\vec{a}_c }$",
-			"fullName": "Definition of Centripetal Force",
-			"description": "In physics, a force is any external effort that causes an object to undergo a certain change, either concerning its movement, direction, or geometrical construction. In other words, a force can cause an object with mass to change its velocity (which includes to begin moving from a state of rest), i.e., to accelerate, or a flexible object to deform, or both. Force can also be described by intuitive concepts such as a push or a pull.",
-			"definedVariable": "137",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Force"
-		},
-		"84": { 
-			"id": "84",
-			"quickName": "F_E =(kq1q2/(r^2))",
-			"representation": "$\\displaystyle{ \\vec{F}_E = K \\frac{ q_1 q_2 }{ \\vec{ r }^2 } }$ = ${\\frac{1}{4\\pi\\epsilon_0}} \\frac{ q_1 q_2 }{ \\vec{ r }^2 }$  ",
-			"fullName": "Definition of Coulomb Force",
-			"description": "Coulomb's law, or Coulomb's inverse-square law, is a law of physics describing the electrostatic interaction between electrically charged particles. The law was first published in 1785 by French physicist Charles Augustin de Coulomb and was essential to the development of the theory of electromagnetism. It is analogous to Isaac Newton's inverse-square law of universal gravitation.",
-			"definedVariable": "148",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Coulomb%27s_law"
-		},
-		"83": { 
-			"id": "83",
-			"quickName": "U_g = -(Gm1m2)/(r)",
-			"representation": "$\\displaystyle{ U_G = -\\frac{Gm_1m_2}{r} }$",
-			"fullName": "Gravitational Potential",
-			"description": "In classical mechanics, the gravitational potential at a location is equal to the work (energy transferred) per unit mass that is done by the force of gravity to move an object to a fixed reference location. It is analogous to the electric potential with mass playing the role of charge. The reference location, where the potential is zero, is by convention infinitely far away from any mass, resulting in a negative potential at any finite distance",
-			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Gravitational_potential"
-		},
-		"78": { 
+		"78": {
 			"id": "78",
 			"quickName": "T_spring=2pi(sqrt(m/k))",
 			"representation": "$\\displaystyle{ T_{spring} = 2 \\pi \\sqrt{ \\frac{m}{k} } }$",
 			"fullName": "Spring Period",
 			"description": "The period of a spring defines how long, in seconds, it takes for the spring to go from stretched to compressed and back again when acted upon by some outside force",
 			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Spring_physics"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Spring_physics",
+			"variables": ["120", "144", "104", "145"]
 		},
-		"80": { 
+		"79": {
+			"id": "79",
+			"quickName": "T_pendulum=2pi(sqrt(l/g))",
+			"representation": "$\\displaystyle{ T_{pendulum} = 2 \\pi \\sqrt{ \\frac{l}{g} } }$",
+			"fullName": "Pendulum Period",
+			"description": "The mathematics of pendulums are in general quite complicated. Simplifying assumptions can be made, which in the case of a simple pendulum allows the equations of motion to be solved analytically for small-angle oscillations",
+			"definedVariable": "143",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Pendulum_(mathematics)",
+			"variables": ["143", "120", "134", "135"]
+		},
+		"80": {
 			"id": "80",
 			"quickName": "T=1/(freq)",
 			"representation": "$\\displaystyle{ T = \\frac{1}{f} }$",
 			"fullName": "Definition of Period",
 			"description": "The period of a cyclic event is the time it takes for the system to complete one full revolution and return to its starting point. It is the inverse of frequency",
 			"definedVariable": "124",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Frequency"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Frequency",
+			"variables": ["124", "125"]
 		},
-		"88": { 
+		"81": {
+			"id": "81",
+			"quickName": "U = -int(F)dx",
+			"representation": "$\\displaystyle{ U = - \\int{ \\vec{F} \\cdot d\\vec{x} } }$",
+			"fullName": "Potential Energy",
+			"description": "In physics, potential energy is energy stored in a system of forcefully interacting physical entities. The SI unit for measuring work and energy is the joule (symbol J).The term potential energy was introduced by the 19th century Scottish engineer and physicist William Rankine, although it has links to Greek philosopher Aristotle's concept of potentiality.",
+			"definedVariable": "142",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy",
+			"variables": ["142", "103", "105"]
+		},
+		"82": {
+			"id": "82",
+			"quickName": "F_grav = -(Gm1m2)/(r^2)",
+			"representation": "$\\displaystyle{ \\vec{F}_G = -G \\frac{ m_1 m_2 }{ \\vec{ r } ^2 } }$",
+			"fullName": "Newton's Law of Gravitation",
+			"description": "Newton's law of universal gravitation states that any two bodies in the universe attract each other with a force that is directly proportional to the product of their masses and inversely proportional to the square of the distance between them. (Separately it was shown that large spherically symmetrical masses attract and are attracted as if all their mass were concentrated at their centers.) This is a general physical law derived from empirical observations by what Isaac Newton called induction.",
+			"definedVariable": null,
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation",
+			"variables": ["141", "104", "134"]
+		},
+		"83": {
+			"id": "83",
+			"quickName": "U_g = -(Gm1m2)/(r)",
+			"representation": "$\\displaystyle{ U_G = -\\frac{Gm_1m_2}{r} }$",
+			"fullName": "Gravitational Potential",
+			"description": "In classical mechanics, the gravitational potential at a location is equal to the work (energy transferred) per unit mass that is done by the force of gravity to move an object to a fixed reference location. It is analogous to the electric potential with mass playing the role of charge. The reference location, where the potential is zero, is by convention infinitely far away from any mass, resulting in a negative potential at any finite distance",
+			"definedVariable": null,
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Gravitational_potential",
+			"variables": ["104", "140", "134"]
+		},
+		"84": {
+			"id": "84",
+			"quickName": "F_E =(kq1q2/(r^2))",
+			"representation": "$\\displaystyle{ \\vec{F}_E = K \\frac{ q_1 q_2 }{ \\vec{ r }^2 } }$ = ${\\frac{1}{4\\pi\\epsilon_0}} \\frac{ q_1 q_2 }{ \\vec{ r }^2 }$  ",
+			"fullName": "Definition of Coulomb Force",
+			"description": "Coulomb's law, or Coulomb's inverse-square law, is a law of physics describing the electrostatic interaction between electrically charged particles. The law was first published in 1785 by French physicist Charles Augustin de Coulomb and was essential to the development of the theory of electromagnetism. It is analogous to Isaac Newton's inverse-square law of universal gravitation.",
+			"definedVariable": "148",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Coulomb%27s_law",
+			"variables": ["148", "129", "134", "136", "139", "109", "120"]
+		},
+		"85": {
+			"id": "85",
+			"quickName": "E=F/q",
+			"representation": "$\\displaystyle{ \\vec{E} = \\frac{ \\vec{F} }{q} }$",
+			"fullName": "Electric Field Strength",
+			"description": "An electric field is generated by electrically charged particles and time-varying magnetic fields. The electric field describes the electric force experienced by a motionless positively charged test particle at any point in space relative to the source(s) of the field. The concept of an electric field was introduced by Michael Faraday",
+			"definedVariable": null,
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_field",
+			"variables": ["138", "103", "136"]
+		},
+		"86": {
+			"id": "86",
+			"quickName": "F_n = mg",
+			"representation": "$\\displaystyle{ \\vec{F}_n = m \\vec{ g } \\cos{\\theta} }$",
+			"fullName": "Normal Force",
+			"description": "In mechanics, the normal force  is the component, perpendicular to the surface (surface being a plane) of contact, of the contact force exerted on an object by, for example, the surface of a floor or wall, preventing the object from penetrating the surface.The normal force is one of the components of the ground reaction force and may coincide with it, for example considering a person standing still on the ground, in which case the ground reaction force reduces to the normal force. In another common situation, if an object hits a surface with some speed, and the surface can withstand it, the normal force provides for a rapid deceleration, which will depend on the flexibility of the surface",
+			"definedVariable": null,
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Normal_force",
+			"variables": ["133", "104", "135", "130"]
+		},
+		"87": {
+			"id": "87",
+			"quickName": "F_c = ma_c",
+			"representation": "$\\displaystyle{ \\vec{F}_c = m \\vec{a}_c }$",
+			"fullName": "Definition of Centripetal Force",
+			"description": "In physics, a force is any external effort that causes an object to undergo a certain change, either concerning its movement, direction, or geometrical construction. In other words, a force can cause an object with mass to change its velocity (which includes to begin moving from a state of rest), i.e., to accelerate, or a flexible object to deform, or both. Force can also be described by intuitive concepts such as a push or a pull.",
+			"definedVariable": "137",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Force",
+			"variables": ["137", "104", "127"]
+		},
+		"88": {
 			"id": "88",
 			"quickName": "r_cm",
 			"representation": "$\\displaystyle{ \\vec{r}_{cm} = \\frac{ m_1\\vec{r}_1 + m_2\\vec{r}_2 }{ m_1 + m_2 } }$",
 			"fullName": "Definition of Center of Mass",
 			"description": "In physics, the center of mass of a distribution of mass in space is the unique point where the weighted relative position of the distributed mass sums to zero. The distribution of mass is balanced around the center of mass and the average of the weighted position coordinates of the distributed mass defines its coordinates. Calculations in mechanics are often simplified when formulated with respect to the center of mass",
 			"definedVariable": "155",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Center_of_mass"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Center_of_mass",
+			"variables": ["155", "104", "134"]
 		},
-		"89": { 
+		"89": {
 			"id": "89",
 			"quickName": "Wnet=deltak",
 			"representation": "$\\displaystyle{ W_{net} = \\Delta K = K_f - K_i }$",
 			"fullName": "Work-Energy Theorem",
 			"description": "In physics, a force is said to do work when it acts on a body, and there is a displacement of the point of application in the direction of the force. For example, when you lift a suitcase from the floor, the work done on the suitcase is the force it takes to lift it (its weight) times the height that it is lifted.The term work was introduced in 1826 by the French mathematician Gaspard-Gustave Coriolis as \"weight lifted through a height\", which is based on the use of early steam engines to lift buckets of water out of flooded ore mines.",
 			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Work_(physics)"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Work_(physics)",
+			"variables": ["122", "123"]
 		},
-		"90": { 
+		"90": {
 			"id": "90",
 			"quickName": "p = qd",
 			"representation": "$\\displaystyle{ p = qd }$",
 			"fullName": "Electric Dipole Moment",
 			"description": "In physics, the electric dipole moment is a measure of the separation of positive and negative electrical charges in a system of electric charges, that is, a measure of the charge system's overall polarity. The SI units are Coulomb-meter (C m). This article is limited to static phenomena, and does not describe time-dependent or dynamic polarization",
 			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_dipole_moment"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_dipole_moment",
+			"variables": ["128"]
 		},
-		"91": { 
+		"91": {
 			"id": "91",
 			"quickName": "q = ne",
 			"representation": "$\\displaystyle{ q = ne }$",
 			"fullName": "Electric Charge",
 			"description": "Electric charge is the physical property of matter that causes it to experience a force when close to other electrically charged matter. There are two types of electric charges – positive and negative. Positively charged substances are repelled from other positively charged substances, but attracted to negatively charged substances; negatively charged substances are repelled from negative and attracted to positive.",
 			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_charge"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_charge",
+			"variables": ["136"]
 		},
-		"95": { 
-			"id": "95",
-			"quickName": "a = dv/dt = d^2x/dt^2",
-			"representation": "$\\displaystyle{ \\vec{a} = \\frac{ d \\vec{v} }{ dt } = \\frac{ d^2 \\vec{x} }{ dt^2 } }$",
-			"fullName": "acceleration",
-			"description": "Acceleration, in physics, is the rate at which the velocity of an object changes over time. Velocity and acceleration are vector quantities, with magnitude and direction that add according to the parallelogram law. An object's acceleration, as described by Newton's Second Law, is due to the net force acting on the object, i.e., the net result of any and all forces acting on the object.",
-			"definedVariable": "115",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Acceleration"
-		},
-		"96": { 
-			"id": "96",
-			"quickName": "x=(x_0)+(v)*t-0.5a*(t^2)",
-			"representation": "$\\displaystyle{\\displaystyle{ x = x_0 + vt - \\frac{1}{2}at^2 }}$",
-			"fullName": "Kinematics Equation (no \"$V_0\")",
-			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
-			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics"
-		},
-		"97": { 
-			"id": "97",
-			"quickName": "x=1/2(v_0+v)*t",
-			"representation": "$\\displaystyle x = x_0 + v_0t + \\frac{1}{2}at^2 $",
-			"fullName": "Kinematics Equation (no \"V\")",
-			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
-			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics"
-		},
-		"98": { 
-			"id": "98",
-			"quickName": "E=mc^2",
-			"representation": "$\\displaystyle{E=mc^2}$",
-			"fullName": "Mass–Energy Equivalence",
-			"description": "In physics, mass–energy equivalence is the concept that the mass of an object or system is a measure of its energy content. The equation $E = mc^2$ can be applied to rest mass ($m$ or $m_0$) and rest energy ($E_0$) to show their proportionality as $E_0 = m_0c^2$. In inertial reference frames other than the rest frame or center of mass frame, the equation $E = mc^2$ remains true if the energy is the relativistic energy and the mass is the relativistic mass. However, connection of the total or relativistic energy ($E_r$) with the rest or invariant mass ($m_0$) requires consideration of the system total momentum, in systems and reference frames where the total momentum has a non-zero value. The formula then required to connect the two different kinds of mass and energy, is the extended version of Einstein's equation, $E_r = \\sqrt{(m_0c^2)^2 + (pc)^2}$ called the relativistic energy–momentum relatio",
-			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Mass%E2%80%93energy_equivalence"
-		},
-		"94": { 
-			"id": "94",
-			"quickName": "omega = theta/t",
-			"representation": "$\\displaystyle{ \\vec{ \\omega } = \\frac{ d \\vec{\\theta} }{ dt }}$",
-			"fullName": "Angular Velocity",
-			"description": "Angular velocity is the change in angle per unit time. For a rigid body in constant rotation, the angular velocity is the same for all points on the body. Angular velocity is a vector quantity, and angular speed is the magnitude of this velocity. The direction of the angular velocity vector is perpendicular to the plane of rotation, in a direction which is usually specified by the right-hand rule",
-			"definedVariable": "153",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_velocity"
-		},
-		"93": { 
-			"id": "93",
-			"quickName": "P=W/t",
-			"representation": "$\\displaystyle{ P = \\frac{ dW }{ dt } = \\vec{F} \\cdot \\vec{v} = |F||v|\\cos{\\theta} }$",
-			"fullName": "Definition of Mechanical Power",
-			"description": "In physics, power is the rate of doing work. It is equivalent to an amount of energy consumed per unit time. In the MKS system, the unit of power is the joule per second (J/s), known as the watt in honor of James Watt, the eighteenth-century developer of the steam engine",
-			"definedVariable": "150",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Power_(physics)"
-		},
-		"92": { 
+		"92": {
 			"id": "92",
 			"quickName": "L=rxp",
 			"representation": "$\\displaystyle{ \\vec{L} =\\vec{r} \\times \\vec{p} = |r||p|\\sin{\\theta} = I\\omega }$",
 			"fullName": "Definition of Angular Momentum",
 			"description": "In physics, angular momentum, moment of momentum, or rotational momentum is a measure of the amount of rotation an object has, taking into account its mass, shape and speed. It is a vector quantity that represents the product of a body's rotational inertia and rotational velocity about a particular axis",
 			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_momentum"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_momentum",
+			"variables": ["153", "130", "117", "134", "149"]
 		},
-		"103": { 
-			"id": "103",
-			"quickName": "gammax'=x/gamma",
-			"representation": "$\\displaystyle{\\Delta x' = \\frac{\\Delta x}{\\gamma} }$",
-			"fullName": "Length Contraction",
-			"description": "In physics, length contraction is the phenomenon of a decrease in length measured by the observer of an object which is traveling at any non-zero velocity relative to the observer. This contraction (more formally called Lorentz contraction or Lorentz–FitzGerald contraction after Hendrik Lorentz and George FitzGerald) is usually only noticeable at a substantial fraction of the speed of light. Length contraction is only in the direction parallel to the direction in which the observed body is travelling. The length (∆x' ) of an object as measured in the frame in which it is moving, is shorter than its length (∆x) in its own rest fram",
-			
+		"93": {
+			"id": "93",
+			"quickName": "P=W/t",
+			"representation": "$\\displaystyle{ P = \\frac{ dW }{ dt } = \\vec{F} \\cdot \\vec{v} = |F||v|\\cos{\\theta} }$",
+			"fullName": "Definition of Mechanical Power",
+			"description": "In physics, power is the rate of doing work. It is equivalent to an amount of energy consumed per unit time. In the MKS system, the unit of power is the joule per second (J/s), known as the watt in honor of James Watt, the eighteenth-century developer of the steam engine",
+			"definedVariable": "150",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Power_(physics)",
+			"variables": ["119", "130", "131", "132", "103", "150"]
+		},
+		"94": {
+			"id": "94",
+			"quickName": "omega = theta/t",
+			"representation": "$\\displaystyle{ \\vec{ \\omega } = \\frac{ d \\vec{\\theta} }{ dt }}$",
+			"fullName": "Angular Velocity",
+			"description": "Angular velocity is the change in angle per unit time. For a rigid body in constant rotation, the angular velocity is the same for all points on the body. Angular velocity is a vector quantity, and angular speed is the magnitude of this velocity. The direction of the angular velocity vector is perpendicular to the plane of rotation, in a direction which is usually specified by the right-hand rule",
+			"definedVariable": "153",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_velocity",
+			"variables": ["153", "130"]
+		},
+		"95": {
+			"id": "95",
+			"quickName": "a = dv/dt = d^2x/dt^2",
+			"representation": "$\\displaystyle{ \\vec{a} = \\frac{ d \\vec{v} }{ dt } = \\frac{ d^2 \\vec{x} }{ dt^2 } }$",
+			"fullName": "Definition of Acceleration",
+			"description": "Acceleration, in physics, is the rate at which the velocity of an object changes over time. Velocity and acceleration are vector quantities, with magnitude and direction that add according to the parallelogram law. An object's acceleration, as described by Newton's Second Law, is due to the net force acting on the object, i.e., the net result of any and all forces acting on the object.",
+			"definedVariable": "115",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Acceleration",
+			"variables": ["132", "105", "131", "115"]
+		},
+		"96": {
+			"id": "96",
+			"quickName": "x=(x_0)+(v)*t-0.5a*(t^2)",
+			"representation": "$\\displaystyle{\\displaystyle{ x = x_0 + vt - \\frac{1}{2}at^2 }}$",
+			"fullName": "Kinematics Equation (no \"$v_0$\")",
+			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
 			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Length_contraction"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics",
+			"variables": ["105", "115", "132", "131"]
 		},
-		"102": { 
-			"id": "102",
-			"quickName": "t=t'gamma",
-			"representation": "$\\displaystyle{\\Delta t' = \\gamma \\Delta t}$",
-			"fullName": "Time Dilation",
-			"description": "In the theory of relativity, time dilation is an actual difference of elapsed time between two events as measured by observers either moving relative to each other or differently situated from gravitational masses.An accurate clock at rest with respect to one observer may be measured to tick at a different rate when compared to a second observer's own equally accurate clocks. The time (∆t' ) between two ticks as measured in the frame in which the clock is moving, is longer than the time (∆t) between these ticks as measured in the rest frame of the cloc",
+		"97": {
+			"id": "97",
+			"quickName": "x=1/2(v_0+v)*t",
+			"representation": "$\\displaystyle x = x_0 + v_0t + \\frac{1}{2}at^2 $",
+			"fullName": "Kinematics Equation (no \"$v$\")",
+			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
 			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Time_dilation"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics",
+			"variables": ["105", "131", "132"]
 		},
-		"99": { 
+		"98": {
+			"id": "98",
+			"quickName": "E=mc^2",
+			"representation": "$\\displaystyle{E=mc^2}$",
+			"fullName": "Mass–Energy Equivalence",
+			"description": "In physics, mass–energy equivalence is the concept that the mass of an object or system is a measure of its energy content. The equation $E = mc^2$ can be applied to rest mass ($m$ or $m_0$) and rest energy ($E_0$) to show their proportionality as $E_0 = m_0c^2$. In inertial reference frames other than the rest frame or center of mass frame, the equation $E = mc^2$ remains true if the energy is the relativistic energy and the mass is the relativistic mass. However, connection of the total or relativistic energy ($E_r$) with the rest or invariant mass ($m_0$) requires consideration of the system total momentum, in systems and reference frames where the total momentum has a non-zero value. The formula then required to connect the two different kinds of mass and energy, is the extended version of Einstein's equation, $E_r = \\sqrt{(m_0c^2)^2 + (pc)^2}$ called the relativistic energy–momentum relatio",
+			"definedVariable": null,
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Mass%E2%80%93energy_equivalence",
+			"variables": ["104", "106", "159"]
+		},
+		"99": {
 			"id": "99",
 			"quickName": "r=rho*l/A",
 			"representation": "$R=\\frac{\\rho \\ell}{ \\textrm{A} }$",
 			"fullName": "Pouillet's law",
 			"description": "The resistance of a given material will increase with the length, but decrease with increasing cross-sectional area. From the above equations, resistivity has SI units of ohm⋅meter. This formula can be used to intuitively understand the meaning of a resistivity value. For example, if $A=1\\text{m}^2$ and $\\ell=1\\text{m}$ (forming a cube with perfectly-conductive contacts on opposite faces), then the resistance of this element in ohms is numerically equal to the resistivity of the material it is made of in ohm-meters.",
 			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity",
+			"variables": ["161", "162", "163", "164"]
 		},
 		"100": {
 			"id": "100",
@@ -350,27 +367,51 @@ var db = {
 			"fullName": "Ohm's Law",
 			"description": "Ohm's law states that the current through a conductor between two points is directly proportional to the potential difference across the two points. The  constant of proportionality in this case is the resistance. In circuit analysis, three equivalent expressions of Ohm's law are used interchangeably: $I = \\frac{V}{R} \\quad \\text{or}\\quad V = IR \\quad \\text{or} \\quad R = \\frac{V}{I}$.",
 			"definedVariable": null,
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Ohm%27s_law"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Ohm%27s_law",
+			"variables": ["152", "161", "160"]
 		},
-		"101": { 
+		"101": {
 			"id": "101",
 			"quickName": "gamma",
 			"representation": "$\\displaystyle{\\gamma = \\frac{1}{\\sqrt{1 - v^2/c^2}} = \\frac{1}{\\sqrt{1 - \\beta^2}}} $",
 			"fullName": "Definition of Lorentz Factor",
 			"description": "The Lorentz factor or Lorentz term is an expression which appears in several equations in special relativity. It arises from deriving the Lorentz transformations.",
 			"definedVariable": "178",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Lorentz_factor"
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Lorentz_factor",
+			"variables": ["106", "179", "132", "178"]
+		},
+		"102": {
+			"id": "102",
+			"quickName": "t=t'gamma",
+			"representation": "$\\displaystyle{\\Delta t' = \\gamma \\Delta t}$",
+			"fullName": "Time Dilation",
+			"description": "In the theory of relativity, time dilation is an actual difference of elapsed time between two events as measured by observers either moving relative to each other or differently situated from gravitational masses.An accurate clock at rest with respect to one observer may be measured to tick at a different rate when compared to a second observer's own equally accurate clocks. The time (∆t' ) between two ticks as measured in the frame in which the clock is moving, is longer than the time (∆t) between these ticks as measured in the rest frame of the cloc",
+			"definedVariable": null,
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Time_dilation",
+			"variables": ["178", "131"]
+		},
+		"103": {
+			"id": "103",
+			"quickName": "gammax'=x/gamma",
+			"representation": "$\\displaystyle{\\Delta x' = \\frac{\\Delta x}{\\gamma} }$",
+			"fullName": "Length Contraction",
+			"description": "In physics, length contraction is the phenomenon of a decrease in length measured by the observer of an object which is traveling at any non-zero velocity relative to the observer. This contraction (more formally called Lorentz contraction or Lorentz–FitzGerald contraction after Hendrik Lorentz and George FitzGerald) is usually only noticeable at a substantial fraction of the speed of light. Length contraction is only in the direction parallel to the direction in which the observed body is travelling. The length (∆x' ) of an object as measured in the frame in which it is moving, is shorter than its length (∆x) in its own rest fram",
+			"definedVariable": null,
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Length_contraction",
+			"variables": ["105", "178"]
 		}
 	},
 	"units": {
-		"43": {
-			"id": "43",
-			"quickName": "K",
-			"representation": "$\\displaystyle{\\textrm{K}}$",
-			"fullName": "Kelvin",
-			"description": "The kelvin is a unit of measurement for temperature. It is one of the seven base units in the International System of Units (SI) and is assigned the unit symbol K. The kelvin scale is an absolute, thermodynamic temperature scale using as its null point absolute zero, the temperature at which all thermal motion ceases in the classical description of thermodynamics. ",
-			"composition": "base",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Kelvin"
+		"39": {
+			"id": "39",
+			"quickName": "m",
+			"representation": "$\\displaystyle{\\textrm{m}}$",
+			"fullName": "meter",
+			"description": "The meter is the fundamental unit of length  in the International System of Units (SI). Originally intended to be one ten-millionth of the distance from the Earth's equator to the North Pole (at sea level), its definition has been periodically refined to reflect growing knowledge of metrology.",
+			"compositionRepresentation": "base",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Metre",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{m}}\\right)$",
+			"composition": []
 		},
 		"40": {
 			"id": "40",
@@ -378,8 +419,10 @@ var db = {
 			"representation": "$\\displaystyle{\\textrm{kg}}$",
 			"fullName": "kilogram",
 			"description": "The kilogram is the base unit of mass in the International System of Units (SI). Historically, a kilogram was defined as the mass of one cubic liter of water. The mass of a kilogram today is defined as the mass of a platinum-iridium cylinder internationally agreed-upon to be one kilogram.",
-			"composition": "base",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Kilogram"
+			"compositionRepresentation": "base",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Kilogram",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{kg}}\\right)$",
+			"composition": []
 		},
 		"41": {
 			"id": "41",
@@ -387,17 +430,10 @@ var db = {
 			"representation": "$\\displaystyle{\\textrm{s}}$",
 			"fullName": "second",
 			"description": "The second is the base unit of time in the International System of Units (SI) and is also a unit of time in other systems of measurement; it is the second division of the hour by sixty, the first division by 60 being the minute. Between AD 1000 (when al-Biruni used seconds) and 1960 the second was defined as 1/86,400 of a mean solar day (that definition still applies in some astronomical and legal contexts). Between 1960 and 1967, it was defined in terms of the period of the Earth's orbit around the Sun in 1900, but it is now defined more precisely in atomic terms.",
-			"composition": "base",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Second"
-		},
-		"44": {
-			"id": "44",
-			"quickName": "C",
-			"representation": "$° \\textrm{C}$",
-			"fullName": "Celsius",
-			"description": "Celsius, also known as centigrade, is a scale and unit of measurement for temperature. It is named after the Swedish astronomer Anders Celsius (1701–1744), who developed a similar temperature scale. The degree Celsius (°C) can refer to a specific temperature on the Celsius scale as well as a unit to indicate a temperature interval, a difference between two temperatures or an uncertainty. ",
-			"composition": "base",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Celsius"
+			"compositionRepresentation": "base",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Second",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{s}}\\right)$",
+			"composition": []
 		},
 		"42": {
 			"id": "42",
@@ -405,80 +441,32 @@ var db = {
 			"representation": "$\\displaystyle{\\textrm{mol}}$",
 			"fullName": "mole",
 			"description": "Mole is a unit of measurement used to express amounts of a chemical substance, defined as the amount of any substance that contains as many elementary entities (e.g., atoms, molecules, ions, electrons). One mole is defined as $6.02214199\\times10^{23}$ particles, this numerical value being Avogadro's number.",
-			"composition": "base",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Mole_(unit)"
+			"compositionRepresentation": "base",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Mole_(unit)",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{mol}}\\right)$",
+			"composition": []
 		},
-		"50": {
-			"id": "50",
-			"quickName": "H",
-			"representation": "$\\displaystyle{\\textrm{H}}$",
-			"fullName": "Henry",
-			"description": "In physics, and electronics, the henry is the SI derived unit of inductance. It is named after Joseph Henry (1797–1878), the American scientist who discovered electromagnetic induction. The magnetic permeability of a vacuum is $4\\pi\\times10^{−7}$ H/m (henry per meter).",
-			"composition": "$\\frac{ \\textrm{V} \\cdot \\textrm{ s } }{\\textrm{A}} $",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Henry_(unit)"
+		"43": {
+			"id": "43",
+			"quickName": "K",
+			"representation": "$\\displaystyle{\\textrm{K}}$",
+			"fullName": "Kelvin",
+			"description": "The kelvin is a unit of measurement for temperature. It is one of the seven base units in the International System of Units (SI) and is assigned the unit symbol K. The kelvin scale is an absolute, thermodynamic temperature scale using as its null point absolute zero, the temperature at which all thermal motion ceases in the classical description of thermodynamics. ",
+			"compositionRepresentation": "base",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Kelvin",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{K}}\\right)$",
+			"composition": []
 		},
-		"48": {
-			"id": "48",
+		"44": {
+			"id": "44",
 			"quickName": "C",
-			"representation": "$\\displaystyle{\\textrm{C}}$",
-			"fullName": "Coulomb",
-			"description": "The coulomb (named after Charles-Augustin de Coulomb) is a fundamental unit of electrical charge, and is also the SI derived unit of electric charge. It is equal to the charge of approximately $6.241\\times10^{18}$ electrons.",
-			"composition": "$A \\cdot s$",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Coulomb"
-		},
-		"47": {
-			"id": "47",
-			"quickName": "N",
-			"representation": "$\\displaystyle{\\textrm{N}}$",
-			"fullName": "Newton",
-			"description": "The newton is the International System of Units (SI) derived unit of force. It is named after Isaac Newton in recognition of his work on classical mechanics, specifically Newton's second law of motion. Newton's second law of motion states that $F = ma$, where $F$ is the force applied, $m$ is the mass of the object receiving the force, and $a$ is the acceleration of the object.",
-			"composition": "$\\frac{ \\textrm{kg} \\cdot {\\textrm{m}}}{ \\textrm{s}^2 }$",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Newton_(unit)"
-		},
-		"53": {
-			"id": "53",
-			"quickName": "Pa",
-			"representation": "$\\displaystyle{\\textrm{Pa}}$",
-			"fullName": "Pascal",
-			"description": "The pascal is the SI derived unit of pressure, internal pressure, stress, Young's modulus and tensile strength, named after the French physicist, Blaise Pascal. It is a measure of force per unit area, defined as one newton per square meter. On Earth, the standard atmospheric pressure is precisely 101.325 kPa by definition.",
-			"composition": "$ \\frac{ \\textrm{N} }{ \\textrm{m}^2 } $",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Pascal_(unit)"
-		},
-		"51": {
-			"id": "51",
-			"quickName": "omega",
-			"representation": "$\\displaystyle{\\Omega}$",
-			"fullName": "Ohm",
-			"description": "The ohm is the SI derived unit of electrical resistance, named after German physicist Georg Simon Ohm. Although several empirically derived standard units for expressing electrical resistance were developed in connection with early telegraphy practice, the British Association for the Advancement of Science proposed a unit derived from existing units of mass, length and time and of a convenient size for practical work as early as 1861. The definition of the \"ohm\" unit was revised several times. Today the value of the ohm is expressed in terms of the quantum Hall effect.",
-			"composition": "$\\frac{ \\textrm{V} }{ \\textrm{A} }$",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Ohm"
-		},
-		"52": {
-			"id": "52",
-			"quickName": "Hz",
-			"representation": "$\\displaystyle{\\textrm{Hz}}$",
-			"fullName": "Hertz",
-			"description": "The hertz  is the unit of frequency in the International System of Units (SI). It is defined as one cycle per second. One of its most common uses is the description of the sine wave, particularly those used in radio and audio applications, such as the frequency of musical tones. ",
-			"composition": "$ \\frac{ 1 }{ \\textrm{ s } } $",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Hertz"
-		},
-		"39": {
-			"id": "39",
-			"quickName": "m",
-			"representation": "$\\displaystyle{\\textrm{m}}$",
-			"fullName": "meter",
-			"description": "The meter is the fundamental unit of length  in the International System of Units (SI). Originally intended to be one ten-millionth of the distance from the Earth's equator to the North Pole (at sea level), its definition has been periodically refined to reflect growing knowledge of metrology.",
-			"composition": "base",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Metre"
-		},
-		"56": {
-			"id": "56",
-			"quickName": "f",
-			"representation": "$\\displaystyle{\\textrm{F}}$",
-			"fullName": "Farad",
-			"description": "One farad is defined as the capacitance of a capacitor across which, when charged with one coulomb of electricity, there is a potential difference of one volt. Conversely, it is the capacitance which, when charged to a potential difference of one volt, carries a charge of one coulomb. A coulomb is equal to the amount of charge (electrons) produced by a current of one ampere flowing for one second. For example, the voltage across the two terminals of a 47 nF capacitor will increase linearly by 1 V when a current of 47 nA flows through it for 1 s.",
-			"composition": "$ \\frac{ coulomb }{ volt } $",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Farad"
+			"representation": "$° \\textrm{C}$",
+			"fullName": "Celsius",
+			"description": "Celsius, also known as centigrade, is a scale and unit of measurement for temperature. It is named after the Swedish astronomer Anders Celsius (1701–1744), who developed a similar temperature scale. The degree Celsius (°C) can refer to a specific temperature on the Celsius scale as well as a unit to indicate a temperature interval, a difference between two temperatures or an uncertainty. ",
+			"compositionRepresentation": "base",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Celsius",
+			"definitionRepresentation": "$\\left(° \\textrm{C}\\right)$",
+			"composition": []
 		},
 		"45": {
 			"id": "45",
@@ -486,62 +474,10 @@ var db = {
 			"representation": "$\\displaystyle{\\textrm{A}}$",
 			"fullName": "Ampere",
 			"description": "The ampere, often shortened to amp, is the SI unit of electric current and is one of the seven SI base units. It is named after André-Marie Ampère (1775–1836), French mathematician and physicist, considered the father of electrodynamics. In practical terms, the ampere is a measure of the amount of electric charge passing a point in an electric circuit per unit time, with $6.241 \\times 10^{18}$ electrons (or one coulomb) per second constituting one ampere.",
-			"composition": "base",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Ampere"
-		},
-		"54": {
-			"id": "54",
-			"quickName": "T",
-			"representation": "$\\displaystyle{\\textrm{T}}$",
-			"fullName": "Tesla",
-			"description": "The tesla  is the SI derived unit of magnetic field strength or magnetic flux density, commonly denoted as $B$. One tesla is equal to one weber per square metre, and it was defined in 1960 in honour of Nikola Tesla. The strongest fields encountered from permanent magnets are from Halbach spheres which can be over 4.5 T.",
-			"composition": "$ \\frac{ \\textrm{Wb} }{ \\textrm{m}^2 } = \\frac{ N \\cdot m }{ A } $",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Tesla_%28unit%29"
-		},
-		"58": {
-			"id": "58",
-			"quickName": "eV",
-			"representation": "$\\displaystyle{\\textrm{eV}}$",
-			"fullName": "Electron Volt",
-			"description": "In physics, the electron volt is a unit of energy equal to approximately $1.6 \\times 10^{−19} \\textrm{J}$. By definition, it is the amount of energy gained (or lost) by the charge of a single electron moved across an electric potential difference of one volt. Thus it is 1 volt (1 joule per coulomb, 1 $J/C$) multiplied by the elementary charge ($e$, or $1.602176565(35) \\times10^{−19} \\textrm{C}$). ",
-			"composition": "${\\textrm{J}}$",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Electronvolt"
-		},
-		"55": {
-			"id": "55",
-			"quickName": "rad",
-			"representation": "$\\displaystyle{\\textrm{rad}}$",
-			"fullName": "Radian",
-			"description": "The radian is the standard unit of angular measure, used in many areas of mathematics. An angle's measurement in radians is numerically equal to the length of a corresponding arc of a unit circle, so one radian is just under 57.3 degrees (when the arc length is equal to the radius). one radian is equal to 180/π degrees. Thus, to convert from radians to degrees, multiply by 180/π. $ \\text{angle in degrees} = \\text{angle in radians} \\cdot \\frac {180^\\circ} {\\pi}$",
-			"composition": "base",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Radian"
-		},
-		"60": {
-			"id": "60",
-			"quickName": "Wb",
-			"representation": "$\\textrm{Wb}$",
-			"fullName": "Weber",
-			"description": "In physics, the weber is the SI unit of magnetic flux. A flux density of one $ \\frac{ \\textrm{Wb}}{ \\textrm{m}^2 } $ (one weber per square metre) is one tesla. The weber may be defined in terms of Faraday's law, which relates a changing magnetic flux through a loop to the electric field around the loop. A change in flux of one weber per second will induce an electromotive force of one volt (produce an electric potential difference of one volt across two open-circuited terminals).",
-			"composition": "$\\frac{ \\textrm{kg} \\cdot \\textrm{ m}^2 }{\\textrm{s}^2\\cdot\\textrm{A}} $ = $ \\textrm{T}\\cdot\\textrm{m}^2 $",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Weber_(unit)"
-		},
-		"57": {
-			"id": "57",
-			"quickName": "W",
-			"representation": "$\\displaystyle{\\textrm{W}}$",
-			"fullName": "Watt",
-			"description": "The watt (symbol: W) is a derived unit of power in the International System of Units (SI). The unit is defined as the rate of energy conversion or transfer with respect to time. When an object's velocity is held constant at one meter per second against constant opposing force of one newton the rate at which work is done is 1 watt.\r\n\r\n$\\mathrm{W = \\frac{J}{s} = \\frac{N\\cdot m}{s} = \\frac{kg\\cdot m^2}{s^3}}$\r\nIn terms of electromagnetism, one watt is the rate at which work is done when one ampere (A) of current flows through an electrical potential difference of one volt (V).\r\n\r\n$\\mathrm{W = V \\cdot A}$\r\nTwo additional unit conversions for watt can be found using the above equation and Ohm's Law.\r\n\r\n$\\mathrm{W = \\frac{V^2}{\\Omega} = A^2\\cdot\\Omega}$\r\nWhere ohm ($\\Omega$) is the SI derived unit of electrical resistance.",
-			"composition": "$ \\frac{ \\textrm{J} }{ \\textrm{s} } $",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Watt"
-		},
-		"49": {
-			"id": "49",
-			"quickName": "V",
-			"representation": "$\\displaystyle{\\textrm{V}}$",
-			"fullName": "Volt",
-			"description": "The volt is the derived unit for electric potential, electric potential difference (voltage), and electromotive force. Additionally, it is the potential difference between two points that will impart one joule of energy per coulomb of charge that passes through it. It can be expressed in terms of SI base units (m, kg, s, and A) as:\r\n$\\mathrm{V = \\frac{kg \\cdot m^2}{A \\cdot s^3} }$\r\nIt can also be expressed as amperes times ohms (current times resistance, Ohm's law), watts per ampere (power per unit current, Joule's law), or joules per coulomb (energy per unit charge):\r\n$\\mathrm{V =A \\cdot \\Omega = \\frac{W}{A} =  \\frac{J}{C} }$",
-			"composition": "$ \\frac{ \\textrm{J}}{ \\textrm{C} } $",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Volt"
+			"compositionRepresentation": "base",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Ampere",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{A}}\\right)$",
+			"composition": []
 		},
 		"46": {
 			"id": "46",
@@ -549,27 +485,154 @@ var db = {
 			"representation": "$\\displaystyle{\\textrm{J}}$",
 			"fullName": "Joule",
 			"description": "The joule is a derived unit of energy, work, or amount of heat in the International System of Units. It is equal to the energy expended (or work done) in applying a force of one newton through a distance of one meter (1 newton meter or N·m), or in passing an electric current of one ampere through a resistance of one ohm for one second. One joule can also be defined as the work required to move an electric charge of one coulomb through an electrical potential difference of one volt.\r\nIn terms firstly of base SI units and then in terms of other SI units:\r\n\r\n$\\rm J  = {}\\rm \\frac{kg \\cdot m^2}{s^2} = N \\cdot m = \\rm Pa \\cdot m^3={}\\rm W \\cdot s = C \\cdot V$",
-			"composition": "$ \\frac{ \\textrm{kg} \\cdot \\textrm{m}^2}{ \\textrm{s}^2 } $",
-			"descriptionUrl": "http://en.wikipedia.org/wiki/Joule"
+			"compositionRepresentation": "$ \\frac{ \\textrm{kg} \\cdot \\textrm{m}^2}{ \\textrm{s}^2 } $",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Joule",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{J}}\\right)$",
+			"composition": [40, 39, 41]
+		},
+		"47": {
+			"id": "47",
+			"quickName": "N",
+			"representation": "$\\displaystyle{\\textrm{N}}$",
+			"fullName": "Newton",
+			"description": "The newton is the International System of Units (SI) derived unit of force. It is named after Isaac Newton in recognition of his work on classical mechanics, specifically Newton's second law of motion. Newton's second law of motion states that $F = ma$, where $F$ is the force applied, $m$ is the mass of the object receiving the force, and $a$ is the acceleration of the object.",
+			"compositionRepresentation": "$\\frac{ \\textrm{kg} \\cdot {\\textrm{m}}}{ \\textrm{s}^2 }$",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Newton_(unit)",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{N}}\\right)$",
+			"composition": [40, 39, 41]
+		},
+		"48": {
+			"id": "48",
+			"quickName": "C",
+			"representation": "$\\displaystyle{\\textrm{C}}$",
+			"fullName": "Coulomb",
+			"description": "The coulomb (named after Charles-Augustin de Coulomb) is a fundamental unit of electrical charge, and is also the SI derived unit of electric charge. It is equal to the charge of approximately $6.241\\times10^{18}$ electrons.",
+			"compositionRepresentation": "$A \\cdot s$",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Coulomb",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{C}}\\right)$",
+			"composition": [45, 41]
+		},
+		"49": {
+			"id": "49",
+			"quickName": "V",
+			"representation": "$\\displaystyle{\\textrm{V}}$",
+			"fullName": "Volt",
+			"description": "The volt is the derived unit for electric potential, electric potential difference (voltage), and electromotive force. Additionally, it is the potential difference between two points that will impart one joule of energy per coulomb of charge that passes through it. It can be expressed in terms of SI base units (m, kg, s, and A) as:\r\n$\\mathrm{V = \\frac{kg \\cdot m^2}{A \\cdot s^3} }$\r\nIt can also be expressed as amperes times ohms (current times resistance, Ohm's law), watts per ampere (power per unit current, Joule's law), or joules per coulomb (energy per unit charge):\r\n$\\mathrm{V =A \\cdot \\Omega = \\frac{W}{A} =  \\frac{J}{C} }$",
+			"compositionRepresentation": "$ \\frac{ \\textrm{J}}{ \\textrm{C} } $",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Volt",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{V}}\\right)$",
+			"composition": [46, 48]
+		},
+		"50": {
+			"id": "50",
+			"quickName": "H",
+			"representation": "$\\displaystyle{\\textrm{H}}$",
+			"fullName": "Henry",
+			"description": "In physics, and electronics, the henry is the SI derived unit of inductance. It is named after Joseph Henry (1797–1878), the American scientist who discovered electromagnetic induction. The magnetic permeability of a vacuum is $4\\pi\\times10^{−7}$ H/m (henry per meter).",
+			"compositionRepresentation": "$\\frac{ \\textrm{V} \\cdot \\textrm{ s } }{\\textrm{A}} $",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Henry_(unit)",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{H}}\\right)$",
+			"composition": [49, 41, 45]
+		},
+		"51": {
+			"id": "51",
+			"quickName": "omega",
+			"representation": "$\\displaystyle{\\Omega}$",
+			"fullName": "Ohm",
+			"description": "The ohm is the SI derived unit of electrical resistance, named after German physicist Georg Simon Ohm. Although several empirically derived standard units for expressing electrical resistance were developed in connection with early telegraphy practice, the British Association for the Advancement of Science proposed a unit derived from existing units of mass, length and time and of a convenient size for practical work as early as 1861. The definition of the \"ohm\" unit was revised several times. Today the value of the ohm is expressed in terms of the quantum Hall effect.",
+			"compositionRepresentation": "$\\frac{ \\textrm{V} }{ \\textrm{A} }$",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Ohm",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\Omega}\\right)$",
+			"composition": [49, 45]
+		},
+		"52": {
+			"id": "52",
+			"quickName": "Hz",
+			"representation": "$\\displaystyle{\\textrm{Hz}}$",
+			"fullName": "Hertz",
+			"description": "The hertz  is the unit of frequency in the International System of Units (SI). It is defined as one cycle per second. One of its most common uses is the description of the sine wave, particularly those used in radio and audio applications, such as the frequency of musical tones. ",
+			"compositionRepresentation": "$ \\frac{ 1 }{ \\textrm{ s } } $",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Hertz",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{Hz}}\\right)$",
+			"composition": [41]
+		},
+		"53": {
+			"id": "53",
+			"quickName": "Pa",
+			"representation": "$\\displaystyle{\\textrm{Pa}}$",
+			"fullName": "Pascal",
+			"description": "The pascal is the SI derived unit of pressure, internal pressure, stress, Young's modulus and tensile strength, named after the French physicist, Blaise Pascal. It is a measure of force per unit area, defined as one newton per square meter. On Earth, the standard atmospheric pressure is precisely 101.325 kPa by definition.",
+			"compositionRepresentation": "$ \\frac{ \\textrm{N} }{ \\textrm{m}^2 } $",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Pascal_(unit)",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{Pa}}\\right)$",
+			"composition": [37, 49]
+		},
+		"54": {
+			"id": "54",
+			"quickName": "T",
+			"representation": "$\\displaystyle{\\textrm{T}}$",
+			"fullName": "Tesla",
+			"description": "The tesla  is the SI derived unit of magnetic field strength or magnetic flux density, commonly denoted as $B$. One tesla is equal to one weber per square metre, and it was defined in 1960 in honour of Nikola Tesla. The strongest fields encountered from permanent magnets are from Halbach spheres which can be over 4.5 T.",
+			"compositionRepresentation": "$ \\frac{ \\textrm{Wb} }{ \\textrm{m}^2 } = \\frac{ N \\cdot m }{ A } $",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Tesla_%28unit%29",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{T}}\\right)$",
+			"composition": [60, 39, 47, 49, 45]
+		},
+		"55": {
+			"id": "55",
+			"quickName": "rad",
+			"representation": "$\\displaystyle{\\textrm{rad}}$",
+			"fullName": "Radian",
+			"description": "The radian is the standard unit of angular measure, used in many areas of mathematics. An angle's measurement in radians is numerically equal to the length of a corresponding arc of a unit circle, so one radian is just under 57.3 degrees (when the arc length is equal to the radius). one radian is equal to 180/π degrees. Thus, to convert from radians to degrees, multiply by 180/π. $ \\text{angle in degrees} = \\text{angle in radians} \\cdot \\frac {180^\\circ} {\\pi}$",
+			"compositionRepresentation": "base",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Radian",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{rad}}\\right)$",
+			"composition": []
+		},
+		"56": {
+			"id": "56",
+			"quickName": "f",
+			"representation": "$\\displaystyle{\\textrm{F}}$",
+			"fullName": "Farad",
+			"description": "One farad is defined as the capacitance of a capacitor across which, when charged with one coulomb of electricity, there is a potential difference of one volt. Conversely, it is the capacitance which, when charged to a potential difference of one volt, carries a charge of one coulomb. A coulomb is equal to the amount of charge (electrons) produced by a current of one ampere flowing for one second. For example, the voltage across the two terminals of a 47 nF capacitor will increase linearly by 1 V when a current of 47 nA flows through it for 1 s.",
+			"compositionRepresentation": "$ \\frac{ C }{ V } $",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Farad",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{F}}\\right)$",
+			"composition": [48, 49]
+		},
+		"57": {
+			"id": "57",
+			"quickName": "W",
+			"representation": "$\\displaystyle{\\textrm{W}}$",
+			"fullName": "Watt",
+			"description": "The watt (symbol: W) is a derived unit of power in the International System of Units (SI). The unit is defined as the rate of energy conversion or transfer with respect to time. When an object's velocity is held constant at one meter per second against constant opposing force of one newton the rate at which work is done is 1 watt.\r\n\r\n$\\mathrm{W = \\frac{J}{s} = \\frac{N\\cdot m}{s} = \\frac{kg\\cdot m^2}{s^3}}$\r\nIn terms of electromagnetism, one watt is the rate at which work is done when one ampere (A) of current flows through an electrical potential difference of one volt (V).\r\n\r\n$\\mathrm{W = V \\cdot A}$\r\nTwo additional unit conversions for watt can be found using the above equation and Ohm's Law.\r\n\r\n$\\mathrm{W = \\frac{V^2}{\\Omega} = A^2\\cdot\\Omega}$\r\nWhere ohm ($\\Omega$) is the SI derived unit of electrical resistance.",
+			"compositionRepresentation": "$ \\frac{ \\textrm{J} }{ \\textrm{s} } $",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Watt",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{W}}\\right)$",
+			"composition": [46, 41]
+		},
+		"58": {
+			"id": "58",
+			"quickName": "eV",
+			"representation": "$\\displaystyle{\\textrm{eV}}$",
+			"fullName": "Electron Volt",
+			"description": "In physics, the electron volt is a unit of energy equal to approximately $1.6 \\times 10^{−19} \\textrm{J}$. By definition, it is the amount of energy gained (or lost) by the charge of a single electron moved across an electric potential difference of one volt. Thus it is 1 volt (1 joule per coulomb, 1 $J/C$) multiplied by the elementary charge ($e$, or $1.602176565(35) \\times10^{−19} \\textrm{C}$). ",
+			"compositionRepresentation": "${\\frac{\\textrm{J}}{\\textrm{C}} \\cdot e$",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Electronvolt",
+			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{eV}}\\right)$",
+			"composition": [46, 48]
+		},
+		"60": {
+			"id": "60",
+			"quickName": "Wb",
+			"representation": "$\\textrm{Wb}$",
+			"fullName": "Weber",
+			"description": "In physics, the weber is the SI unit of magnetic flux. A flux density of one $ \\frac{ \\textrm{Wb}}{ \\textrm{m}^2 } $ (one weber per square metre) is one tesla. The weber may be defined in terms of Faraday's law, which relates a changing magnetic flux through a loop to the electric field around the loop. A change in flux of one weber per second will induce an electromotive force of one volt (produce an electric potential difference of one volt across two open-circuited terminals).",
+			"compositionRepresentation": "$\\frac{ \\textrm{kg} \\cdot \\textrm{ m}^2 }{\\textrm{s}^2\\cdot\\textrm{A}} $ = $ \\textrm{T}\\cdot\\textrm{m}^2 $",
+			"descriptionUrl": "http://en.wikipedia.org/wiki/Weber_(unit)",
+			"definitionRepresentation": "$\\left(\\textrm{Wb}\\right)$",
+			"composition": [40, 39, 41, 45, 54]
 		}
-	},
-	"unitCompositionMap": {
-		"39": [ "54", "53", "60", "47", "46" ],
-		"40": [ "60", "47", "46" ],
-		"41": [ "50", "52", "48", "60", "57", "47", "46" ],
-		"45": [ "51", "50", "48", "54", "60" ],
-		"46": [ "40", "41", "39" ],
-		"47": [ "40", "41", "39" ],
-		"48": [ "41", "45", "56" ],
-		"49": [ "56", "51" ],
-		"50": [ "41", "45" ],
-		"51": [ "45", "49" ],
-		"52": [ "41" ],
-		"53": [ "39" ],
-		"54": [ "45", "39", "60" ],
-		"56": [ "48", "49" ],
-		"57": [ "41" ],
-		"60": [ "40",  "41",  "45",  "54",  "39" ]
 	},
 	"variables": {
 		"103": {
@@ -1463,71 +1526,6 @@ var db = {
 		"102": [ "178", "131" ],
 		"93": [ "119", "130", "131", "132", "103" ],
 		"101": ["106", "179", "132"]
-	},
-	"variableToUnitsMap": {
-		"103": [ "47" ],
-		"104": [ "40" ],
-		"105": [ "39" ],
-		"106": [ "41", "39" ],
-		"107": [ "40", "47", "39" ],
-		"108": [ "42" ],
-		"109": [ "56", "39" ],
-		"110": [ "50", "39" ],
-		"111": [ "43", "46" ],
-		"112": [ "48" ],
-		"113": [ "40" ],
-		"114": [ "40" ],
-		"115": [ "39", "41" ],
-		"116": [ "47" ],
-		"117": [ "40", "41", "39" ],
-		"118": [ "40","41","39" ],
-		"119": [ "46" ],
-		"122": [ "46" ],
-		"123": [ "46" ],
-		"124": [ "41" ],
-		"125": [ "52" ],
-		"126": [ "47" ],
-		"127": [ "41", "39" ],
-		"128": [ "48", "39" ],
-		"129": [ "48", "47", "39" ],
-		"130": [ "55" ],
-		"131": [ "41" ],
-		"132": [ "39", "41" ],
-		"133": [ "47" ],
-		"134": [ "39" ],
-		"135": [ "39", "41" ],
-		"136": [ "48" ],
-		"137": [ "47" ],
-		"138": [ "47", "48", "49", "39" ],
-		"139": [ "47" ],
-		"140": [ "46" ],
-		"141": [ "47" ],
-		"142": [ "46" ],
-		"143": [ "41" ],
-		"144": [ "47", "39" ],
-		"145": [ "41" ],
-		"146": [ "47" ],
-		"147": [ "46" ],
-		"148": [ "47" ],
-		"149": [ "40", "41", "39" ],
-		"150": [ "57" ],
-		"151": [ "41", "58", "46" ],
-		"152": [ "49" ],
-		"153": [ "41" ],
-		"154": [ "40", "39" ],
-		"155": [ "39" ],
-		"156": [ "41" ],
-		"158": [ "54" ],
-		"159": [ "46" ],
-		"160": [ "45" ],
-		"161": [ "51" ],
-		"162": [ "39" ],
-		"163": [ "51", "39" ],
-		"164": [ "39" ],
-		"165": [ "56" ],
-		"166": [ "42", "43", "46" ],
-		"168": [ "41", "46" ],
-		"177": [ "50" ]
 	},
 	"searchTerms": {
 		"meter": [{

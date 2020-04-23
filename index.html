@@ -42,7 +42,7 @@
                     <input type="submit" class="inp-hidden">
                 </div>
             </form>
-            <article>
+            <article ng-if="app.showGreeting">
                 <div class="greeting">
                     Type in a physics variable, equation, or unit.
                 </div>
@@ -52,7 +52,7 @@
             </div>
             <div ng-if="app.results">
                 <div ng-repeat="result in app.results">
-                    <article ng-if="result.type == 'variable'">
+                    <article ng-if="result.type === 'variable'">
                         <h1><a href="#/v/{{ result.value.fullName }}">{{ result.value.fullName }}</a> {{ result.value.definitionRepresentation }}</h1>
                         <p>
                             {{ result.value.description }}
@@ -68,28 +68,77 @@
                                     <span ng-if="$last && $first">{{ unit.representation }} is {{ unit.fullName }}.</span>
                                 </span>
                             </span>
-                            <span ng-if="result.value.unitCompositionValues.length == 0">dimensionless</span>
+                            <span ng-if="result.value.unitCompositionValues.length === 0">dimensionless</span>
                         </p>
-                        <h2>
+                        <h2 ng-if="result.value.equationValues.length > 0">
                             <span class="blackbar hidden-xs"></span><span class="sectname">Usage</span><span class="blackbar hidden-xs"></span>
                         </h2>
-                            <div ng-repeat="eq in result.value.equationValues">
-                                <div ng-class="{even: $even, odd: $odd, last: $last}" class="row">
-                                    <div class="eqmath col-md-6 col-xs-12">{{ eq.representation }}</div><div class="eqname col-md-6 col-xs-12"><a href="{% url 'indiv' cls='e' name=eq.full_name %}">{{ eq.fullName }}</a></div>
-                                </div>
+                        <div ng-repeat="eq in result.value.equationValues" class="usageContainer">
+                            <div ng-class="{even: $even, odd: $odd, last: $last}" class="row">
+                                <div class="eqmath col-md-6 col-xs-12">{{ eq.representation }}</div><div class="eqname col-md-6 col-xs-12"><a href="{% url 'indiv' cls='e' name=eq.full_name %}">{{ eq.fullName }}</a></div>
                             </div>
+                        </div>
+                    </article>
+                    <article ng-if="result.type === 'unit'">
+                        <h1><a href="{% url 'indiv' cls='u' name=obj.full_name %}">{{ result.value.fullName }}</a> {{ result.value.definitionRepresentation }}</h1>
+                        <p>
+                            {{ result.value.description }}
+                            <a href="{{ result.value.descriptionUrl }}">Read more.</a>
+                        </p>
+                        <p>
+                            <strong>Composition: </strong>
+                            <span ng-if="result.value.compositionValues.length > 0">
+                                {{ result.value.compositionRepresentation }} where
+                                <span ng-repeat="unit in result.value.compositionValues">
+                                    <span ng-if="!$last">{{ unit.representation }} is {{ unit.fullName }}, </span>
+                                    <span ng-if="$last && !$first">and {{ unit.representation }} is {{ unit.fullName }}.</span>
+                                    <span ng-if="$last && $first">{{ unit.representation }} is {{ unit.fullName }}.</span>
+                                </span> 
+                            </span>
+                            <span ng-if="result.value.compositionValues.length === 0">
+                                {{ result.value.representation }} is a base unit.
+                            </span>
+                        </p>
+                    </article>
+                    <article ng-if="result.type === 'equation'">
+                        <h1><a href="{% url 'indiv' cls='e' name=obj.full_name %}">{{ result.value.fullName }}</a></h1>
+                        <h1 class="full_name" style="padding-top: 10px;">{{ result.value.representation }}</h1>
+                        <p>
+                            {{ result.value.description }}
+                            <a href="{{ result.value.descriptionUrl }}">Read more.</a>
+                        </p>
+                        <h2><span class="blackbar hidden-xs"></span><span class="sectname">Composition</span><span class="blackbar hidden-xs"></span></h2>
+                        <div ng-repeat="variable in result.value.variableValues" class="usageContainer">
+                            <div ng-class="{even: $even, odd: $odd, last: $last}" class="row">
+                                <div class="eqmath col-md-6 col-xs-12">{{ variable.representation }}</div><div class="eqname col-md-6 col-xs-12"><a href="{% url 'indiv' cls='e' name=eq.full_name %}">{{ variable.fullName }}</a></div>
+                            </div>
+                        </div>
                     </article>
                 </div>
+                <article ng-if="app.results.length === 0">
+                    <h1>Sorry, there weren't any results for that.</h1>
+                    <p>These are the kind of things you should try searching for:</p>
+                    <div><table class="fixed">
+                        <tr>
+                            <td><strong>1.</strong></td>
+                            <td>The symbol used to represent a physics variable<br />
+                                <i>Examples: <a href="http://www.physindex.com/?query=m">m</a>, <a href="http://www.physindex.com/?query=F">F</a>, <a href="http://www.physindex.com/?query=theta">theta</a></i></td>
+                        </tr>
+                        <tr>
+                            <td><strong>2.</strong></td>
+                            <td>The name of a variable, constant, unit, or equation<br />
+                                <i>Examples: <a href="http://www.physindex.com/?query=mass">mass</a>, <a href="http://www.physindex.com/?query=Newton's+Second+Law">Newton's Second Law</a>, <a href="http://www.physindex.com/?query=angle">angle</a></i></td>
+                        </tr>
+                        <tr>
+                            <td><strong>3.</strong></td>
+                            <td>A full equation or a piece of it<br />
+                                <i>Examples: <a href="http://www.physindex.com/?query=F+%3D+ma">F = ma</a>, <a href="http://www.physindex.com/?query=rxf">rxf</a>, <a href="http://www.physindex.com/?query=T+%3D+1%2F(freq)">T = 1/(freq)</a></i></td>
+                        </tr>
+                    </table></div>
+                    <p>Subject matter includes introductory mechanics, electricity and magnetism, and special relativity.</p> 
+                </article>
             </div>
-            <nav id="bottom-nav" class="navbar navbar-inner navbar-inverse navbar-fixed-bottom">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navdata">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
+            <nav id="bottom-nav" class="navbar navbar-inner navbar-inverse" ng-class="{'navbar-fixed-bottom': app.fixedNavbar}">
                 <div class="container-fluid collapse navbar-collapse" id="navdata">
                     <ul class="nav navbar-nav">
                         <li class="{% block aboutclass %}{% endblock %}"><a href="{% url 'about' %}">About</a></li>
