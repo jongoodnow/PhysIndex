@@ -30,7 +30,7 @@ angular.module("physindexApp", [])
     })
     .controller("physindexController", function ($rootScope, $attrs, $http, $location, $q) {
         $rootScope.$on("$locationChangeSuccess", () => {
-            if(app.searchText !== $location.search().query)
+            if(!_.has($location.search(), "query") || app.searchText !== $location.search().query)
             {
                 const queryParams = $location.search();
                 if (_.has(queryParams, "query")) {
@@ -58,10 +58,19 @@ angular.module("physindexApp", [])
         app.showAbout = false;
         app.fixedNavbar = $('body').height() + 100 <= $(window).height();
 
+        app.resetPage = () => {
+            app.results = null;
+            app.showGreeting = true;
+            app.showAbout = false;
+            $location.url($location.path());
+            $('#homepage').animate({'padding-top': '270px'}, 300, function(){
+                $('.tt-menu').hide();
+            });
+        };
+
         app.showAboutPage = () => {
-            console.log(1);
             $('#homepage').animate({'padding-top': '30px'}, 300, function(){
-                $('.tt-dropdown-menu').hide();
+                $('.tt-menu').hide();
             });
 
             app.showGreeting = false;
@@ -75,7 +84,7 @@ angular.module("physindexApp", [])
             }
 
             $('#homepage').animate({'padding-top': '30px'}, 300, function(){
-                $('.tt-dropdown-menu').hide();
+                $('.tt-menu').hide();
             });
             app.showGreeting = app.showAbout = false;
             $location.url($location.path());
@@ -111,11 +120,14 @@ angular.module("physindexApp", [])
                 var prioritizedLists = [[], [], [], []];
                 allMatches.forEach(match => {
                     var obj = db[match.type + "s"][match.id];
-
+                    var resultObj;
                     if(match.type === "equation" && obj.definedVariable !== null){
                         obj = db["variables"][obj.definedVariable];
+                        resultObj = {type: "variable", value: obj};
                     }
-                    var resultObj = {type: match.type, value: obj};
+                    else{
+                        resultObj = {type: match.type, value: obj}; 
+                    }
 
                     if(_.some(originalPredicates, p => p === obj.quickName)){
                         prioritizedLists[0].push(resultObj);
@@ -151,10 +163,14 @@ angular.module("physindexApp", [])
                 allMatches.forEach(match => {
                     var obj = db[match.type + "s"][match.id];
 
+                    var resultObj;
                     if(match.type === "equation" && obj.definedVariable !== null){
                         obj = db["variables"][obj.definedVariable];
+                        resultObj = {type: "variable", value: obj};
                     }
-                    var resultObj = {type: match.type, value: obj}; 
+                    else{
+                        resultObj = {type: match.type, value: obj}; 
+                    }
 
                     if(obj.quickName === escapedSearch || obj.fullName.toLowerCase() === escapedSearch.toLowerCase()){
                         if(match.type === "variable"){
@@ -179,6 +195,7 @@ angular.module("physindexApp", [])
                 for(var i = 1; i < prioritizedLists.length; i++){
                     prioritizedResults = prioritizedResults.concat(prioritizedLists[i]);
                 }
+                prioritizedResults = _.uniq(prioritizedResults, r => r.value.id);
                 prioritizedResults = prioritizedResults.slice(0, 6);
             }
 
@@ -208,9 +225,12 @@ angular.module("physindexApp", [])
             $location.url($location.path());
             $location.search("equation", name);
             app.searchText = null;
-            var id = _.find(db["searchTerms"][name], t => t.type === "equation").id;
-            if(id != null){
-                var equation = db["equations"][id];
+            $('#homepage').css({'padding-top': '30px'});
+            $('.tt-menu').hide();
+            app.showGreeting = app.showAbout = false;
+            var term = _.find(db["searchTerms"][name], t => t.type === "equation");
+            if(term != null){
+                var equation = db["equations"][term.id];
                 equation["variableValues"] = _.sortBy(_.map(equation["variables"], id => db["variables"][id]),
                     v => equation.definedVariable == v.id ? 0 : 1);
                 app.results = [{type: "equation", value: equation}];
@@ -228,9 +248,12 @@ angular.module("physindexApp", [])
             $location.url($location.path());
             $location.search("variable", name);
             app.searchText = null;
-            var id = _.find(db["searchTerms"][name], t => t.type === "variable").id;
-            if(id != null){
-                var variable = db["variables"][id];
+            $('#homepage').css({'padding-top': '30px'});
+            $('.tt-menu').hide();
+            app.showGreeting = app.showAbout = false;
+            var term = _.find(db["searchTerms"][name], t => t.type === "variable");
+            if(term != null){
+                var variable = db["variables"][term.id];
                 variable["unitCompositionValues"] = _.map(variable["unitComposition"], id => db["units"][id]);
                 variable["equationValues"] = _.sortBy(_.map(variable["equations"], id => db["equations"][id]), 
                     eq => eq.definedVariable == variable.id ? 0 : 1);
@@ -249,9 +272,12 @@ angular.module("physindexApp", [])
             $location.url($location.path());
             $location.search("unit", name);
             app.searchText = null;
-            var id = _.find(db["searchTerms"][name], t => t.type === "unit").id;
-            if(id != null){
-                var unit = db["units"][id];
+            $('#homepage').css({'padding-top': '30px'});
+            $('.tt-menu').hide();
+            app.showGreeting = app.showAbout = false;
+            var term = _.find(db["searchTerms"][name], t => t.type === "unit");
+            if(term != null){
+                var unit = db["units"][term.id];
                 unit["compositionValues"] = _.map(unit["composition"], id => db["units"][id]);
                 app.results = [{type: "unit", value: unit}];
             }

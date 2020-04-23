@@ -1,5 +1,0 @@
-Django==1.7
-Unipath==1.0
-django-suit==0.2.5
-django-extensions==1.2.5
-wikipedia==1.1
