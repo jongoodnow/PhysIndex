@@ -53,7 +53,7 @@
             <div ng-if="app.results">
                 <div ng-repeat="result in app.results">
                     <article ng-if="result.type === 'variable'">
-                        <h1><a href="#/v/{{ result.value.fullName }}">{{ result.value.fullName }}</a> {{ result.value.definitionRepresentation }}</h1>
+                        <h1><a ng-click="app.showVariable(result.value.fullName)">{{ result.value.fullName }}</a> {{ result.value.definitionRepresentation }}</h1>
                         <p>
                             {{ result.value.description }}
                             <a href="{{ result.value.descriptionUrl }}">Read more.</a>
@@ -63,9 +63,9 @@
                             <span ng-if="result.value.unitCompositionValues.length > 0">
                                 {{ result.value.units }} where 
                                 <span ng-repeat="unit in result.value.unitCompositionValues">
-                                    <span ng-if="!$last">{{ unit.representation }} is {{ unit.fullName }}, </span>
-                                    <span ng-if="$last && !$first">and {{ unit.representation }} is {{ unit.fullName }}.</span>
-                                    <span ng-if="$last && $first">{{ unit.representation }} is {{ unit.fullName }}.</span>
+                                    <span ng-if="!$last">{{ unit.representation }} is <a ng-click="app.showUnit(unit.fullName)">{{ unit.fullName }}</a>, </span>
+                                    <span ng-if="$last && !$first">and {{ unit.representation }} is <a ng-click="app.showUnit(unit.fullName)">{{ unit.fullName }}</a>.</span>
+                                    <span ng-if="$last && $first">{{ unit.representation }} is {{ unit.fullName }}<a ng-click="app.showUnit(unit.fullName)"></a>.</span>
                                 </span>
                             </span>
                             <span ng-if="result.value.unitCompositionValues.length === 0">dimensionless</span>
@@ -75,12 +75,12 @@
                         </h2>
                         <div ng-repeat="eq in result.value.equationValues" class="usageContainer">
                             <div ng-class="{even: $even, odd: $odd, last: $last}" class="row">
-                                <div class="eqmath col-md-6 col-xs-12">{{ eq.representation }}</div><div class="eqname col-md-6 col-xs-12"><a href="{% url 'indiv' cls='e' name=eq.full_name %}">{{ eq.fullName }}</a></div>
+                                <div class="eqmath col-md-6 col-xs-12">{{ eq.representation }}</div><div class="eqname col-md-6 col-xs-12"><a ng-click="app.showEquation(eq.fullName)">{{ eq.fullName }}</a></div>
                             </div>
                         </div>
                     </article>
                     <article ng-if="result.type === 'unit'">
-                        <h1><a href="{% url 'indiv' cls='u' name=obj.full_name %}">{{ result.value.fullName }}</a> {{ result.value.definitionRepresentation }}</h1>
+                        <h1><a ng-click="app.showUnit(result.value.fullName)">{{ result.value.fullName }}</a> {{ result.value.definitionRepresentation }}</h1>
                         <p>
                             {{ result.value.description }}
                             <a href="{{ result.value.descriptionUrl }}">Read more.</a>
@@ -90,9 +90,9 @@
                             <span ng-if="result.value.compositionValues.length > 0">
                                 {{ result.value.compositionRepresentation }} where
                                 <span ng-repeat="unit in result.value.compositionValues">
-                                    <span ng-if="!$last">{{ unit.representation }} is {{ unit.fullName }}, </span>
-                                    <span ng-if="$last && !$first">and {{ unit.representation }} is {{ unit.fullName }}.</span>
-                                    <span ng-if="$last && $first">{{ unit.representation }} is {{ unit.fullName }}.</span>
+                                    <span ng-if="!$last">{{ unit.representation }} is <a ng-click="app.showUnit(unit.fullName)">{{ unit.fullName }}</a>, </span>
+                                    <span ng-if="$last && !$first">and {{ unit.representation }} is <a ng-click="app.showUnit(unit.fullName)">{{ unit.fullName }}</a>.</span>
+                                    <span ng-if="$last && $first">{{ unit.representation }} is <a ng-click="app.showUnit(unit.fullName)">{{ unit.fullName }}</a>.</span>
                                 </span> 
                             </span>
                             <span ng-if="result.value.compositionValues.length === 0">
@@ -101,7 +101,7 @@
                         </p>
                     </article>
                     <article ng-if="result.type === 'equation'">
-                        <h1><a href="{% url 'indiv' cls='e' name=obj.full_name %}">{{ result.value.fullName }}</a></h1>
+                        <h1><a ng-click="app.showEquation(result.value.fullName)">{{ result.value.fullName }}</a></h1>
                         <h1 class="full_name" style="padding-top: 10px;">{{ result.value.representation }}</h1>
                         <p>
                             {{ result.value.description }}
@@ -110,7 +110,7 @@
                         <h2><span class="blackbar hidden-xs"></span><span class="sectname">Composition</span><span class="blackbar hidden-xs"></span></h2>
                         <div ng-repeat="variable in result.value.variableValues" class="usageContainer">
                             <div ng-class="{even: $even, odd: $odd, last: $last}" class="row">
-                                <div class="eqmath col-md-6 col-xs-12">{{ variable.representation }}</div><div class="eqname col-md-6 col-xs-12"><a href="{% url 'indiv' cls='e' name=eq.full_name %}">{{ variable.fullName }}</a></div>
+                                <div class="eqmath col-md-6 col-xs-12">{{ variable.representation }}</div><div class="eqname col-md-6 col-xs-12"><a ng-click="app.showVariable(variable.fullName)">{{ variable.fullName }}</a></div>
                             </div>
                         </div>
                     </article>
@@ -138,13 +138,48 @@
                     <p>Subject matter includes introductory mechanics, electricity and magnetism, and special relativity.</p> 
                 </article>
             </div>
-            <nav id="bottom-nav" class="navbar navbar-inner navbar-inverse" ng-class="{'navbar-fixed-bottom': app.fixedNavbar}">
+            <div ng-if="app.showAbout">
+                <article>
+                    <h1>About PhysIndex</h1>
+                    <p>PhysIndex lets you do quick, simple queries for equations and variables so that you can get back to solving problems. There are a few key features that you can use to find the information you need.</p>
+                    <h2>
+                        <span class="blackbar hidden-xs"></span><span class="sectname">Single Letter Searching</span><span class="blackbar hidden-xs"></span>
+                    </h2>
+                    <p>In most search engines, it can be impossible to type in a single letter and get exactly what you want, which can make searching for unknown variables difficult. Let's say you can't remember what the $K$ in $\displaystyle{ K = \frac{1}{2} m v^2 }$ stands for. All you need to do is type <a href="http://www.physindex.com/?query=K">K</a> into the search bar above to find all the information you need.</p>
+                    <h2>
+                        <span class="blackbar hidden-xs"></span><span class="sectname">List All Relevant Equations</span><span class="blackbar hidden-xs"></span>
+                    </h2>
+                    <p>A difficult problem might ask you to leave your answers in terms of $x$, but you may be unsure of where to start the problem. It might be helpful to get a large list of all relevant equations so that you can decide which you need to solve the problem. Simply search for the variable to get this information.</p>
+                    <h2>
+                        <span class="blackbar hidden-xs"></span><span class="sectname">Simple Equation, Variable, and Unit Data</span><span class="blackbar hidden-xs"></span>
+                    </h2>
+                    <p>The search results are designed to convey the maximum amount of information in the smallest amount of reading. Most of our information is cited from <a href="http://wikipedia.org">Wikipedia</a>, where you can go to learn more by clicking on the "Read More" link at the end of each article.</p>
+                    <p>PhysIndex is not meant replace textbooks or in-depth articles, rather PhysIndex is meant to give you a quick solution to a quick problem without extensive research.</p>
+                </article>
+                <article>
+                    <h1><a name="contact">Get In Touch</a></h1>
+                    <p>If you find a bug or a software issue, you can <a href="https://github.com/jongoodnow/PhysIndex/issues">open a ticket on Github</a>.</p>
+                </article>
+                <article>
+                    <h1><a name="oss">Open Source</a></h1>
+                    <p>PhysIndex is Open Source Software licensed under the <a href="https://github.com/jongoodnow/PhysIndex/blob/master/LICENSE">BSD License</a>. You are welcome to contribute, or otherwise use our code, by <a href="https://github.com/jongoodnow/PhysIndex">forking the repository on Github</a>.</p>
+                </article>
+                <article>
+                    <h1><a name="legal">Legal</a></h1>
+                    <p>The following web resources are used on this web site:</p>
+                    <div>"White Brushed" pattern by <a href="http://uniqappz.com/">Andre Schouten</a> (modified) used under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> license.</div>
+                    <div><a href="http://www.mathjax.org">MathJax</a> used for in-browser LaTeX rendering under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License, Version 2.0</a>.</div>
+                    <div>Glyphicons Halflings icon set provided by <a href="http://glyphicons.com">glyphicons.com</a></div>
+                    <p>&copy;2014 Jonathan Goodnow, Charles Khachian, Nicholas Boni</p>
+                </article>
+            </div>
+            <nav id="bottom-nav" ng-if="!app.showAbout" class="navbar navbar-inner navbar-inverse" ng-class="{'navbar-fixed-bottom': app.fixedNavbar}">
                 <div class="container-fluid collapse navbar-collapse" id="navdata">
                     <ul class="nav navbar-nav">
-                        <li class="{% block aboutclass %}{% endblock %}"><a href="{% url 'about' %}">About</a></li>
+                        <li><a ng-click="app.showAboutPage()">About</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{% url 'about' %}#legal">&copy;2015</li>
+                        <li>&copy;2015</li>
                     </ul>
                 </div>
             </nav>

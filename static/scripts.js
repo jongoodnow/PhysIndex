@@ -22,10 +22,6 @@ $(document).ready(function(){
         displayKey: 'name',
         source: names.ttAdapter()
     });
-
-    setTimeout(function(){
-        $('article').css('opacity', 1);
-    }, 1);
 });
 
 angular.module("physindexApp", [])
@@ -34,19 +30,44 @@ angular.module("physindexApp", [])
     })
     .controller("physindexController", function ($rootScope, $attrs, $http, $location, $q) {
         $rootScope.$on("$locationChangeSuccess", () => {
-            if(app.searchString !== $location.search().query)
+            if(app.searchText !== $location.search().query)
             {
-                // look it up
+                const queryParams = $location.search();
+                if (_.has(queryParams, "query")) {
+                    app.searchText = queryParams.query;
+                    app.search();
+                }
+                else if(_.has(queryParams, "equation")){
+                    app.showEquation(queryParams.equation);
+                }
+                else if(_.has(queryParams, "variable")){
+                    app.showVariable(queryParams.variable);
+                }
+                else if(_.has(queryParams, "unit")){
+                    app.showUnit(queryParams.unit);
+                }
             }
         });
 
         $rootScope.$watch(function(){
-            app.fixedNavbar = $('body').height() <= $(window).height();
+            app.fixedNavbar = $('body').height() + 100 <= $(window).height();
         });
 
         var app = this;
         app.showGreeting = true;
-        app.fixedNavbar = $('body').height() <= $(window).height();
+        app.showAbout = false;
+        app.fixedNavbar = $('body').height() + 100 <= $(window).height();
+
+        app.showAboutPage = () => {
+            console.log(1);
+            $('#homepage').animate({'padding-top': '30px'}, 300, function(){
+                $('.tt-dropdown-menu').hide();
+            });
+
+            app.showGreeting = false;
+            app.results = null;
+            app.showAbout = true;
+        };
 
         app.search = () => {
             if(!app.searchText){
@@ -56,7 +77,9 @@ angular.module("physindexApp", [])
             $('#homepage').animate({'padding-top': '30px'}, 300, function(){
                 $('.tt-dropdown-menu').hide();
             });
-            app.showGreeting = false;
+            app.showGreeting = app.showAbout = false;
+            $location.url($location.path());
+            $location.search("query", app.searchText);
 
             var escapedSearch = app.searchText.replace(/^[^\w&^\(&^\[&^\{]+|[^\w&^\)&^\]&^\}]+$/g, "");
             var noPunctuation = escapedSearch.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
@@ -175,6 +198,66 @@ angular.module("physindexApp", [])
 
                 return obj;
             });
+
+            setTimeout(() => {
+                MathJax.typeset();
+            }, 1);
+        };
+
+        app.showEquation = name => {
+            $location.url($location.path());
+            $location.search("equation", name);
+            app.searchText = null;
+            var id = _.find(db["searchTerms"][name], t => t.type === "equation").id;
+            if(id != null){
+                var equation = db["equations"][id];
+                equation["variableValues"] = _.sortBy(_.map(equation["variables"], id => db["variables"][id]),
+                    v => equation.definedVariable == v.id ? 0 : 1);
+                app.results = [{type: "equation", value: equation}];
+            }
+            else{
+                app.results = [];
+            }
+
+            setTimeout(() => {
+                MathJax.typeset();
+            }, 1);
+        };
+
+        app.showVariable = name => {
+            $location.url($location.path());
+            $location.search("variable", name);
+            app.searchText = null;
+            var id = _.find(db["searchTerms"][name], t => t.type === "variable").id;
+            if(id != null){
+                var variable = db["variables"][id];
+                variable["unitCompositionValues"] = _.map(variable["unitComposition"], id => db["units"][id]);
+                variable["equationValues"] = _.sortBy(_.map(variable["equations"], id => db["equations"][id]), 
+                    eq => eq.definedVariable == variable.id ? 0 : 1);
+                app.results = [{type: "variable", value: variable}];
+            }
+            else{
+                app.results = [];
+            }
+
+            setTimeout(() => {
+                MathJax.typeset();
+            }, 1);
+        };
+
+        app.showUnit = name => {
+            $location.url($location.path());
+            $location.search("unit", name);
+            app.searchText = null;
+            var id = _.find(db["searchTerms"][name], t => t.type === "unit").id;
+            if(id != null){
+                var unit = db["units"][id];
+                unit["compositionValues"] = _.map(unit["composition"], id => db["units"][id]);
+                app.results = [{type: "unit", value: unit}];
+            }
+            else{
+                app.results = [];
+            }
 
             setTimeout(() => {
                 MathJax.typeset();

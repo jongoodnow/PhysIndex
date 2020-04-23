@@ -1798,7 +1798,7 @@ var db = {
 			"type": "variable",
 			"id": "130"
 		}],
-		"angle": [{
+		"Angle": [{
 			"type": "unit",
 			"id": "55"
 		}, {
@@ -1839,7 +1839,7 @@ var db = {
 			"type": "variable",
 			"id": "153"
 		}],
-		"power": [{
+		"Power": [{
 			"type": "unit",
 			"id": "57"
 		}, {

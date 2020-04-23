@@ -3,6 +3,7 @@ body {
   font-family: "Noto Sans";
   color: black; }
   body a {
+    cursor: pointer;
     text-decoration: none;
     color: #0000B0; }
   body a:hover {
