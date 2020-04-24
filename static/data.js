@@ -1,409 +1,368 @@
 var db = {
 	"equations": {
-		"64": {
-			"id": "64",
+		"Kinematics Equation (no $\\Delta X$)": {
 			"quickName": "v=v0+at",
 			"representation": "$\\displaystyle{v=v_0+at}$",
 			"fullName": "Kinematics Equation (no $\\Delta X$)",
 			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
-			"definedVariable": "132",
+			"definedVariable": "Velocity",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics",
-			"variables": ["115", "132", "131"]
+			"variables": ["Acceleration", "Velocity", "Time"]
 		},
-		"65": {
-			"id": "65",
+		"Newton's Second Law": {
 			"quickName": "f=ma",
 			"representation": "$\\displaystyle{ \\sum{ \\vec{F} } = \\frac{d \\vec{p} }{dt} = m \\frac{d \\vec{v} }{dt} = m\\vec{a} }$",
 			"fullName": "Newton's Second Law",
 			"description": "The second law states that the net force on an object is equal to the rate of change (that is, the derivative) of its linear momentum p in an inertial reference frame. The second law can also be stated in terms of an object's acceleration. Since Newton's second law is only valid for constant-mass systems. Mass can be taken outside the differentiation operator by the constant factor rule in differentiation.",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Newton%27s_laws_of_motion",
-			"variables": ["104", "115", "132", "117", "103"]
+			"variables": ["Mass", "Acceleration", "Velocity", "Linear Momentum", "Force"]
 		},
-		"66": {
-			"id": "66",
+		"Kinematics Equation (no \"$a$\")": {
 			"quickName": "x=(x_0)+(v_0)*t+0.5a*(t^2)",
 			"representation": "$\\displaystyle{ x = \\frac{1}{2}(v_0 + v)t}$",
 			"fullName": "Kinematics Equation (no \"$a$\")",
 			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics",
-			"variables": ["105", "115", "132", "131"]
+			"variables": ["Position", "Acceleration", "Velocity", "Time"]
 		},
-		"67": {
-			"id": "67",
+		"Kinematics Equation (no \"$t$\")": {
 			"quickName": "v^2=(v_0^2)+2a*(x-x_0)",
 			"representation": "$\\displaystyle{ v^2 = {v_0}^2 + 2a(x-x_0) }$",
 			"fullName": "Kinematics Equation (no \"$t$\")",
 			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics",
-			"variables": ["105", "115", "132"]
+			"variables": ["Position", "Acceleration", "Velocity"]
 		},
-		"68": {
-			"id": "68",
+		"Force of Friction": {
 			"quickName": "F_fric=muF_n",
 			"representation": "$\\displaystyle{ \\vec{F}_{fric} = \\mu \\vec{F}_n }$",
 			"fullName": "Force of Friction",
 			"description": "Friction is the force resisting the relative motion of solid surfaces, fluid layers, and material elements sliding against each other. When surfaces in contact move relative to each other, the friction between the two surfaces converts kinetic energy into heat. This property can have dramatic consequences, as illustrated by the use of friction created by rubbing pieces of wood together to start a fire",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Friction",
-			"variables": ["121", "133", "126"]
+			"variables": ["Coefficient of Friction", "Normal Force", "Frictional Force"]
 		},
-		"69": {
-			"id": "69",
+		"Definition of Centripetal Acceleration": {
 			"quickName": "a_c=(v^2)/r",
 			"representation": "$\\displaystyle{ \\vec{a}_c = \\frac{ \\vec{v}^2 }{r} }$",
 			"fullName": "Definition of Centripetal Acceleration",
 			"description": "Acceleration, in physics, is the rate at which the velocity of an object changes over time. Velocity and acceleration are vector quantities, with magnitude and direction that add according to the parallelogram law. An object's acceleration, as described by Newton's Second Law, is due to the net force acting on the object, i.e., the net result of any and all forces acting on the object.",
-			"definedVariable": "127",
+			"definedVariable": "Centripetal Acceleration",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Acceleration",
-			"variables": ["127", "132", "134"]
+			"variables": ["Centripetal Acceleration", "Velocity", "Radius"]
 		},
-		"70": {
-			"id": "70",
+		"Definition of Torque": {
 			"quickName": "Tau=rxf",
 			"representation": "$\\displaystyle{ \\vec{\\tau} = \\vec{r} \\times \\vec{F} = |r||F|\\sin{\\theta} = I \\vec{\\alpha} = \\frac{ d\\vec{L} }{ dt } }$",
 			"fullName": "Definition of Torque",
 			"description": "Torque, moment or moment of force (see the terminology below), is the tendency of a force to rotate an object about an axis, fulcrum, or pivot. Just as a force is a push or a pull, a torque can be thought of as a twist to an object. Mathematically, torque is defined as the cross product of the lever-arm distance vector and the force vector, which tends to produce rotation",
-			"definedVariable": "116",
+			"definedVariable": "Torque",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Torque",
-			"variables": ["116", "134", "103", "130", "154", "156"]
+			"variables": ["Torque", "Radius", "Force", "Angle", "Rotational Inertia", "Angular Acceleration"]
 		},
-		"71": {
-			"id": "71",
+		"Definition of Linear Momentum": {
 			"quickName": "p=mv",
 			"representation": "$\\displaystyle{ \\vec{p} = m\\vec{v} }$",
 			"fullName": "Definition of Linear Momentum",
 			"description": "In classical mechanics, linear momentum or translational momentum (pl. momenta; SI unit kg m/s, or equivalently, N s) is the product of the mass and velocity of an object. For example, a heavy truck moving quickly has a large momentum—it takes a large and prolonged force to get the truck up to this speed, and it takes a large and prolonged force to bring it to a stop afterwards.",
-			"definedVariable": "117",
+			"definedVariable": "Linear Momentum",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Momentum",
-			"variables": ["117", "104", "132"]
+			"variables": ["Linear Momentum", "Mass", "Velocity"]
 		},
-		"72": {
-			"id": "72",
+		"Definition of Impulse": {
 			"quickName": "J=int(F)dt",
 			"representation": "$\\displaystyle{ \\vec{J} = \\int{ \\vec{F} \\cdot dt} = \\Delta \\vec{p} }$",
 			"fullName": "Definition of Impulse",
 			"description": "In classical mechanics, impulse (symbolized by J or Imp) is the change in linear momentum of a body. It may be defined or calculated as the product of the average force multiplied by the time over which the force is exerted. Impulse is a vector quantity since it is the result of integrating force, a vector quantity, over time. The SI unit of impulse is the newton second (N·s) or, in base units, the kilogram meter per second (kg·m/s)",
-			"definedVariable": "118",
+			"definedVariable": "Impulse",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Impulse_(physics)",
-			"variables": ["118", "103"]
+			"variables": ["Impulse", "Force"]
 		},
-		"73": {
-			"id": "73",
+		"Definition of Kinetic Energy": {
 			"quickName": "K=0.5(mv^2)",
 			"representation": "$\\displaystyle{ K = \\frac{1}{2} m v^2 }$",
 			"fullName": "Definition of Kinetic Energy",
 			"description": "In physics, the kinetic energy of an object is the energy which it possesses due to its motion. It is defined as the work needed to accelerate a body of a given mass from rest to its stated velocity. Having gained this energy during its acceleration, the body maintains this kinetic energy unless its speed changes.",
-			"definedVariable": "122",
+			"definedVariable": "Kinetic Energy",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinetic_energy",
-			"variables": ["122", "104", "132"]
+			"variables": ["Kinetic Energy", "Mass", "Velocity"]
 		},
-		"74": {
-			"id": "74",
+		"Definition of Gravitational Potential Energy": {
 			"quickName": "U=mgh",
 			"representation": "$\\displaystyle{ U = mgh }$",
 			"fullName": "Definition of Gravitational Potential Energy",
 			"description": "In physics, potential energy is energy stored in a system of forcefully interacting physical entities. The SI unit for measuring work and energy is the joule (symbol J).The term potential energy was introduced by the 19th century Scottish engineer and physicist William Rankine, although it has links to Greek philosopher Aristotle's concept of potentiality.",
-			"definedVariable": "140",
+			"definedVariable": "Gravitational Potential Energy",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy",
-			"variables": ["140", "104", "135", "105"]
+			"variables": ["Gravitational Potential Energy", "Mass", "Gravitational Acceleration", "Position"]
 		},
-		"75": {
-			"id": "75",
+		"Definition of Work": {
 			"quickName": "W=int(f)dx",
 			"representation": "$\\displaystyle{ W = \\int{\\vec{F} \\cdot d\\vec{x}} = \\vec{F} \\cdot \\vec{d} = |F||d|\\cos{\\theta} }$",
 			"fullName": "Definition of Work",
 			"description": "A force is said to do work when it acts on a body, and there is a displacement of the point of application in the direction of the force. For example, when you lift a suitcase from the floor, the work done on the suitcase is the force it takes to lift it (its weight) times the height that it is lifted",
-			"definedVariable": "119",
+			"definedVariable": "Work",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Work_%28physics%29",
-			"variables": ["119", "105", "103"]
+			"variables": ["Work", "Position", "Force"]
 		},
-		"76": {
-			"id": "76",
+		"Hooke's Law": {
 			"quickName": "F_spring=-kx",
 			"representation": "$\\displaystyle{ \\vec{F}_{spring} = -k \\vec{x} }$",
 			"fullName": "Hooke's Law",
 			"description": "Hooke's law is a principle of physics that states that the force  needed to extend or compress a spring by some distance  is proportional to that distance. That is: where  is a constant factor characteristic of the spring, its stiffness.Hooke's equation in fact holds (to some extent) in many other situations where an elastic body is deformed, such as wind blowing on a tall building, a musician plucking a string of a guitar, or the filling of a party balloon.",
-			"definedVariable": "146",
+			"definedVariable": "Spring Force",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Hooke%27s_law",
-			"variables": ["146", "144", "105"]
+			"variables": ["Spring Force", "Spring Constant", "Position"]
 		},
-		"77": {
-			"id": "77",
+		"Definition of Spring Potential Energy": {
 			"quickName": "U_spring=0.5k(x^2)",
 			"representation": "$\\displaystyle{ U_{spring} = \\frac{1}{2} k x^2 }$",
 			"fullName": "Definition of Spring Potential Energy",
 			"description": "In physics, potential energy is energy stored in a system of forcefully interacting physical entities. The SI unit for measuring work and energy is the joule (symbol J).The term potential energy was introduced by the 19th century Scottish engineer and physicist William Rankine, although it has links to Greek philosopher Aristotle's concept of potentiality.",
-			"definedVariable": "147",
+			"definedVariable": "Spring Potential Energy",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy",
-			"variables": ["147", "144", "105"]
+			"variables": ["Spring Potential Energy", "Spring Constant", "Position"]
 		},
-		"78": {
-			"id": "78",
+		"Spring Period": {
 			"quickName": "T_spring=2pi(sqrt(m/k))",
 			"representation": "$\\displaystyle{ T_{spring} = 2 \\pi \\sqrt{ \\frac{m}{k} } }$",
 			"fullName": "Spring Period",
 			"description": "The period of a spring defines how long, in seconds, it takes for the spring to go from stretched to compressed and back again when acted upon by some outside force",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Spring_physics",
-			"variables": ["120", "144", "104", "145"]
+			"variables": ["Pi", "Spring Constant", "Mass", "Spring Period"]
 		},
-		"79": {
-			"id": "79",
+		"Pendulum Period": {
 			"quickName": "T_pendulum=2pi(sqrt(l/g))",
 			"representation": "$\\displaystyle{ T_{pendulum} = 2 \\pi \\sqrt{ \\frac{l}{g} } }$",
 			"fullName": "Pendulum Period",
 			"description": "The mathematics of pendulums are in general quite complicated. Simplifying assumptions can be made, which in the case of a simple pendulum allows the equations of motion to be solved analytically for small-angle oscillations",
-			"definedVariable": "143",
+			"definedVariable": "Pendulum Period",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Pendulum_(mathematics)",
-			"variables": ["143", "120", "134", "135"]
+			"variables": ["Pendulum Period", "Pi", "Radius", "Gravitational Acceleration"]
 		},
-		"80": {
-			"id": "80",
+		"Definition of Period": {
 			"quickName": "T=1/(freq)",
 			"representation": "$\\displaystyle{ T = \\frac{1}{f} }$",
 			"fullName": "Definition of Period",
 			"description": "The period of a cyclic event is the time it takes for the system to complete one full revolution and return to its starting point. It is the inverse of frequency",
-			"definedVariable": "124",
+			"definedVariable": "Period",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Frequency",
-			"variables": ["124", "125"]
+			"variables": ["Period", "Frequency"]
 		},
-		"81": {
-			"id": "81",
+		"Potential Energy": {
 			"quickName": "U = -int(F)dx",
 			"representation": "$\\displaystyle{ U = - \\int{ \\vec{F} \\cdot d\\vec{x} } }$",
 			"fullName": "Potential Energy",
 			"description": "In physics, potential energy is energy stored in a system of forcefully interacting physical entities. The SI unit for measuring work and energy is the joule (symbol J).The term potential energy was introduced by the 19th century Scottish engineer and physicist William Rankine, although it has links to Greek philosopher Aristotle's concept of potentiality.",
-			"definedVariable": "142",
+			"definedVariable": "Potential Energy",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy",
-			"variables": ["142", "103", "105"]
+			"variables": ["Potential Energy", "Force", "Position"]
 		},
-		"82": {
-			"id": "82",
+		"Newton's Law of Gravitation": {
 			"quickName": "F_grav = -(Gm1m2)/(r^2)",
 			"representation": "$\\displaystyle{ \\vec{F}_G = -G \\frac{ m_1 m_2 }{ \\vec{ r } ^2 } }$",
 			"fullName": "Newton's Law of Gravitation",
 			"description": "Newton's law of universal gravitation states that any two bodies in the universe attract each other with a force that is directly proportional to the product of their masses and inversely proportional to the square of the distance between them. (Separately it was shown that large spherically symmetrical masses attract and are attracted as if all their mass were concentrated at their centers.) This is a general physical law derived from empirical observations by what Isaac Newton called induction.",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation",
-			"variables": ["141", "104", "134"]
+			"variables": ["Gravitational Force", "Mass", "Radius"]
 		},
-		"83": {
-			"id": "83",
+		"Gravitational Potential": {
 			"quickName": "U_g = -(Gm1m2)/(r)",
 			"representation": "$\\displaystyle{ U_G = -\\frac{Gm_1m_2}{r} }$",
 			"fullName": "Gravitational Potential",
 			"description": "In classical mechanics, the gravitational potential at a location is equal to the work (energy transferred) per unit mass that is done by the force of gravity to move an object to a fixed reference location. It is analogous to the electric potential with mass playing the role of charge. The reference location, where the potential is zero, is by convention infinitely far away from any mass, resulting in a negative potential at any finite distance",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Gravitational_potential",
-			"variables": ["104", "140", "134"]
+			"variables": ["Mass", "Gravitational Potential Energy", "Radius"]
 		},
-		"84": {
-			"id": "84",
+		"Definition of Coulomb Force": {
 			"quickName": "F_E =(kq1q2/(r^2))",
 			"representation": "$\\displaystyle{ \\vec{F}_E = K \\frac{ q_1 q_2 }{ \\vec{ r }^2 } }$ = ${\\frac{1}{4\\pi\\epsilon_0}} \\frac{ q_1 q_2 }{ \\vec{ r }^2 }$  ",
 			"fullName": "Definition of Coulomb Force",
 			"description": "Coulomb's law, or Coulomb's inverse-square law, is a law of physics describing the electrostatic interaction between electrically charged particles. The law was first published in 1785 by French physicist Charles Augustin de Coulomb and was essential to the development of the theory of electromagnetism. It is analogous to Isaac Newton's inverse-square law of universal gravitation.",
-			"definedVariable": "148",
+			"definedVariable": "Coulomb Force",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Coulomb%27s_law",
-			"variables": ["148", "129", "134", "136", "139", "109", "120"]
+			"variables": ["Coulomb Force", "Coulomb's Constant", "Radius", "Electric Charge", "Electric Force", "Electric Constant", "Pi"]
 		},
-		"85": {
-			"id": "85",
+		"Electric Field Strength": {
 			"quickName": "E=F/q",
 			"representation": "$\\displaystyle{ \\vec{E} = \\frac{ \\vec{F} }{q} }$",
 			"fullName": "Electric Field Strength",
 			"description": "An electric field is generated by electrically charged particles and time-varying magnetic fields. The electric field describes the electric force experienced by a motionless positively charged test particle at any point in space relative to the source(s) of the field. The concept of an electric field was introduced by Michael Faraday",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_field",
-			"variables": ["138", "103", "136"]
+			"variables": ["Electric Field", "Force", "Electric Charge"]
 		},
-		"86": {
-			"id": "86",
+		"Normal Force": {
 			"quickName": "F_n = mg",
 			"representation": "$\\displaystyle{ \\vec{F}_n = m \\vec{ g } \\cos{\\theta} }$",
 			"fullName": "Normal Force",
 			"description": "In mechanics, the normal force  is the component, perpendicular to the surface (surface being a plane) of contact, of the contact force exerted on an object by, for example, the surface of a floor or wall, preventing the object from penetrating the surface.The normal force is one of the components of the ground reaction force and may coincide with it, for example considering a person standing still on the ground, in which case the ground reaction force reduces to the normal force. In another common situation, if an object hits a surface with some speed, and the surface can withstand it, the normal force provides for a rapid deceleration, which will depend on the flexibility of the surface",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Normal_force",
-			"variables": ["133", "104", "135", "130"]
+			"variables": ["Normal Force", "Mass", "Gravitational Acceleration", "Angle"]
 		},
-		"87": {
-			"id": "87",
+		"Definition of Centripetal Force": {
 			"quickName": "F_c = ma_c",
 			"representation": "$\\displaystyle{ \\vec{F}_c = m \\vec{a}_c }$",
 			"fullName": "Definition of Centripetal Force",
 			"description": "In physics, a force is any external effort that causes an object to undergo a certain change, either concerning its movement, direction, or geometrical construction. In other words, a force can cause an object with mass to change its velocity (which includes to begin moving from a state of rest), i.e., to accelerate, or a flexible object to deform, or both. Force can also be described by intuitive concepts such as a push or a pull.",
-			"definedVariable": "137",
+			"definedVariable": "Centripetal Force",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Force",
-			"variables": ["137", "104", "127"]
+			"variables": ["Centripetal Force", "Mass", "Centripetal Acceleration"]
 		},
-		"88": {
-			"id": "88",
+		"Definition of Center of Mass": {
 			"quickName": "r_cm",
 			"representation": "$\\displaystyle{ \\vec{r}_{cm} = \\frac{ m_1\\vec{r}_1 + m_2\\vec{r}_2 }{ m_1 + m_2 } }$",
 			"fullName": "Definition of Center of Mass",
 			"description": "In physics, the center of mass of a distribution of mass in space is the unique point where the weighted relative position of the distributed mass sums to zero. The distribution of mass is balanced around the center of mass and the average of the weighted position coordinates of the distributed mass defines its coordinates. Calculations in mechanics are often simplified when formulated with respect to the center of mass",
-			"definedVariable": "155",
+			"definedVariable": "Center of Mass",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Center_of_mass",
-			"variables": ["155", "104", "134"]
+			"variables": ["Center of Mass", "Mass", "Radius"]
 		},
-		"89": {
-			"id": "89",
+		"Work-Energy Theorem": {
 			"quickName": "Wnet=deltak",
 			"representation": "$\\displaystyle{ W_{net} = \\Delta K = K_f - K_i }$",
 			"fullName": "Work-Energy Theorem",
 			"description": "In physics, a force is said to do work when it acts on a body, and there is a displacement of the point of application in the direction of the force. For example, when you lift a suitcase from the floor, the work done on the suitcase is the force it takes to lift it (its weight) times the height that it is lifted.The term work was introduced in 1826 by the French mathematician Gaspard-Gustave Coriolis as \"weight lifted through a height\", which is based on the use of early steam engines to lift buckets of water out of flooded ore mines.",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Work_(physics)",
-			"variables": ["122", "123"]
+			"variables": ["Kinetic Energy", "Net Work"]
 		},
-		"90": {
-			"id": "90",
+		"Electric Dipole Moment": {
 			"quickName": "p = qd",
 			"representation": "$\\displaystyle{ p = qd }$",
 			"fullName": "Electric Dipole Moment",
 			"description": "In physics, the electric dipole moment is a measure of the separation of positive and negative electrical charges in a system of electric charges, that is, a measure of the charge system's overall polarity. The SI units are Coulomb-meter (C m). This article is limited to static phenomena, and does not describe time-dependent or dynamic polarization",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_dipole_moment",
-			"variables": ["128"]
+			"variables": ["Electric Dipole Moment"]
 		},
-		"91": {
-			"id": "91",
+		"Electric Charge": {
 			"quickName": "q = ne",
 			"representation": "$\\displaystyle{ q = ne }$",
 			"fullName": "Electric Charge",
 			"description": "Electric charge is the physical property of matter that causes it to experience a force when close to other electrically charged matter. There are two types of electric charges – positive and negative. Positively charged substances are repelled from other positively charged substances, but attracted to negatively charged substances; negatively charged substances are repelled from negative and attracted to positive.",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_charge",
-			"variables": ["136"]
+			"variables": ["Electric Charge"]
 		},
-		"92": {
-			"id": "92",
+		"Definition of Angular Momentum": {
 			"quickName": "L=rxp",
 			"representation": "$\\displaystyle{ \\vec{L} =\\vec{r} \\times \\vec{p} = |r||p|\\sin{\\theta} = I\\omega }$",
 			"fullName": "Definition of Angular Momentum",
 			"description": "In physics, angular momentum, moment of momentum, or rotational momentum is a measure of the amount of rotation an object has, taking into account its mass, shape and speed. It is a vector quantity that represents the product of a body's rotational inertia and rotational velocity about a particular axis",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_momentum",
-			"variables": ["153", "130", "117", "134", "149"]
+			"variables": ["Angular Velocity", "Angle", "Linear Momentum", "Radius", "Angular Momentum"]
 		},
-		"93": {
-			"id": "93",
+		"Definition of Mechanical Power": {
 			"quickName": "P=W/t",
 			"representation": "$\\displaystyle{ P = \\frac{ dW }{ dt } = \\vec{F} \\cdot \\vec{v} = |F||v|\\cos{\\theta} }$",
 			"fullName": "Definition of Mechanical Power",
 			"description": "In physics, power is the rate of doing work. It is equivalent to an amount of energy consumed per unit time. In the MKS system, the unit of power is the joule per second (J/s), known as the watt in honor of James Watt, the eighteenth-century developer of the steam engine",
-			"definedVariable": "150",
+			"definedVariable": "Mechanical Power",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Power_(physics)",
-			"variables": ["119", "130", "131", "132", "103", "150"]
+			"variables": ["Work", "Angle", "Time", "Velocity", "Force", "Mechanical Power"]
 		},
-		"94": {
-			"id": "94",
+		"Definition of Angular Velocity": {
 			"quickName": "omega = theta/t",
 			"representation": "$\\displaystyle{ \\vec{ \\omega } = \\frac{ d \\vec{\\theta} }{ dt }}$",
 			"fullName": "Definition of Angular Velocity",
 			"description": "Angular velocity is the change in angle per unit time. For a rigid body in constant rotation, the angular velocity is the same for all points on the body. Angular velocity is a vector quantity, and angular speed is the magnitude of this velocity. The direction of the angular velocity vector is perpendicular to the plane of rotation, in a direction which is usually specified by the right-hand rule",
-			"definedVariable": "153",
+			"definedVariable": "Angular Velocity",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_velocity",
-			"variables": ["153", "130"]
+			"variables": ["Angular Velocity", "Angle"]
 		},
-		"95": {
-			"id": "95",
+		"Definition of Acceleration": {
 			"quickName": "a = dv/dt = d^2x/dt^2",
 			"representation": "$\\displaystyle{ \\vec{a} = \\frac{ d \\vec{v} }{ dt } = \\frac{ d^2 \\vec{x} }{ dt^2 } }$",
 			"fullName": "Definition of Acceleration",
 			"description": "Acceleration, in physics, is the rate at which the velocity of an object changes over time. Velocity and acceleration are vector quantities, with magnitude and direction that add according to the parallelogram law. An object's acceleration, as described by Newton's Second Law, is due to the net force acting on the object, i.e., the net result of any and all forces acting on the object.",
-			"definedVariable": "115",
+			"definedVariable": "Acceleration",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Acceleration",
-			"variables": ["132", "105", "131", "115"]
+			"variables": ["Velocity", "Position", "Time", "Acceleration"]
 		},
-		"96": {
-			"id": "96",
+		"Kinematics Equation (no \"$v_0$\")": {
 			"quickName": "x=(x_0)+(v)*t-0.5a*(t^2)",
 			"representation": "$\\displaystyle{\\displaystyle{ x = x_0 + vt - \\frac{1}{2}at^2 }}$",
 			"fullName": "Kinematics Equation (no \"$v_0$\")",
 			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics",
-			"variables": ["105", "115", "132", "131"]
+			"variables": ["Position", "Acceleration", "Velocity", "Time"]
 		},
-		"97": {
-			"id": "97",
+		"Kinematics Equation (no \"$v$\")": {
 			"quickName": "x=1/2(v_0+v)*t",
 			"representation": "$\\displaystyle x = x_0 + v_0t + \\frac{1}{2}at^2 $",
 			"fullName": "Kinematics Equation (no \"$v$\")",
 			"description": "Kinematics is the study of classical mechanics which describes the motion of points, bodies (objects) and systems of bodies (groups of objects) without consideration of the causes of motion.",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinematics",
-			"variables": ["105", "131", "132"]
+			"variables": ["Position", "Time", "Velocity"]
 		},
-		"98": {
-			"id": "98",
+		"Mass–Energy Equivalence": {
 			"quickName": "E=mc^2",
 			"representation": "$\\displaystyle{E=mc^2}$",
 			"fullName": "Mass–Energy Equivalence",
 			"description": "In physics, mass–energy equivalence is the concept that the mass of an object or system is a measure of its energy content. The equation $E = mc^2$ can be applied to rest mass ($m$ or $m_0$) and rest energy ($E_0$) to show their proportionality as $E_0 = m_0c^2$. In inertial reference frames other than the rest frame or center of mass frame, the equation $E = mc^2$ remains true if the energy is the relativistic energy and the mass is the relativistic mass. However, connection of the total or relativistic energy ($E_r$) with the rest or invariant mass ($m_0$) requires consideration of the system total momentum, in systems and reference frames where the total momentum has a non-zero value. The formula then required to connect the two different kinds of mass and energy, is the extended version of Einstein's equation, $E_r = \\sqrt{(m_0c^2)^2 + (pc)^2}$ called the relativistic energy–momentum relatio",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Mass%E2%80%93energy_equivalence",
-			"variables": ["104", "106", "159"]
+			"variables": ["Mass", "Speed of Light", "Energy"]
 		},
-		"99": {
-			"id": "99",
+		"Pouillet's law": {
 			"quickName": "r=rho*l/A",
 			"representation": "$R=\\frac{\\rho \\ell}{ \\textrm{A} }$",
 			"fullName": "Pouillet's law",
 			"description": "The resistance of a given material will increase with the length, but decrease with increasing cross-sectional area. From the above equations, resistivity has SI units of ohm⋅meter. This formula can be used to intuitively understand the meaning of a resistivity value. For example, if $A=1\\text{m}^2$ and $\\ell=1\\text{m}$ (forming a cube with perfectly-conductive contacts on opposite faces), then the resistance of this element in ohms is numerically equal to the resistivity of the material it is made of in ohm-meters.",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity",
-			"variables": ["161", "162", "163", "164"]
+			"variables": ["Electric Resistance", "Cross Section", "Electrical Resistivity", "Length"]
 		},
-		"100": {
-			"id": "100",
+		"Ohm's Law": {
 			"quickName": "v=ir",
 			"representation": "$\\displaystyle{V=IR}$",
 			"fullName": "Ohm's Law",
 			"description": "Ohm's law states that the current through a conductor between two points is directly proportional to the potential difference across the two points. The  constant of proportionality in this case is the resistance. In circuit analysis, three equivalent expressions of Ohm's law are used interchangeably: $I = \\frac{V}{R} \\quad \\text{or}\\quad V = IR \\quad \\text{or} \\quad R = \\frac{V}{I}$.",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Ohm%27s_law",
-			"variables": ["152", "161", "160"]
+			"variables": ["Voltage", "Electric Resistance", "Electric Current"]
 		},
-		"101": {
-			"id": "101",
+		"Definition of Lorentz Factor": {
 			"quickName": "gamma",
 			"representation": "$\\displaystyle{\\gamma = \\frac{1}{\\sqrt{1 - v^2/c^2}} = \\frac{1}{\\sqrt{1 - \\beta^2}}} $",
 			"fullName": "Definition of Lorentz Factor",
 			"description": "The Lorentz factor or Lorentz term is an expression which appears in several equations in special relativity. It arises from deriving the Lorentz transformations.",
-			"definedVariable": "178",
+			"definedVariable": "Lorentz Factor",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Lorentz_factor",
-			"variables": ["106", "179", "132", "178"]
+			"variables": ["Speed of Light", "Velocity to Speed of Light Ratio", "Velocity", "Lorentz Factor"]
 		},
-		"102": {
-			"id": "102",
+		"Time Dilation": {
 			"quickName": "t=t'gamma",
 			"representation": "$\\displaystyle{\\Delta t' = \\gamma \\Delta t}$",
 			"fullName": "Time Dilation",
 			"description": "In the theory of relativity, time dilation is an actual difference of elapsed time between two events as measured by observers either moving relative to each other or differently situated from gravitational masses.An accurate clock at rest with respect to one observer may be measured to tick at a different rate when compared to a second observer's own equally accurate clocks. The time (∆t' ) between two ticks as measured in the frame in which the clock is moving, is longer than the time (∆t) between these ticks as measured in the rest frame of the cloc",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Time_dilation",
-			"variables": ["178", "131"]
+			"variables": ["Lorentz Factor", "Time"]
 		},
-		"103": {
-			"id": "103",
+		"Length Contraction": {
 			"quickName": "gammax'=x/gamma",
 			"representation": "$\\displaystyle{\\Delta x' = \\frac{\\Delta x}{\\gamma} }$",
 			"fullName": "Length Contraction",
 			"description": "In physics, length contraction is the phenomenon of a decrease in length measured by the observer of an object which is traveling at any non-zero velocity relative to the observer. This contraction (more formally called Lorentz contraction or Lorentz–FitzGerald contraction after Hendrik Lorentz and George FitzGerald) is usually only noticeable at a substantial fraction of the speed of light. Length contraction is only in the direction parallel to the direction in which the observed body is travelling. The length (∆x' ) of an object as measured in the frame in which it is moving, is shorter than its length (∆x) in its own rest fram",
 			"definedVariable": null,
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Length_contraction",
-			"variables": ["105", "178"]
+			"variables": ["Position", "Lorentz Factor"]
 		}
 	},
 	"units": {
-		"39": {
-			"id": "39",
+		"meter": {
 			"quickName": "m",
 			"representation": "$\\displaystyle{\\textrm{m}}$",
 			"fullName": "meter",
@@ -413,8 +372,7 @@ var db = {
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{m}}\\right)$",
 			"composition": []
 		},
-		"40": {
-			"id": "40",
+		"kilogram": {
 			"quickName": "kg",
 			"representation": "$\\displaystyle{\\textrm{kg}}$",
 			"fullName": "kilogram",
@@ -424,8 +382,7 @@ var db = {
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{kg}}\\right)$",
 			"composition": []
 		},
-		"41": {
-			"id": "41",
+		"second": {
 			"quickName": "s",
 			"representation": "$\\displaystyle{\\textrm{s}}$",
 			"fullName": "second",
@@ -435,8 +392,7 @@ var db = {
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{s}}\\right)$",
 			"composition": []
 		},
-		"42": {
-			"id": "42",
+		"mole": {
 			"quickName": "mol",
 			"representation": "$\\displaystyle{\\textrm{mol}}$",
 			"fullName": "mole",
@@ -446,8 +402,7 @@ var db = {
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{mol}}\\right)$",
 			"composition": []
 		},
-		"43": {
-			"id": "43",
+		"Kelvin": {
 			"quickName": "K",
 			"representation": "$\\displaystyle{\\textrm{K}}$",
 			"fullName": "Kelvin",
@@ -457,8 +412,7 @@ var db = {
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{K}}\\right)$",
 			"composition": []
 		},
-		"44": {
-			"id": "44",
+		"Celsius": {
 			"quickName": "C",
 			"representation": "$° \\textrm{C}$",
 			"fullName": "Celsius",
@@ -468,8 +422,7 @@ var db = {
 			"definitionRepresentation": "$\\left(° \\textrm{C}\\right)$",
 			"composition": []
 		},
-		"45": {
-			"id": "45",
+		"Ampere": {
 			"quickName": "A",
 			"representation": "$\\displaystyle{\\textrm{A}}$",
 			"fullName": "Ampere",
@@ -479,8 +432,7 @@ var db = {
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{A}}\\right)$",
 			"composition": []
 		},
-		"46": {
-			"id": "46",
+		"Joule": {
 			"quickName": "J",
 			"representation": "$\\displaystyle{\\textrm{J}}$",
 			"fullName": "Joule",
@@ -488,10 +440,9 @@ var db = {
 			"compositionRepresentation": "$ \\frac{ \\textrm{kg} \\cdot \\textrm{m}^2}{ \\textrm{s}^2 } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Joule",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{J}}\\right)$",
-			"composition": [40, 39, 41]
+			"composition": ["kilogram", "meter", "second"]
 		},
-		"47": {
-			"id": "47",
+		"Newton": {
 			"quickName": "N",
 			"representation": "$\\displaystyle{\\textrm{N}}$",
 			"fullName": "Newton",
@@ -499,10 +450,9 @@ var db = {
 			"compositionRepresentation": "$\\frac{ \\textrm{kg} \\cdot {\\textrm{m}}}{ \\textrm{s}^2 }$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Newton_(unit)",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{N}}\\right)$",
-			"composition": [40, 39, 41]
+			"composition": ["kilogram", "meter", "second"]
 		},
-		"48": {
-			"id": "48",
+		"Coulomb": {
 			"quickName": "C",
 			"representation": "$\\displaystyle{\\textrm{C}}$",
 			"fullName": "Coulomb",
@@ -510,10 +460,9 @@ var db = {
 			"compositionRepresentation": "$A \\cdot s$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Coulomb",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{C}}\\right)$",
-			"composition": [45, 41]
+			"composition": ["Ampere", "second"]
 		},
-		"49": {
-			"id": "49",
+		"Volt": {
 			"quickName": "V",
 			"representation": "$\\displaystyle{\\textrm{V}}$",
 			"fullName": "Volt",
@@ -521,10 +470,9 @@ var db = {
 			"compositionRepresentation": "$ \\frac{ \\textrm{J}}{ \\textrm{C} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Volt",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{V}}\\right)$",
-			"composition": [46, 48]
+			"composition": ["Joule", "Coulomb"]
 		},
-		"50": {
-			"id": "50",
+		"Henry": {
 			"quickName": "H",
 			"representation": "$\\displaystyle{\\textrm{H}}$",
 			"fullName": "Henry",
@@ -532,10 +480,9 @@ var db = {
 			"compositionRepresentation": "$\\frac{ \\textrm{V} \\cdot \\textrm{ s } }{\\textrm{A}} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Henry_(unit)",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{H}}\\right)$",
-			"composition": [49, 41, 45]
+			"composition": ["Volt", "second", "Ampere"]
 		},
-		"51": {
-			"id": "51",
+		"Ohm": {
 			"quickName": "omega",
 			"representation": "$\\displaystyle{\\Omega}$",
 			"fullName": "Ohm",
@@ -543,10 +490,9 @@ var db = {
 			"compositionRepresentation": "$\\frac{ \\textrm{V} }{ \\textrm{A} }$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Ohm",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\Omega}\\right)$",
-			"composition": [49, 45]
+			"composition": ["Volt", "Ampere"]
 		},
-		"52": {
-			"id": "52",
+		"Hertz": {
 			"quickName": "Hz",
 			"representation": "$\\displaystyle{\\textrm{Hz}}$",
 			"fullName": "Hertz",
@@ -554,10 +500,9 @@ var db = {
 			"compositionRepresentation": "$ \\frac{ 1 }{ \\textrm{ s } } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Hertz",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{Hz}}\\right)$",
-			"composition": [41]
+			"composition": ["second"]
 		},
-		"53": {
-			"id": "53",
+		"Pascal": {
 			"quickName": "Pa",
 			"representation": "$\\displaystyle{\\textrm{Pa}}$",
 			"fullName": "Pascal",
@@ -565,10 +510,9 @@ var db = {
 			"compositionRepresentation": "$ \\frac{ \\textrm{N} }{ \\textrm{m}^2 } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Pascal_(unit)",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{Pa}}\\right)$",
-			"composition": [37, 49]
+			"composition": ["Newton", "Volt"]
 		},
-		"54": {
-			"id": "54",
+		"Tesla": {
 			"quickName": "T",
 			"representation": "$\\displaystyle{\\textrm{T}}$",
 			"fullName": "Tesla",
@@ -576,10 +520,9 @@ var db = {
 			"compositionRepresentation": "$ \\frac{ \\textrm{Wb} }{ \\textrm{m}^2 } = \\frac{ N \\cdot m }{ A } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Tesla_%28unit%29",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{T}}\\right)$",
-			"composition": [60, 39, 47, 49, 45]
+			"composition": ["Weber", "meter", "Newton", "Volt", "Ampere"]
 		},
-		"55": {
-			"id": "55",
+		"Radian": {
 			"quickName": "rad",
 			"representation": "$\\displaystyle{\\textrm{rad}}$",
 			"fullName": "Radian",
@@ -589,8 +532,7 @@ var db = {
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{rad}}\\right)$",
 			"composition": []
 		},
-		"56": {
-			"id": "56",
+		"Farad": {
 			"quickName": "f",
 			"representation": "$\\displaystyle{\\textrm{F}}$",
 			"fullName": "Farad",
@@ -598,10 +540,9 @@ var db = {
 			"compositionRepresentation": "$ \\frac{ C }{ V } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Farad",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{F}}\\right)$",
-			"composition": [48, 49]
+			"composition": ["Coulomb", "Volt"]
 		},
-		"57": {
-			"id": "57",
+		"Watt": {
 			"quickName": "W",
 			"representation": "$\\displaystyle{\\textrm{W}}$",
 			"fullName": "Watt",
@@ -609,21 +550,19 @@ var db = {
 			"compositionRepresentation": "$ \\frac{ \\textrm{J} }{ \\textrm{s} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Watt",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{W}}\\right)$",
-			"composition": [46, 41]
+			"composition": ["Joule", "second"]
 		},
-		"58": {
-			"id": "58",
+		"Electron Volt": {
 			"quickName": "eV",
 			"representation": "$\\displaystyle{\\textrm{eV}}$",
 			"fullName": "Electron Volt",
 			"description": "In physics, the electron volt is a unit of energy equal to approximately $1.6 \\times 10^{−19} \\textrm{J}$. By definition, it is the amount of energy gained (or lost) by the charge of a single electron moved across an electric potential difference of one volt. Thus it is 1 volt (1 joule per coulomb, 1 $J/C$) multiplied by the elementary charge ($e$, or $1.602176565(35) \\times10^{−19} \\textrm{C}$). ",
-			"compositionRepresentation": "${\\frac{\\textrm{J}}{\\textrm{C}} \\cdot e$",
+			"compositionRepresentation": "$\\frac{\\textrm{J}}{\\textrm{C}} \\cdot e$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electronvolt",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{eV}}\\right)$",
-			"composition": [46, 48]
+			"composition": ["Joule", "Coulomb"]
 		},
-		"60": {
-			"id": "60",
+		"Weber": {
 			"quickName": "Wb",
 			"representation": "$\\textrm{Wb}$",
 			"fullName": "Weber",
@@ -631,12 +570,11 @@ var db = {
 			"compositionRepresentation": "$\\frac{ \\textrm{kg} \\cdot \\textrm{ m}^2 }{\\textrm{s}^2\\cdot\\textrm{A}} $ = $ \\textrm{T}\\cdot\\textrm{m}^2 $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Weber_(unit)",
 			"definitionRepresentation": "$\\left(\\textrm{Wb}\\right)$",
-			"composition": [40, 39, 41, 45, 54]
+			"composition": ["kilogram", "meter", "second", "Ampere", "Tesla"]
 		}
 	},
 	"variables": {
-		"103": {
-			"id": "103",
+		"Force": {
 			"quickName": "F",
 			"representation": "$\\displaystyle{\\vec{F}}$",
 			"fullName": "Force",
@@ -644,11 +582,10 @@ var db = {
 			"units": "$ \\textrm{N} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Force",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}}\\right)$",
-			"unitComposition": ["47"],
-			"equations": ["65", "70", "72", "75", "81", "85", "93"]
+			"unitComposition": ["Newton"],
+			"equations": ["Newton's Second Law", "Definition of Torque", "Definition of Impulse", "Definition of Work", "Potential Energy", "Electric Field Strength", "Definition of Mechanical Power"]
 		},
-		"104": {
-			"id": "104",
+		"Mass": {
 			"quickName": "m",
 			"representation": "$\\displaystyle{\\textrm{m}}$",
 			"fullName": "Mass",
@@ -656,11 +593,10 @@ var db = {
 			"units": "$ \\textrm{kg} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Mass",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{m}}\\right)$",
-			"unitComposition": ["40"],
-			"equations": ["65", "71", "73", "74", "78", "82", "83", "86", "87", "88", "98"]
+			"unitComposition": ["kilogram"],
+			"equations": ["Newton's Second Law", "Definition of Linear Momentum", "Definition of Kinetic Energy", "Definition of Gravitational Potential Energy", "Spring Period", "Newton's Law of Gravitation", "Gravitational Potential", "Normal Force", "Definition of Centripetal Force", "Definition of Center of Mass", "Mass–Energy Equivalence"]
 		},
-		"105": {
-			"id": "105",
+		"Position": {
 			"quickName": "x",
 			"representation": "$\\displaystyle{\\vec{x}}$",
 			"fullName": "Position",
@@ -668,11 +604,10 @@ var db = {
 			"units": "$ \\textrm{m} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Position_%28vector%29",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{x}}\\right)$",
-			"unitComposition": ["39"],
-			"equations": ["66", "67", "74", "75", "76", "77", "81", "95", "96", "97", "103"]
+			"unitComposition": ["meter"],
+			"equations": ["Kinematics Equation (no \"$a$\")", "Kinematics Equation (no \"$t$\")", "Definition of Gravitational Potential Energy", "Definition of Work", "Hooke's Law", "Definition of Spring Potential Energy", "Potential Energy", "Definition of Acceleration", "Kinematics Equation (no \"$v_0$\")", "Kinematics Equation (no \"$v$\")", "Length Contraction"]
 		},
-		"106": {
-			"id": "106",
+		"Speed of Light": {
 			"quickName": "c",
 			"representation": "$\\displaystyle{c}$",
 			"fullName": "Speed of Light",
@@ -680,11 +615,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{m} }{ \\textrm{s} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Speed_of_light",
 			"definitionRepresentation": "$\\left(\\displaystyle{c}\\right)$",
-			"unitComposition": ["41", "39"],
-			"equations": ["98", "101"]
+			"unitComposition": ["second", "meter"],
+			"equations": ["Mass–Energy Equivalence", "Definition of Lorentz Factor"]
 		},
-		"107": {
-			"id": "107",
+		"Newtonian Gravitational Constant": {
 			"quickName": "G",
 			"representation": "$\\displaystyle{\\textrm{G}}$",
 			"fullName": "Newtonian Gravitational Constant",
@@ -692,11 +626,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{N} \\cdot \\textrm{m}^2 }{ \\textrm{kg}^2 } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Gravitational_constant",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{G}}\\right)$",
-			"unitComposition": ["40", "47", "39"],
+			"unitComposition": ["kilogram", "Newton", "meter"],
 			"equations": []
 		},
-		"108": {
-			"id": "108",
+		"Avogadro's Number": {
 			"quickName": "N_A",
 			"representation": "$\\displaystyle{N_A}$",
 			"fullName": "Avogadro's Number",
@@ -704,11 +637,10 @@ var db = {
 			"units": "$ \\frac{1}{ \\textrm{mol} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Avogadro_constant",
 			"definitionRepresentation": "$\\left(\\displaystyle{N_A}\\right)$",
-			"unitComposition": ["42"],
+			"unitComposition": ["mole"],
 			"equations": []
 		},
-		"109": {
-			"id": "109",
+		"Electric Constant": {
 			"quickName": "e_0",
 			"representation": "$\\displaystyle{\\epsilon_0}$",
 			"fullName": "Electric Constant",
@@ -716,11 +648,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{F} }{ \\textrm{m} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Vacuum_permittivity",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\epsilon_0}\\right)$",
-			"unitComposition": ["56", "39"],
-			"equations": ["84"]
+			"unitComposition": ["Farad", "meter"],
+			"equations": ["Definition of Coulomb Force"]
 		},
-		"110": {
-			"id": "110",
+		"Magnetic Constant (permeability of free space)": {
 			"quickName": "mu_0",
 			"representation": "$\\displaystyle{\\mu_0}$",
 			"fullName": "Magnetic Constant (permeability of free space)",
@@ -728,11 +659,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{H} }{ \\textrm{m} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Permeability_(electromagnetism)",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\mu_0}\\right)$",
-			"unitComposition": ["50", "39"],
+			"unitComposition": ["Henry", "meter"],
 			"equations": []
 		},
-		"111": {
-			"id": "111",
+		"Boltzmann Constant": {
 			"quickName": "boltz constant",
 			"representation": "$\\displaystyle{\\textrm{k}}$",
 			"fullName": "Boltzmann Constant",
@@ -740,11 +670,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{J} }{ \\textrm{K} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Boltzmann_constant",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{k}}\\right)$",
-			"unitComposition": ["43", "46"],
+			"unitComposition": ["Kelvin", "Joule"],
 			"equations": []
 		},
-		"112": {
-			"id": "112",
+		"Elementary Charge": {
 			"quickName": "elementary charge",
 			"representation": "$\\displaystyle{e}$",
 			"fullName": "Elementary Charge",
@@ -752,11 +681,10 @@ var db = {
 			"units": "$ \\textrm{C} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Elementary_charge",
 			"definitionRepresentation": "$\\left(\\displaystyle{e}\\right)$",
-			"unitComposition": ["48"],
+			"unitComposition": ["Coulomb"],
 			"equations": []
 		},
-		"113": {
-			"id": "113",
+		"Electron Mass": {
 			"quickName": "electron mass",
 			"representation": "$\\displaystyle{m_e}$",
 			"fullName": "Electron Mass",
@@ -764,11 +692,10 @@ var db = {
 			"units": "$ \\textrm{kg} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electron",
 			"definitionRepresentation": "$\\left(\\displaystyle{m_e}\\right)$",
-			"unitComposition": ["40"],
+			"unitComposition": ["kilogram"],
 			"equations": []
 		},
-		"114": {
-			"id": "114",
+		"Proton Mass": {
 			"quickName": "proton mass",
 			"representation": "$\\displaystyle{m_p}$",
 			"fullName": "Proton Mass",
@@ -776,11 +703,10 @@ var db = {
 			"units": "$ \\textrm{kg} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Proton",
 			"definitionRepresentation": "$\\left(\\displaystyle{m_p}\\right)$",
-			"unitComposition": ["40"],
+			"unitComposition": ["kilogram"],
 			"equations": []
 		},
-		"115": {
-			"id": "115",
+		"Acceleration": {
 			"quickName": "a",
 			"representation": "$\\displaystyle{\\vec{a}}$",
 			"fullName": "Acceleration",
@@ -788,11 +714,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{m} }{ \\textrm{s}^2 } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Acceleration",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{a}}\\right)$",
-			"unitComposition": ["39", "41"],
-			"equations": ["95", "64", "65", "66", "67", "96"]
+			"unitComposition": ["meter", "second"],
+			"equations": ["Definition of Acceleration", "Kinematics Equation (no $\\Delta X$)", "Newton's Second Law", "Kinematics Equation (no \"$a$\")", "Kinematics Equation (no \"$t$\")", "Kinematics Equation (no \"$v_0$\")"]
 		},
-		"116": {
-			"id": "116",
+		"Torque": {
 			"quickName": "tau",
 			"representation": "$\\displaystyle{ \\vec{\\tau} }$",
 			"fullName": "Torque",
@@ -800,11 +725,10 @@ var db = {
 			"units": "$ \\textrm{N}$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Torque",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\vec{\\tau} }\\right)$",
-			"unitComposition": ["47"],
-			"equations": [70]
+			"unitComposition": ["Newton"],
+			"equations": ["Definition of Torque"]
 		},
-		"117": {
-			"id": "117",
+		"Linear Momentum": {
 			"quickName": "p",
 			"representation": "$\\displaystyle{ \\vec{p} }$",
 			"fullName": "Linear Momentum",
@@ -812,11 +736,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{kg} \\cdot \\textrm{m} }{ \\textrm{s} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Momentum",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\vec{p} }\\right)$",
-			"unitComposition": ["40", "41", "39"],
-			"equations": ["71", "65", "92"]
+			"unitComposition": ["kilogram", "second", "meter"],
+			"equations": ["Definition of Linear Momentum", "Newton's Second Law", "Definition of Angular Momentum"]
 		},
-		"118": {
-			"id": "118",
+		"Impulse": {
 			"quickName": "J",
 			"representation": "$\\displaystyle{ \\vec{J} }$",
 			"fullName": "Impulse",
@@ -824,11 +747,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{kg} \\cdot \\textrm{m} }{ \\textrm{s} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Impulse_(physics)",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\vec{J} }\\right)$",
-			"unitComposition": ["40", "41", "39"],
-			"equations": ["72"]
+			"unitComposition": ["kilogram", "second", "meter"],
+			"equations": ["Definition of Impulse"]
 		},
-		"119": {
-			"id": "119",
+		"Work": {
 			"quickName": "W",
 			"representation": "$\\displaystyle{W}$",
 			"fullName": "Work",
@@ -836,11 +758,10 @@ var db = {
 			"units": "$ \\textrm{J} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Work_(physics)",
 			"definitionRepresentation": "$\\left(\\displaystyle{W}\\right)$",
-			"unitComposition": ["46"],
-			"equations": ["75", "93"]
+			"unitComposition": ["Joule"],
+			"equations": ["Definition of Work", "Definition of Mechanical Power"]
 		},
-		"120": {
-			"id": "120",
+		"Pi": {
 			"quickName": "Pi",
 			"representation": "$\\displaystyle{\\pi}$",
 			"fullName": "Pi",
@@ -848,10 +769,10 @@ var db = {
 			"units": "",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Pi",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\pi}\\right)$",
-			"equations": ["78", "79", "84"]
+			"equations": ["Spring Period", "Pendulum Period", "Definition of Coulomb Force"],
+			"unitComposition": []
 		},
-		"121": {
-			"id": "121",
+		"Coefficient of Friction": {
 			"quickName": "mu",
 			"representation": "$\\displaystyle{\\mu}$",
 			"fullName": "Coefficient of Friction",
@@ -859,10 +780,10 @@ var db = {
 			"units": "",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Friction",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\mu}\\right)$",
-			"equations": ["68"]
+			"equations": ["Force of Friction"],
+			"unitComposition": []
 		},
-		"122": {
-			"id": "122",
+		"Kinetic Energy": {
 			"quickName": "K",
 			"representation": "$\\displaystyle{ K }$",
 			"fullName": "Kinetic Energy",
@@ -870,11 +791,10 @@ var db = {
 			"units": "$ \\textrm{J} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Kinetic_energy",
 			"definitionRepresentation": "$\\left(\\displaystyle{ K }\\right)$",
-			"unitComposition": ["46"],
-			"equations": ["73", "89"]
+			"unitComposition": ["Joule"],
+			"equations": ["Definition of Kinetic Energy", "Work-Energy Theorem"]
 		},
-		"123": {
-			"id": "123",
+		"Net Work": {
 			"quickName": "Wnet",
 			"representation": "$\\displaystyle{W_{net}}$",
 			"fullName": "Net Work",
@@ -882,11 +802,10 @@ var db = {
 			"units": "$ \\textrm{J} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Work_(physics)",
 			"definitionRepresentation": "$\\left(\\displaystyle{W_{net}}\\right)$",
-			"unitComposition": ["46"],
-			"equations": ["89"]
+			"unitComposition": ["Joule"],
+			"equations": ["Work-Energy Theorem"]
 		},
-		"124": {
-			"id": "124",
+		"Period": {
 			"quickName": "T",
 			"representation": "$\\displaystyle{\\textrm{T}}$",
 			"fullName": "Period",
@@ -894,11 +813,10 @@ var db = {
 			"units": "$ \\textrm{s} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Frequency",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{T}}\\right)$",
-			"unitComposition": ["41"],
-			"equations": ["80"]
+			"unitComposition": ["second"],
+			"equations": ["Definition of Period"]
 		},
-		"125": {
-			"id": "125",
+		"Frequency": {
 			"quickName": "f",
 			"representation": "$\\displaystyle{f , \\nu}$",
 			"fullName": "Frequency",
@@ -906,11 +824,10 @@ var db = {
 			"units": "$\\textrm{Hz}$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Frequency",
 			"definitionRepresentation": "$\\left(\\displaystyle{f , \\nu}\\right)$",
-			"unitComposition": ["52"],
-			"equations": ["80"]
+			"unitComposition": ["Hertz"],
+			"equations": ["Definition of Period"]
 		},
-		"126": {
-			"id": "126",
+		"Frictional Force": {
 			"quickName": "F_fric",
 			"representation": "$\\displaystyle{\\vec{F}_{fric}}$",
 			"fullName": "Frictional Force",
@@ -918,11 +835,10 @@ var db = {
 			"units": "$\\textrm{N}$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Friction",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}_{fric}}\\right)$",
-			"unitComposition": ["47"],
-			"equations": ["68"]
+			"unitComposition": ["Newton"],
+			"equations": ["Force of Friction"]
 		},
-		"127": {
-			"id": "127",
+		"Centripetal Acceleration": {
 			"quickName": "a_c",
 			"representation": "$\\displaystyle{\\vec{a}_c}$",
 			"fullName": "Centripetal Acceleration",
@@ -930,11 +846,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{m} }{ \\textrm{s}^2 } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Acceleration",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{a}_c}\\right)$",
-			"unitComposition": ["41", "39"],
-			"equations": ["69", "87"]
+			"unitComposition": ["second", "meter"],
+			"equations": ["Definition of Centripetal Acceleration", "Definition of Centripetal Force"]
 		},
-		"128": {
-			"id": "128",
+		"Electric Dipole Moment": {
 			"quickName": "p",
 			"representation": "$\\displaystyle{\\vec{p}}$",
 			"fullName": "Electric Dipole Moment",
@@ -942,11 +857,10 @@ var db = {
 			"units": "$ \\textrm{C} \\cdot \\textrm{m} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_dipole_moment",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{p}}\\right)$",
-			"unitComposition": ["48", "39"],
-			"equations": ["90"]
+			"unitComposition": ["Coulomb", "meter"],
+			"equations": ["Electric Dipole Moment"]
 		},
-		"129": {
-			"id": "129",
+		"Coulomb's Constant": {
 			"quickName": "K",
 			"representation": "$\\displaystyle{K}$",
 			"fullName": "Coulomb's Constant",
@@ -954,11 +868,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{N} \\cdot \\textrm{m}^2 }{ \\textrm{C}^2 } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Coulomb's_constant",
 			"definitionRepresentation": "$\\left(\\displaystyle{K}\\right)$",
-			"unitComposition": ["48", "47", "39"],
-			"equations": ["84"]
+			"unitComposition": ["Coulomb", "Newton", "meter"],
+			"equations": ["Definition of Coulomb Force"]
 		},
-		"130": {
-			"id": "130",
+		"Angle": {
 			"quickName": "theta",
 			"representation": "$\\displaystyle{\\theta}$",
 			"fullName": "Angle",
@@ -966,11 +879,10 @@ var db = {
 			"units": "$\\textrm{rad}$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Angle",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\theta}\\right)$",
-			"unitComposition": ["55"],
-			"equations": ["70", "86", "92", "93", "94"]
+			"unitComposition": ["Radian"],
+			"equations": ["Definition of Torque", "Normal Force", "Definition of Angular Momentum", "Definition of Mechanical Power", "Definition of Angular Velocity"]
 		},
-		"131": {
-			"id": "131",
+		"Time": {
 			"quickName": "t",
 			"representation": "$\\displaystyle{t}$",
 			"fullName": "Time",
@@ -978,11 +890,10 @@ var db = {
 			"units": "$ \\textrm{ s } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Time",
 			"definitionRepresentation": "$\\left(\\displaystyle{t}\\right)$",
-			"unitComposition": ["41"],
-			"equations": ["64", "66", "93", "95", "96", "97", "102"]
+			"unitComposition": ["second"],
+			"equations": ["Kinematics Equation (no $\\Delta X$)", "Kinematics Equation (no \"$a$\")", "Definition of Mechanical Power", "Definition of Acceleration", "Kinematics Equation (no \"$v_0$\")", "Kinematics Equation (no \"$v$\")", "Time Dilation"]
 		},
-		"132": {
-			"id": "132",
+		"Velocity": {
 			"quickName": "v",
 			"representation": "$\\displaystyle{\\vec{v}}$",
 			"fullName": "Velocity",
@@ -990,11 +901,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{m} }{ \\textrm{s} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Velocity",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{v}}\\right)$",
-			"unitComposition": ["39", "41"],
-			"equations": ["64", "65", "66", "67", "69", "71", "73", "93", "95", "96", "97", "101"]
+			"unitComposition": ["meter", "second"],
+			"equations": ["Kinematics Equation (no $\\Delta X$)", "Newton's Second Law", "Kinematics Equation (no \"$a$\")", "Kinematics Equation (no \"$t$\")", "Definition of Centripetal Acceleration", "Definition of Linear Momentum", "Definition of Kinetic Energy", "Definition of Mechanical Power", "Definition of Acceleration", "Kinematics Equation (no \"$v_0$\")", "Kinematics Equation (no \"$v$\")", "Definition of Lorentz Factor"]
 		},
-		"133": {
-			"id": "133",
+		"Normal Force": {
 			"quickName": "F_n",
 			"representation": "$\\displaystyle{\\vec{F}_n}$",
 			"fullName": "Normal Force",
@@ -1002,11 +912,10 @@ var db = {
 			"units": "$\\textrm{N}$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Normal_force",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}_n}\\right)$",
-			"unitComposition": ["47"],
-			"equations": ["68", "86"]
+			"unitComposition": ["Newton"],
+			"equations": ["Force of Friction", "Normal Force"]
 		},
-		"134": {
-			"id": "134",
+		"Radius": {
 			"quickName": "r",
 			"representation": "$\\displaystyle{\\vec{r}}$",
 			"fullName": "Radius",
@@ -1014,11 +923,10 @@ var db = {
 			"units": "$\\textrm{m}$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Radius",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{r}}\\right)$",
-			"unitComposition": ["39"],
-			"equations": ["69", "70", "79", "82", "83", "84", "88", "92"]
+			"unitComposition": ["meter"],
+			"equations": ["Definition of Centripetal Acceleration", "Definition of Torque", "Pendulum Period", "Newton's Law of Gravitation", "Gravitational Potential", "Definition of Coulomb Force", "Definition of Center of Mass", "Definition of Angular Momentum"]
 		},
-		"135": {
-			"id": "135",
+		"Gravitational Acceleration": {
 			"quickName": "g",
 			"representation": "$\\displaystyle{ \\vec{g} }$",
 			"fullName": "Gravitational Acceleration",
@@ -1026,11 +934,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{m} }{ \\textrm{s}^2 } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Gravitational_acceleration",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\vec{g} }\\right)$",
-			"unitComposition": ["39", "41"],
-			"equations": ["74", "79", "86"]
+			"unitComposition": ["meter", "second"],
+			"equations": ["Definition of Gravitational Potential Energy", "Pendulum Period", "Normal Force"]
 		},
-		"136": {
-			"id": "136",
+		"Electric Charge": {
 			"quickName": "Q",
 			"representation": "$\\displaystyle{q}$",
 			"fullName": "Electric Charge",
@@ -1038,11 +945,10 @@ var db = {
 			"units": "$ \\textrm{C} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_charge",
 			"definitionRepresentation": "$\\left(\\displaystyle{q}\\right)$",
-			"unitComposition": ["48"],
-			"equations": ["84", "85", "91"]
+			"unitComposition": ["Coulomb"],
+			"equations": ["Definition of Coulomb Force", "Electric Field Strength", "Electric Charge"]
 		},
-		"137": {
-			"id": "137",
+		"Centripetal Force": {
 			"quickName": "F_c",
 			"representation": "$\\displaystyle{\\vec{F}_c}$",
 			"fullName": "Centripetal Force",
@@ -1050,11 +956,10 @@ var db = {
 			"units": "$ \\textrm{N} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Centripetal_force",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}_c}\\right)$",
-			"unitComposition": ["47"],
-			"equations": ["87"]
+			"unitComposition": ["Newton"],
+			"equations": ["Definition of Centripetal Force"]
 		},
-		"138": {
-			"id": "138",
+		"Electric Field": {
 			"quickName": "E",
 			"representation": "$\\displaystyle{\\vec{E}}$",
 			"fullName": "Electric Field",
@@ -1062,11 +967,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{V} }{ \\textrm{m} } = \\frac{ \\textrm{N} }{ \\textrm{C} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_field",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{E}}\\right)$",
-			"unitComposition": ["47", "48", "49", "39"],
-			"equations": ["85"]
+			"unitComposition": ["Newton", "Coulomb", "Volt", "meter"],
+			"equations": ["Electric Field Strength"]
 		},
-		"139": {
-			"id": "139",
+		"Electric Force": {
 			"quickName": "F_E",
 			"representation": "$\\displaystyle{\\vec{F}_E}$",
 			"fullName": "Electric Force",
@@ -1074,11 +978,10 @@ var db = {
 			"units": "$ \\textrm{N} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electromagnetism",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}_E}\\right)$",
-			"unitComposition": ["47"],
-			"equations": ["84"]
+			"unitComposition": ["Newton"],
+			"equations": ["Definition of Coulomb Force"]
 		},
-		"140": {
-			"id": "140",
+		"Gravitational Potential Energy": {
 			"quickName": "U_g",
 			"representation": "$\\displaystyle{U_g}$",
 			"fullName": "Gravitational Potential Energy",
@@ -1086,11 +989,10 @@ var db = {
 			"units": "$ \\textrm{J} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy",
 			"definitionRepresentation": "$\\left(\\displaystyle{U_g}\\right)$",
-			"unitComposition": ["46"],
-			"equations": ["74", "83"]
+			"unitComposition": ["Joule"],
+			"equations": ["Definition of Gravitational Potential Energy", "Gravitational Potential"]
 		},
-		"141": {
-			"id": "141",
+		"Gravitational Force": {
 			"quickName": "F_g",
 			"representation": "$\\displaystyle{\\vec{F}_g}$",
 			"fullName": "Gravitational Force",
@@ -1098,11 +1000,10 @@ var db = {
 			"units": "$ \\textrm{N} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Gravitation",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}_g}\\right)$",
-			"unitComposition": ["47"],
-			"equations": ["82"]
+			"unitComposition": ["Newton"],
+			"equations": ["Newton's Law of Gravitation"]
 		},
-		"142": {
-			"id": "142",
+		"Potential Energy": {
 			"quickName": "U",
 			"representation": "$\\displaystyle{U}$",
 			"fullName": "Potential Energy",
@@ -1110,11 +1011,10 @@ var db = {
 			"units": "$ \\textrm{J} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy",
 			"definitionRepresentation": "$\\left(\\displaystyle{U}\\right)$",
-			"unitComposition": ["46"],
-			"equations": ["81"]
+			"unitComposition": ["Joule"],
+			"equations": ["Potential Energy"]
 		},
-		"143": {
-			"id": "143",
+		"Pendulum Period": {
 			"quickName": "T_pendulum",
 			"representation": "$\\displaystyle{T_p}$",
 			"fullName": "Pendulum Period",
@@ -1122,11 +1022,10 @@ var db = {
 			"units": "$ \\textrm{s} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Pendulum_(mathematics)",
 			"definitionRepresentation": "$\\left(\\displaystyle{T_p}\\right)$",
-			"unitComposition": ["41"],
-			"equations": ["79"]
+			"unitComposition": ["second"],
+			"equations": ["Pendulum Period"]
 		},
-		"144": {
-			"id": "144",
+		"Spring Constant": {
 			"quickName": "k",
 			"representation": "$ k = \\frac{ F }{ \\delta }$",
 			"fullName": "Spring Constant",
@@ -1134,11 +1033,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{N} }{ m } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Stiffness",
 			"definitionRepresentation": "$\\left( k = \\frac{ F }{ \\delta }\\right)$",
-			"unitComposition": ["47", "39"],
-			"equations": ["76", "77", "78"]
+			"unitComposition": ["Newton", "meter"],
+			"equations": ["Hooke's Law", "Definition of Spring Potential Energy", "Spring Period"]
 		},
-		"145": {
-			"id": "145",
+		"Spring Period": {
 			"quickName": "T_spring",
 			"representation": "$\\displaystyle{T_s}$",
 			"fullName": "Spring Period",
@@ -1146,11 +1044,10 @@ var db = {
 			"units": "$ \\textrm{s} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Spring_physics",
 			"definitionRepresentation": "$\\left(\\displaystyle{T_s}\\right)$",
-			"unitComposition": ["41"],
-			"equations": ["78"]
+			"unitComposition": ["second"],
+			"equations": ["Spring Period"]
 		},
-		"146": {
-			"id": "146",
+		"Spring Force": {
 			"quickName": "F_spring",
 			"representation": "$\\displaystyle{\\vec{F}_{spring}}$",
 			"fullName": "Spring Force",
@@ -1158,11 +1055,10 @@ var db = {
 			"units": "$ \\textrm{N} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Hooke%27s_law",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\vec{F}_{spring}}\\right)$",
-			"unitComposition": ["47"],
-			"equations": ["76"]
+			"unitComposition": ["Newton"],
+			"equations": ["Hooke's Law"]
 		},
-		"147": {
-			"id": "147",
+		"Spring Potential Energy": {
 			"quickName": "U_spring",
 			"representation": "$\\displaystyle{U_s}$",
 			"fullName": "Spring Potential Energy",
@@ -1170,11 +1066,10 @@ var db = {
 			"units": "$ \\textrm{J} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Potential_energy",
 			"definitionRepresentation": "$\\left(\\displaystyle{U_s}\\right)$",
-			"unitComposition": ["46"],
-			"equations": ["77"]
+			"unitComposition": ["Joule"],
+			"equations": ["Definition of Spring Potential Energy"]
 		},
-		"148": {
-			"id": "148",
+		"Coulomb Force": {
 			"quickName": "F_coulomb",
 			"representation": "$\\displaystyle{F}$",
 			"fullName": "Coulomb Force",
@@ -1182,11 +1077,10 @@ var db = {
 			"units": "$ \\textrm{N}$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Coulomb%27s_law",
 			"definitionRepresentation": "$\\left(\\displaystyle{F}\\right)$",
-			"unitComposition": ["47"],
-			"equations": ["84"]
+			"unitComposition": ["Newton"],
+			"equations": ["Definition of Coulomb Force"]
 		},
-		"149": {
-			"id": "149",
+		"Angular Momentum": {
 			"quickName": "L",
 			"representation": "$\\displaystyle{ \\vec{L} }$",
 			"fullName": "Angular Momentum",
@@ -1194,11 +1088,10 @@ var db = {
 			"units": "$ \\textrm{kg} \\cdot \\frac{ \\textrm{m}^2 }{ \\textrm{s} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_momentum",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\vec{L} }\\right)$",
-			"unitComposition": ["40", "41", "39"],
-			"equations": ["92"]
+			"unitComposition": ["kilogram", "second", "meter"],
+			"equations": ["Definition of Angular Momentum"]
 		},
-		"150": {
-			"id": "150",
+		"Mechanical Power": {
 			"quickName": "P",
 			"representation": "$\\displaystyle{\\textrm{P}}$",
 			"fullName": "Mechanical Power",
@@ -1206,11 +1099,10 @@ var db = {
 			"units": "$\\textrm{W}$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Power_(physics)",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{P}}\\right)$",
-			"unitComposition": ["57"],
-			"equations": ["93"]
+			"unitComposition": ["Watt"],
+			"equations": ["Definition of Mechanical Power"]
 		},
-		"151": {
-			"id": "151",
+		"Planck's Constant": {
 			"quickName": "h",
 			"representation": "$\\displaystyle{\\textrm{h}}$",
 			"fullName": "Planck's Constant",
@@ -1218,11 +1110,10 @@ var db = {
 			"units": "$ \\textrm{J} \\cdot \\textrm{s} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Planck_constant",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\textrm{h}}\\right)$",
-			"unitComposition": ["41", "58", "46"],
+			"unitComposition": ["second", "Electron Volt", "Joule"],
 			"equations": []
 		},
-		"152": {
-			"id": "152",
+		"Voltage": {
 			"quickName": "V",
 			"representation": "$\\displaystyle{V}$",
 			"fullName": "Voltage",
@@ -1230,11 +1121,10 @@ var db = {
 			"units": "$\\textrm{V}$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Voltage",
 			"definitionRepresentation": "$\\left(\\displaystyle{V}\\right)$",
-			"unitComposition": ["49"],
-			"equations": ["100"]
+			"unitComposition": ["Volt"],
+			"equations": ["Ohm's Law"]
 		},
-		"153": {
-			"id": "153",
+		"Angular Velocity": {
 			"quickName": "w",
 			"representation": "$\\displaystyle{\\omega}$",
 			"fullName": "Angular Velocity",
@@ -1242,11 +1132,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{rad} }{ \\textrm{s} } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_velocity",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\omega}\\right)$",
-			"unitComposition": ["41"],
-			"equations": ["94", "92"]
+			"unitComposition": ["second"],
+			"equations": ["Definition of Angular Velocity", "Definition of Angular Momentum"]
 		},
-		"154": {
-			"id": "154",
+		"Rotational Inertia": {
 			"quickName": "I",
 			"representation": "$\\displaystyle{I}$",
 			"fullName": "Rotational Inertia",
@@ -1254,11 +1143,10 @@ var db = {
 			"units": "$ \\textrm{kg} \\cdot \\textrm{m}^2 $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Moment_of_inertia",
 			"definitionRepresentation": "$\\left(\\displaystyle{I}\\right)$",
-			"unitComposition": ["40", "39"],
-			"equations": ["70"]
+			"unitComposition": ["kilogram", "meter"],
+			"equations": ["Definition of Torque"]
 		},
-		"155": {
-			"id": "155",
+		"Center of Mass": {
 			"quickName": "r_cm",
 			"representation": "$\\displaystyle{ \\vec{r}_{cm} }$",
 			"fullName": "Center of Mass",
@@ -1266,11 +1154,10 @@ var db = {
 			"units": "$ \\textrm{m} $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Center_of_mass",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\vec{r}_{cm} }\\right)$",
-			"unitComposition": ["39"],
-			"equations": ["88"]
+			"unitComposition": ["meter"],
+			"equations": ["Definition of Center of Mass"]
 		},
-		"156": {
-			"id": "156",
+		"Angular Acceleration": {
 			"quickName": "a",
 			"representation": "$\\displaystyle{ \\alpha =\\frac{d\\omega}{dt}=\\frac{d^{2}\\theta}{dt^{2}} }=\\frac{a_T}{r}$",
 			"fullName": "Angular Acceleration",
@@ -1278,11 +1165,10 @@ var db = {
 			"units": "$ \\frac{ \\textrm{rad} }{ \\textrm{s}^2 } $",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Angular_acceleration",
 			"definitionRepresentation": "$\\left(\\displaystyle{ \\alpha =\\frac{d\\omega}{dt}=\\frac{d^{2}\\theta}{dt^{2}} }=\\frac{a_T}{r}\\right)$",
-			"unitComposition": ["41"],
-			"equations": ["70"]
+			"unitComposition": ["second"],
+			"equations": ["Definition of Torque"]
 		},
-		"158": {
-			"id": "158",
+		"Magnetic Field": {
 			"quickName": "B",
 			"representation": "$\\displaystyle{B}$",
 			"fullName": "Magnetic Field",
@@ -1290,11 +1176,10 @@ var db = {
 			"units": "$T$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Magnetic_field",
 			"definitionRepresentation": "$\\left(\\displaystyle{B}\\right)$",
-			"unitComposition": ["54"],
+			"unitComposition": ["Tesla"],
 			"equations": []
 		},
-		"159": {
-			"id": "159",
+		"Energy": {
 			"quickName": "E",
 			"representation": "$\\displaystyle{E}$",
 			"fullName": "Energy",
@@ -1302,11 +1187,10 @@ var db = {
 			"units": "$J$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Energy",
 			"definitionRepresentation": "$\\left(\\displaystyle{E}\\right)$",
-			"unitComposition": ["46"],
-			"equations": ["98"]
+			"unitComposition": ["Joule"],
+			"equations": ["Mass–Energy Equivalence"]
 		},
-		"160": {
-			"id": "160",
+		"Electric Current": {
 			"quickName": "i",
 			"representation": "$\\displaystyle{I}$",
 			"fullName": "Electric Current",
@@ -1314,11 +1198,10 @@ var db = {
 			"units": "$A$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electric_current",
 			"definitionRepresentation": "$\\left(\\displaystyle{I}\\right)$",
-			"unitComposition": ["45"],
-			"equations": ["100"]
+			"unitComposition": ["Ampere"],
+			"equations": ["Ohm's Law"]
 		},
-		"161": {
-			"id": "161",
+		"Electric Resistance": {
 			"quickName": "R",
 			"representation": "$\\displaystyle{R}$",
 			"fullName": "Electric Resistance",
@@ -1326,11 +1209,10 @@ var db = {
 			"units": "$\\Omega$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electrical_resistance_and_conductance",
 			"definitionRepresentation": "$\\left(\\displaystyle{R}\\right)$",
-			"unitComposition": ["51"],
-			"equations": ["99", "100"]
+			"unitComposition": ["Ohm"],
+			"equations": ["Pouillet's law", "Ohm's Law"]
 		},
-		"162": {
-			"id": "162",
+		"Cross Section": {
 			"quickName": "A",
 			"representation": "$\\displaystyle{A}$",
 			"fullName": "Cross Section",
@@ -1338,11 +1220,10 @@ var db = {
 			"units": "$m^2$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Cross_section_(geometry)",
 			"definitionRepresentation": "$\\left(\\displaystyle{A}\\right)$",
-			"unitComposition": ["39"],
-			"equations": ["99"]
+			"unitComposition": ["meter"],
+			"equations": ["Pouillet's law"]
 		},
-		"163": {
-			"id": "163",
+		"Electrical Resistivity": {
 			"quickName": "resistivity",
 			"representation": "$\\displaystyle{\\rho}$",
 			"fullName": "Electrical Resistivity",
@@ -1350,11 +1231,10 @@ var db = {
 			"units": "$\\Omega \\cdot m$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Electrical_resistivity_and_conductivity",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\rho}\\right)$",
-			"unitComposition": ["51", "39"],
-			"equations": ["99"]
+			"unitComposition": ["Ohm", "meter"],
+			"equations": ["Pouillet's law"]
 		},
-		"164": {
-			"id": "164",
+		"Length": {
 			"quickName": "l",
 			"representation": "$\\displaystyle{L}$",
 			"fullName": "Length",
@@ -1362,11 +1242,10 @@ var db = {
 			"units": "$m$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Length",
 			"definitionRepresentation": "$\\left(\\displaystyle{L}\\right)$",
-			"unitComposition": ["39"],
-			"equations": ["99"]
+			"unitComposition": ["meter"],
+			"equations": ["Pouillet's law"]
 		},
-		"165": {
-			"id": "165",
+		"Capacitance": {
 			"quickName": "C",
 			"representation": "$\\displaystyle{C}$",
 			"fullName": "Capacitance",
@@ -1374,11 +1253,10 @@ var db = {
 			"units": "$F$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Capacitance",
 			"definitionRepresentation": "$\\left(\\displaystyle{C}\\right)$",
-			"unitComposition": ["56"],
+			"unitComposition": ["Farad"],
 			"equations": []
 		},
-		"166": {
-			"id": "166",
+		"Molar Gas Constant": {
 			"quickName": "R",
 			"representation": "$\\displaystyle{R}$",
 			"fullName": "Molar Gas Constant",
@@ -1386,11 +1264,10 @@ var db = {
 			"units": "$\\frac{J}{mol \\cdot K}$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Gas_constant",
 			"definitionRepresentation": "$\\left(\\displaystyle{R}\\right)$",
-			"unitComposition": ["42", "43", "46"],
+			"unitComposition": ["mole", "Kelvin", "Joule"],
 			"equations": []
 		},
-		"168": {
-			"id": "168",
+		"Reduced Planck's Constant": {
 			"quickName": "h_bar",
 			"representation": "$\\displaystyle{\\hbar}$",
 			"fullName": "Reduced Planck's Constant",
@@ -1398,11 +1275,10 @@ var db = {
 			"units": "$J \\cdot s$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Planck_constant",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\hbar}\\right)$",
-			"unitComposition": ["41", "46"],
+			"unitComposition": ["second", "Joule"],
 			"equations": []
 		},
-		"177": {
-			"id": "177",
+		"Inductance": {
 			"quickName": "L",
 			"representation": "$L$",
 			"fullName": "Inductance",
@@ -1410,11 +1286,10 @@ var db = {
 			"units": "$H$",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Inductance",
 			"definitionRepresentation": "$\\left(L\\right)$",
-			"unitComposition": ["50"],
+			"unitComposition": ["Henry"],
 			"equations": []
 		},
-		"178": {
-			"id": "178",
+		"Lorentz Factor": {
 			"quickName": "gamma",
 			"representation": "$\\displaystyle{\\gamma}$",
 			"fullName": "Lorentz Factor",
@@ -1422,10 +1297,10 @@ var db = {
 			"units": "none",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Lorentz_factor",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\gamma}\\right)$",
-			"equations": ["101", "102", "103"]
+			"equations": ["Definition of Lorentz Factor", "Time Dilation", "Length Contraction"],
+			"unitComposition": []
 		},
-		"179": {
-			"id": "179",
+		"Velocity to Speed of Light Ratio": {
 			"quickName": "B",
 			"representation": "$\\displaystyle{\\beta}$",
 			"fullName": "Velocity to Speed of Light Ratio",
@@ -1433,1753 +1308,1754 @@ var db = {
 			"units": "none",
 			"descriptionUrl": "http://en.wikipedia.org/wiki/Lorentz_factor",
 			"definitionRepresentation": "$\\left(\\displaystyle{\\beta}\\right)$",
-			"equations": ["101"]
+			"equations": ["Definition of Lorentz Factor"],
+			"unitComposition": []
 		}
 	},
 	"searchTerms": {
 		"meter": [{
 			"type": "unit",
-			"id": "39"
+			"fullName": "meter"
 		}],
 		"m": [{
 			"type": "unit",
-			"id": "39"
+			"fullName": "meter"
 		}, {
 			"type": "variable",
-			"id": "104"
+			"fullName": "Mass"
 		}, {
 			"type": "variable",
-			"id": "110"
+			"fullName": "Magnetic Constant (permeability of free space)"
 		}],
 		"metre": [{
 			"type": "unit",
-			"id": "39"
+			"fullName": "meter"
 		}],
 		"length": [{
 			"type": "unit",
-			"id": "39"
+			"fullName": "meter"
 		}, {
 			"type": "variable",
-			"id": "105"
+			"fullName": "Position"
 		}],
 		"kilogram": [{
 			"type": "unit",
-			"id": "40"
+			"fullName": "kilogram"
 		}],
 		"kg": [{
 			"type": "unit",
-			"id": "40"
+			"fullName": "kilogram"
 		}, {
 			"type": "variable",
-			"id": "104"
+			"fullName": "Mass"
 		}],
 		"second": [{
 			"type": "unit",
-			"id": "41"
+			"fullName": "second"
 		}],
 		"s": [{
 			"type": "unit",
-			"id": "41"
+			"fullName": "second"
 		}, {
 			"type": "variable",
-			"id": "131"
+			"fullName": "Time"
 		}],
 		"mole": [{
 			"type": "unit",
-			"id": "42"
+			"fullName": "mole"
 		}],
 		"mol": [{
 			"type": "unit",
-			"id": "42"
+			"fullName": "mole"
 		}],
 		"Kelvin": [{
 			"type": "unit",
-			"id": "43"
+			"fullName": "Kelvin"
 		}],
 		"K": [{
 			"type": "unit",
-			"id": "43"
+			"fullName": "Kelvin"
 		}, {
 			"type": "equation",
-			"id": "73"
+			"fullName": "Definition of Kinetic Energy"
 		}, {
 			"type": "variable",
-			"id": "111"
+			"fullName": "Boltzmann Constant"
 		}, {
 			"type": "variable",
-			"id": "122"
+			"fullName": "Kinetic Energy"
 		}, {
 			"type": "variable",
-			"id": "129"
+			"fullName": "Coulomb's Constant"
 		}, {
 			"type": "variable",
-			"id": "144"
+			"fullName": "Spring Constant"
 		}],
 		"degrees": [{
 			"type": "unit",
-			"id": "43"
+			"fullName": "Kelvin"
 		}, {
 			"type": "unit",
-			"id": "44"
+			"fullName": "Celsius"
 		}],
 		"kevin": [{
 			"type": "unit",
-			"id": "43"
+			"fullName": "Kelvin"
 		}],
 		"Celsius": [{
 			"type": "unit",
-			"id": "44"
+			"fullName": "Celsius"
 		}],
 		"C": [{
 			"type": "unit",
-			"id": "44"
+			"fullName": "Celsius"
 		}, {
 			"type": "unit",
-			"id": "48"
+			"fullName": "Coulomb"
 		}, {
 			"type": "variable",
-			"id": "106"
+			"fullName": "Speed of Light"
 		}, {
 			"type": "variable",
-			"id": "165"
+			"fullName": "Capacitance"
 		}],
 		"centigrade": [{
 			"type": "unit",
-			"id": "44"
+			"fullName": "Celsius"
 		}],
 		"Ampere": [{
 			"type": "unit",
-			"id": "45"
+			"fullName": "Ampere"
 		}],
 		"A": [{
 			"type": "unit",
-			"id": "45"
+			"fullName": "Ampere"
 		}, {
 			"type": "variable",
-			"id": "115"
+			"fullName": "Acceleration"
 		}, {
 			"type": "variable",
-			"id": "156"
+			"fullName": "Angular Acceleration"
 		}, {
 			"type": "variable",
-			"id": "162"
+			"fullName": "Cross Section"
 		}],
 		"Joule": [{
 			"type": "unit",
-			"id": "46"
+			"fullName": "Joule"
 		}],
 		"J": [{
 			"type": "unit",
-			"id": "46"
+			"fullName": "Joule"
 		}, {
 			"type": "equation",
-			"id": "72"
+			"fullName": "Definition of Impulse"
 		}, {
 			"type": "variable",
-			"id": "118"
+			"fullName": "Impulse"
 		}],
 		"Newton": [{
 			"type": "unit",
-			"id": "47"
+			"fullName": "Newton"
 		}],
 		"N": [{
 			"type": "unit",
-			"id": "47"
+			"fullName": "Newton"
 		}],
 		"Coulomb": [{
 			"type": "unit",
-			"id": "48"
+			"fullName": "Coulomb"
 		}],
 		"charge": [{
 			"type": "unit",
-			"id": "48"
+			"fullName": "Coulomb"
 		}],
 		"Volt": [{
 			"type": "unit",
-			"id": "49"
+			"fullName": "Volt"
 		}],
 		"V": [{
 			"type": "unit",
-			"id": "49"
+			"fullName": "Volt"
 		}, {
 			"type": "variable",
-			"id": "132"
+			"fullName": "Velocity"
 		}, {
 			"type": "variable",
-			"id": "152"
+			"fullName": "Voltage"
 		}],
 		"voltage": [{
 			"type": "unit",
-			"id": "49"
+			"fullName": "Volt"
 		}, {
 			"type": "equation",
-			"id": "100"
+			"fullName": "Ohm's Law"
 		}, {
 			"type": "variable",
-			"id": "152"
+			"fullName": "Voltage"
 		}],
 		"potential difference": [{
 			"type": "unit",
-			"id": "49"
+			"fullName": "Volt"
 		}],
 		"potential": [{
 			"type": "unit",
-			"id": "49"
+			"fullName": "Volt"
 		}],
 		"emf": [{
 			"type": "unit",
-			"id": "49"
+			"fullName": "Volt"
 		}],
 		"electromotive force": [{
 			"type": "unit",
-			"id": "49"
+			"fullName": "Volt"
 		}],
 		"Henry": [{
 			"type": "unit",
-			"id": "50"
+			"fullName": "Henry"
 		}],
 		"H": [{
 			"type": "unit",
-			"id": "50"
+			"fullName": "Henry"
 		}, {
 			"type": "variable",
-			"id": "151"
+			"fullName": "Planck's Constant"
 		}],
 		"Ohm": [{
 			"type": "unit",
-			"id": "51"
+			"fullName": "Ohm"
 		}],
 		"omega": [{
 			"type": "unit",
-			"id": "51"
+			"fullName": "Ohm"
 		}],
 		"resistance": [{
 			"type": "unit",
-			"id": "51"
+			"fullName": "Ohm"
 		}, {
 			"type": "equation",
-			"id": "100"
+			"fullName": "Ohm's Law"
 		}, {
 			"type": "equation",
-			"id": "99"
+			"fullName": "Pouillet's law"
 		}],
 		"Hertz": [{
 			"type": "unit",
-			"id": "52"
+			"fullName": "Hertz"
 		}],
 		"Hz": [{
 			"type": "unit",
-			"id": "52"
+			"fullName": "Hertz"
 		}],
 		"Pascal": [{
 			"type": "unit",
-			"id": "53"
+			"fullName": "Pascal"
 		}],
 		"Pa": [{
 			"type": "unit",
-			"id": "53"
+			"fullName": "Pascal"
 		}],
 		"Tesla": [{
 			"type": "unit",
-			"id": "54"
+			"fullName": "Tesla"
 		}],
 		"T": [{
 			"type": "unit",
-			"id": "54"
+			"fullName": "Tesla"
 		}, {
 			"type": "variable",
-			"id": "116"
+			"fullName": "Torque"
 		}, {
 			"type": "variable",
-			"id": "124"
+			"fullName": "Period"
 		}, {
 			"type": "variable",
-			"id": "131"
+			"fullName": "Time"
 		}],
 		"Radian": [{
 			"type": "unit",
-			"id": "55"
+			"fullName": "Radian"
 		}],
 		"rad": [{
 			"type": "unit",
-			"id": "55"
+			"fullName": "Radian"
 		}, {
 			"type": "variable",
-			"id": "130"
+			"fullName": "Angle"
 		}],
 		"Angle": [{
 			"type": "unit",
-			"id": "55"
+			"fullName": "Radian"
 		}, {
 			"type": "variable",
-			"id": "130"
+			"fullName": "Angle"
 		}],
 		"Farad": [{
 			"type": "unit",
-			"id": "56"
+			"fullName": "Farad"
 		}],
 		"f": [{
 			"type": "unit",
-			"id": "56"
+			"fullName": "Farad"
 		}, {
 			"type": "equation",
-			"id": "65"
+			"fullName": "Newton's Second Law"
 		}, {
 			"type": "variable",
-			"id": "103"
+			"fullName": "Force"
 		}, {
 			"type": "variable",
-			"id": "125"
+			"fullName": "Frequency"
 		}],
 		"Watt": [{
 			"type": "unit",
-			"id": "57"
+			"fullName": "Watt"
 		}],
 		"W": [{
 			"type": "unit",
-			"id": "57"
+			"fullName": "Watt"
 		}, {
 			"type": "equation",
-			"id": "92"
+			"fullName": "Definition of Angular Momentum"
 		}, {
 			"type": "variable",
-			"id": "119"
+			"fullName": "Work"
 		}, {
 			"type": "variable",
-			"id": "153"
+			"fullName": "Angular Velocity"
 		}],
 		"Power": [{
 			"type": "unit",
-			"id": "57"
+			"fullName": "Watt"
 		}, {
 			"type": "equation",
-			"id": "93"
+			"fullName": "Definition of Mechanical Power"
 		}],
 		"Electron Volt": [{
 			"type": "unit",
-			"id": "58"
+			"fullName": "Electron Volt"
 		}],
 		"eV": [{
 			"type": "unit",
-			"id": "58"
+			"fullName": "Electron Volt"
 		}],
 		"Force": [{
 			"type": "equation",
-			"id": "65"
+			"fullName": "Newton's Second Law"
 		}, {
 			"type": "equation",
-			"id": "82"
+			"fullName": "Newton's Law of Gravitation"
 		}, {
 			"type": "variable",
-			"id": "103"
+			"fullName": "Force"
 		}],
 		"Mass": [{
 			"type": "variable",
-			"id": "104"
+			"fullName": "Mass"
 		}],
 		"g": [{
 			"type": "variable",
-			"id": "104"
+			"fullName": "Mass"
 		}, {
 			"type": "variable",
-			"id": "107"
+			"fullName": "Newtonian Gravitational Constant"
 		}, {
 			"type": "variable",
-			"id": "135"
+			"fullName": "Gravitational Acceleration"
 		}],
 		"lb": [{
 			"type": "variable",
-			"id": "104"
+			"fullName": "Mass"
 		}],
 		"weight": [{
 			"type": "variable",
-			"id": "104"
+			"fullName": "Mass"
 		}],
 		"Position": [{
 			"type": "variable",
-			"id": "105"
+			"fullName": "Position"
 		}],
 		"x": [{
 			"type": "variable",
-			"id": "105"
+			"fullName": "Position"
 		}],
 		"distance": [{
 			"type": "variable",
-			"id": "105"
+			"fullName": "Position"
 		}],
 		"Speed of Light": [{
 			"type": "variable",
-			"id": "106"
+			"fullName": "Speed of Light"
 		}],
 		"lightspeed": [{
 			"type": "variable",
-			"id": "106"
+			"fullName": "Speed of Light"
 		}],
 		"Newtonian Gravitational Constant": [{
 			"type": "variable",
-			"id": "107"
+			"fullName": "Newtonian Gravitational Constant"
 		}],
 		"Avogadro's Number": [{
 			"type": "variable",
-			"id": "108"
+			"fullName": "Avogadro's Number"
 		}],
 		"N_A": [{
 			"type": "variable",
-			"id": "108"
+			"fullName": "Avogadro's Number"
 		}],
 		"avogadro's constant": [{
 			"type": "variable",
-			"id": "108"
+			"fullName": "Avogadro's Number"
 		}],
 		"avogadro": [{
 			"type": "variable",
-			"id": "108"
+			"fullName": "Avogadro's Number"
 		}],
 		"avocado": [{
 			"type": "variable",
-			"id": "108"
+			"fullName": "Avogadro's Number"
 		}],
 		"Electric Constant": [{
 			"type": "variable",
-			"id": "109"
+			"fullName": "Electric Constant"
 		}],
 		"e_0": [{
 			"type": "variable",
-			"id": "109"
+			"fullName": "Electric Constant"
 		}],
 		"e": [{
 			"type": "variable",
-			"id": "109"
+			"fullName": "Electric Constant"
 		}, {
 			"type": "variable",
-			"id": "112"
+			"fullName": "Elementary Charge"
 		}, {
 			"type": "variable",
-			"id": "138"
+			"fullName": "Electric Field"
 		}],
 		"e0": [{
 			"type": "variable",
-			"id": "109"
+			"fullName": "Electric Constant"
 		}],
 		"Magnetic Constant (permeability of free space)": [{
 			"type": "variable",
-			"id": "110"
+			"fullName": "Magnetic Constant (permeability of free space)"
 		}],
 		"mu_0": [{
 			"type": "variable",
-			"id": "110"
+			"fullName": "Magnetic Constant (permeability of free space)"
 		}],
 		"mu": [{
 			"type": "variable",
-			"id": "110"
+			"fullName": "Magnetic Constant (permeability of free space)"
 		}, {
 			"type": "variable",
-			"id": "121"
+			"fullName": "Coefficient of Friction"
 		}],
 		"mu0": [{
 			"type": "variable",
-			"id": "110"
+			"fullName": "Magnetic Constant (permeability of free space)"
 		}],
 		"m0": [{
 			"type": "variable",
-			"id": "110"
+			"fullName": "Magnetic Constant (permeability of free space)"
 		}],
 		"Boltzmann Constant": [{
 			"type": "variable",
-			"id": "111"
+			"fullName": "Boltzmann Constant"
 		}],
 		"boltz constant": [{
 			"type": "variable",
-			"id": "111"
+			"fullName": "Boltzmann Constant"
 		}],
 		"Elementary Charge": [{
 			"type": "variable",
-			"id": "112"
+			"fullName": "Elementary Charge"
 		}],
 		"electron charge": [{
 			"type": "variable",
-			"id": "112"
+			"fullName": "Elementary Charge"
 		}],
 		"proton charge": [{
 			"type": "variable",
-			"id": "112"
+			"fullName": "Elementary Charge"
 		}],
 		"Electron Mass": [{
 			"type": "variable",
-			"id": "113"
+			"fullName": "Electron Mass"
 		}],
 		"me": [{
 			"type": "variable",
-			"id": "113"
+			"fullName": "Electron Mass"
 		}],
 		"mass of electron": [{
 			"type": "variable",
-			"id": "113"
+			"fullName": "Electron Mass"
 		}],
 		"Proton Mass": [{
 			"type": "variable",
-			"id": "114"
+			"fullName": "Proton Mass"
 		}],
 		"mp": [{
 			"type": "variable",
-			"id": "114"
+			"fullName": "Proton Mass"
 		}],
 		"mass of proton": [{
 			"type": "variable",
-			"id": "114"
+			"fullName": "Proton Mass"
 		}],
 		"Acceleration": [{
 			"type": "equation",
-			"id": "95"
+			"fullName": "Definition of Acceleration"
 		}, {
 			"type": "variable",
-			"id": "115"
+			"fullName": "Acceleration"
 		}],
 		"dv/dt": [{
 			"type": "variable",
-			"id": "115"
+			"fullName": "Acceleration"
 		}],
 		"dx^2/dt^2": [{
 			"type": "equation",
-			"id": "95"
+			"fullName": "Definition of Acceleration"
 		}, {
 			"type": "variable",
-			"id": "115"
+			"fullName": "Acceleration"
 		}],
 		"vdot": [{
 			"type": "equation",
-			"id": "95"
+			"fullName": "Definition of Acceleration"
 		}, {
 			"type": "variable",
-			"id": "115"
+			"fullName": "Acceleration"
 		}],
 		"xdotdot": [{
 			"type": "equation",
-			"id": "95"
+			"fullName": "Definition of Acceleration"
 		}, {
 			"type": "variable",
-			"id": "115"
+			"fullName": "Acceleration"
 		}],
 		"xdoubledot": [{
 			"type": "variable",
-			"id": "115"
+			"fullName": "Acceleration"
 		}],
 		"v.": [{
 			"type": "variable",
-			"id": "115"
+			"fullName": "Acceleration"
 		}],
 		"x..": [{
 			"type": "equation",
-			"id": "95"
+			"fullName": "Definition of Acceleration"
 		}, {
 			"type": "variable",
-			"id": "115"
+			"fullName": "Acceleration"
 		}],
 		"Torque": [{
 			"type": "equation",
-			"id": "70"
+			"fullName": "Definition of Torque"
 		}, {
 			"type": "variable",
-			"id": "116"
+			"fullName": "Torque"
 		}],
 		"tau": [{
 			"type": "equation",
-			"id": "70"
+			"fullName": "Definition of Torque"
 		}, {
 			"type": "variable",
-			"id": "116"
+			"fullName": "Torque"
 		}],
 		"tork": [{
 			"type": "equation",
-			"id": "70"
+			"fullName": "Definition of Torque"
 		}, {
 			"type": "variable",
-			"id": "116"
+			"fullName": "Torque"
 		}],
 		"Linear Momentum": [{
 			"type": "variable",
-			"id": "117"
+			"fullName": "Linear Momentum"
 		}],
 		"p": [{
 			"type": "equation",
-			"id": "71"
+			"fullName": "Definition of Linear Momentum"
 		}, {
 			"type": "equation",
-			"id": "74"
+			"fullName": "Definition of Gravitational Potential Energy"
 		}, {
 			"type": "equation",
-			"id": "92"
+			"fullName": "Definition of Angular Momentum"
 		}, {
 			"type": "variable",
-			"id": "117"
+			"fullName": "Linear Momentum"
 		}, {
 			"type": "variable",
-			"id": "128"
+			"fullName": "Electric Dipole Moment"
 		}, {
 			"type": "variable",
-			"id": "150"
+			"fullName": "Mechanical Power"
 		}],
 		"mv": [{
 			"type": "equation",
-			"id": "71"
+			"fullName": "Definition of Linear Momentum"
 		}, {
 			"type": "variable",
-			"id": "117"
+			"fullName": "Linear Momentum"
 		}],
 		"momentum": [{
 			"type": "variable",
-			"id": "117"
+			"fullName": "Linear Momentum"
 		}],
 		"Impulse": [{
 			"type": "equation",
-			"id": "72"
+			"fullName": "Definition of Impulse"
 		}, {
 			"type": "variable",
-			"id": "118"
+			"fullName": "Impulse"
 		}],
 		"dp": [{
 			"type": "variable",
-			"id": "118"
+			"fullName": "Impulse"
 		}],
 		"deltap": [{
 			"type": "variable",
-			"id": "118"
+			"fullName": "Impulse"
 		}],
 		"delta p": [{
 			"type": "variable",
-			"id": "118"
+			"fullName": "Impulse"
 		}],
 		"Work": [{
 			"type": "equation",
-			"id": "89"
+			"fullName": "Work-Energy Theorem"
 		}, {
 			"type": "variable",
-			"id": "119"
+			"fullName": "Work"
 		}],
 		"Pi": [{
 			"type": "variable",
-			"id": "120"
+			"fullName": "Pi"
 		}, {
 			"type": "variable",
-			"id": "130"
+			"fullName": "Angle"
 		}],
 		"Coefficient of Friction": [{
 			"type": "variable",
-			"id": "121"
+			"fullName": "Coefficient of Friction"
 		}],
 		"mew": [{
 			"type": "variable",
-			"id": "121"
+			"fullName": "Coefficient of Friction"
 		}],
 		"moo": [{
 			"type": "variable",
-			"id": "121"
+			"fullName": "Coefficient of Friction"
 		}],
 		"frictional coefficient": [{
 			"type": "variable",
-			"id": "121"
+			"fullName": "Coefficient of Friction"
 		}],
 		"friction": [{
 			"type": "variable",
-			"id": "121"
+			"fullName": "Coefficient of Friction"
 		}],
 		"static friction": [{
 			"type": "variable",
-			"id": "121"
+			"fullName": "Coefficient of Friction"
 		}],
 		"kinetic friction": [{
 			"type": "variable",
-			"id": "121"
+			"fullName": "Coefficient of Friction"
 		}],
 		"moving friction": [{
 			"type": "variable",
-			"id": "121"
+			"fullName": "Coefficient of Friction"
 		}],
 		"Kinetic Energy": [{
 			"type": "variable",
-			"id": "122"
+			"fullName": "Kinetic Energy"
 		}],
 		"KE": [{
 			"type": "equation",
-			"id": "73"
+			"fullName": "Definition of Kinetic Energy"
 		}, {
 			"type": "variable",
-			"id": "122"
+			"fullName": "Kinetic Energy"
 		}],
 		"energy of motion": [{
 			"type": "variable",
-			"id": "122"
+			"fullName": "Kinetic Energy"
 		}],
 		"motion": [{
 			"type": "variable",
-			"id": "122"
+			"fullName": "Kinetic Energy"
 		}],
 		"mv^2": [{
 			"type": "variable",
-			"id": "122"
+			"fullName": "Kinetic Energy"
 		}],
 		"Net Work": [{
 			"type": "variable",
-			"id": "123"
+			"fullName": "Net Work"
 		}],
 		"Wnet": [{
 			"type": "variable",
-			"id": "123"
+			"fullName": "Net Work"
 		}],
 		"delta K": [{
 			"type": "variable",
-			"id": "123"
+			"fullName": "Net Work"
 		}],
 		"change in energy": [{
 			"type": "variable",
-			"id": "123"
+			"fullName": "Net Work"
 		}],
 		"dK": [{
 			"type": "variable",
-			"id": "123"
+			"fullName": "Net Work"
 		}],
 		"deltaK": [{
 			"type": "variable",
-			"id": "123"
+			"fullName": "Net Work"
 		}],
 		"Period": [{
 			"type": "equation",
-			"id": "80"
+			"fullName": "Definition of Period"
 		}, {
 			"type": "variable",
-			"id": "124"
+			"fullName": "Period"
 		}],
 		"1/f": [{
 			"type": "variable",
-			"id": "124"
+			"fullName": "Period"
 		}, {
 			"type": "variable",
-			"id": "143"
+			"fullName": "Pendulum Period"
 		}, {
 			"type": "variable",
-			"id": "145"
+			"fullName": "Spring Period"
 		}],
 		"Frequency": [{
 			"type": "variable",
-			"id": "125"
+			"fullName": "Frequency"
 		}],
 		"1/t": [{
 			"type": "variable",
-			"id": "125"
+			"fullName": "Frequency"
 		}],
 		"Frictional Force": [{
 			"type": "variable",
-			"id": "126"
+			"fullName": "Frictional Force"
 		}],
 		"F_fric": [{
 			"type": "equation",
-			"id": "68"
+			"fullName": "Force of Friction"
 		}, {
 			"type": "variable",
-			"id": "126"
+			"fullName": "Frictional Force"
 		}],
 		"muFn": [{
 			"type": "equation",
-			"id": "68"
+			"fullName": "Force of Friction"
 		}, {
 			"type": "variable",
-			"id": "126"
+			"fullName": "Frictional Force"
 		}],
 		"mewFn": [{
 			"type": "equation",
-			"id": "68"
+			"fullName": "Force of Friction"
 		}, {
 			"type": "variable",
-			"id": "126"
+			"fullName": "Frictional Force"
 		}],
 		"Centripetal Acceleration": [{
 			"type": "equation",
-			"id": "69"
+			"fullName": "Definition of Centripetal Acceleration"
 		}, {
 			"type": "variable",
-			"id": "127"
+			"fullName": "Centripetal Acceleration"
 		}],
 		"a_c": [{
 			"type": "variable",
-			"id": "127"
+			"fullName": "Centripetal Acceleration"
 		}],
 		"centrifugal acceleration": [{
 			"type": "equation",
-			"id": "69"
+			"fullName": "Definition of Centripetal Acceleration"
 		}, {
 			"type": "variable",
-			"id": "127"
+			"fullName": "Centripetal Acceleration"
 		}],
 		"Electric Dipole Moment": [{
 			"type": "equation",
-			"id": "90"
+			"fullName": "Electric Dipole Moment"
 		}, {
 			"type": "variable",
-			"id": "128"
+			"fullName": "Electric Dipole Moment"
 		}],
 		"Coulomb's Constant": [{
 			"type": "variable",
-			"id": "129"
+			"fullName": "Coulomb's Constant"
 		}],
 		"1/4pie0": [{
 			"type": "variable",
-			"id": "129"
+			"fullName": "Coulomb's Constant"
 		}],
 		"1/4piepsilon0": [{
 			"type": "variable",
-			"id": "129"
+			"fullName": "Coulomb's Constant"
 		}],
 		"theta": [{
 			"type": "variable",
-			"id": "130"
+			"fullName": "Angle"
 		}],
 		"degree": [{
 			"type": "variable",
-			"id": "130"
+			"fullName": "Angle"
 		}],
 		"Time": [{
 			"type": "variable",
-			"id": "131"
+			"fullName": "Time"
 		}],
 		"seconds": [{
 			"type": "variable",
-			"id": "131"
+			"fullName": "Time"
 		}],
 		"Velocity": [{
 			"type": "variable",
-			"id": "132"
+			"fullName": "Velocity"
 		}],
 		"speed": [{
 			"type": "variable",
-			"id": "132"
+			"fullName": "Velocity"
 		}],
 		"Normal Force": [{
 			"type": "equation",
-			"id": "86"
+			"fullName": "Normal Force"
 		}, {
 			"type": "variable",
-			"id": "133"
+			"fullName": "Normal Force"
 		}],
 		"F_n": [{
 			"type": "variable",
-			"id": "133"
+			"fullName": "Normal Force"
 		}],
 		"Radius": [{
 			"type": "variable",
-			"id": "134"
+			"fullName": "Radius"
 		}],
 		"r": [{
 			"type": "equation",
-			"id": "92"
+			"fullName": "Definition of Angular Momentum"
 		}, {
 			"type": "variable",
-			"id": "134"
+			"fullName": "Radius"
 		}],
 		"diameter": [{
 			"type": "variable",
-			"id": "134"
+			"fullName": "Radius"
 		}],
 		"Gravitational Acceleration": [{
 			"type": "variable",
-			"id": "135"
+			"fullName": "Gravitational Acceleration"
 		}],
 		"gravity": [{
 			"type": "variable",
-			"id": "135"
+			"fullName": "Gravitational Acceleration"
 		}],
 		"Electric Charge": [{
 			"type": "equation",
-			"id": "91"
+			"fullName": "Electric Charge"
 		}, {
 			"type": "variable",
-			"id": "136"
+			"fullName": "Electric Charge"
 		}],
 		"Q": [{
 			"type": "variable",
-			"id": "136"
+			"fullName": "Electric Charge"
 		}],
 		"Centripetal Force": [{
 			"type": "variable",
-			"id": "137"
+			"fullName": "Centripetal Force"
 		}],
 		"F_c": [{
 			"type": "equation",
-			"id": "87"
+			"fullName": "Definition of Centripetal Force"
 		}, {
 			"type": "variable",
-			"id": "137"
+			"fullName": "Centripetal Force"
 		}],
 		"centrifugal force": [{
 			"type": "equation",
-			"id": "87"
+			"fullName": "Definition of Centripetal Force"
 		}, {
 			"type": "variable",
-			"id": "137"
+			"fullName": "Centripetal Force"
 		}],
 		"Electric Field": [{
 			"type": "variable",
-			"id": "138"
+			"fullName": "Electric Field"
 		}],
 		"Electric Force": [{
 			"type": "equation",
-			"id": "84"
+			"fullName": "Definition of Coulomb Force"
 		}, {
 			"type": "variable",
-			"id": "139"
+			"fullName": "Electric Force"
 		}],
 		"F_E": [{
 			"type": "variable",
-			"id": "139"
+			"fullName": "Electric Force"
 		}],
 		"Gravitational Potential Energy": [{
 			"type": "variable",
-			"id": "140"
+			"fullName": "Gravitational Potential Energy"
 		}],
 		"U_g": [{
 			"type": "variable",
-			"id": "140"
+			"fullName": "Gravitational Potential Energy"
 		}],
 		"Gravitational Force": [{
 			"type": "variable",
-			"id": "141"
+			"fullName": "Gravitational Force"
 		}],
 		"F_g": [{
 			"type": "variable",
-			"id": "141"
+			"fullName": "Gravitational Force"
 		}],
 		"Potential Energy": [{
 			"type": "equation",
-			"id": "81"
+			"fullName": "Potential Energy"
 		}, {
 			"type": "variable",
-			"id": "142"
+			"fullName": "Potential Energy"
 		}],
 		"U": [{
 			"type": "equation",
-			"id": "74"
+			"fullName": "Definition of Gravitational Potential Energy"
 		}, {
 			"type": "equation",
-			"id": "83"
+			"fullName": "Gravitational Potential"
 		}, {
 			"type": "variable",
-			"id": "142"
+			"fullName": "Potential Energy"
 		}],
 		"Pendulum Period": [{
 			"type": "equation",
-			"id": "79"
+			"fullName": "Pendulum Period"
 		}, {
 			"type": "variable",
-			"id": "143"
+			"fullName": "Pendulum Period"
 		}],
 		"T_pendulum": [{
 			"type": "variable",
-			"id": "143"
+			"fullName": "Pendulum Period"
 		}],
 		"Spring Constant": [{
 			"type": "variable",
-			"id": "144"
+			"fullName": "Spring Constant"
 		}],
 		"Spring Period": [{
 			"type": "equation",
-			"id": "78"
+			"fullName": "Spring Period"
 		}, {
 			"type": "variable",
-			"id": "145"
+			"fullName": "Spring Period"
 		}],
 		"T_spring": [{
 			"type": "variable",
-			"id": "145"
+			"fullName": "Spring Period"
 		}],
 		"Spring Force": [{
 			"type": "equation",
-			"id": "76"
+			"fullName": "Hooke's Law"
 		}, {
 			"type": "variable",
-			"id": "146"
+			"fullName": "Spring Force"
 		}],
 		"F_spring": [{
 			"type": "variable",
-			"id": "146"
+			"fullName": "Spring Force"
 		}],
 		"Spring Potential Energy": [{
 			"type": "variable",
-			"id": "147"
+			"fullName": "Spring Potential Energy"
 		}],
 		"U_spring": [{
 			"type": "variable",
-			"id": "147"
+			"fullName": "Spring Potential Energy"
 		}],
 		"Coulomb Force": [{
 			"type": "equation",
-			"id": "84"
+			"fullName": "Definition of Coulomb Force"
 		}, {
 			"type": "variable",
-			"id": "148"
+			"fullName": "Coulomb Force"
 		}],
 		"F_coulomb": [{
 			"type": "variable",
-			"id": "148"
+			"fullName": "Coulomb Force"
 		}],
 		"Angular Momentum": [{
 			"type": "variable",
-			"id": "149"
+			"fullName": "Angular Momentum"
 		}],
 		"L": [{
 			"type": "equation",
-			"id": "92"
+			"fullName": "Definition of Angular Momentum"
 		}, {
 			"type": "variable",
-			"id": "149"
+			"fullName": "Angular Momentum"
 		}, {
 			"type": "variable",
-			"id": "177"
+			"fullName": "Inductance"
 		}],
 		"Mechanical Power": [{
 			"type": "equation",
-			"id": "93"
+			"fullName": "Definition of Mechanical Power"
 		}, {
 			"type": "variable",
-			"id": "150"
+			"fullName": "Mechanical Power"
 		}],
 		"Planck's Constant": [{
 			"type": "variable",
-			"id": "151"
+			"fullName": "Planck's Constant"
 		}],
 		"plank's constant": [{
 			"type": "variable",
-			"id": "151"
+			"fullName": "Planck's Constant"
 		}],
 		"electric potential difference": [{
 			"type": "variable",
-			"id": "152"
+			"fullName": "Voltage"
 		}],
 		"Angular Velocity": [{
 			"type": "equation",
-			"id": "94"
+			"fullName": "Definition of Angular Velocity"
 		}, {
 			"type": "variable",
-			"id": "153"
+			"fullName": "Angular Velocity"
 		}],
 		"Definition of Angular Velocity": [{
 			"type": "equation",
-			"id": "94"
+			"fullName": "Definition of Angular Velocity"
 		}],
 		"angular speed": [{
 			"type": "variable",
-			"id": "153"
+			"fullName": "Angular Velocity"
 		}],
 		"rotational speed": [{
 			"type": "variable",
-			"id": "153"
+			"fullName": "Angular Velocity"
 		}],
 		"rotation": [{
 			"type": "variable",
-			"id": "153"
+			"fullName": "Angular Velocity"
 		}],
 		"Rotational Inertia": [{
 			"type": "variable",
-			"id": "154"
+			"fullName": "Rotational Inertia"
 		}],
 		"I": [{
 			"type": "equation",
-			"id": "92"
+			"fullName": "Definition of Angular Momentum"
 		}, {
 			"type": "variable",
-			"id": "154"
+			"fullName": "Rotational Inertia"
 		}],
 		"moment of inertia": [{
 			"type": "variable",
-			"id": "154"
+			"fullName": "Rotational Inertia"
 		}],
 		"Center of Mass": [{
 			"type": "variable",
-			"id": "155"
+			"fullName": "Center of Mass"
 		}],
 		"r_cm": [{
 			"type": "equation",
-			"id": "88"
+			"fullName": "Definition of Center of Mass"
 		}, {
 			"type": "variable",
-			"id": "155"
+			"fullName": "Center of Mass"
 		}],
 		"x_cm": [{
 			"type": "variable",
-			"id": "155"
+			"fullName": "Center of Mass"
 		}],
 		"Angular Acceleration": [{
 			"type": "variable",
-			"id": "156"
+			"fullName": "Angular Acceleration"
 		}],
 		"alpha": [{
 			"type": "variable",
-			"id": "156"
+			"fullName": "Angular Acceleration"
 		}],
 		"dw/dt": [{
 			"type": "variable",
-			"id": "156"
+			"fullName": "Angular Acceleration"
 		}],
 		"domega/dt": [{
 			"type": "variable",
-			"id": "156"
+			"fullName": "Angular Acceleration"
 		}],
 		"v=v0+at": [{
 			"type": "equation",
-			"id": "64"
+			"fullName": "Kinematics Equation (no $\\Delta X$)"
 		}],
 		"kinematics": [{
 			"type": "equation",
-			"id": "64"
+			"fullName": "Kinematics Equation (no $\\Delta X$)"
 		}, {
 			"type": "equation",
-			"id": "66"
+			"fullName": "Kinematics Equation (no \"$a$\")"
 		}, {
 			"type": "equation",
-			"id": "67"
+			"fullName": "Kinematics Equation (no \"$t$\")"
 		}, {
 			"type": "equation",
-			"id": "96"
+			"fullName": "Kinematics Equation (no \"$v_0$\")"
 		}, {
 			"type": "equation",
-			"id": "97"
+			"fullName": "Kinematics Equation (no \"$v$\")"
 		}],
 		"kinematic equation": [{
 			"type": "equation",
-			"id": "64"
+			"fullName": "Kinematics Equation (no $\\Delta X$)"
 		}, {
 			"type": "equation",
-			"id": "66"
+			"fullName": "Kinematics Equation (no \"$a$\")"
 		}, {
 			"type": "equation",
-			"id": "67"
+			"fullName": "Kinematics Equation (no \"$t$\")"
 		}, {
 			"type": "equation",
-			"id": "96"
+			"fullName": "Kinematics Equation (no \"$v_0$\")"
 		}, {
 			"type": "equation",
-			"id": "97"
+			"fullName": "Kinematics Equation (no \"$v$\")"
 		}],
 		"Newton's Second Law": [{
 			"type": "equation",
-			"id": "65"
+			"fullName": "Newton's Second Law"
 		}],
 		"f=ma": [{
 			"type": "equation",
-			"id": "65"
+			"fullName": "Newton's Second Law"
 		}],
 		"Position with Constant Acceleration": [{
 			"type": "equation",
-			"id": "66"
+			"fullName": "Kinematics Equation (no \"$a$\")"
 		}],
 		"x=(x_0)+(v_0)*t+0.5a*(t^2)": [{
 			"type": "equation",
-			"id": "66"
+			"fullName": "Kinematics Equation (no \"$a$\")"
 		}],
 		"kinematic": [{
 			"type": "equation",
-			"id": "66"
+			"fullName": "Kinematics Equation (no \"$a$\")"
 		}, {
 			"type": "equation",
-			"id": "67"
+			"fullName": "Kinematics Equation (no \"$t$\")"
 		}, {
 			"type": "equation",
-			"id": "96"
+			"fullName": "Kinematics Equation (no \"$v_0$\")"
 		}, {
 			"type": "equation",
-			"id": "97"
+			"fullName": "Kinematics Equation (no \"$v$\")"
 		}],
 		"v^2=(v_0^2)+2a*(x-x_0)": [{
 			"type": "equation",
-			"id": "67"
+			"fullName": "Kinematics Equation (no \"$t$\")"
 		}],
 		"Force of Friction": [{
 			"type": "equation",
-			"id": "68"
+			"fullName": "Force of Friction"
 		}],
 		"F_fric=muF_n": [{
 			"type": "equation",
-			"id": "68"
+			"fullName": "Force of Friction"
 		}],
 		"muF_n": [{
 			"type": "equation",
-			"id": "68"
+			"fullName": "Force of Friction"
 		}],
 		"a_c=(v^2)/r": [{
 			"type": "equation",
-			"id": "69"
+			"fullName": "Definition of Centripetal Acceleration"
 		}],
 		"centripital acceleration": [{
 			"type": "equation",
-			"id": "69"
+			"fullName": "Definition of Centripetal Acceleration"
 		}],
 		"Tau=rxf": [{
 			"type": "equation",
-			"id": "70"
+			"fullName": "Definition of Torque"
 		}],
 		"rxf": [{
 			"type": "equation",
-			"id": "70"
+			"fullName": "Definition of Torque"
 		}],
 		"r x f": [{
 			"type": "equation",
-			"id": "70"
+			"fullName": "Definition of Torque"
 		}],
 		" rfsintheta": [{
 			"type": "equation",
-			"id": "70"
+			"fullName": "Definition of Torque"
 		}],
 		"Definition of Linear Momentum": [{
 			"type": "equation",
-			"id": "71"
+			"fullName": "Definition of Linear Momentum"
 		}],
 		"p=mv": [{
 			"type": "equation",
-			"id": "71"
+			"fullName": "Definition of Linear Momentum"
 		}],
 		"J=int(F)dt": [{
 			"type": "equation",
-			"id": "72"
+			"fullName": "Definition of Impulse"
 		}],
 		"intF": [{
 			"type": "equation",
-			"id": "72"
+			"fullName": "Definition of Impulse"
 		}],
 		"Definition of Kinetic Energy": [{
 			"type": "equation",
-			"id": "73"
+			"fullName": "Definition of Kinetic Energy"
 		}],
 		"K=0.5(mv^2)": [{
 			"type": "equation",
-			"id": "73"
+			"fullName": "Definition of Kinetic Energy"
 		}],
 		"Definition of Gravitational Potential Energy": [{
 			"type": "equation",
-			"id": "74"
+			"fullName": "Definition of Gravitational Potential Energy"
 		}],
 		"U=mgh": [{
 			"type": "equation",
-			"id": "74"
+			"fullName": "Definition of Gravitational Potential Energy"
 		}],
 		"Ug": [{
 			"type": "equation",
-			"id": "74"
+			"fullName": "Definition of Gravitational Potential Energy"
 		}, {
 			"type": "equation",
-			"id": "83"
+			"fullName": "Gravitational Potential"
 		}],
 		"PE": [{
 			"type": "equation",
-			"id": "74"
+			"fullName": "Definition of Gravitational Potential Energy"
 		}],
 		"Pg": [{
 			"type": "equation",
-			"id": "74"
+			"fullName": "Definition of Gravitational Potential Energy"
 		}],
 		"PEg": [{
 			"type": "equation",
-			"id": "74"
+			"fullName": "Definition of Gravitational Potential Energy"
 		}],
 		"Definition of Work": [{
 			"type": "equation",
-			"id": "75"
+			"fullName": "Definition of Work"
 		}],
 		"W=int(f)dx": [{
 			"type": "equation",
-			"id": "75"
+			"fullName": "Definition of Work"
 		}],
 		"Hooke's Law": [{
 			"type": "equation",
-			"id": "76"
+			"fullName": "Hooke's Law"
 		}],
 		"F_spring=-kx": [{
 			"type": "equation",
-			"id": "76"
+			"fullName": "Hooke's Law"
 		}],
 		"Definition of Spring Potential Energy": [{
 			"type": "equation",
-			"id": "77"
+			"fullName": "Definition of Spring Potential Energy"
 		}],
 		"U_spring=0.5k(x^2)": [{
 			"type": "equation",
-			"id": "77"
+			"fullName": "Definition of Spring Potential Energy"
 		}],
 		"spring work": [{
 			"type": "equation",
-			"id": "77"
+			"fullName": "Definition of Spring Potential Energy"
 		}],
 		"work done by spring": [{
 			"type": "equation",
-			"id": "77"
+			"fullName": "Definition of Spring Potential Energy"
 		}],
 		"T_spring=2pi(sqrt(m/k))": [{
 			"type": "equation",
-			"id": "78"
+			"fullName": "Spring Period"
 		}],
 		"T_pendulum=2pi(sqrt(l/g))": [{
 			"type": "equation",
-			"id": "79"
+			"fullName": "Pendulum Period"
 		}],
 		"T=1/(freq)": [{
 			"type": "equation",
-			"id": "80"
+			"fullName": "Definition of Period"
 		}],
 		"U = -int(F)dx": [{
 			"type": "equation",
-			"id": "81"
+			"fullName": "Potential Energy"
 		}],
 		"Newton's Law of Gravitation": [{
 			"type": "equation",
-			"id": "82"
+			"fullName": "Newton's Law of Gravitation"
 		}],
 		"F_grav = -(Gm1m2)/(r^2)": [{
 			"type": "equation",
-			"id": "82"
+			"fullName": "Newton's Law of Gravitation"
 		}],
 		"Fg": [{
 			"type": "equation",
-			"id": "82"
+			"fullName": "Newton's Law of Gravitation"
 		}],
 		"Gravitational Potential": [{
 			"type": "equation",
-			"id": "83"
+			"fullName": "Gravitational Potential"
 		}],
 		"U_g = -(Gm1m2)/(r)": [{
 			"type": "equation",
-			"id": "83"
+			"fullName": "Gravitational Potential"
 		}],
 		"Definition of Coulomb Force": [{
 			"type": "equation",
-			"id": "84"
+			"fullName": "Definition of Coulomb Force"
 		}],
 		"F_E =(kq1q2/(r^2))": [{
 			"type": "equation",
-			"id": "84"
+			"fullName": "Definition of Coulomb Force"
 		}],
 		"coulombic force": [{
 			"type": "equation",
-			"id": "84"
+			"fullName": "Definition of Coulomb Force"
 		}],
 		"electrostatic force": [{
 			"type": "equation",
-			"id": "84"
+			"fullName": "Definition of Coulomb Force"
 		}],
 		"Coulomb interaction": [{
 			"type": "equation",
-			"id": "84"
+			"fullName": "Definition of Coulomb Force"
 		}],
 		"FE": [{
 			"type": "equation",
-			"id": "84"
+			"fullName": "Definition of Coulomb Force"
 		}],
 		"kq1q2/r^2": [{
 			"type": "equation",
-			"id": "84"
+			"fullName": "Definition of Coulomb Force"
 		}],
 		"kq^2/r^2": [{
 			"type": "equation",
-			"id": "84"
+			"fullName": "Definition of Coulomb Force"
 		}],
 		"Electric Field Strength": [{
 			"type": "equation",
-			"id": "85"
+			"fullName": "Electric Field Strength"
 		}],
 		"E=F/q": [{
 			"type": "equation",
-			"id": "85"
+			"fullName": "Electric Field Strength"
 		}],
 		"efield": [{
 			"type": "equation",
-			"id": "85"
+			"fullName": "Electric Field Strength"
 		}],
 		"F_n = mg": [{
 			"type": "equation",
-			"id": "86"
+			"fullName": "Normal Force"
 		}],
 		"Fn": [{
 			"type": "equation",
-			"id": "86"
+			"fullName": "Normal Force"
 		}],
 		"Fnormal": [{
 			"type": "equation",
-			"id": "86"
+			"fullName": "Normal Force"
 		}],
 		"mg": [{
 			"type": "equation",
-			"id": "86"
+			"fullName": "Normal Force"
 		}],
 		"mgcostheta": [{
 			"type": "equation",
-			"id": "86"
+			"fullName": "Normal Force"
 		}],
 		"Definition of Centripetal Force": [{
 			"type": "equation",
-			"id": "87"
+			"fullName": "Definition of Centripetal Force"
 		}],
 		"F_c = ma_c": [{
 			"type": "equation",
-			"id": "87"
+			"fullName": "Definition of Centripetal Force"
 		}],
 		"Fc": [{
 			"type": "equation",
-			"id": "87"
+			"fullName": "Definition of Centripetal Force"
 		}],
 		"centripital force": [{
 			"type": "equation",
-			"id": "87"
+			"fullName": "Definition of Centripetal Force"
 		}],
 		"Definition of Center of Mass": [{
 			"type": "equation",
-			"id": "88"
+			"fullName": "Definition of Center of Mass"
 		}],
 		"Work-Energy Theorem": [{
 			"type": "equation",
-			"id": "89"
+			"fullName": "Work-Energy Theorem"
 		}],
 		"Wnet=deltak": [{
 			"type": "equation",
-			"id": "89"
+			"fullName": "Work-Energy Theorem"
 		}],
 		"work energy": [{
 			"type": "equation",
-			"id": "89"
+			"fullName": "Work-Energy Theorem"
 		}],
 		"p = qd": [{
 			"type": "equation",
-			"id": "90"
+			"fullName": "Electric Dipole Moment"
 		}],
 		"q = ne": [{
 			"type": "equation",
-			"id": "91"
+			"fullName": "Electric Charge"
 		}],
 		"amount of electricity": [{
 			"type": "equation",
-			"id": "91"
+			"fullName": "Electric Charge"
 		}],
 		"Definition of Angular Momentum": [{
 			"type": "equation",
-			"id": "92"
+			"fullName": "Definition of Angular Momentum"
 		}],
 		"L=rxp": [{
 			"type": "equation",
-			"id": "92"
+			"fullName": "Definition of Angular Momentum"
 		}],
 		"Definition of Mechanical Power": [{
 			"type": "equation",
-			"id": "93"
+			"fullName": "Definition of Mechanical Power"
 		}],
 		"P=W/t": [{
 			"type": "equation",
-			"id": "93"
+			"fullName": "Definition of Mechanical Power"
 		}],
 		"omega = theta/t": [{
 			"type": "equation",
-			"id": "94"
+			"fullName": "Definition of Angular Velocity"
 		}],
 		"a = dv/dt = d^2x/dt^2": [{
 			"type": "equation",
-			"id": "95"
+			"fullName": "Definition of Acceleration"
 		}],
 		"deltav/deltat": [{
 			"type": "equation",
-			"id": "95"
+			"fullName": "Definition of Acceleration"
 		}],
 		" delta v/delta t": [{
 			"type": "equation",
-			"id": "95"
+			"fullName": "Definition of Acceleration"
 		}],
 		" v/t": [{
 			"type": "equation",
-			"id": "95"
+			"fullName": "Definition of Acceleration"
 		}],
 		"v over t": [{
 			"type": "equation",
-			"id": "95"
+			"fullName": "Definition of Acceleration"
 		}],
 		" dx2/dt2": [{
 			"type": "equation",
-			"id": "95"
+			"fullName": "Definition of Acceleration"
 		}],
 		"x double dot": [{
 			"type": "equation",
-			"id": "95"
+			"fullName": "Definition of Acceleration"
 		}],
 		"Weber": [{
 			"type": "unit",
-			"id": "60"
+			"fullName": "Weber"
 		}],
 		"Wb": [{
 			"type": "unit",
-			"id": "60"
+			"fullName": "Weber"
 		}],
 		"k": [{
 			"type": "variable",
-			"id": "144"
+			"fullName": "Spring Constant"
 		}],
 		"Position with Constant Acceleration (no V)": [{
 			"type": "equation",
-			"id": "66"
+			"fullName": "Kinematics Equation (no \"$a$\")"
 		}],
 		"Position with Constant Acceleration (no \"V\")": [{
 			"type": "equation",
-			"id": "66"
+			"fullName": "Kinematics Equation (no \"$a$\")"
 		}],
 		"x=(x_0)+(v)*t-0.5a*(t^2)": [{
 			"type": "equation",
-			"id": "96"
+			"fullName": "Kinematics Equation (no \"$v_0$\")"
 		}],
 		"Kinematics Equation (no \"V\")": [{
 			"type": "equation",
-			"id": "66"
+			"fullName": "Kinematics Equation (no \"$a$\")"
 		}, {
 			"type": "equation",
-			"id": "97"
+			"fullName": "Kinematics Equation (no \"$v$\")"
 		}],
 		"Kinematics Equation (no $\\Delta X$)": [{
 			"type": "equation",
-			"id": "64"
+			"fullName": "Kinematics Equation (no $\\Delta X$)"
 		}],
 		"Kinematics Equation (no \"$V_0$\")": [{
 			"type": "equation",
-			"id": "96"
+			"fullName": "Kinematics Equation (no \"$v_0$\")"
 		}],
 		"Kinematics Equation (no \"t\")": [{
 			"type": "equation",
-			"id": "67"
+			"fullName": "Kinematics Equation (no \"$t$\")"
 		}],
 		"Kinematics Equation (no \"a\")": [{
 			"type": "equation",
-			"id": "66"
+			"fullName": "Kinematics Equation (no \"$a$\")"
 		}, {
 			"type": "equation",
-			"id": "97"
+			"fullName": "Kinematics Equation (no \"$v$\")"
 		}],
 		"x=1/2(v_0+v)*t": [{
 			"type": "equation",
-			"id": "97"
+			"fullName": "Kinematics Equation (no \"$v$\")"
 		}],
 		"Kinematics Equation (no \"aa\")": [{
 			"type": "equation",
-			"id": "66"
+			"fullName": "Kinematics Equation (no \"$a$\")"
 		}],
 		"avagandro": [{
 			"type": "variable",
-			"id": "108"
+			"fullName": "Avogadro's Number"
 		}],
 		"avagadro": [{
 			"type": "variable",
-			"id": "108"
+			"fullName": "Avogadro's Number"
 		}],
 		"avagandro's number": [{
 			"type": "variable",
-			"id": "108"
+			"fullName": "Avogadro's Number"
 		}],
 		"avagadro's number": [{
 			"type": "variable",
-			"id": "108"
+			"fullName": "Avogadro's Number"
 		}],
 		"a": [{
 			"type": "variable",
-			"id": "156"
+			"fullName": "Angular Acceleration"
 		}],
 		"h": [{
 			"type": "variable",
-			"id": "151"
+			"fullName": "Planck's Constant"
 		}],
 		"w": [{
 			"type": "variable",
-			"id": "153"
+			"fullName": "Angular Velocity"
 		}],
 		"Magnetic Field": [{
 			"type": "variable",
-			"id": "158"
+			"fullName": "Magnetic Field"
 		}],
 		"B": [{
 			"type": "variable",
-			"id": "158"
+			"fullName": "Magnetic Field"
 		}, {
 			"type": "variable",
-			"id": "179"
+			"fullName": "Velocity to Speed of Light Ratio"
 		}],
 		"Energy": [{
 			"type": "variable",
-			"id": "159"
+			"fullName": "Energy"
 		}],
 		"E": [{
 			"type": "variable",
-			"id": "159"
+			"fullName": "Energy"
 		}],
 		"Mass–energy equivalence": [{
 			"type": "equation",
-			"id": "98"
+			"fullName": "Mass–Energy Equivalence"
 		}],
 		"E=mc^2": [{
 			"type": "equation",
-			"id": "98"
+			"fullName": "Mass–Energy Equivalence"
 		}],
 		"Mass–Energy Equivalence": [{
 			"type": "equation",
-			"id": "98"
+			"fullName": "Mass–Energy Equivalence"
 		}],
 		"P": [{
 			"type": "variable",
-			"id": "150"
+			"fullName": "Mechanical Power"
 		}],
 		"elementary charge": [{
 			"type": "variable",
-			"id": "112"
+			"fullName": "Elementary Charge"
 		}],
 		"Electric Current": [{
 			"type": "equation",
-			"id": "100"
+			"fullName": "Ohm's Law"
 		}, {
 			"type": "variable",
-			"id": "160"
+			"fullName": "Electric Current"
 		}],
 		"i": [{
 			"type": "variable",
-			"id": "160"
+			"fullName": "Electric Current"
 		}],
 		"Electric Resistance": [{
 			"type": "equation",
-			"id": "100"
+			"fullName": "Ohm's Law"
 		}, {
 			"type": "equation",
-			"id": "99"
+			"fullName": "Pouillet's law"
 		}, {
 			"type": "variable",
-			"id": "161"
+			"fullName": "Electric Resistance"
 		}],
 		"R": [{
 			"type": "equation",
-			"id": "99"
+			"fullName": "Pouillet's law"
 		}, {
 			"type": "variable",
-			"id": "161"
+			"fullName": "Electric Resistance"
 		}, {
 			"type": "variable",
-			"id": "166"
+			"fullName": "Molar Gas Constant"
 		}],
 		"Cross Section": [{
 			"type": "variable",
-			"id": "162"
+			"fullName": "Cross Section"
 		}],
 		"Electrical Resistivity": [{
 			"type": "equation",
-			"id": "99"
+			"fullName": "Pouillet's law"
 		}, {
 			"type": "variable",
-			"id": "163"
+			"fullName": "Electrical Resistivity"
 		}],
 		"resistivity": [{
 			"type": "equation",
-			"id": "99"
+			"fullName": "Pouillet's law"
 		}, {
 			"type": "variable",
-			"id": "163"
+			"fullName": "Electrical Resistivity"
 		}],
 		"Length": [{
 			"type": "variable",
-			"id": "164"
+			"fullName": "Length"
 		}],
 		"l": [{
 			"type": "variable",
-			"id": "164"
+			"fullName": "Length"
 		}],
 		"Pouillet's law": [{
 			"type": "equation",
-			"id": "99"
+			"fullName": "Pouillet's law"
 		}],
 		"r=rho*l/A": [{
 			"type": "equation",
-			"id": "99"
+			"fullName": "Pouillet's law"
 		}],
 		"Ohm's Law": [{
 			"type": "equation",
-			"id": "100"
+			"fullName": "Ohm's Law"
 		}],
 		"v=ir": [{
 			"type": "equation",
-			"id": "100"
+			"fullName": "Ohm's Law"
 		}],
 		"Capacitance": [{
 			"type": "variable",
-			"id": "165"
+			"fullName": "Capacitance"
 		}],
 		"Molar Gas Constant": [{
 			"type": "variable",
-			"id": "166"
+			"fullName": "Molar Gas Constant"
 		}],
 		"Reduced Planck's Constant": [{
 			"type": "variable",
-			"id": "168"
+			"fullName": "Reduced Planck's Constant"
 		}],
 		"h_bar": [{
 			"type": "variable",
-			"id": "168"
+			"fullName": "Reduced Planck's Constant"
 		}],
 		"hbar": [{
 			"type": "variable",
-			"id": "168"
+			"fullName": "Reduced Planck's Constant"
 		}],
 		"h-bar": [{
 			"type": "variable",
-			"id": "168"
+			"fullName": "Reduced Planck's Constant"
 		}],
 		"Inductance": [{
 			"type": "variable",
-			"id": "177"
+			"fullName": "Inductance"
 		}],
 		"Lorentz Factor": [{
 			"type": "equation",
-			"id": "100"
+			"fullName": "Ohm's Law"
 		}, {
 			"type": "equation",
-			"id": "102"
+			"fullName": "Time Dilation"
 		}, {
 			"type": "variable",
-			"id": "178"
+			"fullName": "Lorentz Factor"
 		}],
 		"gamma": [{
 			"type": "equation",
-			"id": "103"
+			"fullName": "Length Contraction"
 		}, {
 			"type": "variable",
-			"id": "178"
+			"fullName": "Lorentz Factor"
 		}],
 		"Definition of Lorentz Factor": [{
 			"type": "equation",
-			"id": "100"
+			"fullName": "Ohm's Law"
 		}],
 		"Velocity to Speed of Light Ratio": [{
 			"type": "variable",
-			"id": "179"
+			"fullName": "Velocity to Speed of Light Ratio"
 		}],
 		"beta": [{
 			"type": "variable",
-			"id": "179"
+			"fullName": "Velocity to Speed of Light Ratio"
 		}],
 		"Time Dilation": [{
 			"type": "equation",
-			"id": "102"
+			"fullName": "Time Dilation"
 		}],
 		"t=t'gamma": [{
 			"type": "equation",
-			"id": "103"
+			"fullName": "Length Contraction"
 		}],
 		"Length Contraction": [{
 			"type": "equation",
-			"id": "103"
+			"fullName": "Length Contraction"
 		}],
 		"x'=x/gamma": [{
 			"type": "equation",
-			"id": "102"
+			"fullName": "Time Dilation"
 		}],
 		"relativity": [{
 			"type": "equation",
-			"id": "103"
+			"fullName": "Length Contraction"
 		}],
 		"special relativity": [{
 			"type": "equation",
-			"id": "101"
+			"fullName": "Definition of Lorentz Factor"
 		}]
 	}
 };
